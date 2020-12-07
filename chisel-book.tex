@@ -303,7 +303,7 @@ Chiselのデザインは本当にScalaのプログラム\emph{generates}それ�
 \ifshowtranssecond %(校正 3/5 mune10)
 ChiselはそれがScalaの中に埋め込まれているという点で、他のプログラミング言語とは異なります。
 基本的には、同期デジタル回路を表現するために必要なプリミティブを含むクラスと機能をライブラリ化したものが Chisel です。
-Chiselのデザインは実際にはにScalaのプログラムで、実行可能な回路を、\emph{生成}します。
+Chiselのデザインは実際にはScalaのプログラムで、実行可能な回路を、\emph{生成}します。
 多くの人にとって、これは直感に反するかもしれません： 「なぜ、Chisel を VHDLやSystemVerilogのようなスタンドアロンの言語にしないのだろうか？」。
 この質問に対する私の答えは次のとおりです。過去数十年間、ソフトウェアの世界はその設計手法の様々なイノベーションが起こりました。 
 新しいハードウェアの言語にこれらの技術を適用しなくても、り最新のプログラミング言語を \emph{使用する} だけで、これらのメリットを享受することができるのです。
@@ -5715,7 +5715,7 @@ buttons to the input of your circuit and the output to the 7-segment display.
 \chapter{Sequential Building Blocks}
 \fi
 \ifshowtranssecond %(校正)
-\chapter{ シーケンシャル回路ブロック (L5709 TODO)} %(校正  第6章  ========================================================================)
+\chapter{ 順序回路ブロック (L5709 TODO)} %(校正 12/06 aki 第6章  ========================================================================)
 \fi
 
 \ifshoworiginal
@@ -5735,11 +5735,11 @@ the so-called registers.
 順序回路を構築するために、我々は状態を格納できる要素が必要です。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-シーケンシャル回路は、出力が入力\emph{and}前の値に依存する回路です。
-我々は同期設計（クロックドデザイン）に興味を持っているとして、我々は、順序回路について話すとき、私たちは、同期式順序回路を意味します。
-\footnote{我々はまた、非同期ロジックやフィードバックを順序回路を構築することができますが、これは特定のニッチな話題で、Chiselで表現することはできません。いわゆるレジスタを：}
-順序回路を構築するために、我々は状態を格納できる要素が必要です。
+\ifshowtranssecond %(校正 12/06 aki)
+順序回路は、出力が入力\emph{と}前の値に依存する回路です。
+ここでは同期設計（クロックドデザイン）を前提として、順序回路とは同期式順序回路を意味します。
+\footnote{非同期ロジックやフィードバックで順序回路を構築することができますが、これは特定のニッチな話題で、Chiselで表現することはできません}
+順序回路を構築するためには、状態を格納できる要素が必要で、レジスタと呼ばれます。
 \fi
 
 \ifshoworiginal
@@ -5749,7 +5749,7 @@ the so-called registers.
 \section{Registers}
 \fi
 \ifshowtranssecond %(校正)
-\section{レジスター (L5743 TODO)}
+\section{レジスター (L5743 校正 12/06 aki)}
 \fi
 
 \index{Register}
@@ -5776,11 +5776,11 @@ Dフリップフロップキャプチャクロックとその出力で記憶す�
 あるいは、言い換えれば、レジスタは、クロックの立ち上がりエッジで入力の値とその出力を更新します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
+\ifshowtranssecond %(校正 12/06 aki)
 順序回路を構築するための基本的な要素は、レジスタです。
-レジスタは\myref{https://en.wikipedia.org/wiki/Flip-flop_(electronics)\#D_flip-flop}{D flip-flops}のコレクションです。
-Dフリップフロップキャプチャクロックとその出力で記憶するの立ち上がりエッジで、入力の値。
-あるいは、言い換えれば、レジスタは、クロックの立ち上がりエッジで入力の値とその出力を更新します。
+レジスタは\myref{https://en.wikipedia.org/wiki/Flip-flop_(electronics)\#D_flip-flop}{D flip-flops}の集まりです。
+D フリップフロップは、クロックの立ち上がりエッジで入力の値をキャプチャして保持し、出力します。
+別の言い方をすれば、レジスタはクロックの立ち上がりエッジの入力値で出力を更新します。
 \fi
 
 \index{Clock}
@@ -5798,22 +5798,22 @@ connection of a signal to the register's clock input is needed.
 
 \ifshowtransfirst %(自動翻訳)
 図〜\ref{fig:register}は、レジスタの回路図シンボルを示しています。
-これは、入力と出力の\code{D} \code{Q}が含まれています。
-各レジスタはまた\code{clock}信号の入力が含まれています。
-このグローバルクロック信号が同期回路内のすべてのレジスタに接続されているとして、それは通常、私たちの回路図で描かれていません。
-ボックスの下部にある小さな三角形は、クロック入力を象徴し、これはレジスタであることを教えてくれる。
+これには、入力と出力の\code{D} \code{Q}があります。
+各レジスタにはまた\code{クロック}信号の入力があります。
+このグローバルクロック信号は通常、同期回路内のすべてのレジスタに接続されているので、通常は回路図に描かれていません。
+ボックスの下部にある小さな三角形は、クロック入力を表し、これはレジスタであることを示しています。
 我々は、次の回路図でクロック信号を省略します。
 グローバルクロック信号の省略は、レジスタのクロック入力に信号の明示的な接続が必要とされないChiselによって反射されます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:register}は、レジスタの回路図シンボルを示しています。
+\ifshowtranssecond %(校正 12/06 aki)
+図〜\ref{fig:register}は、レジスタの回路図を表します。
 これは、入力と出力の\code{D} \code{Q}が含まれています。
 各レジスタはまた\code{clock}信号の入力が含まれています。
-このグローバルクロック信号が同期回路内のすべてのレジスタに接続されているとして、それは通常、私たちの回路図で描かれていません。
-ボックスの下部にある小さな三角形は、クロック入力を象徴し、これはレジスタであることを教えてくれる。
-我々は、次の回路図でクロック信号を省略します。
-グローバルクロック信号の省略は、レジスタのクロック入力に信号の明示的な接続が必要とされないChiselによって反射されます。
+このグローバルクロック信号は通常、同期回路内のすべてのレジスタに接続されているので、回路図に描かれていません。
+箱の下部にある小さな三角形は、クロック入力を表しており、これはレジスタであることを示しています。
+我々は、次の回路図でクロック信号を省略します。(訳注:次ってどれ?本書の以降??)
+レジスタのクロック入力へ明示的な接続が必要ないChiselでは、グローバルクロック信号も省略します。
 \fi
 
 \ifshoworiginal
@@ -5824,8 +5824,8 @@ In Chisel a register with input \code{d} and output \code{q} is defined with:
 Chiselに入力\code{d}と出力\code{q}でレジスタを使用して定義されています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Chiselに入力\code{d}と出力\code{q}でレジスタを使用して定義されています。
+\ifshowtranssecond %(校正 12/06 aki)
+Chiselの入力\code{d}と出力\code{q}を持つレジスタ定義は:
 \fi
 
 \shortlist{code/sequ_reg.txt}
@@ -5881,12 +5881,12 @@ Variable names start with lowercase and classes start with upper case.
 変数名は小文字で始まり、クラスは大文字で始まります。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
+\ifshowtranssecond %(校正 12/06 aki)
 まず、我々は、レジスタを定義し、名前を付けます。
 第二に、我々は、レジスタの入力に信号\code{delayIn}を接続します。
 レジスタの名前は、文字列\code{Reg}が含まれていることにも注意してください。
-簡単に組み合わせ回路と順序回路を区別するために、名前の一部としてマーカー\code{Reg}を持っているのが一般的です。
-また、（ノミでもそのためと）スカラ座での名前は\myref{https://en.wikipedia.org/wiki/Camel_case}{CamelCase}に通常あることに注意してください。
+簡単に組み合わせ回路と順序回路を区別するために、名前の一部にマーカーとして\code{Reg}をつけておくのが一般的です。
+また、Scala(ですからChiselも)の命名規則は通常\myref{https://en.wikipedia.org/wiki/Camel_case}{CamelCase}が使われます。
 変数名は小文字で始まり、クラスは大文字で始まります。
 \fi
 
@@ -5911,13 +5911,12 @@ assignment statement.
 レジスタの入力は、Chisel代入文が接続されています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
+\ifshowtranssecond %(校正 12/06 aki)
 レジスタはリセット時に初期化することができます。
-\code{reset}信号は、\code{clock}信号として、Chiselで暗黙的です。
-私たちは、電子をリセット値を供給しています。
-グラム。
-、レジスタコンストラクタ\code{RegInit}へのパラメータとして、ゼロ。
-レジスタの入力は、Chisel代入文が接続されています。
+\code{reset}信号は、\code{clock}信号と同じく、Chiselでは暗黙的です。
+リセット値を、たとえばゼロとしてレジスタコンストラクタ のReginitにパラメータとして与えます。
+たとえばレジスタコンストラクタの\code{RegInit}にパラメータとしてゼロを与えてリセット値とします。
+レジスタへの入力は、Chisel代入文がつないでくれます。
 \fi
 
 \shortlist{code/sequ_reg_init.txt}
@@ -5939,12 +5938,9 @@ Chiselでリセットの既定の実装は同期リセットです。
 リセット下の初期値及びデータ値の間で選択を入力します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Chiselでリセットの既定の実装は同期リセットです。
-\footnote{非同期リセットのサポートは現在開発中である}
-変化がDフリップフロップに必要とされない同期リセットのために、単にマルチプレクサは
-現在のFPGAの同期リセット入力を含むフリップフロップ追加する必要があります。そのため、追加のリソースがマルチプレクサのために必要とされていません。
-リセット下の初期値及びデータ値の間で選択を入力します。
+\ifshowtranssecond %(校正 12/06 aki)
+Chiselでは既定のリセットは同期リセットです。\footnote{非同期リセットのサポートは現在開発中です}
+同期リセットの場合は、D フリップフロップの変更は必要なく、入力にマルチプレクサ\footnote{現在のFPGA フリップフロップには同期リセット入力がありますから、マルチプレクサに追加のリソースは必要ありません。)を追加してリセット時の初期化値とデータ値を選択するだけです。
 \fi
 
 \begin{figure}
@@ -5966,9 +5962,9 @@ resources for the multiplexer.
 しかし、同期リセットとして、現代のFPGAは、マルチプレクサのためのLUTのリソースを無駄にしないために同期リセット（セット）入力が含まれているフリップフロップかなり頻繁に使用されています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:register-reset}は、同期リセットリセットドライブマルチプレクサとレジスタの回路図を示しています。
-しかし、同期リセットとして、現代のFPGAは、マルチプレクサのためのLUTのリソースを無駄にしないために同期リセット（セット）入力が含まれているフリップフロップかなり頻繁に使用されています。
+\ifshowtranssecond %(校正 12/06 aki)
+図〜\ref{fig:register-reset}は、リセットがマルチプレクサを駆動する同期リセット付きレジスタの回路図を示しています。
+しかし、同期リセットはかなり頻繁に使用されるため、今どきなFPGAのフリップフロップには同期リセット(およびセット)入力が含まれており、マルチプレクサのためにLUTを無駄にしないようになっています。
 \fi
 
 \ifshoworiginal
@@ -5983,10 +5979,9 @@ by a diagram showing the signals over time. Such a diagram is called a waveform 
 そのような図は、波形又は\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-順序回路は、時間の経過とともにその値を変更します。
-したがって、彼らの行動は、時間の経過と共に信号を示す図によって説明することができます。
-そのような図は、波形又は\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
+\ifshowtranssecond %(校正 12/06 aki)
+順序回路は、時間の経過とともにその値が変わります。
+そのふるまいは、時間の経過とともに変化する信号を示すダイアグラムによってみることができる。このようなダイアグラムは、ウェーブフォームまたは\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
 \fi
 
 \index{Timing diagram}
@@ -6025,15 +6020,15 @@ register output follows the input signal with one clock cycle delay.
 その時から\code{reset}にそれがあるべきよう、\code{0}をままで、レジスタ出力は、1クロックサイクル遅れて入力信号に従います。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:register-wave}はリセットでレジスタのための波形を示し、いくつかの入力データは、それに適用されます。
-時間は左から右へと移行します。
-図の上部には、私たちは私たちの回路を駆動するクロックを参照してください。
-最初のクロックサイクルでは、リセットする前に、レジスタの内容が定義されていません。
-第2クロックサイクルリセットにハイにアサートされ、このクロック・サイクル（標識B）の立ち上がりエッジでレジスタが初期値\code{0}をとります。
+\ifshowtranssecond %(校正 12/06 aki)
+図〜\ref{fig:register-wave}に、リセットと一部の入力データが適用されたレジスタのウェーブフォームを示す。
+時間は左から右へと進む。
+図の一番上には、回路を駆動するクロックが表示されています。
+リセット前の最初のクロックサイクルでは、レジスタの内容が定義されていません。
+第2クロックサイクルではリセットがハイにアサートされ、このクロックサイクルの立ち上がりエッジ(ラベルB)でレジスタは初期値\code{0}になります。
 入力\code{inVal}は無視されます。
-次のクロックサイクルで\code{reset}は\code{0}あり、\code{inVal}の値は次の立ち上がりエッジ（標識C）上に捕捉されています。
-その時から\code{reset}にそれがあるべきよう、\code{0}をままで、レジスタ出力は、1クロックサイクル遅れて入力信号に従います。
+次のクロックサイクルでは\code{リセット}は\code{0)になり、\code{inVal)の値は次の立ち上がりエッジ(ラベルC)でキャプチャされます。
+それ以降は\code{リセット)は\code{0)のままで、レジスタ出力は入力信号から1クロックサイクル遅れで追従します。
 \fi
 
 \ifshoworiginal
@@ -6073,11 +6068,11 @@ output of the register.
 マルチプレクサへの一方の入力には、レジスタの出力のフィードバックです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-典型的なデザインパターンは、イネーブル信号とレジスタです。
-\code{true}（高）、レジスタキャプチャ入力する場合にのみイネーブル信号です。それ以外の場合は、その古い値を保持します。
-レジスタの入力においてマルチプレクサと、同期リセットと同様、実現することができる可能にします。
-マルチプレクサへの一方の入力には、レジスタの出力のフィードバックです。
+\ifshowtranssecond %(校正 12/06 aki)
+典型的なデザインパターンは、イネーブル信号を持つレジスタです。
+イネーブル信号が\code{true}(高)の場合のみ、レジスタは入力をキャプチャし、そうでない場合は古い値を保持します。
+イネーブルは、同期リセットと同様に、レジスタの入力にマルチプレクサを使用してインプリメントすることができます。
+マルチプレクサへの入力の1つは、レジスタの出力のフィードバックです。
 \fi
 
 \begin{figure}
@@ -6094,13 +6089,13 @@ dedicated enable input, and no additional resources are needed.
 \fi
 
 \ifshowtransfirst %(自動翻訳)
-図〜\ref{fig:register-enable}が可能とレジスタの回路図を示します。
+図〜\ref{fig:register-enable}は、イネーブル付きレジスタの回路図を示しています。
 これはまた、一般的なデザインパターンであるとして、現代のFPGA専用のイネーブル入力が含まれているフリップフロップ、および追加のリソースが必要ありません。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
+\ifshowtranssecond %(校正 12/06 aki)
 図〜\ref{fig:register-enable}が可能とレジスタの回路図を示します。
-これはまた、一般的なデザインパターンであるとして、現代のFPGA専用のイネーブル入力が含まれているフリップフロップ、および追加のリソースが必要ありません。
+これも一般的なデザインパターンであるため、今どきのFPGAフリップフロップには専用のイネーブル入力が含まれており、追加のリソースは必要ありません。
 \fi
 
 \begin{figure}
@@ -6124,10 +6119,10 @@ follows the input with one clock cycle delay. Only in the fourth clock cycle
 唯一の第4のクロックサイクルで\code{enable}が低く、レジスタは、立ち上がりエッジDでその値（5）を保持します
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:register-en-wave}有効でレジスタのための波形例を示しています。
-時間のほとんどは、高い（\code{true}）、それを有効にして、レジスタが1つのクロックサイクルの遅延と入力し、次。
-唯一の第4のクロックサイクルで\code{enable}が低く、レジスタは、立ち上がりエッジDでその値（5）を保持します
+\ifshowtranssecond %(校正 12/06 aki)
+図〜\ref{fig:register-en-wave}イネーブル付きレジスタの波形例を示します。
+ほとんどの場合、イネーブルをハイ(\code{true})にすると、レジスタは1クロックサイクルの遅延で入力に従います。
+4クロックサイクル目にのみ\code{イネーブル)がLowになり、Dの立ち上がりエッジでレジスタは値(5)を保持します。
 \fi
 
 \ifshoworiginal
@@ -6196,7 +6191,7 @@ good use and build more interesting sequential circuits.
 \section{Counters}
 \fi
 \ifshowtranssecond %(校正)
-\section{カウンター (L6109 TODO)}
+\section{カウンター (L6109 12/06 aki}
 \fi
 
 \label{sec:counter}
@@ -6222,10 +6217,10 @@ of the register. Figure~\ref{fig:counter} shows such a free-running counter.
 図〜\ref{fig:counter}は、フリーランニングカウンタを示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-最も基本的な順序回路の一つはカウンターです。
-その最も単純な形態では、カウンタ出力は加算器に接続され、加算器の出力は、レジスタの入力に接続されるレジスタです。
-図〜\ref{fig:counter}は、フリーランニングカウンタを示しています。
+\ifshowtranssecond %(校正 12/06 aki)
+最も基本的な順序回路はカウンターです。
+その最も単純な形態では、カウンタ出力が加算器に接続され、加算器の出力がレジスタの入力に接続されているレジスタです。
+図〜\ref{fig:counter}は、このようなフリーランニングカウンタを示しています。
 \fi
 
 \ifshoworiginal
@@ -6261,8 +6256,8 @@ as shown in Figure~\ref{fig:event-counter} and in the following code.
 私たちがイベントをカウントしたい場合には、図〜\ref{fig:event-counter}に、次のコードに示すように、我々は、カウンタをインクリメントする条件を使用しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-私たちがイベントをカウントしたい場合には、図〜\ref{fig:event-counter}に、次のコードに示すように、我々は、カウンタをインクリメントする条件を使用しています。
+\ifshowtranssecond %(校正 12/06 aki)
+\noindent イベントをカウントしたいときは、図〜\ref{fig:event-counter}と次のコードに示すように、カウンタをインクリメントするための条件を使用します。
 \fi
 
 \shortlist{code/sequ_event_counter.txt}
@@ -6274,7 +6269,7 @@ as shown in Figure~\ref{fig:event-counter} and in the following code.
 \subsection{Counting Up and Down}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{カウントアップとダウン (L6268 TODO)}
+\subsection{カウントアップとダウン (L6268 12/06 aki}
 \fi
 
 \ifshoworiginal
@@ -6289,10 +6284,8 @@ conditional statement.
 、\code{when}条件文で。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-値をカウントアップし、その後\code{0}で再起動するには、我々は最大の定数、Eとカウンタ値を比較する必要があります。
-グラム。
-、\code{when}条件文で。
+\ifshowtranssecond %(校正 12/06 aki)
+値をカウントアップしていって\code{0}に戻すには、カウンタの値を最大定数や0に\code{戻す)条件と比較する必要があります。
 \fi
 
 \shortlist{code/when_counter.txt}
@@ -6347,8 +6340,8 @@ value of the function, in this example, the counting register \code{cntReg}.
 機能\code{genCounter}の最後の文は、カウントが\code{cntReg}を登録し、この例では、関数の戻り値です。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-機能\code{genCounter}の最後の文は、カウントが\code{cntReg}を登録し、この例では、関数の戻り値です。
+\ifshowtranssecond %(校正 12/06 aki)
+\noindent 関数\code{genCounter)の最後の文は、関数の戻り値であり、この例ではカウントレジスタ\code{cntReg)です。
 \fi
 
 \ifshoworiginal
@@ -6377,7 +6370,7 @@ to set \code{N} to 9. Setting \code{N} to 10 would be a classic example of an
 \subsection{Generating Timing with Counters}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{カウンタによるタイミングの生成 (L6371 TODO)}
+\subsection{カウンタによるタイミングの生成 (L6371 12/06 aki)}
 \fi
 
 \label{sec:gen:timing}
@@ -6426,11 +6419,11 @@ Figure~\ref{fig:tick-wave} shows an example of a tick generated every
 図〜\ref{fig:tick-wave}は、すべての3クロックサイクル発生したダニの一例を示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-一般的な方法は、我々の回路に必要なことを、周波数の$ F_ {ダニ} $でのシングルサイクル\emph{ticks}を生成することです。
-そのティックは、すべて$ N $クロックサイクル、ここで$ N = F_ {クロック} / F_ {ティック} $を発生し、ダニが長く正確に1つのクロック・サイクルです。
-このダニは\emph{not}派生クロックとして使用されるが、論理的に周波数の$ F_ {ティック} $で動作しなければならない回路におけるレジスタのイネーブル信号として。
-図〜\ref{fig:tick-wave}は、すべての3クロックサイクル発生したダニの一例を示しています。
+\ifshowtranssecond %(校正 12/06 aki)
+一般的な方法は、我々の回路に必要な周波数$f_{tick}$でシングルサイクルの\emph{ティック}を生成することです。
+このティックは$n$クロックサイクルごとに発生し、$n = f_{clock}/f_{tick}$で、ティックは正確に1クロックサイクルの長さになります。
+このティックは派生クロックとして\emph{ではなく)、論理的に周波数$f_{tick}$で動作する回路内のレジスタのイネーブル信号として使用されます。
+図~\ref{fig:tick-wave}に3クロック周期で発生するティックの例を示します。
 \fi
 
 \begin{figure}
@@ -6454,10 +6447,10 @@ every \code{N} clock cycles.
 我々は\code{N - 1}に\code{0}から数えるとき、私たちは一つの論理目盛りごと\code{N}クロックサイクルを生成します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-以下の回路では、我々は\code{0}から\code{N - 1}の最大値までカウントすることをカウンタについて説明します。
-最大値に達したとき、\code{tick}は単一サイクルの\code{true}であり、そしてカウンタは\code{0}にリセットされます。
-我々は\code{N - 1}に\code{0}から数えるとき、私たちは一つの論理目盛りごと\code{N}クロックサイクルを生成します。
+\ifshowtranssecond %(12/06 aki)
+以下の回路では、\code{0}から最大値である\code{N - 1}までをカウントするカウンタを記述します。
+最大値に達すると、1サイクルの間、\code{tick}は\code{true}となり、カウンタは\code{0}にリセットされます。
+\code{0}から\code{N - 1}までカウントすることで、\code{N}クロックサイクルごとに 1つの論理ティックを生成します。
 \fi
 
 \shortlist{code/sequ_tick_gen.txt}
