@@ -5715,7 +5715,7 @@ buttons to the input of your circuit and the output to the 7-segment display.
 \chapter{Sequential Building Blocks}
 \fi
 \ifshowtranssecond %(校正)
-\chapter{ 順序回路ブロック (L5709 TODO)} %(校正 12/06 aki 第6章  ========================================================================)
+\chapter{ 順序回路ブロック (L5709 TODO)} %(仮訳 12/06 aki) 第6章  ========================================================================)
 \fi
 
 \ifshoworiginal
@@ -5735,7 +5735,7 @@ the so-called registers.
 順序回路を構築するために、我々は状態を格納できる要素が必要です。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 順序回路は、出力が入力\emph{と}前の値に依存する回路です。
 ここでは同期設計（クロックドデザイン）を前提として、順序回路とは同期式順序回路を意味します。
 \footnote{非同期ロジックやフィードバックで順序回路を構築することができますが、これは特定のニッチな話題で、Chiselで表現することはできません}
@@ -5749,7 +5749,7 @@ the so-called registers.
 \section{Registers}
 \fi
 \ifshowtranssecond %(校正)
-\section{レジスター (L5743 校正 12/06 aki)}
+\section{レジスター (L5743 仮訳 12/06 aki)}
 \fi
 
 \index{Register}
@@ -5776,7 +5776,7 @@ Dフリップフロップキャプチャクロックとその出力で記憶す�
 あるいは、言い換えれば、レジスタは、クロックの立ち上がりエッジで入力の値とその出力を更新します。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 順序回路を構築するための基本的な要素は、レジスタです。
 レジスタは\myref{https://en.wikipedia.org/wiki/Flip-flop_(electronics)\#D_flip-flop}{D flip-flops}の集まりです。
 D フリップフロップは、クロックの立ち上がりエッジで入力の値をキャプチャして保持し、出力します。
@@ -5806,7 +5806,7 @@ connection of a signal to the register's clock input is needed.
 グローバルクロック信号の省略は、レジスタのクロック入力に信号の明示的な接続が必要とされないChiselによって反射されます。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 図〜\ref{fig:register}は、レジスタの回路図を表します。
 これは、入力と出力の\code{D} \code{Q}が含まれています。
 各レジスタはまた\code{clock}信号の入力が含まれています。
@@ -5824,7 +5824,7 @@ In Chisel a register with input \code{d} and output \code{q} is defined with:
 Chiselに入力\code{d}と出力\code{q}でレジスタを使用して定義されています。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 Chiselの入力\code{d}と出力\code{q}を持つレジスタ定義は:
 \fi
 
@@ -5881,7 +5881,7 @@ Variable names start with lowercase and classes start with upper case.
 変数名は小文字で始まり、クラスは大文字で始まります。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 まず、我々は、レジスタを定義し、名前を付けます。
 第二に、我々は、レジスタの入力に信号\code{delayIn}を接続します。
 レジスタの名前は、文字列\code{Reg}が含まれていることにも注意してください。
@@ -5911,7 +5911,7 @@ assignment statement.
 レジスタの入力は、Chisel代入文が接続されています。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 レジスタはリセット時に初期化することができます。
 \code{reset}信号は、\code{clock}信号と同じく、Chiselでは暗黙的です。
 リセット値を、たとえばゼロとしてレジスタコンストラクタ のReginitにパラメータとして与えます。
@@ -5938,7 +5938,7 @@ Chiselでリセットの既定の実装は同期リセットです。
 リセット下の初期値及びデータ値の間で選択を入力します。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 Chiselでは既定のリセットは同期リセットです。\footnote{非同期リセットのサポートは現在開発中です}
 同期リセットの場合は、D フリップフロップの変更は必要なく、入力にマルチプレクサ\footnote{現在のFPGA フリップフロップには同期リセット入力がありますから、マルチプレクサに追加のリソースは必要ありません。)を追加してリセット時の初期化値とデータ値を選択するだけです。
 \fi
@@ -5962,7 +5962,7 @@ resources for the multiplexer.
 しかし、同期リセットとして、現代のFPGAは、マルチプレクサのためのLUTのリソースを無駄にしないために同期リセット（セット）入力が含まれているフリップフロップかなり頻繁に使用されています。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 図〜\ref{fig:register-reset}は、リセットがマルチプレクサを駆動する同期リセット付きレジスタの回路図を示しています。
 しかし、同期リセットはかなり頻繁に使用されるため、今どきなFPGAのフリップフロップには同期リセット(およびセット)入力が含まれており、マルチプレクサのためにLUTを無駄にしないようになっています。
 \fi
@@ -5979,7 +5979,7 @@ by a diagram showing the signals over time. Such a diagram is called a waveform 
 そのような図は、波形又は\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 順序回路は、時間の経過とともにその値が変わります。
 そのふるまいは、時間の経過とともに変化する信号を示すダイアグラムによってみることができる。このようなダイアグラムは、ウェーブフォームまたは\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
 \fi
@@ -6020,7 +6020,7 @@ register output follows the input signal with one clock cycle delay.
 その時から\code{reset}にそれがあるべきよう、\code{0}をままで、レジスタ出力は、1クロックサイクル遅れて入力信号に従います。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 図〜\ref{fig:register-wave}に、リセットと一部の入力データが適用されたレジスタのウェーブフォームを示す。
 時間は左から右へと進む。
 図の一番上には、回路を駆動するクロックが表示されています。
@@ -6068,7 +6068,7 @@ output of the register.
 マルチプレクサへの一方の入力には、レジスタの出力のフィードバックです。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 典型的なデザインパターンは、イネーブル信号を持つレジスタです。
 イネーブル信号が\code{true}(高)の場合のみ、レジスタは入力をキャプチャし、そうでない場合は古い値を保持します。
 イネーブルは、同期リセットと同様に、レジスタの入力にマルチプレクサを使用してインプリメントすることができます。
@@ -6093,7 +6093,7 @@ dedicated enable input, and no additional resources are needed.
 これはまた、一般的なデザインパターンであるとして、現代のFPGA専用のイネーブル入力が含まれているフリップフロップ、および追加のリソースが必要ありません。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 図〜\ref{fig:register-enable}が可能とレジスタの回路図を示します。
 これも一般的なデザインパターンであるため、今どきのFPGAフリップフロップには専用のイネーブル入力が含まれており、追加のリソースは必要ありません。
 \fi
@@ -6119,7 +6119,7 @@ follows the input with one clock cycle delay. Only in the fourth clock cycle
 唯一の第4のクロックサイクルで\code{enable}が低く、レジスタは、立ち上がりエッジDでその値（5）を保持します
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 図〜\ref{fig:register-en-wave}イネーブル付きレジスタの波形例を示します。
 ほとんどの場合、イネーブルをハイ(\code{true})にすると、レジスタは1クロックサイクルの遅延で入力に従います。
 4クロックサイクル目にのみ\code{イネーブル)がLowになり、Dの立ち上がりエッジでレジスタは値(5)を保持します。
@@ -6191,7 +6191,7 @@ good use and build more interesting sequential circuits.
 \section{Counters}
 \fi
 \ifshowtranssecond %(校正)
-\section{カウンター (L6109 12/06 aki}
+\section{カウンター (L6109 仮訳 12/06 aki})
 \fi
 
 \label{sec:counter}
@@ -6217,7 +6217,7 @@ of the register. Figure~\ref{fig:counter} shows such a free-running counter.
 図〜\ref{fig:counter}は、フリーランニングカウンタを示しています。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 最も基本的な順序回路はカウンターです。
 その最も単純な形態では、カウンタ出力が加算器に接続され、加算器の出力がレジスタの入力に接続されているレジスタです。
 図〜\ref{fig:counter}は、このようなフリーランニングカウンタを示しています。
@@ -6256,7 +6256,7 @@ as shown in Figure~\ref{fig:event-counter} and in the following code.
 私たちがイベントをカウントしたい場合には、図〜\ref{fig:event-counter}に、次のコードに示すように、我々は、カウンタをインクリメントする条件を使用しています。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 \noindent イベントをカウントしたいときは、図〜\ref{fig:event-counter}と次のコードに示すように、カウンタをインクリメントするための条件を使用します。
 \fi
 
@@ -6269,7 +6269,7 @@ as shown in Figure~\ref{fig:event-counter} and in the following code.
 \subsection{Counting Up and Down}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{カウントアップとダウン (L6268 12/06 aki}
+\subsection{カウントアップとダウン (L6268 仮訳 12/06 aki})
 \fi
 
 \ifshoworiginal
@@ -6284,7 +6284,7 @@ conditional statement.
 、\code{when}条件文で。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 値をカウントアップしていって\code{0}に戻すには、カウンタの値を最大定数や0に\code{戻す)条件と比較する必要があります。
 \fi
 
@@ -6340,7 +6340,7 @@ value of the function, in this example, the counting register \code{cntReg}.
 機能\code{genCounter}の最後の文は、カウントが\code{cntReg}を登録し、この例では、関数の戻り値です。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 \noindent 関数\code{genCounter)の最後の文は、関数の戻り値であり、この例ではカウントレジスタ\code{cntReg)です。
 \fi
 
@@ -6419,7 +6419,7 @@ Figure~\ref{fig:tick-wave} shows an example of a tick generated every
 図〜\ref{fig:tick-wave}は、すべての3クロックサイクル発生したダニの一例を示しています。
 \fi
 
-\ifshowtranssecond %(校正 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 一般的な方法は、我々の回路に必要な周波数$f_{tick}$でシングルサイクルの\emph{ティック}を生成することです。
 このティックは$n$クロックサイクルごとに発生し、$n = f_{clock}/f_{tick}$で、ティックは正確に1クロックサイクルの長さになります。
 このティックは派生クロックとして\emph{ではなく)、論理的に周波数$f_{tick}$で動作する回路内のレジスタのイネーブル信号として使用されます。
@@ -6447,7 +6447,7 @@ every \code{N} clock cycles.
 我々は\code{N - 1}に\code{0}から数えるとき、私たちは一つの論理目盛りごと\code{N}クロックサイクルを生成します。
 \fi
 
-\ifshowtranssecond %(12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 aki)
 以下の回路では、\code{0}から最大値である\code{N - 1}までをカウントするカウンタを記述します。
 最大値に達すると、1サイクルの間、\code{tick}は\code{true}となり、カウンタは\code{0}にリセットされます。
 \code{0}から\code{N - 1}までカウントすることで、\code{N}クロックサイクルごとに 1つの論理ティックを生成します。
@@ -6469,9 +6469,9 @@ every $n$ clock cycles.
 次のコードでは、私たちは別のカウンタを使用すること\code{1}インクリメントごとに$ N $クロックサイクル。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-1のこの論理的なタイミングは、ダニのすべての$ N $クロック・サイクルは、この遅く、論理クロックで私たちの回路の他の部分を前進させるために使用することができます。
-次のコードでは、私たちは別のカウンタを使用すること\code{1}インクリメントごとに$ N $クロックサイクル。
+\ifshowtranssecond %(仮訳 12/07 aki)
+\noindent この$n$クロックサイクルごとの論理的な1ティックを使って、回路の他の一部分を遅く駆動することができます。
+次のコードでは、$n$クロックサイクルごとに\code{1}ずつインクリメントする別のカウンタを使用しています。
 \fi
 
 \shortlist{code/sequ_tick_counter.txt}
@@ -6492,8 +6492,8 @@ slow counter that increments every tick ($n$ clock cycles).
 図〜\ref{fig:tick-count-wave}は、ダニの波形及び遅いカウンタを増分毎ティック（$ N $クロックサイクル）ことを示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:tick-count-wave}は、ダニの波形及び遅いカウンタを増分毎ティック（$ N $クロックサイクル）ことを示しています。
+\ifshowtranssecond %(仮訳 12/07 aki)
+\noindent 図〜\ref{fig:tick-count-wave}は、ティックのウェーブフォームとティック$n$(クロックサイクル)ごとにインクリメントするスローカウンタのウェーブフォームを示しています。
 \fi
 
 \index{Logical clock}
@@ -6509,8 +6509,8 @@ and switches.
 この遅い\emph{logical}クロックの使用の例は、LEDを点滅シリアルバスのボーレートを生成し、多重化7セグメントディスプレイのための信号を生成し、ボタンおよびスイッチのデバウンスの入力値をサブサンプリングします。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-この遅い\emph{logical}クロックの使用の例は、LEDを点滅シリアルバスのボーレートを生成し、多重化7セグメントディスプレイのための信号を生成し、ボタンおよびスイッチのデバウンスの入力値をサブサンプリングします。
+\ifshowtranssecond %(仮訳 12/07 aki)
+この遅い\emph{論理}クロックの使用例としては、LEDの点滅、シリアルバスのボーレートの生成、7セグメント表示の多重化のための信号生成、ボタンやスイッチのデバウンスのための入力値のサブサンプリングなどがあります。
 \fi
 
 \ifshoworiginal
@@ -6525,9 +6525,8 @@ results in a counter with a width of a single bit.
 \code{0.U}のリセット値は、単一ビット幅のカウンタをもたらす場合、明示的な幅の定義は、驚きを回避することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-幅推論サイズレジスタをべきであるが、明示的にレジスタ定義時または初期値のタイプと幅を指定することをお勧めします。
-\code{0.U}のリセット値は、単一ビット幅のカウンタをもたらす場合、明示的な幅の定義は、驚きを回避することができます。
+\ifshowtranssecond %(仮訳 12/07 aki)
+幅推論ではレジスタのサイズを決める必要がありますが、レジスタ定義時の型や初期化値で明示的に幅を指定した方が良いでしょう。明示的に幅を定義することで、リセット値\code{0.U}の結果として1ビットの幅を持つカウンタが生成されてしまい、驚くことがなくなります。
 \fi
 
 \ifshoworiginal
@@ -6537,7 +6536,7 @@ results in a counter with a width of a single bit.
 \subsection{The Nerd Counter}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{「オタク」カウンター (L6538 TODO)}
+\subsection{「オタク」カウンター (L6538 仮訳 12/07 aki)}
 \fi
 
 \ifshoworiginal
@@ -6565,16 +6564,13 @@ against 0 or 1. The resource requirement is the same for the up and down counter
 リソース要件は、アップとダウンカウンタでも同じです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-私たちの多くは、時々、\myref{https://en.wikipedia.org/wiki/Nerd}{nerd}ているように感じます。
-たとえば、私たちは私たちのカウンタ/ダニ世代の高度に最適化されたバージョンをデザインしたいです。
-標準カウンタは、次のリソースを必要とする：一つのレジスタ一の加算（または減算）、及びコンパレータ。
-私たちは、レジスタや加算器についての多くを行うことはできません。
-我々はカウントアップした場合、我々はビット列である数、と比較する必要があります。
-コンパレータは、ビット列のゼロと大型ANDゲートのためのインバータから構築することができます。
-ゼロまでカウントダウンすると、コンパレータは、ASICの定数に対するコンパレータよりも少し安くなる可能性がある、大きなNORゲートです。
-ロジックはルックアップテーブルから構築されているFPGAでは、0又は1と比較するとの間に差がありません。
-リソース要件は、アップとダウンカウンタでも同じです。
+\ifshowtranssecond %(仮訳 12/07 aki)
+多くの人が、たまに\myref{https://en.wikipedia.org/wiki/Nerd}{オタク}になった気分になることがあります。
+例えば、カウンタ/ティック生成の高度に最適化されたバージョンを設計したいとします。
+標準的なカウンタは、1つのレジスタ、1つの加算器（または減算器）、およびコンパレータというリソースを必要とします。レジスタや加算器についてはあまり手を加えることができません。カウントアップする場合は、ビット文字列である数値と比較する必要があります。
+コンパレータは、ビット文字列に対する大きなANDゲートから構築することができます。
+ゼロまでカウントダウンする場合、コンパレータは大型のNORゲートで、ASICに組み込んだ定数と比較するものよりも少し安価になるかもしれません。
+ロジックがルックアップテーブルで構築されているFPGAでは、0と1を比較することに違いはありません。リソースの必要量はアップカウンタもダウンカウンタも同じです。
 \fi
 
 \ifshoworiginal
@@ -6609,7 +6605,7 @@ N-2から-1までカウントするとどうなるでしょうか？負の数は
 \subsection{A Timer}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{タイマー (L6610 TODO)}
+\subsection{タイマー (L6610 仮訳 12/08 aki)}
 \fi
 
 \ifshoworiginal
@@ -6629,13 +6625,11 @@ Then it counts down until reaching zero. At zero the timer asserts \emph{done}.
 ゼロでタイマーが\emph{done}を主張します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-私たちが作成できるタイマーの別の形態は、ワンショットタイマです。
-ワンショット・タイマは、キッチンタイマーのようなものです：あなたが分、プレス開始の数を設定します。
-指定された時間が経過すると、アラームが鳴ります。
-デジタルタイマーは、クロック・サイクルの時間をロードされます。
-そして、それがゼロに達するまでカウントダウン。
-ゼロでタイマーが\emph{done}を主張します。
+\ifshowtranssecond %(仮訳 12/08 aki)
+私たちがつくることのできる、もう一つのタイマーは、ワンショットタイマーです。
+ワンショットタイマーはキッチンタイマーのようなもので : セットした時間が経つと、アラームが鳴ります。
+デジタルタイマーには、クロックサイクルで時間が読み込まれています。
+それは、ゼロに達するまでカウントダウンします。ゼロになるとタイマーが\emph{完了}を教えてくれます。
 \fi
 
 \ifshoworiginal
@@ -6653,11 +6647,11 @@ counting by selecting input of the multiplexer that provides \code{0}.
 カウンタが\code{0}に到達すると、信号\code{done}がアサートされ、カウンタが\code{0}を提供するマルチプレクサの入力を選択することによりカウントを停止します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:timer}は、タイマのブロック図を示します。
-レジスタは\code{load}をアサートすることによって\code{din}の値をロードすることができます。
-\code{load}信号である場合にはデアサートカウントダウンする（レジスタに対する入力として\code{cntReg - 1}を選択することによって）選択されます。
-カウンタが\code{0}に到達すると、信号\code{done}がアサートされ、カウンタが\code{0}を提供するマルチプレクサの入力を選択することによりカウントを停止します。
+\ifshowtranssecond %(仮訳 12/08 aki)
+図〜\ref{fig:timer}に、タイマのブロック図を示す。
+\code{load}をアサートすることで、レジスタに\code{din}の値をロードすることができます。
+\code{load}信号がデ・アサートされると、カウントダウンが選択されます(レジスタの入力として\code{cntReg - 1}を選択)。
+カウンタが\code{0}になると、\code{0}を供給するマルチプレクサの入力が選択されて、\code{done}信号がアサートされ、カウンタはカウントダウンを停止します。
 \fi
 
 \begin{figure}
@@ -6688,14 +6682,14 @@ register \code{reg}.
 最後の行は、レジスタ\code{reg}の入力に、\code{next}で表されるマルチプレクサを接続します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-〜\ref{lst:timer}をリストタイマーのChiselコードを示します。
-私たちは、\code{0}にリセットされ、8ビットのレジスタ\code{reg}を、使用しています。
-ブール値\code{done}は\code{0}で\code{reg}を比較した結果です。
-入力マルチプレクサのために我々は\code{0}のデフォルト値を持つワイヤ\code{next}をご紹介します。
-\code{when/elsewhen}ブロックは、選択機能を持つ他の2つの入力を導入しています。
-信号\code{load}はデクリメントの選択よりも優先されます。
-最後の行は、レジスタ\code{reg}の入力に、\code{next}で表されるマルチプレクサを接続します。
+\ifshowtranssecond %(仮訳 12/08 aki)
+リスト〜\ref{lst:timer}はタイマーのChiselコードを示しています。
+リセット初期値が\code{0}となる8ビットのレジスタ\code{cntReg}を使用します。
+ブール値\code{done}は\code{cntReg}を\code{0}と比較している結果です。
+入力マルチプレクサのために、デフォルト値が\code{0}のワイヤ\code{next}を導入します。
+\code{when/elsewhen}ブロックは、他の2つの入力を選択する機能を持ちます。
+\code{load}信号の選択はデクリメントよりも優先されます。
+最後の行は、\code{next}で表されるマルチプレクサの出力をレジスタ\code{cntReg}の入力に接続します。
 \fi
 
 \longlist{code/timer.txt}{A one-shot timer}{lst:timer}
@@ -6709,8 +6703,8 @@ the register \code{reg}, instead of using the intermediate wire \code{next}.
 我々はもう少し簡潔なコードを目指す場合は、代わりに直接、中間ワイヤ\code{next}を使用する、レジスタ\code{reg}マルチプレクサ値を割り当てることができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-我々はもう少し簡潔なコードを目指す場合は、代わりに直接、中間ワイヤ\code{next}を使用する、レジスタ\code{reg}マルチプレクサ値を割り当てることができます。
+\ifshowtranssecond %(仮訳 12/08 aki)
+もう少し簡潔なコードにするなら、中間ワイヤの\code{next}を使用せずに、マルチプレクサの値を直接レジスタ\code{cntReg}に代入することができます。
 \fi
 
 \ifshoworiginal
@@ -6720,7 +6714,7 @@ the register \code{reg}, instead of using the intermediate wire \code{next}.
 \subsection{Pulse-Width Modulation}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{パルス幅変調(PWM) (L6721 TODO)}
+\subsection{パルス幅変調(PWM) (L6721 仮訳 12/08 aki)}
 \fi
 
 \ifshoworiginal
@@ -6733,8 +6727,8 @@ within that period.
 \myref{https://en.wikipedia.org/wiki/Pulse-width_modulation}{Pulse-width modulation}（PWM）は、一定周期の信号であり、時間の変調は、信号がその期間内に\emph{high}あります。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-\myref{https://en.wikipedia.org/wiki/Pulse-width_modulation}{Pulse-width modulation}（PWM）は、一定周期の信号であり、時間の変調は、信号がその期間内に\emph{high}あります。
+\ifshowtranssecond %(仮訳 12/-8 aki)
+\myref{https://en.wikipedia.org/wiki/Pulse-width_modulation}{Pulse-width modulation}（PWM）は、一定の周期を持つ信号で、その周期内で信号が\emph{high}な時間で変調されたものである。
 \fi
 
 \begin{figure}
@@ -6759,12 +6753,11 @@ two cycles it is 75\,\%. The pulse width is modulated between 25\,\% and 75\,\%.
 %パルス幅は％\\％及び75 \ \ 25の間で変調されます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:pwm}は、PWM信号を示しています。
-矢印は信号の周期の開始を指します。
-信号がハイである時間の割合は、また、デューティ・サイクルと呼ばれています。
-%最初の二つの期間にデューティ・サイクルは、次の二つの50 \\％で、25 \\％であり、最後の2つのサイクルでは75 \\％です。
-%パルス幅は％\\％及び75 \ \ 25の間で変調されます。
+\ifshowtranssecond %(仮訳 12/08 aki)
+図〜\ref{fig:pwm}はPWM信号を示しています。矢印は信号の周期の始まりを示しています。
+信号が高い時間の割合は、また、デューティ・サイクルと呼ばれます。
+最初の2周期は、デューティ・サイクルは25\,\%, つぎの2周期は50\,\%,\, そして最後の2期間は、75\,\%です。
+パルス幅は、25\,\%と75\,\%の間で変調されています。
 \fi
 
 \ifshoworiginal
@@ -6779,9 +6772,9 @@ The low-pass filter can be as simple as a resistor and a capacitor.
 ローパスフィルタは、抵抗およびコンデンサのような単純なようであることができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-簡単\myref{https://en.wikipedia.org/wiki/Digital-to-analog_converter}{digital-to-analog converter}におけるPWM信号の結果に\myref{https://en.wikipedia.org/wiki/Low-pass_filter}{low-pass filter}を追加します。
-ローパスフィルタは、抵抗およびコンデンサのような単純なようであることができます。
+\ifshowtranssecond %(仮訳 12/08 aki)
+PWM信号に\myref{https://en.wikipedia.org/wiki/Low-pass_filter}{low-pass filter} を加えると、単純な\myref{https://en.wikipedia.org/wiki/Digital-to-analog_converter}{digital-to-analog converter}になります。
+ローパスフィルタは、抵抗とコンデンサと同じくらい単純なものです。
 \fi
 
 \ifshoworiginal
@@ -6815,12 +6808,12 @@ is the return value, in our case the wire connected to the compare function.
 Chisel関数の最後の式は、我々の場合には、比較機能に接続されたワイヤの戻り値です。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-我々は、再利用可能な、軽量コンポーネントを提供するために、PWMジェネレータの機能を使用しています。
-（\code{nrCycles}）クロックサイクル数にPWMを設定Scalaの整数であり、PWM出力信号のデューティサイクル（pulswidth）を与えるChisel線（\code{din}）：関数は、2つのパラメータを有しています。
-我々はカウンターを表現するために、この例では、マルチプレクサを使用しています。
-関数の最後の行は、PWM信号を返すように入力値\code{din}とカウンタ値とを比較します。
-Chisel関数の最後の式は、我々の場合には、比較機能に接続されたワイヤの戻り値です。
+\ifshowtranssecond %(仮訳 12/08 aki)
+\noindent 再利用可能で軽量なコンポーネントを提供するために、PWMジェネレータに関数を使用しました。
+この関数には2つのパラメータがあります：PWMをクロックサイクル(\code{nrCycles})で設定するScala整数と，PWM出力信号のデューティサイクル(pulsewidth)を与えるChisel ワイヤ(\code{din})です。
+この例では、カウンタを表現するためにマルチプレクサを使用しています。
+この関数の最後の行は、カウンタの値と入力値\code{din}を比較してPWM信号を返します。
+Chisel関数の最後の式は戻り値であり、この例では比較関数に接続されたワイヤです。
 \fi
 
 \ifshoworiginal
@@ -6837,10 +6830,10 @@ for a signed representation of a number.
 Chiselはまた、数の符号付き表現のためのビットの数を提供するために機能\code{signedBitLength}を有しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-我々は、最大の符号なし数値を表すのに必要なカウンタ\code{cntReg}のビット数（を含む）\code{n}を指定する機能\code{unsignedBitLength(n)}を使用します。
-\footnote{ビット数が符号なしの数$ N $バイナリを表すために$ \ lfloor log_2（N）\ rfloor + 1 $です。}
-Chiselはまた、数の符号付き表現のためのビットの数を提供するために機能\code{signedBitLength}を有しています。
+\ifshowtranssecond %(仮訳 12/08 aki)
+関数\code{unsignedBitLength(n)}を使用して、最大\code{n}(を含む)までの符号なし数字を表現するために必要なカウンタ\code{cntReg}のためのビット数を指定します。
+\footnote{2進数の符号なし$n$を表すためのビット数は$\lfloor log_2(n) \rfloor + 1$です。}
+また、Chiselには、数値の符号付き表現に必要なビット数を指定する関数\code{signedBitLength}があります。
 \fi
 
 \ifshoworiginal
@@ -6878,11 +6871,10 @@ down-counting and the switch of the direction.
 アップ又はダウンカウントおよび方向のスイッチ長い\code{when/.elsewhen/.otherwise}式ハンドル。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-我々はカウントアップまたはダウンしなければならないかどうかを判断するためのフラグとして（1）\code{modulationReg}カウントアップするとダウンし、（2）\code{upReg}：私たちは、変調のための2つのレジスタを使用します。
-当社は、クロック入力の周波数にカウントアップ（\ 100、MHzで私たちの例では）、0の信号で結果。
-0.5ヘルツ。
-アップ又はダウンカウントおよび方向のスイッチ長い\code{when/.elsewhen/.otherwise}式ハンドル。
+\ifshowtranssecond %(仮訳 12/08 aki)
+変調には2つのレジスタを使用しています : (1) \code{modulationReg}はカウントアップとカウントダウンのためのもので、(2) \code{upReg}はカウントアップかカウントダウンかを判断するためのフラグです。
+入力されたクロックの周波数(この例では100\,MHz)までカウントアップすると、0.5\,Hzの信号が得られる。
+長い\code{when/.elsewhen/.otherwise}は、アップ/ダウンカウントと方向の切り替えを処理します。
 \fi
 
 \ifshoworiginal
@@ -6902,13 +6894,12 @@ with a function call. Wire \code{sig} represents the modulated PWM signal.
 ワイヤ\code{sig}はPWM変調信号を表します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-までしか周波数の1000分に私達のPWMカウントは 1kHz の信号を生成するように、我々は1000で変調信号を分割する必要があります。
-実際の分割は、ハードウェアで非常に高価であるので、我々は、単に
-%= 1024 $ $ 2 ^ {10}
-による除算を相当右、10だけシフト。
-我々は機能としてPWM回路を定義したように、我々は単に関数呼び出しとその回路をインスタンス化することができます。
-ワイヤ\code{sig}はPWM変調信号を表します。
+\ifshowtranssecond %(仮訳 12/08 aki)
+このPWMは1\,kHzの信号を生成するための周波数を1000分の1までしかカウントできないので、変調信号を1000で割る必要があります。
+実数の除算はハードウェア上では非常に高価なので、単に右に10ビットシフトするだけで、$2^{10} = 1024$による除算と同じになります。
+PWM回路を関数として定義したので、関数呼び出しでインスタンス化することができます。
+ワイヤ\code{sig}は変調されたPWM信号を表しています。
+
 \fi
 
 \ifshoworiginal
@@ -6918,7 +6909,7 @@ with a function call. Wire \code{sig} represents the modulated PWM signal.
 \section{Shift Registers}
 \fi
 \ifshowtranssecond %(校正)
-\section{シフトレジスタ (L6919 TODO)}
+\section{シフトレジスタ (L6919 仮訳 12/08 aki)}
 \fi
 
 \begin{figure}
@@ -6944,12 +6935,12 @@ A \myref{https://en.wikipedia.org/wiki/Shift_register}{shift register}は、フ�
 この単純な形態では、回路は\code{dout}に\code{din}から4タップ遅延を実現します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-A \myref{https://en.wikipedia.org/wiki/Shift_register}{shift register}は、フリップフロップ順に接続のコレクションです。
-レジスタ（フリップフロップ）の各出力は、次のレジスタの入力に接続されています。
-図〜\ref{fig:shiftregister}は4段のシフトレジスタを示しています。
-回路\emph{shifts}各クロックチックに左から右へのデータ。
-この単純な形態では、回路は\code{dout}に\code{din}から4タップ遅延を実現します。
+\ifshowtranssecond %(仮訳 12/08 aki)
+\myref{https://en.wikipedia.org/wiki/Shift_register}{shift register}は、順番に接続されたフリップフロップの集合体です。
+レジスタ(フリップフロップ)の各出力は、次のレジスタの入力に接続されます。
+図~\ref{fig:shiftregister}は、4段のシフトレジスタを示しています。
+この回路は、クロックティックごとにデータを左から右に\emph{シフト}します。
+この単純なもので、回路は\code{din}から\code{dout}までの4タップ遅延を実装しています。
 \fi
 
 \ifshoworiginal
@@ -6962,8 +6953,8 @@ input to the register, and (3) uses the most significant bit (MSB) of the regist
 この単純なシフトレジスタのChiselコードを行います4ビット\code{shiftReg}レジスタ作成（1）、（2）レジスタへの次の入力のための入力\code{din}有するシフトレジスタの下位3ビットを連結し、そして（3）用途出力\code{dout}としてレジスタの最上位ビット（MSB）。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-この単純なシフトレジスタのChiselコードを行います4ビット\code{shiftReg}レジスタ作成（1）、（2）レジスタへの次の入力のための入力\code{din}有するシフトレジスタの下位3ビットを連結し、そして（3）用途出力\code{dout}としてレジスタの最上位ビット（MSB）。
+\ifshowtranssecond %(仮訳 12/08 aki)
+この単純なシフトレジスタのためのChiselコードは以下のようになっています。(1) 4ビットのレジスタ\code{shiftReg}を作成し、(2) シフトレジスタの下位3ビットをレジスタへの次の入力となる\code{din}と連結し、(3)レジスタの最上位ビット(MSB)を出力\code{dout}とします。
 \fi
 
 \shortlist{code/shift_register.txt}
@@ -6979,9 +6970,9 @@ send functions.
 節〜\ref{sec:uart}は用途が受信および送信機能するシフトレジスタというシリアルポートを示します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-シフトレジスタは、多くの場合、シリアルデータからパラレルデータまたはシリアルデータをパラレルデータに変換するために使用されます。
-節〜\ref{sec:uart}は用途が受信および送信機能するシフトレジスタというシリアルポートを示します。
+\ifshowtranssecond %(仮訳 12/08 aki)
+シフトレジスタは、シリアルデータからパラレルデータへの変換やパラレルデータからシリアルデータへの変換に使用されます。
+章~\ref{sec:uart}では、受信機能と送信機能にシフトレジスタを使用したシリアルポートを示しています。
 \fi
 
 \ifshoworiginal
@@ -6991,7 +6982,7 @@ send functions.
 \subsection{Shift Register with Parallel Output}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{パラレル出力付きシフトレジスタ (L6992 TODO)}
+\subsection{パラレル出力付きシフトレジスタ (L6992 仮訳 12/08 aki)}
 \fi
 
 \ifshoworiginal
@@ -7012,12 +7003,11 @@ the full word.
 この例では、最初に送信されるビット0（最下位ビット）を想定し、我々は完全な言葉を読みたいときので、最後の段階に到着します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-シリアルにシフトレジスタのパラレルアウト構成は、パラレルワードにシリアル入力ストリームを変換します。
-これは、受信機能のためにシリアルポート（UART）で使用することができます。
-図〜\ref{fig:shiftreg-paraout}は、各フリップフロップの出力が1つの出力ビットに接続される4ビットのシフトレジスタを示しています。
-4クロックサイクル後、この回路は\code{q}で提供され、4ビットパラレルデータワードに4ビットのシリアル・データ・ワードに変換します。
-この例では、最初に送信されるビット0（最下位ビット）を想定し、我々は完全な言葉を読みたいときので、最後の段階に到着します。
+\ifshowtranssecond %(仮訳 12/08 aki)
+シフトレジスタのシリアル-イン パラレル-アウト構成は、シリアルデータ入力をパラレルワードに変換します。
+これは、シリアルポート(UART)で受信機能に使用することができます。図~\ref{fig:shiftreg-paraout}は、各フリップフロップ出力が1つの出力ビットに接続された4ビットのシフトレジスタを示しています。
+この回路は、4クロックサイクル後に、4ビットで1組みのシリアルデータを\code{q}で使用可能な4ビットのパラレルデータに変換します。
+この例では、ビット0(最下位ビット)が最初に送信され、最後のデータが到着すればすべてのワードを読めるようになると想定しています。
 \fi
 
 \ifshoworiginal
@@ -7032,10 +7022,10 @@ MSB, which means a right shift. The parallel result, \code{q}, is just the readi
 パラレル結果、\code{q}は、レジスタ\code{outReg}だけの読書です。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-次Chiselコードでは、0と\code{outReg}シフトレジスタを初期化します。
-その後、我々は右シフトを意味し、MSBからシフトします。
-パラレル結果、\code{q}は、レジスタ\code{outReg}だけの読書です。
+\ifshowtranssecond %(仮訳 12/08 aki)
+以下のChiselコードでは、シフトレジスタ\code{outReg}を0で初期化しています。
+次にMSBから入力してゆきますが、これは右シフトを意味します。
+結果の\code{q}はレジスタ\code{outReg}を読み込んだだけのものです。
 \fi
 
 \shortlist{code/shift_paraout.txt}
@@ -7055,8 +7045,8 @@ MSB, which means a right shift. The parallel result, \code{q}, is just the readi
 図〜\ref{fig:shiftreg-paraout}は、並列出力機能を有する4ビットのシフトレジスタを示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:shiftreg-paraout}は、並列出力機能を有する4ビットのシフトレジスタを示しています。
+\ifshowtranssecond %(仮訳 12/08 aki)
+図〜\ref{fig:shiftreg-paraout}は、パラレル出力機能を持った4ビットのシフトレジスタを示しています。
 \fi
 
 \ifshoworiginal
