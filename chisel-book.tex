@@ -7056,7 +7056,7 @@ MSB, which means a right shift. The parallel result, \code{q}, is just the readi
 \subsection{Shift Register with Parallel Load}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{パラレルロード付きシフトレジスタ (L7067 TODO)}
+\subsection{パラレルロード付きシフトレジスタ (L7067 仮訳 12/08 aki}}
 \fi
 
 \ifshoworiginal
@@ -7092,9 +7092,9 @@ The Chisel description of that function is relatively straight forward:
 その関数のChiselの説明は比較的簡単です：
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:shiftreg-paraload}は、並列ロード機能を有する4ビットのシフトレジスタを示しています。
-その関数のChiselの説明は比較的簡単です：
+\ifshowtranssecond %(仮訳 12/09 aki)
+図~\ref{fig:shiftreg-paraload}は、パラレルロード機能を持つ4ビットのシフトレジスタを示しています。
+その機能をChiselで記述するのは比較的簡単です。
 \fi
 
 \shortlist{code/shift_paraload.txt}
@@ -7117,7 +7117,7 @@ Note that we are now shifting to the right, filling in zeros at the MSB.
 \section{Memory}
 \fi
 \ifshowtranssecond %(校正)
-\section{メモリー (L7128 TODO)}
+\section{メモリー (L7128 仮訳 12/09 aki)}
 \fi
 
 \index{Memory}
@@ -7145,13 +7145,12 @@ FPGAは、オンチップ・メモリ・ブロックとも呼ばれるブロッ�
 FPGA内のメモリは、通常、1点のリードと1つの書き込みポート、または実行時に読み取りおよび書き込みの間で切り替えることができる2つのポートを有しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-メモリはChiselでは、レジスタの集まりで\code{Vec}の\code{Reg}を構築することができます。
-しかし、これはハードウェアに高価であり、より大きなメモリ構造は\myref{https://en.wikipedia.org/wiki/Static_random-access_memory}{SRAM}として構築されています。
-ASICの場合は、メモリコンパイラは、思い出を構築します。
-FPGAは、オンチップ・メモリ・ブロックとも呼ばれるブロックRAMが含まれています。
-これらのオンチップ・メモリ・ブロックは、より大きいメモリのために組み合わせることができます。
-FPGA内のメモリは、通常、1点のリードと1つの書き込みポート、または実行時に読み取りおよび書き込みの間で切り替えることができる2つのポートを有しています。
+\ifshowtranssecond %(仮訳 12/09 aki)
+しかし、これはハードウェアでは高価であるので、大きなメモリ構造は\myref{https://en.wikipedia.org/wiki/Static_random-access_memory}{SRAM}で構築します。
+ASICでは、メモリコンパイラがメモリを構築します。
+FPGAは、ブロックRAMとも呼ばれるオンチップ・メモリ・ブロックを内臓しています。
+これらのオンチップ・メモリ・ブロックを組み合わせて、大きなメモリにできます。
+FPGAのメモリは通常、1つの読み取りと1つの書き込みポート、もしくは読み取りと書き込みを実行時に切り替えることができる2つのポートを持っています。
 \fi
 
 \index{Synchronous memory}
@@ -7200,12 +7199,12 @@ synchronous behavior.
 すべての入力のために、同期挙動を示すメモリ内のレジスタがあることに留意されたいです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:memory}は、同期メモリの回路図を示しています。
-メモリは、1つの読み出しポートと1つの書き込みポートとデュアルポートです。
-読み出しポートは、単一の入力を有し、読み出しアドレス（\code{rdAddr}）と1つの出力、リードデータ（\code{rdData}）。
-アドレス（\code{wrAddr}）、（\code{wrData}）に書き込まれるデータ、および書き込みは（\code{wrEna}）を有効：ライト・ポートは3つの入力を持っています。
-すべての入力のために、同期挙動を示すメモリ内のレジスタがあることに留意されたいです。
+\ifshowtranssecond %(仮訳 12/09 aki)
+図〜\ref{fig:memory}に、同期メモリの回路図を示す。
+メモリは、1つのリードと1つのライトのデュアルポートです。
+読み出しポートには、読み出しアドレス(\code{rdAddr})の1つの入力と、読み出しデータ(\code{rdData})の1つの出力を持ちます。
+書き込みポートには、アドレス(\code{wrAddr})、書き込みデータ(\code{wrData})と、書き込みイネーブル(\code{wrEna})の3つの入力があります。
+すべての入力について、メモリ内に同期動作を示すレジスタがあることに注意してください。
 \fi
 
 \ifshoworiginal
@@ -7219,9 +7218,9 @@ Listing~\ref{lst:memory} shows a component \code{Memory} that implements
 一覧〜\ref{lst:memory}はバイト幅の入力データと出力データとの実装メモリの1〜KiBの書き込みを有効にすることをコンポーネント\code{Memory}を示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-オンチップ・メモリをサポートするために、Chiselは、メモリコンストラクタ\code{SyncReadMem}を提供します。
-一覧〜\ref{lst:memory}はバイト幅の入力データと出力データとの実装メモリの1〜KiBの書き込みを有効にすることをコンポーネント\code{Memory}を示しています。
+\ifshowtranssecond %(仮訳 12/09 aki)
+オンチップメモリをサポートするために、Chiselはメモリコンストラクタ\code{SyncReadMem}を提供しています。
+リスト~\ref{lst:memory}は、バイト単位の入出力データとライトイネーブルを持つ1~KiBのメモリを実装したコンポーネント\code{Memory}を示しています。
 \fi
 
 \longlist{code/memory.txt}{1\,KiB of synchronous memory.}{lst:memory}
@@ -7277,11 +7276,11 @@ memory read data. The write data is delayed by one clock cycle with a register.
 書き込みデータは、レジスタと1つのクロックサイクルによって遅延されます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-我々は新たに書き込まれた値を読み出したい場合、我々はアドレスは、書き込みデータ等しいと\emph{forwards}されていることを検出することを転送回路を構築することができます。
-図〜\ref{fig:memory:forwarding}は、転送回路とメモリを示しています。
-読み出しおよび書き込みアドレスは、データを読み取り、書き込みデータの転送経路又はメモリとの間で選択することが可能に比べ書き込みでゲートされます。
-書き込みデータは、レジスタと1つのクロックサイクルによって遅延されます。
+\ifshowtranssecond %(仮訳 12/09 aki)
+新しく書き込んだ値を読み出したい場合は、アドレスが等しいことを検出して書き込みデータを送る\emph{フォワード(転送)}回路を構築すればできる。
+図~\ref{fig:memory:forwarding}は、フォワード(転送)回路を搭載したメモリを示しています。
+リードアドレスとライトアドレスを比較し、ライトデータの転送パスとメモリのリードデータの転送パスをライトイネーブルでゲーティングして選択します。
+書き込みデータはレジスタで1クロック遅延されます。
 \fi
 
 \ifshoworiginal
@@ -7305,12 +7304,12 @@ data from memory.
 転送（書き込み）データ又はメモリから読み出されたデータとの間のマルチプレクサを選択します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-一覧〜\ref{lst:memory:forward}は、転送回路を含む同期メモリのChiselコードを示します。
-我々はまた、次のクロック・サイクルでの読み出し値を提供し、同期メモリを合わせるために、次のクロックサイクルで利用できるようにするレジスタ（\code{wrDataReg}）への書き込みデータを格納する必要があります。
-我々は2つの入力アドレス（\code{wrAddr}と\code{rdAddr}）を比較し、\code{wrEna}は、転送条件に当てはまるかどうかを確認します。
-その条件はまた、1つのクロックサイクルによって遅延されます。
-転送（書き込み）データ又はメモリから読み出されたデータとの間のマルチプレクサを選択します。
+\ifshowtranssecond %(仮訳 12/09 aki)
+リスト\ref{lst:memory:forward}に、フォワード(転送)回路を含む同期メモリのChiselコードを示します。
+次のクロックサイクルでも読み出し値を提供する同期メモリとするために、次のクロックサイクルで利用可能なレジスタ(\code{wrDataReg})に書き込みデータを保持しておきます。
+2つの入力アドレス((\code{wrAddr}と\code{rdAddr}) を比較し、フォワード(転送)条件で\code{wrEna}が真であるかどうかを確認します。
+その条件も1クロックサイクル遅れます。
+マルチプレクサーは、フォワード(転送)データとメモリからの読み出しデータのどちらかを選択します。
 \fi
 
 \longlist{code/memory_forwarding.txt}{A memory with a forwarding circuit.}{lst:memory:forward}
@@ -7328,10 +7327,10 @@ Chiselはまた、同期書き込みと非同期読み出しとメモリを表�
 したがって、我々は\code{SyncReadMem}を使用することをお勧めします。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Chiselはまた、同期書き込みと非同期読み出しとメモリを表す\code{Mem}を提供します。
-このメモリタイプは、FPGAに通常直接使用できないため、合成ツールは、フリップフロップのそれを構築します。
-したがって、我々は\code{SyncReadMem}を使用することをお勧めします。
+\ifshowtranssecond %(仮訳 12/09 aki)
+Chiselはまた、同期書き込みと非同期読み出しを持つメモリの\code{Mem}も提供しています。
+このメモリタイプは通常、FPGAでは直接利用できないため、合成ツールはフリップフロップから構築してくれます。
+そのため、\code{SyncReadMem}を使用することをお勧めします。
 \fi
 
 \ifshoworiginal
@@ -7362,12 +7361,11 @@ Use that signal as enable signal for the 4-bit counter.
 4ビットカウンタのイネーブル信号としてその信号を使用します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-最後運動から7セグメントエンコーダを使用し\code{F}に\code{0}から表示を切り替えるための入力として4ビットカウンタを追加します。
-あなたが直接FPGAボードのクロックにこのカウンタを接続した場合、あなたはすべての16個の数字は、（すべての7つのセグメントが点灯します）重なって表示されます。
-そのため、あなたはカウントを遅くする必要があります。
-単一サイクル\emph{tick}は500ミリ秒ごとに信号を生成することができます別のカウンタを作成します。
-4ビットカウンタのイネーブル信号としてその信号を使用します。
+\ifshowtranssecond %(仮訳 12/09 aki)
+前回の演習で使用した7セグメントエンコーダを使って、表示を\code{0}から\code{F}に切り替えるための入力として4ビットのカウンタを追加します。
+このカウンタをFPGAボードのクロックに直接接続すると、16個の数字がすべて重なってみえます(7セグメントすべてが点灯します)。
+そのため、カウントを遅くする必要があります。500ミリ秒ごとにシングルサイクルの\emph{ティック}信号を生成できる別のカウンタを作成します。
+この信号を4ビットカウンタのイネーブル信号として使用します。
 \fi
 
 \ifshoworiginal
@@ -7388,12 +7386,11 @@ PWM signal be? What frequency is the driver running?
 あなたのPWM信号は、どのような周波数でなければなりませんか？ドライバは何周波数を実行していますか？
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-発電機能を有するPWM波形を構築し、機能（三角形または正弦関数）としきい値を設定します。
-三角関数は、アップとダウンカウントによって作成することができます。
-あなたはScalaの数行のコードを生成することができ、ルックアップテーブルを用いて、洞機能（節〜\ref{sec:gen:comb:logic}を参照してください）。
-その変調PWM機能をFPGAボード上のLEDを駆動します。
-あなたのPWM信号は、どのような周波数でなければなりませんか？ドライバは何周波数を実行していますか？
+\ifshowtranssecond %(仮訳 12/09 aki)
+ジェネレータ関数でスレッショルドと波形(三角関数またはサイン関数)を設定しPWM波形をつくってみましょう。
+三角関数は上下にカウントすることで作成できます。
+サイン関数は、数行のScalaコードでルックアップテーブルを生成し使えばよいでしょう(see Section~\ref{sec:gen:comb:logic})。
+FPGAボード上のLEDを変調したPWM関数で駆動してみましょう。PWM信号の周波数は?変調はどのくらいの周波数で動作していますか？
 \fi
 
 \ifshoworiginal
@@ -7441,7 +7438,7 @@ Sketch the block diagram for the following circuits:
 \chapter{Input Processing}
 \fi
 \ifshowtranssecond %(校正)
-\chapter{入力処理 (L7452 TODO)}%(校正  第7章  ========================================================================)
+\chapter{入力処理 (L7452 仮訳 12/10 aki)}%(校正  第7章  ========================================================================)
 \fi
 
 \ifshoworiginal
@@ -7479,9 +7476,9 @@ to deal with those issues in the digital domain.
 しかし、それはデジタル領域でこれらの問題に対処するために多くの（費用）効率的です。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-後者の二つの問題、デバウンススイッチ、およびノイズフィルタリングは、外部、アナログコンポーネントと解決することができます。
-しかし、それはデジタル領域でこれらの問題に対処するために多くの（費用）効率的です。
+\ifshowtranssecond %(仮訳 12/10 aki)
+後者の2つの問題、デバウンススイッチとフィルタリングノイズは、外付けのアナログ部品でも解決できます。
+しかし、これらの問題はデジタル側で対処するのが(コスト的に)効率的です。
 \fi
 
 \ifshoworiginal
@@ -7491,7 +7488,7 @@ to deal with those issues in the digital domain.
 \section{Asynchronous Input}
 \fi
 \ifshowtranssecond %(校正)
-\section{非同期入力 (L7502 TODO)}
+\section{非同期入力 (L7502 仮訳 12/10 aki)}
 \fi
 
 \index{Asynchronous Input}
@@ -7519,12 +7516,12 @@ stabilize at 0 or 1.
 しかし、いくつかの時間後に、フリップフロップは、0または1で安定します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-システムクロックに同期していない入力信号は非同期信号と呼ばれています。
-これらの信号は、フリップフロップの入力のセットアップおよびホールド時間に違反してもよいです。
-この違反は、フリップフロップの\myref{https://en.wikipedia.org/wiki/Metastability_(electronics)}{Metastability}をもたらすことができます。
-準安定性は、0と1の間の出力値をもたらすことができるか、発振を生じ得ます。
-しかし、いくつかの時間後に、フリップフロップは、0または1で安定します。
+\ifshowtranssecond %(仮訳 12/10 aki)
+システムクロックに同期しない入力信号は非同期信号と呼ばれます。
+これらの信号は、フリップフロップに入力されるセットアップおよびホールド時間に違反するでしょう。
+この違反により、フリップフロップの\myref{https://en.wikipedia.org/wiki/Metastability_(electronics)}{メタスタビリティ}が発生する可能性があります。
+メタスタビリティの結果、出力に0と1を繰り返したり 結果が発振のようになるでしょう。
+しかし、しばらくするとフリップフロップは0または1で安定します。
 \fi
 
 
@@ -7568,10 +7565,10 @@ instantiates two registers.
 入力同期用Chiselのコードは、2つのレジスタをインスタンスワンライナーです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:synchronizer}は同期回路と外部世界との間の境界線を示しています。
-入力同期は、2つのフリップフロップから構成されています。
-入力同期用Chiselのコードは、2つのレジスタをインスタンスワンライナーです。
+\ifshowtranssecond %(仮訳 12/10 aki)
+図~\ref{fig:synchronizer}は、同期回路と外の世界の境界を示しています。
+入力同期器は2つのフリップフロップで構成されています。
+Chiselの入力同期器は気がきいていて、2つのレジスタをインスタンス化してくれます。
 \fi
 
 \shortlist{code/input_sync.txt}
@@ -7596,12 +7593,12 @@ to be synchronous to the clock.
 クロックに同期するリセットニーズのデアサーションコンクリート。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-すべての非同期外部からの信号が入力シンクロナイザを必要としています。
-\footnote{入力信号は同期出力信号に依存している場合は例外であり、我々は最大伝播遅延を知っています。古典的な例は、同期回路、例えば非同期SRAMのインタフェースです。グラム。、マイクロプロセッサによる。}
-また、外部リセット信号を同期する必要があります。
-リセット信号が通過しなければならない2つのフリップフロップは他のリセット信号として使用される前に回路内のフリップフロップ。
-クロックに同期するリセットニーズのデアサーションコンクリート。
+\ifshowtranssecond %(仮訳 12/10 aki)
+すべての非同期外部信号には入力同期器が必要です。
+\footnote{例外は、入力信号が同期出力信号に依存している場合で、最大伝搬遅延が分かっている場合です。典型的な例は、非同期SRAMをマイクロプロセッサなどの同期回路に接続する場合です。}
+また、外部のリセット信号と同期させる必要があります。
+リセット信号は、回路内の他のフリップフロップのリセット信号として使用される前に、2つのフリップフロップを通過しなければなりません。
+具体的には、リセットのディアサートはクロックと同期している必要があります。
 \fi
 
 \ifshoworiginal
@@ -7611,7 +7608,7 @@ to be synchronous to the clock.
 \section{Debouncing}
 \fi
 \ifshowtranssecond %(校正)
-\section{デバウンス (L7640 TODO)}
+\section{デバウンス (L7640 仮訳 12/10 aki)}
 \fi
 
 \index{Debouncing}
@@ -7635,13 +7632,12 @@ sampled signal further downstream.
 私たちは、さらに下流のサンプリングされた信号を使用します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-スイッチやボタンは、オンとオフの間の遷移にある程度の時間が必要な場合があります。
-遷移の間、スイッチは、これら2つの状態の間で跳ね返ることができます。
-私たちは、さらに処理せずに、このような信号を使用している場合は、私たちがしたいより多くの遷移イベントを検出することがあります。
-一つの解決策は、このバウンスをフィルタリングするために時間を使うことです。
-%$ T_ {バウンス}の最大バウンス時間を仮定すると、我々は、期間$ T> T_ {バウンス} $で入力信号をサンプリングします$。
-私たちは、さらに下流のサンプリングされた信号を使用します。
+\ifshowtranssecond %(仮訳 12/10 aki)
+スイッチやボタンは、オンとオフの間で切り替わるのに時間がかかる場合があります。
+切り替わりの間、スイッチはこれらの2つの状態の間であばれます。
+このような信号をさらに処理せずに使用すると、必要以上に多くの切り替わりイベントを検出してしまう可能性があります。
+1つの解決策は、時間を使用してこのバウンドをフィルタリングすることです。
+バウンスの最大時間を$t_{bounce}$と仮定して、入力信号を$T > t_{bounce}$の周期でサンプリングします。サンプリングされた信号は、さらに下流でのみ使用します。
 \fi
 
 \ifshoworiginal
@@ -7701,17 +7697,16 @@ However, this is usually a non-issue.
 しかし、これは通常、非問題です。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:debounce}はアクションでデバウンスのためのサンプリングを示しています。
-トップ信号が示すバウンス入力、及び下矢印はサンプリング点を示します。
-これらのサンプリング点間の距離が長く、最大バウンス時間よりもする必要があります。
-安全第一のサンプルは、サンプル0を、図サンプル1内の最後のサンプル。
-中央のサンプルは、バウンス時に落ちます。
-これは、0または1です。
-二つの可能な結果は\code{debounce A}と\code{debounce B}として示されています。
-両方の0から1への単一の遷移を有します。
-これら2つの結果の間の唯一の違いは、バージョンBの遷移は、一つのサンプル期間後であることです。
-しかし、これは通常、非問題です。
+\ifshowtranssecond %(仮訳 12/10 aki)
+図~\ref{fig:debounce}は、動作中のデバウンスのサンプリングを示しています。
+上の信号はバウンシング入力を示し、下の矢印はサンプリングポイントを示しています。
+これらのサンプリングポイント間の距離は、最大バウンシング時間よりも長くする必要があります。
+最初のサンプルは安全に0をサンプリングし、図の最後のサンプルは1をサンプリングしています。
+真ん中のサンプルはバウンシング時間内におさまります。これは0か1のどちらかでしょう。
+2つの可能性のある結果を、\code{debounce A}と\code{debounce B}として示します。
+どちらも0から1への切り替わりは1回です。
+これら2つの結果の唯一の違いは、バージョンBの切り替わりが1サンプル周期遅れていることです。
+しかし、これは通常は問題にはなりません。
 \fi
 
 \ifshoworiginal
@@ -7726,9 +7721,9 @@ cycle \code{tick} signal, as we have done in Section~\ref{sec:gen:timing}.
 私たちは、セクション〜\ref{sec:gen:timing}に行ったように、単一サイクル\code{tick}信号を出力するカウンタとサンプルタイミングを生成します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-デバウンス用Chiselコードがもう少し進化シンクロナイザのコードよりなります。
-私たちは、セクション〜\ref{sec:gen:timing}に行ったように、単一サイクル\code{tick}信号を出力するカウンタとサンプルタイミングを生成します。
+\ifshowtranssecond %(仮訳 12/10 aki)
+デバウンスのChiselコードは、シンクロナイザー用のコードよりも少し進化します。
+サンプルタイミングは、Section~\ref{sec:gen:timing}で行ったように、1サイクルの\code{ティック}信号を出すカウンタで生成します。
 \fi
 
 \shortlist{code/input_fac.txt}
@@ -7759,14 +7754,14 @@ in the previous section.
 それは前のセクションで示した入力同期から出力されるようにこの例では、入力信号が\code{btnSync}命名されます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-まず、サンプリング周波数を決定する必要があります。
-上記の例は、（バウンス時間は10〜ミリ秒未満であることを仮定して）100〜[Hz]のサンプリング周波数で100〜MHzクロックと結果を想定しています。
-最大カウンタ値は\code{FAC}、分割係数です。
-私たちは、リセット値なし、デバウンス信号用レジスタ\code{btnDebReg}を定義します。
-レジスタ\code{cntReg}カウンタとして機能し、カウンタが最大値に達したときに\code{tick}信号が真です。
-その場合、\code{when}条件は、カウンタが0と（2）デバウンスレジスタは入力サンプルにリセットさ\code{true}と（1）です。
-それは前のセクションで示した入力同期から出力されるようにこの例では、入力信号が\code{btnSync}命名されます。
+\ifshowtranssecond %(仮訳 12/10 aki)
+まず、サンプリング周波数を決めなければなりません。
+上の例では、100~MHzのクロックを想定しているので、サンプリング周波数は100~Hzとなります(バウンシングタイムが10~ms以下であると仮定しています)。
+カウンタの最大値は、除数である\code{FAC}です。
+デバウンスされた信号のために、リセット値を持たないレジスタ\code{btnDebReg}を定義しています。
+レジスタ\code{cntReg}がカウンタとして機能し、カウンタが最大値に達した時に\code{ティック}信号が真となります。
+\code{when}条件が\code{true}の場合、(1)カウンタが0にリセットされ、(2)デバウンスレジスタに入力サンプルが格納されます。
+この例では、入力信号は前項で示した入力シンクロナイザーからの出力なので、\code{btnSync}と名付けています。
 \fi
 
 \ifshoworiginal
