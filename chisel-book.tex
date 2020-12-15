@@ -8014,7 +8014,7 @@ longer than 1--2 seconds.
 \chapter{Finite-State Machines}
 \fi
 \ifshowtranssecond %(校正)
-\chapter{有限状態機械（FSM）(L8048 TODO)}%(校正  第8章  ========================================================================)
+\chapter{有限オートマトン（FSM）(L8048 仮訳 12/12 aki)}%(校正  第8章  ========================================================================)
 \fi
 
 \index{Finite-state machine}
@@ -8038,11 +8038,11 @@ AN FSMは状態間\emph{states}のセットと条件（ガード）\emph{state t
 FSMは、同期順序回路と呼ばれています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-有限状態機械（FSM）は、デジタル設計の基本的なビルディング・ブロックです。
-AN FSMは状態間\emph{states}のセットと条件（ガード）\emph{state transitions}として説明することができます。
-アンFSMは、リセット時に設定された初期状態を、持っています。
-FSMは、同期順序回路と呼ばれています。
+\ifshowtranssecond %(仮訳 12/12 aki)
+有限状態機械(FSM)は、デジタル設計の基本的な構成要素です。
+FSMは、状態と状態の間の遷移とその(ガードされた)条件を記述しています。
+FSMは、リセット時に設定される初期状態があります。
+FSM は同期シーケンシャル回路と呼ばれることもあります。
 \fi
 
 \ifshoworiginal
@@ -8055,8 +8055,11 @@ state and the input, and (3) combinational logic that computes the output of the
 （1）現在の状態を保持するレジスタ、（2）現在の状態と入力に依存する次の状態を計算し、組合せ論理、および計算（3）組み合わせ論理：FSMの実装は、3つの部分から構成さFSMの出力。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-（1）現在の状態を保持するレジスタ、（2）現在の状態と入力に依存する次の状態を計算し、組合せ論理、および計算（3）組み合わせ論理：FSMの実装は、3つの部分から構成さFSMの出力。
+\ifshowtranssecond %(仮訳 12/12 aki)
+FSMの実装は3つの部分から構成されています :
+(1) 現在の状態を保持するレジスタ。
+(2) 現在の状態と入力から次の状態を計算する組合せ論理と、
+(3) FSMの出力を計算する組合せ論理。
 \fi
 
 \ifshoworiginal
@@ -8075,12 +8078,10 @@ out of smaller FSMs by combining them into communicating FSMs.
 次の章では、FSMの通信にそれらを組み合わせることにより、より小さなのFSMのうち、大規模なシステムを構築する方法について説明します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-原理的には、格納状態にレジスタまたは他のメモリ要素を含むすべてのデジタル回路は、単一のFSMとして記述することができます。
-しかし、これは、電子実用的ではないかもしれません。
-グラム。
-、単一FSMとしてあなたのラップトップを記述してみてください。
-次の章では、FSMの通信にそれらを組み合わせることにより、より小さなのFSMのうち、大規模なシステムを構築する方法について説明します。
+\ifshowtranssecond %(仮訳 12/12 aki)
+原理的には、状態を保存するためのレジスタや他のメモリ要素を含むすべてのデジタル回路は、単一のFSMとして記述することができます。
+しかし、これは実用的ではないかもしれません、例えば、ラップトップ コンピュータを単一のFSMとして記述してみてください。
+次の章では、小さなFSM同士を通信させて組み合わせることで、より大きなシステムを構築する方法を説明します。
 \fi
 
 \ifshoworiginal
@@ -8090,7 +8091,7 @@ out of smaller FSMs by combining them into communicating FSMs.
 \section{Basic Finite-State Machine}
 \fi
 \ifshowtranssecond %(校正)
-\section{  有限状態機械の基本 (L8124 TODO)}
+\section{有限オートマトンの基本 (L8124 仮訳 12/12 aki)}
 \fi
 
 \begin{figure}
@@ -8116,18 +8117,18 @@ state only, this state machine is called a
 図〜\ref{fig:fsm}は、FSMの回路図を示しています。
 レジスタは、現在の\code{state}が含まれています。
 次の状態の論理は、現在\code{state}と入力（\code{in}）から次の状態値（\code{next\_state}）を算出します。
-次のクロックチックで、\code{state}は\code{next\_state}になります。
+次のクロックティックで、\code{state}は\code{next\_state}になります。
 出力論理は、出力（\code{out}）を計算します。
 出力は現在の状態のみに依存したように、このステートマシンは\myref{https://en.wikipedia.org/wiki/Moore_machine}{Moore machine}と呼ばれています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:fsm}は、FSMの回路図を示しています。
-レジスタは、現在の\code{state}が含まれています。
-次の状態の論理は、現在\code{state}と入力（\code{in}）から次の状態値（\code{next\_state}）を算出します。
-次のクロックチックで、\code{state}は\code{next\_state}になります。
-出力論理は、出力（\code{out}）を計算します。
-出力は現在の状態のみに依存したように、このステートマシンは\myref{https://en.wikipedia.org/wiki/Moore_machine}{Moore machine}と呼ばれています。
+\ifshowtranssecond %(仮訳 12/12 aki)
+図~\ref{fig:fsm}は、ＦＳＭの回路図を示しています。
+レジスタには現在の\code{状態}が格納されています。
+次の状態ロジックは、現在の\code{状態}と入力(\code{in})から次の状態値(\code{next\_state})を計算します。
+次のクロックティックで\code{状態}が\code{next\_state}になります。
+出力ロジックは、出力(\code{out})を計算します。
+出力は現在の状態にのみ依存するので、この状態マシンを\myref{https://en.wikipedia.org/wiki/Moore_machine}{ムーアマシン}と呼びます。
 \fi
 
 \ifshoworiginal
@@ -8147,11 +8148,11 @@ A \myref{https://en.wikipedia.org/wiki/State_diagram}{state diagram}は、視覚
 この遷移が行われるガード（または状態）は矢印のラベルとして描かれています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-A \myref{https://en.wikipedia.org/wiki/State_diagram}{state diagram}は、視覚的なFSMの動作について説明します。
-状態図では、個々の状態は、状態名で標識された円として示されています。
-状態遷移は、状態間の矢印で示されています。
-この遷移が行われるガード（または状態）は矢印のラベルとして描かれています。
+\ifshowtranssecond %(仮訳 12/12 aki)
+\myref{https://en.wikipedia.org/wiki/State_diagram}{状態図}は、そのような FSM の動作を視覚的に表して記述したものです。
+状態図では，個々の状態を状態名を付けた円で表現しています．
+状態遷移は状態の間を矢印で示しています。
+この遷移が行われたときのガード(もしくは条件)が矢印のラベルとして描かれています。
 \fi
 
 \index{State diagram}
@@ -8178,15 +8179,15 @@ FSMは\emph{green}レベルで開始します。
 アラームは\emph{clear}信号とリセットすることができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:diag-moore}は、単純な例のFSMの状態図を示します。
-\emph{green}、\emph{orange}、及び\emph{red}、警報のレベルを示す：FSMは、三つの状態を有します。
-FSMは\emph{green}レベルで開始します。
-\emph{bad event}が発生するとアラームレベルは\emph{orange}に切り替えています。
-二悪いイベントでは、警報レベルは\emph{red}に切り替えています。
-その場合には、我々は、鐘を鳴らしたいです。 \emph{ring bell}はこのFSMの出力のみです。
-私たちは、\emph{red}状態に出力を追加します。
-アラームは\emph{clear}信号とリセットすることができます。
+\ifshowtranssecond %(仮訳 12/12 aki)
+図~\ref{fig:diag-moore}は、簡単な例のFSMの状態図を示しています。
+FSMは3つの状態 :アラームレベルを示す、\emph{緑}、\emph{橙}、\emph{赤}があります。
+FSMは\emph{緑}のレベルから始まります。
+\emph{悪いできごと}が発生すると、アラームレベルは\emph{橙}に切り替わります。
+2回目の悪いできごとが発生すると、アラームレベルは\emph{赤}に切り替わります。
+この場合、ベルを鳴らしたいです : \emph{ベルを鳴らす}のはこのFSMの唯一の出力です。
+\emph{赤}状態に出力を追加しましょう。
+アラームは\emph{クリア}信号でリセットできます。
 \fi
 
 \begin{figure}
