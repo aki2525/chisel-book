@@ -8123,7 +8123,7 @@ state only, this state machine is called a
 \fi
 
 \ifshowtranssecond %(仮訳 12/12 aki)
-図~\ref{fig:fsm}は、ＦＳＭの回路図を示しています。
+図~\ref{fig:fsm}は、FSMの回路図を示しています。
 レジスタには現在の\code{状態}が格納されています。
 次の状態ロジックは、現在の\code{状態}と入力(\code{in})から次の状態値(\code{next\_state})を計算します。
 次のクロックティックで\code{状態}が\code{next\_state}になります。
@@ -8180,7 +8180,7 @@ FSMは\emph{green}レベルで開始します。
 \fi
 
 \ifshowtranssecond %(仮訳 12/12 aki)
-図~\ref{fig:diag-moore}は、簡単な例のFSMの状態図を示しています。
+図~\ref{fig:diag-moore}に、簡単なFSMの状態図例を示します。
 FSMは3つの状態 :アラームレベルを示す、\emph{緑}、\emph{橙}、\emph{赤}があります。
 FSMは\emph{緑}のレベルから始まります。
 \emph{悪いできごと}が発生すると、アラームレベルは\emph{橙}に切り替わります。
@@ -8224,16 +8224,16 @@ output logic.
 我々は、より大きなFSM及び/又は複数の出力がある場合、我々は2つの次の状態ロジック用と出力論理のための1つにテーブルを分割することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-状態図は、視覚的に満足することができ、FSMの機能を迅速に把握することができるが、状態テーブルは書き留めて速くすることができます。
-表〜\ref{tab:state:table}は、私たちのアラームFSMの状態テーブルを示しています。
-我々は、現在の状態、入力値の、結果として得られる次の状態、および現在の状態に対する出力値をリストします。
-原則として、我々はすべての可能な状態のすべての可能な入力を指定する必要があります。
-%このテーブルには、$ 3 \回4 = 12 $の行を持っているでしょう。
-私たちは、\emph{clear}入力が\emph{bad event}が発生したときに気にしないであることを示すことにより、テーブルを簡素化します。
-手段\emph{bad event}は\emph{clear}に優先を持っていること。
-出力列には、いくつかの繰り返しを持っています。
-我々は、より大きなFSM及び/又は複数の出力がある場合、我々は2つの次の状態ロジック用と出力論理のための1つにテーブルを分割することができます。
+\ifshowtranssecond %((仮訳 12/15 aki)
+状態図は視覚的に見やすく、FSMの機能をすぐに把握できるかもしれませんが、状態表の方が早く書けるかもしれません。
+表~\ref{tab:state:table}にアラームFSMの状態表を示します。
+現在の状態、入力値、結果として得られる次の状態、現在の状態の出力値をリストアップしました。
+原則として、すべての可能な状態に対して、すべての可能な入力を指定する必要があります。
+この表は、$3 \times 4 = 12$行で構成されています。
+\emph{悪いできごと}が発生したときに\emph{クリア}入力が気にしないことを示すことにより、表を単純化しています。
+つまり、\emph{悪いできごと}は\emph{クリア}よりも優先されます。
+出力の列には繰り返しがあります。
+もし、FSMが大きくなったり、出力が多くなったりした場合は、テーブルを次の状態のロジックと出力のロジックの2つに分割することができます。
 \fi
 
 \begin{table}
@@ -8274,11 +8274,11 @@ import \code{chisel3.util.\_}.
 \code{Enum}と\code{switch}制御命令を使用するために、我々は\code{chisel3.util.\_}をインポートする必要があります。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-最後に、私たちの警告レベルのFSMのすべての設計した後、我々は、Chiselでそれをコーディングするものとします。
-一覧〜\ref{lst:fsm:alarm}は、アラームFSMのためのChiselコードを示します。
-注意、我々は入力用Chiselタイプ\code{Bool}とFSMの出力を使用すること。
-\code{Enum}と\code{switch}制御命令を使用するために、我々は\code{chisel3.util.\_}をインポートする必要があります。
+\ifshowtranssecond %((仮訳 12/15 aki)
+最後に、警告レベルFSMの設計がすべて終わったら、Chiselのコードにします。
+リスト~\ref{lst:fsm:alarm}はアラームFSMのChiselコードを示しています。
+FSMの入力と出力にはChisel型の\code{Bool}を使用していることに注意してください。
+\code{Enum}と\code{switch}制御命令を使うには、\code{chisel3.util.\_}をインポートする必要があります。
 \fi
 
 \longlist{code/simple_fsm.txt}{The Chisel code for the alarm FSM.}{lst:fsm:alarm}
@@ -8323,13 +8323,13 @@ Chisel\code{Enum}タイプの現在のバージョンで
 したがって、我々は状態のシンボリック名を列挙型を使用します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-かなりの作業が最適な状態エンコーディングに費やされました。
-二つの一般的なオプションは、バイナリまたはワンホットエンコーディングです。
-しかし、我々はのsynthesizeツールにこれらの低レベルの意思決定を残して、読みやすいコードを目指します。
-Chisel\code{Enum}タイプの現在のバージョンで
-\footnote{バイナリエンコーディングの状態を表しています。我々は別のエンコーディングを使用する場合は、電子。グラム。、ワンホットエンコーディング、我々は状態名のChisel定数を定義することができます。}
-したがって、我々は状態のシンボリック名を列挙型を使用します。
+\ifshowtranssecond %(仮訳 12/15 aki)
+\noindent 最適な状態のエンコーディングにかなりの作業を費やしました。
+一般的な選択肢としては、バイナリエンコーディングとワンホットエンコーディングの2つがあります。
+しかし、それらの低レベルの判断は合成ツールに任せて、読みやすいコードを目指します。
+\footnote{現在のバージョンのChiselで、\code{Enum}型は状態をバイナリエンコーディングで表します。
+もし別のエンコーディング、例えばワンホットエンコーディングをしたい場合は、状態名のためにChisel定数を定義することができます。}
+そのため、状態名にはシンボリックな名前を持つ列挙型を使用します。
 \fi
 
 \shortlist{code/simple_fsm_states.txt}
@@ -8347,10 +8347,10 @@ The register holding the state is defined with the \emph{green} state as the res
 状態を保持するレジスタをリセット値として\emph{green}状態と定義されます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-個々の状態値は、個々の要素は\code{::}演算子で連結されたリストとして記述されています。 \code{Nil}は、リストの最後を表します。
-\code{Enum}インスタンスは、状態のリストに\emph{assigned}です。
-状態を保持するレジスタをリセット値として\emph{green}状態と定義されます。
+\ifshowtranssecond %(仮訳 12/15 aki)
+\noindent 個々の状態値はリストとして記述され、個々の要素は\code{::}オペレータで連結され、\code{Nil}はリストの終わりを表します。
+状態のリストには、\code{Enum}インスタンスが\emph{使われ}ます。
+状態を保持するレジスタは、\emph{緑}色の状態がリセット値として定義されます。
 \fi
 
 \shortlist{code/simple_fsm_register.txt}
@@ -8367,10 +8367,10 @@ FSMの肉は、次の状態論理です。
 各\code{is}支店内で私達は私達の状態レジスタに新しい値を割り当てることによって、入力に依存して次の状態ロジックを、コード：
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-FSMの肉は、次の状態論理です。
-我々は、すべての州をカバーするために、状態レジスタにChiselスイッチを使用します。
-各\code{is}支店内で私達は私達の状態レジスタに新しい値を割り当てることによって、入力に依存して次の状態ロジックを、コード：
+\ifshowtranssecond %(仮訳 12/15 aki)
+\noindent FSMのミソは次の状態のロジックにあります。
+ステートレジスタのChiselスイッチで、すべてのステートをカバーします。
+それぞれのブランチ\code{で}、入力に依存する次の状態ロジックを記述し、状態レジスタに新しい値を割り当てます。
 \fi
 
 \shortlist{code/simple_fsm_next.txt}
@@ -8384,8 +8384,9 @@ the state is \emph{red}.
 状態が\emph{red}ときに最後には、ではなく、少なくとも、私たちは\emph{ringing bell}出力が真であることをコーディングします。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-状態が\emph{red}ときに最後には、ではなく、少なくとも、私たちは\emph{ringing bell}出力が真であることをコーディングします。
+\ifshowtranssecond %(仮訳 12/15 aki)
+\noindent 
+最後に、重要なことですが、状態が\emph{赤}のときに\emph{鳴るベル}の出力がtrueになるように記述します。
 \fi
 
 \shortlist{code/simple_fsm_output.txt}
@@ -8407,11 +8408,11 @@ VerilogおよびVHDLのレジスタは、特別な構文に記載されており
 Chiselのレジスタは、基本型であり、自由に組み合わせたブロック内で使用することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-それはVerilogまたはVHDLで一般的に行われているとして、我々は、レジスタの入力に\code{next\_state}信号を\emph{not}導入しなかったことに注意してください。
-VerilogおよびVHDLのレジスタは、特別な構文に記載されており、組み合わせブロック内で割り当てられた（及び再割り当て）することができません。
-したがって、組合せブロックで計算付加信号は、導入及びレジスタ入力に接続されています。
-Chiselのレジスタは、基本型であり、自由に組み合わせたブロック内で使用することができます。
+\ifshowtranssecond %(仮訳 12/15 aki)
+VerilogやVHDLでは普通に行われているように、レジスタ入力には\code{next\_state}信号を導入して\emph{いない}ことに注意してください。
+VerilogやVHDLのレジスタは特殊な構文で記述されており、組み合わせブロック内では割り当て(および再割り当て)ができません。
+そのため、組み合わせブロック内で計算された追加信号が導入され、レジスタ入力に接続されます。
+Chiselではレジスタは基本型であり、組み合わせブロック内で自由に使用することができます。
 \fi
 
 \ifshoworiginal
@@ -8421,7 +8422,7 @@ Chiselのレジスタは、基本型であり、自由に組み合わせたブ�
 \section{Faster Output with a Mealy FSM}
 \fi
 \ifshowtranssecond %(校正)
-\section{ミーリー FSMで出力を高速化 (L78454 TODO)}
+\section{ミーリー FSMで出力を高速化 (L78454 仮訳 12/15 aki)}
 \fi
 
 \ifshoworiginal
@@ -8442,12 +8443,12 @@ We have seen this Chisel one-liner before:
 我々は前にこのリグワンライナーを見てきました：
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-ムーアFSMでは、出力は現在の状態に依存します。
-入力の変化は、次のクロックサイクルにおいて出力\emph{earliest}の変化として見ることができることを意味します。
-我々はすぐに変化を観察したい場合は、我々は、入力から出力への組み合わせパスが必要です。
-私たちは、最小限の例では、エッジ検出回路を考えてみましょう。
-我々は前にこのリグワンライナーを見てきました：
+\ifshowtranssecond %(仮訳 12/15 aki)
+ムーアFSMでは、出力は現在の状態にのみ依存します。
+それは、入力の変化は、次のクロックサイクルで\emph{最も早い}出力の変化と見なすことができます。
+即座に変化を観察したい場合は、入力から出力までの組み合わせパスが必要です。
+最小限の例として、エッジ検出回路を考えてみましょう。
+以前にもこのChiselのワンライナーを見たことがあります:
 \fi
 
 \shortlist{code/sequ_reg_rising.txt}
@@ -8477,12 +8478,12 @@ input with the current state.
 出力論理は、現在の状態と現在の入力を\emph{compares}。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:fsm-rising}は、立ち上がりエッジ検出器の概略図を示します。
-現在の入力が1であり、最後のクロックサイクルで入力が0のとき出力は、1つのクロック・サイクルの1となります。
-状態レジスタは、次の状態がちょうど入力されたただ1つのDフリップフロップです。
-また、1つのクロックサイクルの遅延要素としてこれを考慮することができます。
-出力論理は、現在の状態と現在の入力を\emph{compares}。
+\ifshowtranssecond %(仮訳 12/15 aki)
+図~\ref{fig:fsm-rising}に立ち上がりエッジ検出器の回路図を示す。
+現在の入力が1で、最後のクロックサイクルの入力が0だった場合、出力は1クロックサイクルの間1になります。
+状態レジスタは、次の状態が入力されただけの単一のＤフリップフロップです。
+これを1クロックサイクルの遅延要素と考えることもできます。
+出力ロジックは、現在の入力と現在の状態を\emph{比較}します。
 \fi
 
 \ifshoworiginal
@@ -8497,10 +8498,8 @@ the input of the FSM and the output, this is called a
 、、これは\myref{https://en.wikipedia.org/wiki/Mealy_machine}{Mealy machine}呼ばれるFSMの入力と出力との間の組み合わせパスがあります。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-とき出力iは、入力にも依存します。
-え。
-、、これは\myref{https://en.wikipedia.org/wiki/Mealy_machine}{Mealy machine}呼ばれるFSMの入力と出力との間の組み合わせパスがあります。
+\ifshowtranssecond %(仮訳 12/15 aki)
+出力が入力にも依存している場合、すなわち、FSMの入力と出力の間に組合せ経路がある場合、これを\myref{https://en.wikipedia.org/wiki/Mealy_machine}{みーリーマシン}と呼びます。
 \fi
 
 \index{Finite-State Machine!Mealy}
@@ -8529,11 +8528,11 @@ The output logic computes the output (\code{out}) from the current state
 出力論理は、現在の状態\emph{and} FSMへの入力から出力（\code{out}）を計算します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:mealy}はミーリ型FSMの概略図を示します。
-ムーアFSMと同様に、レジスタは現在\code{state}を含み、次の状態の論理は、現在\code{state}と入力（\code{in}）から次の状態値（\code{next\_state}）を算出します。
-次のクロックチックで、\code{state}は\code{next\_state}になります。
-出力論理は、現在の状態\emph{and} FSMへの入力から出力（\code{out}）を計算します。
+\ifshowtranssecond %(仮訳 12/15 aki)
+図~\ref{fig:mealy}にミーリー型FSMの回路図を示します。
+ムーア型FSMと同様に、レジスタには現在の\code{状態}が格納され、次の状態ロジックは現在の\code{状態}と入力(\code{in})から次の状態値(\code{next\_state})を計算します。
+次のクロックティックで\code{状態}は\code{next\_state}になります。
+出力ロジックは、現在の状態\emph{と}FSMへの入力から出力(\code{out})を計算します。
 \fi
 
 \begin{figure}
@@ -8573,17 +8572,15 @@ puls for each rising edge of the input.
 私たちは、入力の各立ち上がりエッジのための単一の（サイクル）のパルスをしたいです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:diag:mealy}は、エッジ検出のためのミーリーFSMの状態図を示します。
-状態レジスタが1つだけDフリップフロップで構成されているように、2つだけの状態では、我々は、この例では\code{zero}と\code{one}に名前を付けた、可能です。
-ミーリーFSMの出力が状態だけでなく、入力に依存しないように、我々は国家の円の一部として出力を記述することはできません。
-その代わりに、状態間の遷移は、入力値（条件）\emph{and}（スラッシュの後の）出力で標識されます。
-私たちは、電子を自己遷移を描画することにも注意してください。
-グラム。
-、状態\code{zero}に入力\code{0}状態\code{zero}におけるFSMの滞在である場合、出力は{0}です。
-立ち上がりエッジFSMは、状態\code{zero}から状態\code{one}への遷移に\code{1}出力を生成します。
-入力が現在\code{1}であることを表す状態\code{one}において、出力は\code{0}あります。
-私たちは、入力の各立ち上がりエッジのための単一の（サイクル）のパルスをしたいです。
+\ifshowtranssecond %(仮訳 12/15 aki)
+図~\ref{fig:diag:mealy}に、エッジ検出器のミーリーFSMの状態図を示します。
+状態レジスタは単一のDフリップフロップで構成されているため、2つの状態のみが可能であり、この例では\code{zero}と\code{one}と名付けています。
+ミーリーFSMの出力は、状態だけでなく入力にも依存するため、出力を状態円の一部として記述することはできません。
+かわりに、状態間の遷移は入力値(条件)\emph{と}出力(スラッシュの後)でラベル付けされます。
+また、自己遷移を描画することにも注意してください。例えば、入力が\code{0}の場合、状態\code{zero}ではFSMは状態\code{zero}のままで、出力は0になります。
+立ち上がりエッジのFSMは、状態\code{zero}から状態\code{one}への遷移でのみ\code{1}の出力を生成します。
+入力が\code{1}になったことを表す状態\code{one}では、出力は\code{0}になります。
+入力の立ち上がりエッジごとに1つの(サイクルの)パルスが欲しいだけです。
 \fi
 
 \longlist{code/rising_fsm.txt}{Rising edge detection with a Mealy FSM.}{lst:fsm:rising}
@@ -8605,11 +8602,11 @@ the default assignment to the output (\code{false.B}) counts.
 出力にそれ以外の場合は、デフォルトの割り当て（\code{false.B}）カウント。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-〜\ref{lst:fsm:rising}をリストミーリー機械と立ち上がりエッジ検出のためのChiselコードを示します。
-前の例のように、我々は、単一ビットの入力及び出力のためのChisel型\code{Bool}を使用します。
-出力論理は現在、次の状態の論理の一部です。 \code{zero}から\code{one}への遷移で、出力が\code{true.B}に設定されています。
-出力にそれ以外の場合は、デフォルトの割り当て（\code{false.B}）カウント。
+\ifshowtranssecond %(仮訳 12/15 aki)
+リスト~\ref{lst:fsm:rising}は、ミーリーマシンを用いた立ち上がりエッジ検出のためのChiselコードです。
+前の例と同様に、シングルビットの入力と出力にChisel型の\code{Bool}を使用しています。
+出力ロジックは次の状態ロジックの一部となり、\code{zero}から\code{one}への遷移時に出力は\code{true.B}となります。
+それ以外の場合は、出力へのデフォルトの割り当て(\code{false.B}がカウントされます。
 \fi
 
 \ifshoworiginal
@@ -8658,8 +8655,8 @@ FSMは、３つ以上の状態を持つより複雑な回路に使用するも�
 \ifshowtransfirst %(自動翻訳)
 \section{Moore versus Mealy}
 \fi
-\ifshowtranssecond %(校正)
-\section{ムーア対ミーリー (L78692 TODO)}
+\ifshowtranssecond %(仮訳 12/19 aki))
+\section{ムーア対ミーリー (L78692 仮訳 12/19 aki))}
 \fi
 
 \ifshoworiginal
@@ -8701,12 +8698,12 @@ FSM output within the state representing circles.
 我々は、状態遷移矢印の入力条件及び状態を表す円内のFSMの出力を示します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:diag:rising:moore}ムーアFSMを有する立ち上がりエッジ検出のための状態図を示します。
-通知に最初の事はムーアFSMはミーリバージョンで二つの状態に比べて3つの状態が、必要があることです。
-状態\code{puls}は、シングルサイクルPULSを生成するために必要とされます。
-状態\code{puls}ちょうど1クロックサイクルでFSM滞在し、入力が再び0になるのを待って、バック開始状態\code{zero}または\code{one}状態のいずれかに進みます。
-我々は、状態遷移矢印の入力条件及び状態を表す円内のFSMの出力を示します。
+\ifshowtranssecond %(仮訳 12/19 aki)
+図~\ref{fig:diag:rising:moore}は、ムーアFSMによる立ち上がりエッジ検出の状態図です。
+まず注目すべきは、ムーアFSMでは3つの状態が必要なのに対し、ミーリー版では2つの状態であることです。
+状態\code{パルス}は、シングルサイクルパルスを生成するために必要です。
+FSMは、1クロックサイクルの間\code{パルス}状態を維持し、入力が再び0になるのを待って、開始状態の\code{zero}に戻るか、\code{one}の状態に戻ります。
+状態遷移矢印に入力条件を示し、円で示した状態の中にFSMの出力を示します。
 \fi
 
 \longlist{code/rising_moore_fsm.txt}{Rising edge detection with a Moore FSM.}{lst:fsm:rising:moore}
@@ -8724,10 +8721,10 @@ than the Mealy or direct coded version.
 得られた次の状態の論理は、従って、ミーリーまたは直接符号化されたバージョンよりも大きくなっています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-一覧〜\ref{lst:fsm:rising:moore}は、立ち上がり検出回路のムーアのバージョンを示しています。
-これはミーリーよりフリップフロップDの数を2倍または符号化されたバージョンを指示する使用します。
-得られた次の状態の論理は、従って、ミーリーまたは直接符号化されたバージョンよりも大きくなっています。
+\ifshowtranssecond %(仮訳 12/19 aki)
+リスト~\ref{lst:fsm:rising:moore}は立ち上がりエッジ検出回路のムーア版を示しています。
+それは、ミーリーまたは直接実装したものに比べて2倍のDフリップフロップを使用しています。
+したがって、結果として得られる次の状態ロジックも、ミーリーまたは直接実装されたバージョンよりも大きくなります。
 \fi
 
 \begin{figure}
@@ -8751,10 +8748,10 @@ output is usually less than a clock cycle.
 また、ムーア出力はミーリー出力が通常より少ないクロック・サイクルよりも1つのクロックサイクルの広い、であることがわかります。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:rising}はミーリ、立ち上がりエッジ検出FSMのムーアバージョンの波形を示しています。
-私たちは、ムーアの出力は、クロックティックの後に上昇しながらミーリ出力は密接に、入力の立ち上がりエッジを、次のことがわかります。
-また、ムーア出力はミーリー出力が通常より少ないクロック・サイクルよりも1つのクロックサイクルの広い、であることがわかります。
+\ifshowtranssecond %(仮訳 12/19 aki)
+図~\ref{fig:rising}は立ち上がりエッジ検出FSMのMealy版とMoore版の波形を示しています。
+ミーリー出力は入力された立ち上がりエッジに忠実に追従しているのに対し、ムーア出力はクロックティック後に立ち上がります。
+また、ムーア版の出力は1クロック周期の幅があるのに対し、Mealy版の出力は通常1クロック周期以下であることがわかります。
 \fi
 
 \ifshoworiginal
@@ -8776,12 +8773,12 @@ all the above issues do not exist for communicating Moore FSMs.
 ムーアFSMの状態レジスタとの組み合わせパスでカットのためには、上記のすべての問題は、ムーアのFSMを通信するために存在していません。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-上記の例から、一方は、それらがより少ない状態（従って論理）を必要と高速ムーアFSMよりも反応するようミーリーFSMの\emph{better}のFSMを見つけるために誘惑されます。
-しかし、ミーリー機械内の組み合わせパスは、大規模なデザインでトラブルを引き起こす可能性があります。
-まず、FSMを（次の章を参照してください）通信のチェーンで、この組み合わせパスが長くなることができます。
-通信のFSMが円を構築する場合には、第2、、結果は、同期設計の誤りである組合せループがあります。
-ムーアFSMの状態レジスタとの組み合わせパスでカットのためには、上記のすべての問題は、ムーアのFSMを通信するために存在していません。
+\ifshowtranssecond %(仮訳 12/19 aki)
+上記の例から、ミーリーFSMはムーアFSMよりも必要なステート(およびロジック)が少なく、反応が速いため、ミーリーFSMの方が\emph{優れた}FSMであると考えたくなります。
+しかし、ミーリーマシン内の組み合わせパスは、大規模な設計では問題を引き起こす可能性があります。
+第一に、通信するFSMのチェーン(次の章を参照)では、この組み合わせパスは長くなる可能性があります。
+第二に、通信するFSMが円を描く場合、その結果は組合せループとなり、同期設計のエラーとなります。
+ムーアFSMの状態レジスタとの組み合わせパスが切断されているため、ムーアFSMの通信ではには上記の問題は存在しません。
 \fi
 
 \ifshoworiginal
@@ -8797,10 +8794,10 @@ which are practically Mealy machines, are fine as well.
 事実上ミーリマシンですな立ち上がりエッジ検出などの小型回路は、同様に罰金です。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-要約すると、ムーアのFSMは、ステートマシンを通信するためのより良い組み合わせ。彼らはミーリのFSMより\emph{more robust}です。
-使用ミーリのFSM同じサイクル内での反応が最も重要であるのみ。
-事実上ミーリマシンですな立ち上がりエッジ検出などの小型回路は、同様に罰金です。
+\ifshowtranssecond %(仮訳 12/19 aki)
+まとめると、ムーアFSMはステートマシンの通信に適しており、ミーリーFSM\emph{よりうまく}動作します。
+ミーリーFSMは、同じサイクル内での反応が最も重要な場合にのみ使用してください。
+実質的にミーリマシンである立ち上がりエッジ検出などの小さな回路も問題ありません。
 \fi
 
 \ifshoworiginal
@@ -8809,8 +8806,8 @@ which are practically Mealy machines, are fine as well.
 \ifshowtransfirst %(自動翻訳)
 \section{Exercise}
 \fi
-\ifshowtranssecond %(校正)
-\section{演習 (L8843 TODO)}
+\ifshowtranssecond %(仮訳 12/19 aki)
+\section{演習 (L8843 仮訳 12/19 aki)}
 \fi
 
 \ifshoworiginal
@@ -8826,9 +8823,11 @@ write a test bench for it.
 もう少し複雑な例を選び、FSMを実装し、そのためのテストベンチを書きます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-今では、いくつかの\emph{real} FSMコードを書くための時間です。
-もう少し複雑な例を選び、FSMを実装し、そのためのテストベンチを書きます。
+\ifshowtranssecond %(仮訳 12/19 aki)
+% This is a boring example, maybe I can find something more interesting
+In this chapter, you have seen many examples of very small FSMs.
+では、そろそろ\emph{実際}に FSM のコードを書いてみましょう。
+もう少し複雑な例を選んで、FSMを実装し、テストベンチを書いてみましょう。
 \fi
 
 \ifshoworiginal
@@ -8850,12 +8849,12 @@ FSMのための古典的な例は、トラフィック光コントローラ（�
 車が検出された後、優先道路のために戻って緑に切り替えているだけマイナーな道路のための緑に切り替えます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-FSMのための古典的な例は、トラフィック光コントローラ（〜\cite[Section~14.3]{dally:vhdl:2016}を参照します）。
-トラフィックライトコントローラは、赤から緑にスイッチの交差点の両方の道路が無行く光（赤、オレンジ）を有する場合との間の位相があることを確認しなければなりません。
-もう少し面白いこの例を作成するには、優先道路を考えます。
-マイナーな道路は、（交差点に両方のエントリに）2つの車の検出器を持っています。
-車が検出された後、優先道路のために戻って緑に切り替えているだけマイナーな道路のための緑に切り替えます。
+\ifshowtranssecond %(仮訳 12/19 aki)
+FSMの典型的な例は、信号機コントローラです(see~\cite[Section~14.3]{dally:vhdl:2016})。
+信号制御器は、赤から緑への切り替えの際に、交差点内の両方の道路が進入禁止信号（赤とオレンジ）を持っている間の段階がなくてはなりません。
+この例をもう少し面白くするために、優先道路を考えてみましょう。
+マイナーな道路には2つの車両検知器があります(交差点の両方の入口にあります)。
+車が検知されたときだけマイナー道路を緑に切り替えてから、優先道路を緑に戻します。
 \fi
 
 \todo{Luca: Greatest common divisor with Euclide algorithm can be also a nice exercise.
