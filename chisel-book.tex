@@ -8875,8 +8875,8 @@ Martin: but this is shown at the Chisel homepage without an FSM.}
 \ifshowtransfirst %(自動翻訳)
 \chapter{Communicating State Machines}
 \fi
-\ifshowtranssecond %(仮訳 12/20 aki)
-\chapter{コミュニケートステートマシン (L8903 TODO)} %(仮訳 12/20 aki  第9章  ========================================================================)
+\ifshowtranssecond %(校正)
+\chapter{コミュニケートステートマシン (L8903 TODO)} %(仮訳 12/20 校正1 01/01 aki  第9章  ========================================================================)
 \fi
 
 \index{Communicating state machines}
@@ -8900,14 +8900,12 @@ as often a single FSM would be infeasible large.
 しかし、多くの場合、通信のFSMを直接しばしば単一FSMが大きい不可能であるように、仕様から設計されています。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 01/01 aki)
 問題はしばしば、単一のFSMで記述するには複雑すぎることがあります。
 その場合、問題を2つ以上のより小さくて単純なFSMに分割することができます。
-そして、それらのFSMは信号で通信します。1つのFSMの出力は
-が別の FSM の入力を入力し、その FSM は他の FSM の出力を監視します。
-大きなFSMをより単純なものに分割する場合、これをファクタリングFSMと呼びます。
-しかし、多くの場合、通信するFSMは仕様から直接設計されています。
-多くの場合、単一のFSMは、実行不可能な大規模なものになります。
+そして、それらのFSMは信号で通信します。一方のFSMの出力は他方のFSMの入力であり、FSMは他方のFSMの出力を監視します。
+大きなFSMをより単純なものに分割するとき、これはファクタリングFSMと呼ばれます。
+しかし、通信を行うFSMは、単一のFSMでは大きなものが実現できないことが多いため、仕様から直接設計されることが多いです。
 \fi
 
 \ifshoworiginal
@@ -8916,8 +8914,8 @@ as often a single FSM would be infeasible large.
 \ifshowtransfirst %(自動翻訳)
 \section{A Light Flasher Example}
 \fi
-\ifshowtranssecond %(仮訳 12/20 aki)
-\section{ライトフラッシャーの例 (L8944 仮訳 12/20 aki}
+\ifshowtranssecond %(校正)
+\section{ライトフラッシャーの例 (L8944 仮訳 12/20 校正1 01/01 aki)}
 \fi
 
 \ifshoworiginal
@@ -8932,12 +8930,14 @@ FSMの通信について議論するために、我々は〜\cite[Chapter~17]{da
 光フラッシャーは、1つの入力\code{start}と1つの出力\code{light}を有しています。
 次のように光フラッシャーの仕様は次のとおりシーケンスが開始されます。次のスタートのために。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
-FSMの通信について議論するために、我々は〜\cite[Chapter~17]{dally:vhdl:2016}、光フラッシャーからの例を使用します。
-光フラッシャーは、1つの入力\code{start}と1つの出力\code{light}を有しています。
-次のように光フラッシャーの仕様は次のとおりシーケンスが開始されます。次のスタートのために。
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 01/01 aki)
+FSMの通信について議論するために、我々は~\cite[Chapter~17]{dally:vhdl:2016}、ライトフラッシャーからの例を使用します。
+ライトフラッシャーは、1つの入力\code{start}と1つの出力\code{light}を有しています。
+ライトフラッシャーの仕様は以下の通りです : 
 \fi
 
+\ifshoworiginal
 \begin{itemize}
 \item when \code{start} is high for one clock cycle, the flashing
 sequence starts;
@@ -8946,6 +8946,27 @@ sequence starts;
 \item after the sequence, the FSM switches the \code{light} \emph{off} and waits
 for the next start.
 \end{itemize}
+\fi
+
+\ifshowtransfirst %(自動翻訳)
+\begin{itemize}
+\item when \code{start} is high for one clock cycle, the flashing
+sequence starts;
+\item the sequence is to flash three times;
+\item where the \code{light} goes \emph{on} for six clock cycles, and the \code{light} goes \emph{off} for four clock cycles between flashes;
+\item after the sequence, the FSM switches the \code{light} \emph{off} and waits
+for the next start.
+\end{itemize}
+\fi
+
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+\begin{itemize}
+\item \code{start}が1クロックサイクルの間ハイの時、点滅シーケンスを開始します。
+\item シーケンスは3回点滅する。
+\item 点滅の間、\code{light}は、6クロックサイクル\emph{on}に、4クロックサイクル\emph{off}になります。
+\item シーケンスの後、FSMは\code{light}を\emph{off}にして次のスタートを待ちます。
+\end{itemize}
+\fi
 
 \ifshoworiginal
 The FSM for a direct implementation\footnote{The state diagram is shown
@@ -8963,9 +8984,9 @@ ERROR-TBD
 %私たちは、光フラッシャーのこのシンプル志向の実装のためのコードを示していません。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-直接実装のFSM\footnote{状態図を~\cite[p.~376]{dally:vhdl:2016}に示します。}は27の状態を持つ。
-入力待ちの初期状態が1つ、3つのオン状態のための$3 \times 6$状態、オフ状態のための$2 \times 4$状態があります。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+直接実装のFSM\footnote{状態図を~\cite[p.~376]{dally:vhdl:2016}に示します。}は27の状態を持っています。
+入力待ちの初期状態が1つ、3種類の\emph{on}状態が$3 \times 6$と、\emph{off}状態が$2 \times 4$あります。
 このライトフラッシャーの単純明快な実装のコードは、ここでは示しません。
 \fi
 
@@ -8981,7 +9002,7 @@ the two FSMs.
 図〜\ref{fig:flasher}は2つのFSMの組成を示します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 この問題は、この大きなFSMを2つの小さなFSMにファクタリングすることで、よりエレガントに解決できます。
 マスターFSMはフラッシングロジックを実装し、タイマーFSMは待ち時間を実装します。
 図\ref{fig:flasher}は、2つのFSMの構成を示しています。
@@ -9003,11 +9024,13 @@ The timer specification is as follows:
 タイマFSMは、所望のタイミングを生成するために6または4クロックサイクルの間カウントダウン。
 次のようにタイマー仕様は次のとおりです。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 01/01 aki)
 タイマーFSMは、所望のタイミングを作り出すために6または4クロックサイクルでカウントダウンします。
-タイマーの仕様は以下の通りです。
+タイマーの仕様は以下の通りです : 
 \fi
 
+\ifshoworiginal
 \begin{itemize}
 \item when \code{timerLoad} is asserted, the timer loads a value into the down counter,
 independent of the state;
@@ -9016,7 +9039,27 @@ independent of the state;
 and remains asserted;
 \item otherwise, the timer counts down.
 \end{itemize}
+\fi
 
+\ifshowtransfirst %(自動翻訳)
+\begin{itemize}
+\item when \code{timerLoad} is asserted, the timer loads a value into the down counter,
+independent of the state;
+\item \code{timerSelect} selects between 5 or 3 for the load;
+\item \code{timerDone} is asserted when the counter completed the countdown
+and remains asserted;
+\item otherwise, the timer counts down.
+\end{itemize}
+\fi
+
+\ifshowtranssecond %(仮訳 校正1 01/01 aki)
+\begin{itemize}
+\item \code{timerLoad}がアサートされると、タイマーは状態に関係なくダウンカウンタに値をロードします。
+\item \code{timerSelect}はロードする値を5または3のいずれかを選択します。
+\item カウンタがカウントダウンを完了し、アサートされたままになると\code{timerDone}がアサートされます。
+\item それ以外の場合、タイマーはカウントダウンします。
+\end{itemize}
+\fi
 
 %国家の独立しました。そして、はアサートされたままです。
 
@@ -9027,7 +9070,8 @@ and remains asserted;
 \ifshowtransfirst %(自動翻訳)
 光フラッシャーのタイマーFSMは、コードを示し、次のとおりです。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 01/01 aki)
 \noindent 以下のコードは、ライトフラッシャーのタイマーFSMを示しています。
 \fi
 
@@ -9041,8 +9085,8 @@ and remains asserted;
 一覧〜\ref{lst:flasher:master}は、マスターFSMを示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-リスト~\ref{lst:flasher:master}は、マスターFSMを示しています。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+コード~\ref{lst:flasher:master}は、マスターFSMを示しています。
 \fi
 
 \longlist{code/flasher_fsm.txt}{Master FSM of the light flasher.}{lst:flasher:master}
@@ -9070,12 +9114,12 @@ and \code{space}.
 \code{off}、\code{flash}、および\code{space}：次にマスターFSMは、次の3つの状態に還元されます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-このマスターFSMとタイマーを用いた解決法では、マスターFSMコードに冗長性が残っています。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+このマスターFSMとタイマーを用いた解決法では、まだマスターFSMコードに無駄なところが残っています。
 ステートの\code{flash1}、\code{flash2}、および\code{flash3}は同じ機能を実行しており、ステートの\code{space1}と\code{space2}も同様です。
-残りのフラッシュの数を第２のカウンタにくくりだすことができる。
-そうすると、マスターFSMは次の3つの状態に減る:
-\code{off}, \code{flash}, と\code{space}です。
+残りのフラッシュの数を第2のカウンタにくくりだすことができます。
+そうすると、マスターFSMは次の3つの状態に減って : 
+\code{off}, \code{flash}, と\code{space}となります。
 \fi
 
 \ifshoworiginal
@@ -9088,9 +9132,9 @@ and \emph{off}; the second FSM to count the remaining flashes.
 図〜\ref{fig:flasher2}は、ショーマスターFSMと2つのFSMとデザインその回数：\emph{on}と\emph{off}の間隔の長さのためのクロックサイクルをカウントする1つのFSM;残りの点滅をカウントするための第2のFSM。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-図~\ref{fig:flasher2}は、マスターFSMとカウントする2つのFSMのデザインを示しています。
-1つ目のFSMは、\emph{オン}と\emph{オフ}の間隔の長さのクロック サイクルをカウントします。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+図~\ref{fig:flasher2}は、マスターFSMとカウンターFSMのデザインを示しています。
+1つ目のFSMは、\emph{オン}と\emph{オフ}の間隔の長さのクロックサイクルをカウントします。
 2つ目のFSMは、残りのフラッシュをカウントします。
 \fi
 
@@ -9102,8 +9146,8 @@ Following code shows the down counter FSM:
 コード・ショーダウンカウンタFSM次のとおりです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-次のコードは、ダウンカウンタFSMを示しています。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+次のコードは、ダウンカウンタFSMを示しています : 
 \fi
 
 \shortlist{code/flasher2_counter.txt}
@@ -9119,7 +9163,7 @@ is done. Listing~\ref{lst:flasher2:master} shows the master FSM for the double r
 一覧〜\ref{lst:flasher2:master}は、二重のリファクタリングフラッシャーのマスターFSMを示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 \noindent カウンターは\emph{残り}のフラッシュをカウントし、タイマーが終了したステートの\code{合間}でデクリメントされるので、3回のフラッシュに対して2回のロードとなることに注意してください。
 リスト~\ref{lst:flasher2:master}はダブルリファクタリングされたフラッシャーのマスターFSMを示しています。
 \fi
@@ -9137,8 +9181,8 @@ the length of the \emph{on} or \emph{off} intervals or the number of flashes.
 我々は\emph{on}または\emph{off}間隔の長さや点滅の数を変更したい場合は、[いいえFSMを変更する必要があります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-マスターFSMが3つの状態に削減されただけでなく、現在のソリューションはより良いコンフィグレーションが可能です。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+マスターFSMが3つの状態に削減されただけでなく、今回の解決法はより良いコンフィグレーションが可能です。
 FSMを変更することなく\emph{オン}/\emph{オフ}の間隔の長さやフラッシュの数を変更できます。
 \fi
 
@@ -9156,11 +9200,12 @@ unidirectional data exchange.
 データの協調交換のために、我々はハンドシェーク信号を使用します。
 次のセクションでは、単方向のデータ交換のフロー制御のための準備ができて、有効なインタフェースについて説明します。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
-ここでは、制御信号のみを交換する通信回路、特にＦＳＭについて探ってきました。
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 01/01 aki)
+ここでは、制御信号のみを交換する通信回路、特にFSMについて探ってきました。
 しかし、回路はデータを交換することもできます。
-データの協調的な交換にはハンドシェイク信号を使用します。
-次項では、一方向データ交換のフロー制御のためのレディバリッドインタフェースについて説明します。
+協調的なデータの交換にはハンドシェイク信号を使用します。
+次項では、一方向データ交換のフロー制御のためのready-validインタフェースについて説明します。
 \fi
 
 \ifshoworiginal
@@ -9169,8 +9214,8 @@ unidirectional data exchange.
 \ifshowtransfirst %(自動翻訳)
 \section{State Machine with Datapath}
 \fi
-\ifshowtranssecond %(仮訳 12/20 aki)
-\section{データパスを持つステートマシン (L9194 仮訳 12/20 aki)}
+\ifshowtranssecond %(校正)
+\section{データパスを持つステートマシン (L9194 仮訳 12/20 校正1 01/01 aki)}
 \fi
 
 \index{State machine with datapath}
@@ -9195,7 +9240,7 @@ FSMの入力は、環境からの入力およびデータパスから入力さ�
 図〜\ref{fig:popcnt-fsmd}は、データパスとFSMの組み合わせの一例を示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 通信するステートマシンの典型的な例として、データパスと組み合わせたステートマシンがあります。
 この組み合わせは、データパス付き有限ステートマシン(FSMD)とよく呼ばれます。
 ステートマシンはデータパスを制御し、データパスは計算を実行します。
@@ -9217,8 +9262,8 @@ FSMの入力は、環境からの入力とデータパスからの入力です�
 \ifshowtransfirst %(自動翻訳)
 \subsection{Popcount Example}
 \fi
-\ifshowtranssecond %(仮訳 12/20 aki)
-\subsection{ポップカウントの例 (L9242 仮訳 12/20 aki)}
+\ifshowtranssecond %(校正)
+\subsection{ポップカウントの例 (L9242 仮訳 12/20 校正1 01/01 aki)}
 \fi
 
 \ifshoworiginal
@@ -9234,10 +9279,10 @@ For a binary string, this is the number of `1's.
 バイナリ文字列の場合、これは `1の数です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 図~\ref{fig:popcnt-fsmd}に示すFSMDは、また\myref{https://en.wikipedia.org/wiki/Hamming_weight}{Hamming weight}と呼ばれるポップカウントを計算する例です。
 ハミングウェイトは、ゼロシンボルとは異なるシンボルの数です。
-バイナリ文字列の場合、これは数`1'となります。
+バイナリ文字列の場合、これは`1'個となります。
 \fi
 
 \ifshoworiginal
@@ -9261,8 +9306,8 @@ POPCOUNTユニットは、データ入力\code{din}と結果出力\code{popCount
 FSMは、データパスに向かっておよびデータパスからのステータス信号と制御信号とのデータパスが接続されています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-popcountユニットはデータ入力\code{din}と結果出力\code{popCount}を含み、両方ともデータパスに接続されています。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+popcountユニットはデータ入力\code{din}と結果の出力\code{popCount}を含み、両方ともデータパスに接続されています。
 入力と出力には、ready-validハンドシェイクを使用します。
 データが使用可能な場合は、validがアサートされます。レシーバーがデータを受け取れるようになると、readyがアサートされます。
 両方の信号がアサートされると転送が行われます。
@@ -9301,14 +9346,14 @@ FSMは、次の状態\code{Count}に進み、 `1基のの存在数を順次カ�
 受信機からのレディ信号に、FSMの移動は、次POPCOUNTを計算する準備ができて、\code{Idle}状態に戻り。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 次のステップとして、図~\ref{fig:popcnt-states}に示す状態図から始めて、FSMを設計することができます。
 FSMは入力を待つ\code{アイドル}状態からスタートします。
 データが到着し、有効な信号が送られてくると、FSMはシフトレジスタをロードするために、状態\code{ロード}に進みます。
 FSMは次のステート\code{カウント}に進み、そこで`1'の数が順次カウントされます。
 シフトレジスタ、加算器、アキュムレータレジスタ、ダウンカウンタを使用して計算を行います。
-ダウンカウンタがゼロになると計算が終了し、FSMは\code{終了}の状態に移行する。
-ここでFSMはpopcount 値が消費される準備ができたことを有効な信号で通知します。
+ダウンカウンタがゼロになると計算が終了し、FSMは\code{終了}の状態に移行します。
+ここでFSMはpopcount値が消費される準備ができたことをvalid信号で通知します。
 受信機からの準備完了の信号でFSMは\code{アイドル}状態に戻り、次のpopcountを計算する準備ができています。
 \fi
 
@@ -9321,8 +9366,8 @@ them with bulk connections.
 リスト〜\ref{lst:pop:top}に示すトップレベルのコンポーネントは、FSMとデータパスコンポーネントをインスタンス化し、バルク接続とそれらを接続します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-リスト~\ref{lst:pop:top}で示されるトップレベルのコンポーネントはFSMとデータパスコンポーネントをインスタンス化し、バルク接続で接続します。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+コード~\ref{lst:pop:top}で示されるトップレベルのコンポーネントはFSMとデータパスコンポーネントをインスタンス化し、バルク接続で接続します。
 \fi
 
 \longlist{code/popcnt_main.txt}{The top level of the popcount circuit.
@@ -9358,7 +9403,7 @@ FSMは状態\code{Done}及び信号に\code{popCntReady}をアサートするこ
 結果が読み取られると、FSWはバック\code{Idle}に切り替え\code{popCntValid}をアサートすることによって合図。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 図~\ref{fig:popcnt-data}はpopcount回路のデータパスを示しています。
 データは\code{shf}レジスタにロードされます。
 ロード時には\code{cnt}レジスタも0にリセットされます。
@@ -9379,8 +9424,8 @@ set to the number of shifts to be performed.
 \code{load}信号に、\code{regData}レジスタが0に\code{regPopCount}レジスタリセット入力がロードされ、カウンタは、実行されるシフトの数に\code{regCount}セットを登録します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
-\code{ロード}信号では、\code{regData}レジスタが入力でロードされ、\code{regPopCount}レジスタが0にリセットされ、カウンタレジスタ\code{regCount}が実行するシフト数に設定されます。
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
+\code{ロード}信号では、\code{regData}レジスタに入力が読み込まれ、\code{regPopCount}レジスタが0にリセットされ、カウンタレジスタ\code{regCount}が実行するシフト数に設定されます。
 \fi
 
 \longlist{code/popcnt_data.txt}{Datapath of the popcount circuit.}{lst:pop:data}
@@ -9400,10 +9445,10 @@ circuit.
 一覧〜\ref{lst:pop:data}はPOPCOUNT回路のデータパスのためのChiselコードを示します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 そうでない場合は、\code{regData}レジスタが右にシフトされ、\code{regData}レジスタの最下位ビットが\code{regPopCount}レジスタに追加され、カウンタが0になるまでデクリメントされます。
-カウンタが０の時、出力はポップカウントを含みます。
-リスト~\ref{lst:pop:data}はpopcount回路のデータパスのためのChiselコードを示しています。
+カウンタが0の時、出力はpopcountとなります。
+コード~\ref{lst:pop:data}はpopcount回路のデータパスのためのChiselコードを示しています。
 \fi
 
 
@@ -9422,11 +9467,11 @@ POPCOUNTが有効である場合、FSMは状態\code{done}に切り替わり、P
 一覧〜\ref{lst:pop:fsm}は、FSMのコードを示します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/20 aki)
+\ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 FSMは\code{idle}状態から開始します。
 入力データが有効な信号(\code{dinValid})になると、\code{count}状態に切り替わり、データパスがカウントを終了するまで待ちます。
 popcountが有効な場合、FSMは\code{done}状態に切り替え、popcountが読み込まれるまで待ちます(\code{popCntReady}によってシグナルが送られます)。
-リスト~\ref{lst:pop:fsm}はFSMのコードを示しています。
+コード~\ref{lst:pop:fsm}はFSMのコードを示しています。
 \fi
 
 \ifshoworiginal
@@ -9435,8 +9480,8 @@ popcountが有効な場合、FSMは\code{done}状態に切り替え、popcount�
 \ifshowtransfirst %(自動翻訳)
 \section{Ready-Valid Interface}
 \fi
-\ifshowtranssecond %(仮訳 12/21 aki)
-\section{Ready-Valid インターフェース (L9462 仮訳 12/21 aki)}
+\ifshowtranssecond %(校正)
+\section{Ready-Valid インターフェース (L9462 仮訳 12/21 校正1 01/01 aki)}
 \fi
 
 \index{Ready-valid interface}
@@ -9452,7 +9497,8 @@ using valid and ready signals.
 サブシステムの通信は、データフロー制御のためのハンドシェイクの動きに一般化することができます。
 POPCOUNTの例では、我々は有効とレディ信号を使用して、入力および出力データのためのハンドシェイク・インタフェースを見てきました。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 01/01 aki)
 サブシステムの通信は、データの移動とフロー制御のためのハンドシェイクに一般化することができます。
 ポップカウントの例では、有効信号とレディ信号を使用した入力データと出力データのハンドシェイク・インターフェースを見てきました。
 \fi
@@ -9484,10 +9530,10 @@ no transfer takes place.
 2つの信号のいずれかがアサートされていない場合、転送は行われません。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 ready-validインタフェース~\cite[p.~480]{dally:vhdl:2016}は、送信側(プロデューサ)では\code{データ}と\code{バリッド}信号、受信側(コンシューマ)では\code{レディ}信号で構成される単純なフロー制御インタフェースです。
 図~\ref{fig:readyvalid}は、ready-valid接続を示しています。
-送信側は\code{データ}があるときに\code{バリッド}をアサートし、受信側は1ワードのデータを受信する準備ができているときに\code{レディ}をアサートする。
+送信側は\code{データ}があるときに\code{バリッド}をアサートし、受信側は1ワードのデータを受信する準備ができているときに\code{レディ}をアサートします。
 データの送信は、\code{バリッド}と\code{レディ}の両方の信号がアサートされたときに行われます。
 2つの信号のいずれかがアサートされない場合、転送は行われません。
 \fi
@@ -9516,10 +9562,10 @@ When the receiver can receive data in every clock cycle, it is called an
 受信機は、クロック・サイクルごとにデータを受信できた場合、 ``常に準備ができて「」インタフェースと\code{ready}が\code{true}にハードコードすることが可能と呼ばれています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
-図~\ref{fig:ready_valid1}は、受信機が送信機がデータを持つ前に(クロックサイクル１から)受信機が\code{レディ}信号を出すready-validトランザクションのタイミング図を示しています。
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
+図~\ref{fig:ready_valid1}は、送信機がデータを持つ前に(クロックサイクル１から)受信機が\code{レディ}信号を出すready-validトランザクションのタイミング図を示しています。
 データ転送はクロックサイクル3で行われます。
-クロックサイクル4からは、送信者がデータを持っていることも受信者が次の転送の準備ができていることもありません。
+クロックサイクル4からは、送信者がデータを持っておらず受信者も次の受信の準備はできていません。
 受信機がすべてのクロックサイクルでデータを受信できる場合、それは``常時レディ''インターフェースと呼ばれ、\code{レディ}は\code{true}にハードコードすることができます。
 \fi
 
@@ -9549,9 +9595,9 @@ interface. However, in that case the data will probably not change on signaling
 ただし、その場合にはデータは、おそらく\code{ready}のシグナリングに変更されませんし、我々は単にハンドシェーク信号をドロップします。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 図~\ref{fig:ready_valid2}は、送信者が受信機の準備が整う前に(クロックサイクル１から)\code{バリッド}な信号を送信するready-validトランザクションのタイミング図を示しています。
-データ転送は、クロックサイクル3で行われる。
+データ転送は、クロックサイクル3で行われます。
 クロックサイクル4以降は、送信者も受信者も次の転送の準備ができていません。
 ``常時レディ''インターフェイスと同様に、常に有効なインターフェイスを想定することができます。
 しかし、その場合はおそらく\code{レディ}信号の変化でデータが変わることはなく、単純にハンドシェイク信号を落とすことになるでしょう。
@@ -9579,8 +9625,8 @@ clock cycle) as shown in clock cycles 4 and 5 with the transfer of
 \code{D2}と\code{D3}の転送にクロックサイクル4および5に示すように、データは、バックツーバック（クロックサイクル毎に）に転送することができます
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
-図~\ref{fig:ready_valid2}は、ready-validインタフェースの更なるバリエーションを示している。
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
+図~\ref{fig:ready_valid2}は、ready-validインタフェースの更なるバリエーションを示しています。
 クロックサイクル1では、両方の信号(\code{レディ}および\code{バリッド})が1クロックサイクルの間だけアサートされ、\code{D1}のデータ転送が起こる。
 \code{D2}と\code{D3}の転送で、クロックサイクル4と5に示すように、データをバック・トゥ・バック(クロックサイクル毎)に転送することができます。
 \fi
@@ -9597,7 +9643,7 @@ bundle, similar to the following:
 このインタフェースは、一般的であるように、Chiselは、次のような\code{DecoupledIO}バンドルを定義します。
 \fi
 
-\ifshowtranssecond %((仮訳 12/21 aki)
+\ifshowtranssecond %((仮訳 12/21 校正1 01/01 aki)
 このインターフェイスを構成可能にするために、\code{レディ}とnot \code{バリッド}は他の信号との組み合わせに依存することは許されていません。
 このインタフェースは非常に一般的なものなので、Chiselでは、以下のような\code{DecoupledIO}バンドルを定義しています : 
 \fi
@@ -9615,7 +9661,7 @@ for the data.
 Chiselによって定義されたインタフェースは、データのフィールド\code{bits}を使用しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 \noindent \code{DecoupledIO}バンドルは、\code{データ}の型でパラメータ化されています。
 Chiselで定義されたインターフェースは、データのフィールド\code{ビット}を使用します。
 \fi
@@ -9638,8 +9684,8 @@ but needs to be defined by the concrete usage of the interface.
 場合は、この動作を許可するかの準備ができていません - 有効なインターフェイスの一部ではなく、インターフェースの具体的な使用方法で定義する必要があります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
-1つの疑問が残るのは、アクティブな状態でデータ転送が行われて\emph{いない}場合に、\code{レディ}または\code{バリッド}な状態がデ・アサートされる可能性があるかどうかです。
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
+1つの疑問が残るのは、アクティブな状態でデータ転送が行われて\emph{いない}場合に、\code{レディ}または\code{バリッド}な状態がデアサートされる可能性があるかどうかです。
 例えば、受信機はしばらくの間準備ができていてデータを受信していないかもしれないが、他のイベントのために準備ができていない状態になるかもしれない。
 送信側でも同じことが考えられ、データが有効なのはいくつかのクロックサイクルだけで、データ転送が起こらず有効でなくなることがあります。
 この動作が許されるかどうかは、ready-validインタフェースの一部ではなく、インタフェースの具体的な使用法によって定義される必要があります。
@@ -9657,7 +9703,7 @@ on the sender:
 しかし、クラス\code{IrrevocableIO}は、送信者に次のような制限を課します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 Chiselでは、\code{DecoupledIO}クラスを使用した場合、\code{レディ}と\code{バリッド}のシグナリングには何の制約もありません。
 ただし、\code{IrrevocableIO}クラスは送信者に次のような制限をかけています :
 \fi
@@ -9676,7 +9722,7 @@ Additionally, once \code{valid} is raised it will never be lowered until after
 \code{valid}を上昇させた後さらに、それは\code{ready}も提起された後にまで低下することはありません。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 \begin{quote}
 \code{ReadyValidIO}のサブクラスで、\code{バリッド}がHighで\code{レディ}がLowのサイクルの後は\code{ビット}の値を変更しないことを約束します。
 さらに、一度\code{バリッド}が上がった後は、\code{レディ}が上がった後まで値が下がることはありません。
@@ -9691,7 +9737,7 @@ Additionally, once \code{valid} is raised it will never be lowered until after
 これはクラス\code{IrrevocableIO}を使用して実施することができない規則であることに注意してください。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 \noindent これは、クラスを使用して強制することができない規約であることに注意してください。
 \fi
 
@@ -9709,7 +9755,7 @@ until the data transfer happened.
 AXIは\code{ready}または\code{valid}がアサートされると、データ転送が起こったまでデアサート取得するために許可されていないことインタフェースを制限します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/21 aki)
+\ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 AXIは次のバスの各部分に1つのready-validインターフェースを使用します : 
 読み出しアドレス、読み出しデータ、書き込みアドレス、および書き込みデータ。
 AXIは、一度\code{レディ}または\code{バリッド}がアサートされると、データ転送が起こるまでアサートが解除されないようにインターフェイスを制限します。
