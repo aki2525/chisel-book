@@ -5735,11 +5735,11 @@ the so-called registers.
 順序回路を構築するために、我々は状態を格納できる要素が必要です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
-順序回路は、出力が入力\emph{と}前の値に依存する回路です。
-ここでは同期設計（クロックドデザイン）を前提として、順序回路とは同期式順序回路を意味します。
+\ifshowtranssecond %(仮訳 12/06  校正1 12/29 aki)
+順序回路は、出力が入力\emph{と}以前の値に依存する回路です。
+ここでは同期設計（クロックドデザイン）を前提としており、また順序回路とは同期式順序回路を意味します。
 \footnote{非同期ロジックやフィードバックで順序回路を構築することができますが、これは特定のニッチな話題で、Chiselで表現することはできません}
-順序回路を構築するためには、状態を格納できる要素が必要で、レジスタと呼ばれます。
+順序回路を構築するためには、状態を格納できるところが必要で、それはレジスタと呼ばれます。
 \fi
 
 \ifshoworiginal
@@ -5749,7 +5749,7 @@ the so-called registers.
 \section{Registers}
 \fi
 \ifshowtranssecond %(校正)
-\section{レジスター (L5743 仮訳 12/06 aki)}
+\section{レジスタ (L5743 仮訳 12/06 校正1 12/29 aki)}
 \fi
 
 \index{Register}
@@ -5776,7 +5776,7 @@ Dフリップフロップキャプチャクロックとその出力で記憶す�
 あるいは、言い換えれば、レジスタは、クロックの立ち上がりエッジで入力の値とその出力を更新します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 順序回路を構築するための基本的な要素は、レジスタです。
 レジスタは\myref{https://en.wikipedia.org/wiki/Flip-flop_(electronics)\#D_flip-flop}{D flip-flops}の集まりです。
 D フリップフロップは、クロックの立ち上がりエッジで入力の値をキャプチャして保持し、出力します。
@@ -5806,13 +5806,13 @@ connection of a signal to the register's clock input is needed.
 グローバルクロック信号の省略は、レジスタのクロック入力に信号の明示的な接続が必要とされないChiselによって反射されます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 図〜\ref{fig:register}は、レジスタの回路図を表します。
-これは、入力と出力の\code{D} \code{Q}が含まれています。
+その図には、入力の\code{D}と出力\code{Q}が含まれています。
 各レジスタはまた\code{clock}信号の入力が含まれています。
 このグローバルクロック信号は通常、同期回路内のすべてのレジスタに接続されているので、回路図に描かれていません。
 箱の下部にある小さな三角形は、クロック入力を表しており、これはレジスタであることを示しています。
-我々は、次の回路図でクロック信号を省略します。(訳注:次ってどれ?本書の以降??)
+本書のこれ以降では。クロック信号の表記を省略します。
 レジスタのクロック入力へ明示的な接続が必要ないChiselでは、グローバルクロック信号も省略します。
 \fi
 
@@ -5824,7 +5824,7 @@ In Chisel a register with input \code{d} and output \code{q} is defined with:
 Chiselに入力\code{d}と出力\code{q}でレジスタを使用して定義されています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 Chiselの入力\code{d}と出力\code{q}を持つレジスタ定義は:
 \fi
 
@@ -5841,7 +5841,7 @@ made out of a combination of vectors and bundles.
 レジスタの入力と出力は、ベクトルおよびバンドルの組み合わせで作られた任意の複合タイプすることができます。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 \noindent レジスタにクロックを接続する必要はありません。
 Chiselは暗黙のうちにこれを行います。
 レジスタの入力と出力は、ベクトルと束の組み合わせで作られた任意の複雑な型にすることができます。
@@ -5855,8 +5855,8 @@ A register can also be defined and used in two steps:
 レジスタは、2つのステップで定義されており、使用することができます。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
-また、レジスタは2段階で定義して使用することができます。
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
+また、レジスタは次の2段階で定義して使用することができます。
 \fi
 
 \shortlist{code/sequ_reg2.txt}
@@ -5881,9 +5881,9 @@ Variable names start with lowercase and classes start with upper case.
 変数名は小文字で始まり、クラスは大文字で始まります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 まず、我々は、レジスタを定義し、名前を付けます。
-第二に、我々は、レジスタの入力に信号\code{delayIn}を接続します。
+第二に、我々は、レジスタの入力に\code{delayIn}信号を接続します。
 レジスタの名前は、文字列\code{Reg}が含まれていることにも注意してください。
 簡単に組み合わせ回路と順序回路を区別するために、名前の一部にマーカーとして\code{Reg}をつけておくのが一般的です。
 また、Scala(ですからChiselも)の命名規則は通常\myref{https://en.wikipedia.org/wiki/Camel_case}{CamelCase}が使われます。
@@ -5911,10 +5911,9 @@ assignment statement.
 レジスタの入力は、Chisel代入文が接続されています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 レジスタはリセット時に初期化することができます。
 \code{reset}信号は、\code{clock}信号と同じく、Chiselでは暗黙的です。
-リセット値を、たとえばゼロとしてレジスタコンストラクタ のReginitにパラメータとして与えます。
 たとえばレジスタコンストラクタの\code{RegInit}にパラメータとしてゼロを与えてリセット値とします。
 レジスタへの入力は、Chisel代入文がつないでくれます。
 \fi
@@ -5938,9 +5937,9 @@ Chiselでリセットの既定の実装は同期リセットです。
 リセット下の初期値及びデータ値の間で選択を入力します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 Chiselでは既定のリセットは同期リセットです。\footnote{非同期リセットのサポートは現在開発中です}
-同期リセットの場合は、D フリップフロップの変更は必要なく、入力にマルチプレクサ\footnote{現在のFPGA フリップフロップには同期リセット入力がありますから、マルチプレクサに追加のリソースは必要ありません。)を追加してリセット時の初期化値とデータ値を選択するだけです。
+同期リセットの場合は、Dフリップフロップの変更は必要なく、入力にマルチプレクサ\footnote{現在のFPGAフリップフロップには同期リセット入力がありますから、マルチプレクサに追加のリソースは必要ありません。)を追加してリセット時の初期化値とデータ値を選択するだけです。
 \fi
 
 \begin{figure}
@@ -5962,8 +5961,8 @@ resources for the multiplexer.
 しかし、同期リセットとして、現代のFPGAは、マルチプレクサのためのLUTのリソースを無駄にしないために同期リセット（セット）入力が含まれているフリップフロップかなり頻繁に使用されています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
-図〜\ref{fig:register-reset}は、リセットがマルチプレクサを駆動する同期リセット付きレジスタの回路図を示しています。
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
+図~\ref{fig:register-reset}は、リセットでマルチプレクサを駆動する同期リセット付きレジスタの回路図を示しています。
 しかし、同期リセットはかなり頻繁に使用されるため、今どきなFPGAのフリップフロップには同期リセット(およびセット)入力が含まれており、マルチプレクサのためにLUTを無駄にしないようになっています。
 \fi
 
@@ -5979,9 +5978,9 @@ by a diagram showing the signals over time. Such a diagram is called a waveform 
 そのような図は、波形又は\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 順序回路は、時間の経過とともにその値が変わります。
-そのふるまいは、時間の経過とともに変化する信号を示すダイアグラムによってみることができる。このようなダイアグラムは、ウェーブフォームまたは\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
+そのふるまいは、時間の経過とともに変化する信号を示すダイアグラムによってみることができます。このようなダイアグラムは、ウェーブフォームまたは\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
 \fi
 
 \index{Timing diagram}
@@ -6020,15 +6019,15 @@ register output follows the input signal with one clock cycle delay.
 その時から\code{reset}にそれがあるべきよう、\code{0}をままで、レジスタ出力は、1クロックサイクル遅れて入力信号に従います。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
-図〜\ref{fig:register-wave}に、リセットと一部の入力データが適用されたレジスタのウェーブフォームを示す。
-時間は左から右へと進む。
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
+図~\ref{fig:register-wave}に、リセットと一部の入力データが適用されたレジスタのウェーブフォームを示します。
+時間は左から右へと進みます。
 図の一番上には、回路を駆動するクロックが表示されています。
 リセット前の最初のクロックサイクルでは、レジスタの内容が定義されていません。
 第2クロックサイクルではリセットがハイにアサートされ、このクロックサイクルの立ち上がりエッジ(ラベルB)でレジスタは初期値\code{0}になります。
-入力\code{inVal}は無視されます。
-次のクロックサイクルでは\code{リセット}は\code{0)になり、\code{inVal)の値は次の立ち上がりエッジ(ラベルC)でキャプチャされます。
-それ以降は\code{リセット)は\code{0)のままで、レジスタ出力は入力信号から1クロックサイクル遅れで追従します。
+入力\code{inVal}は無視されています。
+次のクロックサイクルでは\code{リセット}は\code{0}になり、\code{inVal}の値は次の立ち上がりエッジ(ラベルC)でキャプチャされます。
+それ以降は\code{リセット}は\code{0}のままで、レジスタ出力は入力信号から1クロックサイクル遅れで追従します。
 \fi
 
 \ifshoworiginal
@@ -6045,7 +6044,7 @@ with a waveform viewer and used for debugging.
 Chiselテスターは、それがA波形ビューアで表示され、デバッグのために使用することができるテスト中の波形をも生成することができます。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 波形は、回路の動作をグラフィカルに指定するための優れたツールです。
 特に、多くの演算が並列に行われ、データが回路内をパイプラインで移動するような複雑な回路では、タイミングダイアグラムが便利です。
 また、Chiselテスターでは、テスト中に波形を作成し、波形ビューワで表示してデバッグに利用することもできます。
@@ -6068,7 +6067,7 @@ output of the register.
 マルチプレクサへの一方の入力には、レジスタの出力のフィードバックです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 典型的なデザインパターンは、イネーブル信号を持つレジスタです。
 イネーブル信号が\code{true}(高)の場合のみ、レジスタは入力をキャプチャし、そうでない場合は古い値を保持します。
 イネーブルは、同期リセットと同様に、レジスタの入力にマルチプレクサを使用してインプリメントすることができます。
@@ -6093,8 +6092,8 @@ dedicated enable input, and no additional resources are needed.
 これはまた、一般的なデザインパターンであるとして、現代のFPGA専用のイネーブル入力が含まれているフリップフロップ、および追加のリソースが必要ありません。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
-図〜\ref{fig:register-enable}が可能とレジスタの回路図を示します。
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
+図~\ref{fig:register-enable}にイネーブル付きレジスタの回路図を示します。
 これも一般的なデザインパターンであるため、今どきのFPGAフリップフロップには専用のイネーブル入力が含まれており、追加のリソースは必要ありません。
 \fi
 
@@ -6119,9 +6118,9 @@ follows the input with one clock cycle delay. Only in the fourth clock cycle
 唯一の第4のクロックサイクルで\code{enable}が低く、レジスタは、立ち上がりエッジDでその値（5）を保持します
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
-図〜\ref{fig:register-en-wave}イネーブル付きレジスタの波形例を示します。
-ほとんどの場合、イネーブルをハイ(\code{true})にすると、レジスタは1クロックサイクルの遅延で入力に従います。
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
+図~\ref{fig:register-en-wave}イネーブル付きレジスタの波形例を示します。
+ほとんどの場合、イネーブルをハイ(\code{true})にすると、レジスタは1クロックサイクルの遅延で入力に従ってやつで、います。
 4クロックサイクル目にのみ\code{イネーブル)がLowになり、Dの立ち上がりエッジでレジスタは値(5)を保持します。
 \fi
 
@@ -6134,7 +6133,7 @@ with a conditional update:
 イネーブル付きレジスタは、条件付き更新とChiselの数行のコードで記述することができます。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 イネーブルを持つレジスタは、条件付きアップデートを用いて数行のChiselコードで記述することができます。
 \fi
 
@@ -6148,7 +6147,7 @@ with a conditional update:
 有効とレジスタもリセットすることができます：
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 \noindent また、イネーブルのレジスタをリセットすることもできます。
 \fi
 
@@ -6164,7 +6163,7 @@ of a signal by comparing its current value with the one from the last clock cycl
 以下の回路は、最後のクロックサイクルからの1つで現在の値を比較することにより、信号の立ち上がりエッジを検出します。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 レジスタは式の一部にもなります。
 次の回路は、信号の立ち上がりエッジを検出するために、その現在の値と最後のクロックサイクルからの値を比較します。
 \fi
@@ -6180,7 +6179,7 @@ good use and build more interesting sequential circuits.
 今、私たちは、レジスタのすべての基本的な使い方を模索していることを、我々は良い使用してビルドより興味深い順序回路にこれらのレジスタを置きます。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 レジスタの基本的な使用法をすべて説明したところで、これらのレジスタを有効に使用して、より興味深いシーケンシャル回路を構築します。
 \fi
 
@@ -6191,7 +6190,7 @@ good use and build more interesting sequential circuits.
 \section{Counters}
 \fi
 \ifshowtranssecond %(校正)
-\section{カウンター (L6109 仮訳 12/06 aki})
+\section{カウンター (L6109 仮訳 12/06 校正1 12/29 aki)}
 \fi
 
 \label{sec:counter}
@@ -6217,10 +6216,10 @@ of the register. Figure~\ref{fig:counter} shows such a free-running counter.
 図〜\ref{fig:counter}は、フリーランニングカウンタを示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 最も基本的な順序回路はカウンターです。
 その最も単純な形態では、カウンタ出力が加算器に接続され、加算器の出力がレジスタの入力に接続されているレジスタです。
-図〜\ref{fig:counter}は、このようなフリーランニングカウンタを示しています。
+図~\ref{fig:counter}は、このようなフリーランニングカウンタを示しています。
 \fi
 
 \ifshoworiginal
@@ -6233,9 +6232,9 @@ to 0 again. A counter shall also be reset to a known value.
 カウンタは、既知の値にリセットしなければなりません。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
-4 ビットのレジスタを持つフリーランカウンタは、0 から 15 までカウントした後、再び 0 に折り返す。
-また、カウンタは既知の値にリセットされなければならない。
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
+4ビットのレジスタを持つフリーランニングカウンタは、0から15までカウントした後、再び0に折り返します。
+また、カウンタは既知の値にリセットされなければなりません。
 \fi
 
 \shortlist{code/sequ_free_counter.txt}
@@ -6256,8 +6255,8 @@ as shown in Figure~\ref{fig:event-counter} and in the following code.
 私たちがイベントをカウントしたい場合には、図〜\ref{fig:event-counter}に、次のコードに示すように、我々は、カウンタをインクリメントする条件を使用しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
-\noindent イベントをカウントしたいときは、図〜\ref{fig:event-counter}と次のコードに示すように、カウンタをインクリメントするための条件を使用します。
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
+\noindent イベントをカウントしたいときは、図~\ref{fig:event-counter}と次のコードに示すように、カウンタをインクリメントするための条件を使用します。
 \fi
 
 \shortlist{code/sequ_event_counter.txt}
@@ -6268,8 +6267,8 @@ as shown in Figure~\ref{fig:event-counter} and in the following code.
 \ifshowtransfirst %(自動翻訳)
 \subsection{Counting Up and Down}
 \fi
-\ifshowtranssecond %(校正)
-\subsection{カウントアップとダウン (L6268 仮訳 12/06 aki})
+\ifshowtranssecond %(校正 校正1 12/29 aki)
+\subsection{カウントアップとダウン (L6268 仮訳 12/06 校正1 12/29 aki)}
 \fi
 
 \ifshoworiginal
@@ -6284,7 +6283,7 @@ conditional statement.
 、\code{when}条件文で。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 値をカウントアップしていって\code{0}に戻すには、カウンタの値を最大定数や0に\code{戻す)条件と比較する必要があります。
 \fi
 
@@ -6297,7 +6296,7 @@ conditional statement.
 \ifshowtransfirst %(自動翻訳)
 また、当社のカウンターのためのマルチプレクサを使用することができます。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 \noindent  カウンターにはマルチプレクサを使用することもできます。
 \fi
 
@@ -6311,7 +6310,7 @@ with the maximum value and reset the counter to that value when reaching 0.
 \ifshowtransfirst %(自動翻訳)
 私たちはダウンカウントのムードにある場合、我々は最大値でカウンタレジスタをリセットすることで開始し、0に到達したときにその値にカウンタをリセットします。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 \noindent カウントダウンする場合、まずカウンタレジスタを最大値でリセットし、0になったらその値にリセットします。
 \fi
 
@@ -6325,8 +6324,8 @@ define a function with a parameter to generate a counter for us.
 \ifshowtransfirst %(自動翻訳)
 我々はコーディングや複数のカウンタを使用しているように、私たちは私たちのためにカウンタを生成するためのパラメータで関数を定義することができます。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
- 私たちはコーディングをしていて、より多くのカウンタを使っているので、私たちのためにカウンタを生成するためのパラメータを持つ関数を定義することができます。
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
+\noindent 私たちはコーディングをしていて、より多くのカウンタを使っているので、カウンタを生成するためのパラメータを持つ関数を定義することができます。
 \fi
 
 \shortlist{code/function_counter.txt}
@@ -6340,7 +6339,7 @@ value of the function, in this example, the counting register \code{cntReg}.
 機能\code{genCounter}の最後の文は、カウントが\code{cntReg}を登録し、この例では、関数の戻り値です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 \noindent 関数\code{genCounter)の最後の文は、関数の戻り値であり、この例ではカウントレジスタ\code{cntReg)です。
 \fi
 
@@ -6357,10 +6356,10 @@ to set \code{N} to 9. Setting \code{N} to 10 would be a classic example of an
 10に\code{N}を設定すると、\myref{https://en.wikipedia.org/wiki/Off-by-one_error}{off-by-one error}の古典的な例だろう。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
-注、すべての例では、当社のカウンターが\code{N}含む\code{0}と\code{N}、間の値を持っていたこと。
-私たちは10回のクロックサイクルをカウントしたい場合は、私たちは9に\code{N}を設定する必要があります。
-10に\code{N}を設定すると、\myref{https://en.wikipedia.org/wiki/Off-by-one_error}{off-by-one error}の古典的な例だろう。
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
+注、すべてのカウンタ例で、値はNを含めて\code{0}から\code{N}の間にあることに注意してください。
+10クロックサイクルをカウントしたい場合は、\code{N}を9に設定する必要があります。
+このように、カウントと値が1つずれるのは、\myref{https://en.wikipedia.org/wiki/Off-by-one_error}{植木算}の古典的な例です。
 \fi
 
 \ifshoworiginal
@@ -6394,7 +6393,7 @@ at some frequency as we have shown in the Chisel ``Hello World'' example.
 私たちは、クロック周波数を知っている場合、我々はChisel `` Hello Worldの「」の例に示されているようないくつかの周波数でLEDを点滅させるなど、時限イベントを生成する回路を生成することができます。
 \fi
 
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 イベントを数える以外にも、カウンタは時間の概念を生成するためによく使われます（壁掛け時計の時間としての時間）。
 同期回路は一定の周波数の時計で動作しています。
 回路はそれらのクロックの刻みで進行します。デジタル回路では、クロックの刻みを数える以外に時間の概念はありません。
@@ -6419,7 +6418,7 @@ Figure~\ref{fig:tick-wave} shows an example of a tick generated every
 図〜\ref{fig:tick-wave}は、すべての3クロックサイクル発生したダニの一例を示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 一般的な方法は、我々の回路に必要な周波数$f_{tick}$でシングルサイクルの\emph{ティック}を生成することです。
 このティックは$n$クロックサイクルごとに発生し、$n = f_{clock}/f_{tick}$で、ティックは正確に1クロックサイクルの長さになります。
 このティックは派生クロックとして\emph{ではなく)、論理的に周波数$f_{tick}$で動作する回路内のレジスタのイネーブル信号として使用されます。
@@ -6447,7 +6446,7 @@ every \code{N} clock cycles.
 我々は\code{N - 1}に\code{0}から数えるとき、私たちは一つの論理目盛りごと\code{N}クロックサイクルを生成します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/06 aki)
+\ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 以下の回路では、\code{0}から最大値である\code{N - 1}までをカウントするカウンタを記述します。
 最大値に達すると、1サイクルの間、\code{tick}は\code{true}となり、カウンタは\code{0}にリセットされます。
 \code{0}から\code{N - 1}までカウントすることで、\code{N}クロックサイクルごとに 1つの論理ティックを生成します。
@@ -6469,7 +6468,7 @@ every $n$ clock cycles.
 次のコードでは、私たちは別のカウンタを使用すること\code{1}インクリメントごとに$ N $クロックサイクル。
 \fi
 
-\ifshowtranssecond %(仮訳 12/07 aki)
+\ifshowtranssecond %(仮訳 12/07 校正1 12/29 aki)
 \noindent この$n$クロックサイクルごとの論理的な1ティックを使って、回路の他の一部分を遅く駆動することができます。
 次のコードでは、$n$クロックサイクルごとに\code{1}ずつインクリメントする別のカウンタを使用しています。
 \fi
@@ -6492,8 +6491,8 @@ slow counter that increments every tick ($n$ clock cycles).
 図〜\ref{fig:tick-count-wave}は、ダニの波形及び遅いカウンタを増分毎ティック（$ N $クロックサイクル）ことを示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/07 aki)
-\noindent 図〜\ref{fig:tick-count-wave}は、ティックのウェーブフォームとティック$n$(クロックサイクル)ごとにインクリメントするスローカウンタのウェーブフォームを示しています。
+\ifshowtranssecond %(仮訳 12/07 校正1 12/29 aki)
+\noindent 図~\ref{fig:tick-count-wave}は、ティックのウェーブフォームとティック$n$(クロックサイクル)ごとにインクリメントするスローカウンタのウェーブフォームを示しています。
 \fi
 
 \index{Logical clock}
@@ -6509,7 +6508,7 @@ and switches.
 この遅い\emph{logical}クロックの使用の例は、LEDを点滅シリアルバスのボーレートを生成し、多重化7セグメントディスプレイのための信号を生成し、ボタンおよびスイッチのデバウンスの入力値をサブサンプリングします。
 \fi
 
-\ifshowtranssecond %(仮訳 12/07 aki)
+\ifshowtranssecond %(仮訳 12/07 校正1 12/29 aki)
 この遅い\emph{論理}クロックの使用例としては、LEDの点滅、シリアルバスのボーレートの生成、7セグメント表示の多重化のための信号生成、ボタンやスイッチのデバウンスのための入力値のサブサンプリングなどがあります。
 \fi
 
@@ -6525,7 +6524,7 @@ results in a counter with a width of a single bit.
 \code{0.U}のリセット値は、単一ビット幅のカウンタをもたらす場合、明示的な幅の定義は、驚きを回避することができます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/07 aki)
+\ifshowtranssecond %(仮訳 12/07 校正1 12/29 aki)
 幅推論ではレジスタのサイズを決める必要がありますが、レジスタ定義時の型や初期化値で明示的に幅を指定した方が良いでしょう。明示的に幅を定義することで、リセット値\code{0.U}の結果として1ビットの幅を持つカウンタが生成されてしまい、驚くことがなくなります。
 \fi
 
@@ -6536,7 +6535,7 @@ results in a counter with a width of a single bit.
 \subsection{The Nerd Counter}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{「オタク」カウンター (L6538 仮訳 12/07 aki)}
+\subsection{「オタク」カウンター (L6538 仮訳 12/07 校正1 12/29 aki)}
 \fi
 
 \ifshoworiginal
@@ -6564,7 +6563,7 @@ against 0 or 1. The resource requirement is the same for the up and down counter
 リソース要件は、アップとダウンカウンタでも同じです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/07 aki)
+\ifshowtranssecond %(仮訳 12/07 校正1 12/29 aki)
 多くの人が、たまに\myref{https://en.wikipedia.org/wiki/Nerd}{オタク}になった気分になることがあります。
 例えば、カウンタ/ティック生成の高度に最適化されたバージョンを設計したいとします。
 標準的なカウンタは、1つのレジスタ、1つの加算器（または減算器）、およびコンパレータというリソースを必要とします。レジスタや加算器についてはあまり手を加えることができません。カウントアップする場合は、ビット文字列である数値と比較する必要があります。
@@ -6589,11 +6588,11 @@ that our counter reached -1. Here it is, the counter created by a nerd:
 私たちは私たちのカウンターに達したことを検出するために、このビットをチェックする必要が-1。
 ここでは、オタクによって作成されたカウンタは、次のとおりです。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 しかし、巧妙なハードウェア設計者が引き出せるトリックがもう一つあります。
 上か下かをカウントするには、これまでのところ、すべてのカウントビットとの比較が必要でした。
 N-2から-1までカウントするとどうなるでしょうか？負の数は最上位ビットが1に設定されており、正の数はこのビットが0に設定されています。
-このビットだけをチェックして，カウンタが-1に達したことを検出する必要があります． これがオタクが作ったカウンタです．
+このビットだけをチェックして，カウンタが-1に達したことを検出すればよいのです。これがオタクが作ったカウンタです．
 \fi
 
 \shortlist{code/nerd_counter.txt}
@@ -6605,7 +6604,7 @@ N-2から-1までカウントするとどうなるでしょうか？負の数は
 \subsection{A Timer}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{タイマー (L6610 仮訳 12/08 aki)}
+\subsection{タイマー (L6610 仮訳 12/08 校正1 12/29 aki)}
 \fi
 
 \ifshoworiginal
@@ -6625,11 +6624,11 @@ Then it counts down until reaching zero. At zero the timer asserts \emph{done}.
 ゼロでタイマーが\emph{done}を主張します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/29 aki)
 私たちがつくることのできる、もう一つのタイマーは、ワンショットタイマーです。
 ワンショットタイマーはキッチンタイマーのようなもので : セットした時間が経つと、アラームが鳴ります。
 デジタルタイマーには、クロックサイクルで時間が読み込まれています。
-それは、ゼロに達するまでカウントダウンします。ゼロになるとタイマーが\emph{完了}を教えてくれます。
+それは、ゼロに達するまでカウントダウンしてゆき、ゼロになるとタイマーが\emph{完了}を教えてくれます。
 \fi
 
 \ifshoworiginal
@@ -6647,8 +6646,8 @@ counting by selecting input of the multiplexer that provides \code{0}.
 カウンタが\code{0}に到達すると、信号\code{done}がアサートされ、カウンタが\code{0}を提供するマルチプレクサの入力を選択することによりカウントを停止します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
-図〜\ref{fig:timer}に、タイマのブロック図を示す。
+\ifshowtranssecond %(仮訳 12/08 校正1 12/29 aki)
+図~\ref{fig:timer}に、タイマのブロック図を示します。
 \code{load}をアサートすることで、レジスタに\code{din}の値をロードすることができます。
 \code{load}信号がデ・アサートされると、カウントダウンが選択されます(レジスタの入力として\code{cntReg - 1}を選択)。
 カウンタが\code{0}になると、\code{0}を供給するマルチプレクサの入力が選択されて、\code{done}信号がアサートされ、カウンタはカウントダウンを停止します。
@@ -6682,8 +6681,8 @@ register \code{reg}.
 最後の行は、レジスタ\code{reg}の入力に、\code{next}で表されるマルチプレクサを接続します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
-リスト〜\ref{lst:timer}はタイマーのChiselコードを示しています。
+\ifshowtranssecond %(仮訳 12/08 校正1 12/29 aki)
+リスト~\ref{lst:timer}はタイマーのChiselコードを示しています。
 リセット初期値が\code{0}となる8ビットのレジスタ\code{cntReg}を使用します。
 ブール値\code{done}は\code{cntReg}を\code{0}と比較している結果です。
 入力マルチプレクサのために、デフォルト値が\code{0}のワイヤ\code{next}を導入します。
@@ -6703,8 +6702,8 @@ the register \code{reg}, instead of using the intermediate wire \code{next}.
 我々はもう少し簡潔なコードを目指す場合は、代わりに直接、中間ワイヤ\code{next}を使用する、レジスタ\code{reg}マルチプレクサ値を割り当てることができます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
-もう少し簡潔なコードにするなら、中間ワイヤの\code{next}を使用せずに、マルチプレクサの値を直接レジスタ\code{cntReg}に代入することができます。
+\ifshowtranssecond %(仮訳 12/08 校正1 12/29 aki)
+もう少し簡潔なコードにするなら、中間ワイヤの\code{next}を使用せずに、マルチプレクサの値を直接レジスタ\code{cntReg}に代入することもできます。
 \fi
 
 \ifshoworiginal
@@ -6714,7 +6713,7 @@ the register \code{reg}, instead of using the intermediate wire \code{next}.
 \subsection{Pulse-Width Modulation}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{パルス幅変調(PWM) (L6721 仮訳 12/08 aki)}
+\subsection{パルス幅変調(PWM) (L6721 仮訳 12/08 校正1 12/30 aki)}
 \fi
 
 \ifshoworiginal
@@ -6727,7 +6726,7 @@ within that period.
 \myref{https://en.wikipedia.org/wiki/Pulse-width_modulation}{Pulse-width modulation}（PWM）は、一定周期の信号であり、時間の変調は、信号がその期間内に\emph{high}あります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/-8 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 \myref{https://en.wikipedia.org/wiki/Pulse-width_modulation}{Pulse-width modulation}（PWM）は、一定の周期を持つ信号で、その周期内で信号が\emph{high}な時間で変調されたものである。
 \fi
 
@@ -6753,8 +6752,8 @@ two cycles it is 75\,\%. The pulse width is modulated between 25\,\% and 75\,\%.
 %パルス幅は％\\％及び75 \ \ 25の間で変調されます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
-図〜\ref{fig:pwm}はPWM信号を示しています。矢印は信号の周期の始まりを示しています。
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
+図~\ref{fig:pwm}はPWM信号を示しています。矢印は信号の周期の始まりを示しています。
 信号が高い時間の割合は、また、デューティ・サイクルと呼ばれます。
 最初の2周期は、デューティ・サイクルは25\,\%, つぎの2周期は50\,\%,\, そして最後の2期間は、75\,\%です。
 パルス幅は、25\,\%と75\,\%の間で変調されています。
@@ -6772,7 +6771,7 @@ The low-pass filter can be as simple as a resistor and a capacitor.
 ローパスフィルタは、抵抗およびコンデンサのような単純なようであることができます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 PWM信号に\myref{https://en.wikipedia.org/wiki/Low-pass_filter}{low-pass filter} を加えると、単純な\myref{https://en.wikipedia.org/wiki/Digital-to-analog_converter}{digital-to-analog converter}になります。
 ローパスフィルタは、抵抗とコンデンサと同じくらい単純なものです。
 \fi
@@ -6784,8 +6783,9 @@ The following code example will generate a waveform of 3 clock cycles high every
 \ifshowtransfirst %(自動翻訳)
 以下のコード例は、高い3つのクロック・サイクル毎に10クロックサイクルの波形を生成します。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
-次のコード例では、10 クロックサイクルごとに 3 クロックサイクルのハイ（1）の波形を生成します。
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/30 aki)
+次のコード例では、10クロックサイクルごとに 3クロックサイクルのハイ(1)の波形を生成します。
 \fi
 
 \shortlist{code/pwm.txt}
@@ -6808,8 +6808,8 @@ is the return value, in our case the wire connected to the compare function.
 Chisel関数の最後の式は、我々の場合には、比較機能に接続されたワイヤの戻り値です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
-\noindent 再利用可能で軽量なコンポーネントを提供するために、PWMジェネレータに関数を使用しました。
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
+\noindent PWMジェネレータを再利用可能で軽量なコンポーネントとなるように、関数としました。
 この関数には2つのパラメータがあります：PWMをクロックサイクル(\code{nrCycles})で設定するScala整数と，PWM出力信号のデューティサイクル(pulsewidth)を与えるChisel ワイヤ(\code{din})です。
 この例では、カウンタを表現するためにマルチプレクサを使用しています。
 この関数の最後の行は、カウンタの値と入力値\code{din}を比較してPWM信号を返します。
@@ -6830,7 +6830,7 @@ for a signed representation of a number.
 Chiselはまた、数の符号付き表現のためのビットの数を提供するために機能\code{signedBitLength}を有しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 関数\code{unsignedBitLength(n)}を使用して、最大\code{n}(を含む)までの符号なし数字を表現するために必要なカウンタ\code{cntReg}のためのビット数を指定します。
 \footnote{2進数の符号なし$n$を表すためのビット数は$\lfloor log_2(n) \rfloor + 1$です。}
 また、Chiselには、数値の符号付き表現に必要なビット数を指定する関数\code{signedBitLength}があります。
@@ -6848,9 +6848,10 @@ The result is an LED with continuously changing intensity.
 私たちは、三角関数によってPWM生成を駆動するために、上記の例を展開します。
 結果は、連続的に強度を変化させるとLEDです。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/30 aki)
 もう一つのアプリケーションは、LEDを調光するためにPWMを使用することです。この場合、目はローパスフィルタとして機能します。
-上記の例を拡張して、三角関数でPWM生成を駆動します。
+上記の例を拡張して、三角波でPWM生成を駆動します。
 その結果、強度が連続的に変化するLEDが得られます。
 \fi
 
@@ -6871,7 +6872,7 @@ down-counting and the switch of the direction.
 アップ又はダウンカウントおよび方向のスイッチ長い\code{when/.elsewhen/.otherwise}式ハンドル。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 変調には2つのレジスタを使用しています : (1) \code{modulationReg}はカウントアップとカウントダウンのためのもので、(2) \code{upReg}はカウントアップかカウントダウンかを判断するためのフラグです。
 入力されたクロックの周波数(この例では100\,MHz)までカウントアップすると、0.5\,Hzの信号が得られる。
 長い\code{when/.elsewhen/.otherwise}は、アップ/ダウンカウントと方向の切り替えを処理します。
@@ -6894,9 +6895,9 @@ with a function call. Wire \code{sig} represents the modulated PWM signal.
 ワイヤ\code{sig}はPWM変調信号を表します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 このPWMは1\,kHzの信号を生成するための周波数を1000分の1までしかカウントできないので、変調信号を1000で割る必要があります。
-実数の除算はハードウェア上では非常に高価なので、単に右に10ビットシフトするだけで、$2^{10} = 1024$による除算と同じになります。
+実数の除算はハードウェア上では非常に高価なので、単に右に10ビットシフトするだけで、$2^{10} = 1024$による除算と同じ結果を得てその値を使います。
 PWM回路を関数として定義したので、関数呼び出しでインスタンス化することができます。
 ワイヤ\code{sig}は変調されたPWM信号を表しています。
 
@@ -6909,7 +6910,7 @@ PWM回路を関数として定義したので、関数呼び出しでインス�
 \section{Shift Registers}
 \fi
 \ifshowtranssecond %(校正)
-\section{シフトレジスタ (L6919 仮訳 12/08 aki)}
+\section{シフトレジスタ (L6919 仮訳 12/08 校正1 12/30 aki)}
 \fi
 
 \begin{figure}
@@ -6935,7 +6936,7 @@ A \myref{https://en.wikipedia.org/wiki/Shift_register}{shift register}は、フ�
 この単純な形態では、回路は\code{dout}に\code{din}から4タップ遅延を実現します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 \myref{https://en.wikipedia.org/wiki/Shift_register}{shift register}は、順番に接続されたフリップフロップの集合体です。
 レジスタ(フリップフロップ)の各出力は、次のレジスタの入力に接続されます。
 図~\ref{fig:shiftregister}は、4段のシフトレジスタを示しています。
@@ -6953,7 +6954,7 @@ input to the register, and (3) uses the most significant bit (MSB) of the regist
 この単純なシフトレジスタのChiselコードを行います4ビット\code{shiftReg}レジスタ作成（1）、（2）レジスタへの次の入力のための入力\code{din}有するシフトレジスタの下位3ビットを連結し、そして（3）用途出力\code{dout}としてレジスタの最上位ビット（MSB）。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 この単純なシフトレジスタのためのChiselコードは以下のようになっています。(1) 4ビットのレジスタ\code{shiftReg}を作成し、(2) シフトレジスタの下位3ビットをレジスタへの次の入力となる\code{din}と連結し、(3)レジスタの最上位ビット(MSB)を出力\code{dout}とします。
 \fi
 
@@ -6970,8 +6971,8 @@ send functions.
 節〜\ref{sec:uart}は用途が受信および送信機能するシフトレジスタというシリアルポートを示します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
-シフトレジスタは、シリアルデータからパラレルデータへの変換やパラレルデータからシリアルデータへの変換に使用されます。
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
+シフトレジスタは、シリアルデータからパラレルデータへの変換やパラレルデータからシリアルデータへの変換に使用します。
 章~\ref{sec:uart}では、受信機能と送信機能にシフトレジスタを使用したシリアルポートを示しています。
 \fi
 
@@ -6982,7 +6983,7 @@ send functions.
 \subsection{Shift Register with Parallel Output}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{パラレル出力付きシフトレジスタ (L6992 仮訳 12/08 aki)}
+\subsection{パラレル出力付きシフトレジスタ (L6992 仮訳 12/08 校正1 12/30 aki)}
 \fi
 
 \ifshoworiginal
@@ -7003,7 +7004,7 @@ the full word.
 この例では、最初に送信されるビット0（最下位ビット）を想定し、我々は完全な言葉を読みたいときので、最後の段階に到着します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 シフトレジスタのシリアル-イン パラレル-アウト構成は、シリアルデータ入力をパラレルワードに変換します。
 これは、シリアルポート(UART)で受信機能に使用することができます。図~\ref{fig:shiftreg-paraout}は、各フリップフロップ出力が1つの出力ビットに接続された4ビットのシフトレジスタを示しています。
 この回路は、4クロックサイクル後に、4ビットで1組みのシリアルデータを\code{q}で使用可能な4ビットのパラレルデータに変換します。
@@ -7022,7 +7023,7 @@ MSB, which means a right shift. The parallel result, \code{q}, is just the readi
 パラレル結果、\code{q}は、レジスタ\code{outReg}だけの読書です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 以下のChiselコードでは、シフトレジスタ\code{outReg}を0で初期化しています。
 次にMSBから入力してゆきますが、これは右シフトを意味します。
 結果の\code{q}はレジスタ\code{outReg}を読み込んだだけのものです。
@@ -7045,8 +7046,8 @@ MSB, which means a right shift. The parallel result, \code{q}, is just the readi
 図〜\ref{fig:shiftreg-paraout}は、並列出力機能を有する4ビットのシフトレジスタを示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/08 aki)
-図〜\ref{fig:shiftreg-paraout}は、パラレル出力機能を持った4ビットのシフトレジスタを示しています。
+\ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
+図~\ref{fig:shiftreg-paraout}は、パラレル出力機能を持った4ビットのシフトレジスタを示しています。
 \fi
 
 \ifshoworiginal
@@ -7056,7 +7057,7 @@ MSB, which means a right shift. The parallel result, \code{q}, is just the readi
 \subsection{Shift Register with Parallel Load}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{パラレルロード付きシフトレジスタ (L7067 仮訳 12/08 aki}}
+\subsection{パラレルロード付きシフトレジスタ (L7067 仮訳 12/08 校正1 12/30 aki)}
 \fi
 
 \ifshoworiginal
@@ -7069,9 +7070,10 @@ This may be used in a serial port (UART) for the transmit function.
 並列のシフトレジスタのシリアルアウト構成は、シリアル出力ストリームにワード（バイト）のパラレル入力ストリームを変換します。
 これは、送信機能のためのシリアルポート（UART）で使用することができます。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
-シフトレジスタのパラレルインシリアルアウト構成は、ワード（バイト）のパラレル入力ストリームをシリアル出力ストリームに変換します。
-これは、シリアルポート（UART）で送信機能に使用することができます。
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/30 aki)
+シフトレジスタのパラレルインシリアルアウト構成は、ワード(バイト)のパラレル入力ストリームをシリアル出力ストリームに変換します。
+これは、シリアルポート(UART)で送信機能に使用することができます。
 \fi
 
 
@@ -7092,7 +7094,7 @@ The Chisel description of that function is relatively straight forward:
 その関数のChiselの説明は比較的簡単です：
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
 図~\ref{fig:shiftreg-paraload}は、パラレルロード機能を持つ4ビットのシフトレジスタを示しています。
 その機能をChiselで記述するのは比較的簡単です。
 \fi
@@ -7106,8 +7108,9 @@ Note that we are now shifting to the right, filling in zeros at the MSB.
 \ifshowtransfirst %(自動翻訳)
 私たちは今、右にシフトしていることに注意してください、MSBにゼロで充填します。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
-現在は右にシフトして、MSB のゼロを埋めていることに注意してください。
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/30 aki)
+右シフトして、MSBにゼロを埋めていることに注意してください。
 \fi
 
 \ifshoworiginal
@@ -7117,7 +7120,7 @@ Note that we are now shifting to the right, filling in zeros at the MSB.
 \section{Memory}
 \fi
 \ifshowtranssecond %(校正)
-\section{メモリー (L7128 仮訳 12/09 aki)}
+\section{メモリー (L7128 仮訳 12/09 校正1 12/30 aki)}
 \fi
 
 \index{Memory}
@@ -7145,7 +7148,8 @@ FPGAは、オンチップ・メモリ・ブロックとも呼ばれるブロッ�
 FPGA内のメモリは、通常、1点のリードと1つの書き込みポート、または実行時に読み取りおよび書き込みの間で切り替えることができる2つのポートを有しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
+ChiselにあるVecのRegで表されるメモリはレジスタの集まりで構築することができます。
 しかし、これはハードウェアでは高価であるので、大きなメモリ構造は\myref{https://en.wikipedia.org/wiki/Static_random-access_memory}{SRAM}で構築します。
 ASICでは、メモリコンパイラがメモリを構築します。
 FPGAは、ブロックRAMとも呼ばれるオンチップ・メモリ・ブロックを内臓しています。
@@ -7167,8 +7171,8 @@ FPGA（ともASICは）通常、同期の思い出をサポートしています
 同期メモリは、その入力（読み取りおよび書き込みアドレス、書き込みデータ、および書き込みが可能）のレジスタを持っています。
 ことを意味し、読み出したデータは、アドレスを設定した後に利用できる1クロック・サイクルです。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
-FPGA（およびASICも）は通常、同期メモリをサポートしています。
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/30)
+FPGA(およびASICも)は通常、同期メモリをサポートしています。
 同期メモリは、入力にレジスタを持っています(リードアドレスとライトアドレス、ライトデータ、ライトイネーブル)。
 つまり、アドレスを設定してから1クロック後に読み出しデータが利用可能になります。
 \fi
@@ -7199,8 +7203,8 @@ synchronous behavior.
 すべての入力のために、同期挙動を示すメモリ内のレジスタがあることに留意されたいです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
-図〜\ref{fig:memory}に、同期メモリの回路図を示す。
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
+図~\ref{fig:memory}に、同期メモリの回路を示します。
 メモリは、1つのリードと1つのライトのデュアルポートです。
 読み出しポートには、読み出しアドレス(\code{rdAddr})の1つの入力と、読み出しデータ(\code{rdData})の1つの出力を持ちます。
 書き込みポートには、アドレス(\code{wrAddr})、書き込みデータ(\code{wrData})と、書き込みイネーブル(\code{wrEna})の3つの入力があります。
@@ -7218,7 +7222,7 @@ Listing~\ref{lst:memory} shows a component \code{Memory} that implements
 一覧〜\ref{lst:memory}はバイト幅の入力データと出力データとの実装メモリの1〜KiBの書き込みを有効にすることをコンポーネント\code{Memory}を示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
 オンチップメモリをサポートするために、Chiselはメモリコンストラクタ\code{SyncReadMem}を提供しています。
 リスト~\ref{lst:memory}は、バイト単位の入出力データとライトイネーブルを持つ1~KiBのメモリを実装したコンポーネント\code{Memory}を示しています。
 \fi
@@ -7243,11 +7247,12 @@ Chisel documents that the read data is undefined.
 これは可能性FPGAで利用できるのは、FPGAの種類に依存し、時に指定することができます。
 読み出しデータが定義されていないことをChisel文書。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/30 aki)
 興味深い質問は、同じクロックサイクルで新しい値が読み出されたのと同じアドレスに書き込まれた場合、どのような値が読み出されて返されるかということです。
 私たちは、メモリの読み書き動作に興味を持っています。
-新たに書き込まれた値、 古い値、 または未定義( 古い値の一部のビットと新たに書き込まれたデータの一部が混在している可能性がある) の3 つの可能性があります。
-どの可能性がFPGA で利用可能かはFPGA のタイプに依存し、指定できる場合もあります。
+新たに書き込まれた値、古い値、または未定義(古い値の一部のビットと新たに書き込まれたデータの一部が混在している可能性がある)の3つの可能性があります。
+どの可能性がFPGAで利用可能かはFPGAのタイプに依存し、指定できる場合もあります。
 Chiselは、読み取りデータが未定義であることを指摘します。
 \fi
 
@@ -7276,8 +7281,8 @@ memory read data. The write data is delayed by one clock cycle with a register.
 書き込みデータは、レジスタと1つのクロックサイクルによって遅延されます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
-新しく書き込んだ値を読み出したい場合は、アドレスが等しいことを検出して書き込みデータを送る\emph{フォワード(転送)}回路を構築すればできる。
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
+新しく書き込んだ値を読み出したい場合は、アドレスが等しいことを検出して書き込みデータを送る\emph{フォワード(転送)}回路を構築すればできます。
 図~\ref{fig:memory:forwarding}は、フォワード(転送)回路を搭載したメモリを示しています。
 リードアドレスとライトアドレスを比較し、ライトデータの転送パスとメモリのリードデータの転送パスをライトイネーブルでゲーティングして選択します。
 書き込みデータはレジスタで1クロック遅延されます。
@@ -7304,10 +7309,10 @@ data from memory.
 転送（書き込み）データ又はメモリから読み出されたデータとの間のマルチプレクサを選択します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
 リスト\ref{lst:memory:forward}に、フォワード(転送)回路を含む同期メモリのChiselコードを示します。
 次のクロックサイクルでも読み出し値を提供する同期メモリとするために、次のクロックサイクルで利用可能なレジスタ(\code{wrDataReg})に書き込みデータを保持しておきます。
-2つの入力アドレス((\code{wrAddr}と\code{rdAddr}) を比較し、フォワード(転送)条件で\code{wrEna}が真であるかどうかを確認します。
+2つの入力アドレス(\code{wrAddr}と\code{rdAddr})を比較して、フォワード(転送)条件で\code{wrEna}が真であるかどうかを確認します。
 その条件も1クロックサイクル遅れます。
 マルチプレクサーは、フォワード(転送)データとメモリからの読み出しデータのどちらかを選択します。
 \fi
@@ -7327,7 +7332,7 @@ Chiselはまた、同期書き込みと非同期読み出しとメモリを表�
 したがって、我々は\code{SyncReadMem}を使用することをお勧めします。
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
 Chiselはまた、同期書き込みと非同期読み出しを持つメモリの\code{Mem}も提供しています。
 このメモリタイプは通常、FPGAでは直接利用できないため、合成ツールはフリップフロップから構築してくれます。
 そのため、\code{SyncReadMem}を使用することをお勧めします。
@@ -7340,7 +7345,7 @@ Chiselはまた、同期書き込みと非同期読み出しを持つメモリ�
 \section{Exercises}
 \fi
 \ifshowtranssecond %(校正)
-\section{演習 (L6986 7332)}
+\section{演習 (L6986 7332 仮訳 12/09 校正1 12/30 aki)}
 \fi
 
 \ifshoworiginal
@@ -7361,9 +7366,9 @@ Use that signal as enable signal for the 4-bit counter.
 4ビットカウンタのイネーブル信号としてその信号を使用します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
 前回の演習で使用した7セグメントエンコーダを使って、表示を\code{0}から\code{F}に切り替えるための入力として4ビットのカウンタを追加します。
-このカウンタをFPGAボードのクロックに直接接続すると、16個の数字がすべて重なってみえます(7セグメントすべてが点灯します)。
+このカウンタをFPGAボードのクロックに直接接続すると、16個の数字がすべて重なってみえます(7セグメントすべてが点灯しているように見えます)。
 そのため、カウントを遅くする必要があります。500ミリ秒ごとにシングルサイクルの\emph{ティック}信号を生成できる別のカウンタを作成します。
 この信号を4ビットカウンタのイネーブル信号として使用します。
 \fi
@@ -7386,10 +7391,10 @@ PWM signal be? What frequency is the driver running?
 あなたのPWM信号は、どのような周波数でなければなりませんか？ドライバは何周波数を実行していますか？
 \fi
 
-\ifshowtranssecond %(仮訳 12/09 aki)
-ジェネレータ関数でスレッショルドと波形(三角関数またはサイン関数)を設定しPWM波形をつくってみましょう。
-三角関数は上下にカウントすることで作成できます。
-サイン関数は、数行のScalaコードでルックアップテーブルを生成し使えばよいでしょう(see Section~\ref{sec:gen:comb:logic})。
+\ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
+ジェネレータ関数でスレッショルドと波形(三角波またはサイン関数)を設定しPWM波形をつくってみましょう。
+三角波は上下にカウントすることで作成できます。
+サイン関数は、数行のScalaコードでルックアップテーブルを生成し使えばよいでしょう(節~\ref{sec:gen:comb:logic}を参照してください)。
 FPGAボード上のLEDを変調したPWM関数で駆動してみましょう。PWM信号の周波数は?変調はどのくらいの周波数で動作していますか？
 \fi
 
@@ -7407,11 +7412,12 @@ Sketch the block diagram for the following circuits:
 流暢回路の概略図とChiselの説明の間で翻訳することができるようにする重要なスキルです。
 以下の回路ブロック図をスケッチ：
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 12/30 aki)
 デジタル設計は、紙の上に回路としてスケッチすることが多いです。その際に、すべての詳細を示す必要はありません。
 本書の図のようにブロック図を使います。
 回路を模式的に表現したものと、Chiselの記述との間を流暢に行き来できることが重要なスキルです。
-それでは、以下の回路のブロック図をスケッチしてください。
+それでは、以下の回路のブロック図をスケッチしてみてください。
 \fi
 
 \shortlist{code/draw_mux6.txt}
@@ -7424,7 +7430,7 @@ Sketch the block diagram for the following circuits:
 レジスタを含むここではもう少し複雑な回路であって、
 \fi
 \ifshowtranssecond %(校正 6/20 mune10)
-\noindent ここでは、レジスタを含むもう少し複雑な回路を紹介します。
+\noindent ここでは、レジスタを含むもう少し複雑な回路を紹介します : 
 \fi
 
 \shortlist{code/draw_acc.txt}
@@ -12323,8 +12329,8 @@ FPGAのためにそれらを合成することによって、異なるサイズ�
 \ifshowtransfirst %(自動翻訳)
 \chapter{Design of a Processor}
 \fi
-\ifshowtranssecond %(校正)
-\chapter{プロセッサの設計 (L12361 TODO)} %(校正  12章 ========================================================================)
+\ifshowtranssecond %(仮訳 12/28 aki)
+\chapter{プロセッサの設計 (L12361 仮訳 12/27 aki)} %(仮訳 12/28 aki  12章 ========================================================================)
 \fi
 
 \index{Processor}
@@ -12348,12 +12354,12 @@ architecture knowledge is needed to follow the presented code examples.
 これは高度な例であり、いくつかのコンピュータアーキテクチャの知識が提示コード例に従うことが必要であることに言及したいと思います。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-設計、シミュレーション、およびマイクロプロセッサのテスト：この本の最後の章の一つとして、我々は中規模のプロジェクトを提示します。
-このプロジェクトの扱いを保つために、我々は、単純なアキュムレータマシンを設計します。
-%プロセッサは\myref{https://leros-dev.github.io/}{Leros}〜\cite{leros:arcs2019}と呼ばれ、URL {HTTPS \で、オープンソースで提供されている：// githubの。
-%COM /レロス-devの/レロス}。
-これは高度な例であり、いくつかのコンピュータアーキテクチャの知識が提示コード例に従うことが必要であることに言及したいと思います。
+\ifshowtranssecond %(仮訳 12/28 aki)
+本書の最後の章として、中規模のプロジェクトを紹介します : 
+マイクロプロセッサの設計、シミュレーション、テストである。
+このプロジェクトを管理しやすくするために、単純なアキュムレータマシンを設計します。
+このプロセッサは\myref{https://leros-dev.github.io/}{Leros}~\cite{leros:arcs2019}と呼ばれ、オープンソースで\url{https://github.com/leros-dev/leros}から入手可能です。
+これは高度な例であり、提示されたコード例に従うためには、いくつかのコンピュータアーキテクチャの知識が必要であることを言及したいと思います。
 \fi
 
 
@@ -12372,10 +12378,10 @@ and \code{AR} an address register for memory access.
 そのテーブルの\code{A}アキュムレータを表し、\code{PC}はプログラムカウンタであり、\code{i}が（0〜255）即値であり、\code{Rn}レジスタRRR011tYQBO6l0（0〜255）、RRR011NpcY2k6W分岐はRRR011RQtG1BaSに対してオフセット、及びRRR011jfje2hSnのアドレスレジスタメモリアクセス。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-レロスはシンプルに設計されたが、それでもCコンパイラのための良好な標的されます。
-1ページの指示フィットの説明は、表〜\ref{tab:leros:isa}を参照してください。
-そのテーブルの\code{A}アキュムレータを表し、\code{PC}はプログラムカウンタであり、\code{i}が（0〜255）即値であり、\code{Rn}レジスタRRR011tYQBO6l0（0〜255）、RRR011NpcY2k6W分岐はRRR011RQtG1BaSに対してオフセット、及びRRR011jfje2hSnのアドレスレジスタメモリアクセス。
+\ifshowtranssecond %(仮訳 12/28 aki)
+Lerosはシンプルな設計ですが、Cコンパイラのターゲットとしては十分な性能を持っています。
+命令の記述は1ページに収まるようになっており、表~\ref{tab:leros:isa}を参照してください。
+その中で\code{A}はアキュムレータ、\code{PC}はプログラムカウンタ、\code{i}は即時値(0〜255)、\code{Rn}はレジスタ\code{n}(0〜255)、\code{o}は\code{PC}との相対的な分岐オフセット、\code{AR}はメモリアクセス用のアドレスレジスタを表しています。
 \fi
 
 
@@ -12426,8 +12432,8 @@ scall & scall A & System call (simulation hook) \\
 \ifshowtransfirst %(自動翻訳)
 \section{Start with an ALU}
 \fi
-\ifshowtranssecond %(校正)
-\section{ALUから始める (L12464 TODO)}
+\ifshowtranssecond %(仮訳 12/28 aki)
+\section{ALUから始める (L12464 仮訳 12/28 aki)}
 \fi
 
 \index{ALU}
@@ -12446,10 +12452,10 @@ First, we define an \code{Enum} to represent the different operations of the ALU
 まず、ALUの異なる操作を表現するために\code{Enum}を定義します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-プロセッサの中心的なコンポーネントは短いため\myref{https://en.wikipedia.org/wiki/Arithmetic_logic_unit}{arithmetic logic unit}、またはALUです。
-したがって、我々は、ALUとテストベンチのコーディングを始めます。
-まず、ALUの異なる操作を表現するために\code{Enum}を定義します。
+\ifshowtranssecond %(仮訳 12/28 aki)
+プロセッサの中心的な構成要素は、\myref{https://en.wikipedia.org/wiki/Arithmetic_logic_unit}{arithmetic logic unit}、略してALUです。
+そこで、まずALUのコーディングとテストベンチから始めます。
+まず、ALUのさまざまな演算を表す\code{Enum}を定義します : 
 \fi
 
 \shortlist{code/leros_types.txt}
@@ -12465,9 +12471,9 @@ AN ALUは、通常、2つのオペランド入力（それら\code{a}と\code{b}
 一覧〜\ref{lst:leros-alu}は、ALUを示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-AN ALUは、通常、2つのオペランド入力（それら\code{a}と\code{b}を呼び出す）、操作\code{op}（オペコード）機能と出力\code{y}を選択する入力を有します。
-一覧〜\ref{lst:leros-alu}は、ALUを示しています。
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent ALUは通常、2つのオペランド入力(\code{a}と\code{b}と呼ぶ)と、関数を選択するための演算\code{op}(またはオペコード)入力と、出力\code{y}を持ちます。
+リスト~\ref{lst:leros-alu}はALUを示しています。
 \fi
 
 
@@ -12490,13 +12496,13 @@ switch文は、すべての操作を列挙し、それに応じて表現を割�
 最後に、我々は、ALUの出力\code{y}に結果\code{res}を割り当てます
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-私たちは、最初の三つの入力のための短い名前を定義します。
-\code{switch}文は\code{res}の計算のためのロジックを定義します。
-したがって、0のデフォルトの割り当てを取得します。
-switch文は、すべての操作を列挙し、それに応じて表現を割り当てます。
-すべての操作は、リグ式に直接マッピングされています。
-最後に、我々は、ALUの出力\code{y}に結果\code{res}を割り当てます
+\ifshowtranssecond %(仮訳 12/28 aki)
+最初に3つの入力の短い名前を定義します。
+\code{switch}文は\code{res}の計算のロジックを定義します。
+したがって、デフォルトの代入は0になります。
+switch文はすべての操作を列挙し、それに応じて式を代入します。
+全ての操作は、Chisel式に直接マッピングされます。
+最後に、結果の\code{res}をALU出力\code{y}に代入します。
 \fi
 
 \longlist{code/leros_alu.txt}{The Leros ALU.}{lst:leros-alu}
@@ -12509,8 +12515,8 @@ For the testing, we write the ALU function in plain Scala, as shown in Listing~\
 一覧〜\ref{lst:leros-alu-scala}に示すように、テストのために、私たちは、平野ScalaでALU関数を記述します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-一覧〜\ref{lst:leros-alu-scala}に示すように、テストのために、私たちは、平野ScalaでALU関数を記述します。
+\ifshowtranssecond %(仮訳 12/28 aki)
+テストのため、リスト~\ref{lst:leros-alu-scala}に示すように、ALU関数を平易なScalaで記述したものを示します。
 \fi
 
 \longlist{code/leros_alu_ref.txt}{The Leros ALU function written in Scala.}{lst:leros-alu-scala}
@@ -12526,9 +12532,9 @@ Scalaの実装によってChiselに書き込まれたハードウェアのこの
 私たちは、テストベクトルとして、いくつかのコーナーケース値を使用します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Scalaの実装によってChiselに書き込まれたハードウェアのこの重複は指定のエラーを検出しませんが、それは、少なくともいくつかの健全性チェックです。
-私たちは、テストベクトルとして、いくつかのコーナーケース値を使用します。
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent Chiselで記述されたハードウェアの重複は、Scalaの実装仕様によりエラー検出をしません。少なくとも何らかの確かな確認にはなります。
+テストベクタとしていくつかのごくまれな値を使用します : 
 \fi
 
 \shortlist{code/leros_alu_testvec.txt}
@@ -12541,8 +12547,8 @@ Scalaの実装によってChiselに書き込まれたハードウェアのこの
 我々は両方の入力にこれらの値を持つすべての機能をテストします。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-我々は両方の入力にこれらの値を持つすべての機能をテストします。
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent 両方の入力に、これらの値を使用してすべての関数をテストします : 
 \fi
 
 \shortlist{code/leros_alu_test.txt}
@@ -12558,9 +12564,9 @@ to test against random inputs:
 コーナーケースに対してテストのほかに、それはランダムな入力に対してもテストに便利です。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-32ビットの引数の完全な、徹底的なテストは、我々は、入力値として、いくつかのコーナーケースを選択した理由があった、ことはできません。
-コーナーケースに対してテストのほかに、それはランダムな入力に対してもテストに便利です。
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent 32ビット引数に対するすべてに対する網羅的なテストは不可能であり、これが入力値としていくつかのまれな境界値を選択した理由です。
+まれな境界値に対するテストの他に、ランダムな入力に対するテストも有用です : 
 \fi
 
 \shortlist{code/leros_alu_rand.txt}
@@ -12573,8 +12579,8 @@ to test against random inputs:
 あなたがレロスのプロジェクト内でテストを実行することができます
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-あなたがレロスのプロジェクト内でテストを実行することができます
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent Lerosプロジェクトにテストを実行するには、次のようにします。
 \fi
 
 \begin{verbatim}
@@ -12589,8 +12595,8 @@ and shall produce a success message similar to:
 とに似て成功メッセージを作成しなければなりません。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-とに似て成功メッセージを作成しなければなりません。
+\ifshowtranssecond %(仮訳 12/28 aki)
+次のような成功メッセージが表示される : 
 \fi
 
 \begin{verbatim}
@@ -12606,8 +12612,8 @@ test Alu Success: 70567 tests passed in 70572 cycles taking
 \ifshowtransfirst %(自動翻訳)
 \section{Decoding Instructions}
 \fi
-\ifshowtranssecond %(校正)
-\section{命令のデコード (L12644 TODO)}
+\ifshowtranssecond %(仮訳 12/28 aki)
+\section{命令のデコード (L12644 仮訳 12/28 aki)}
 \fi
 
 \index{Processor!instruction decode}
@@ -12626,10 +12632,10 @@ ALUから、我々は後方に働くと命令デコーダを実装していま�
 私たちは、レロス、レロスのためのアセンブラのハードウェア実装、およびレロスの命令セットシミュレータ間のエンコード定数を共有したいです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-ALUから、我々は後方に働くと命令デコーダを実装しています。
-しかし、最初に、我々は独自のScalaのクラスの命令エンコーディングと\emph{shared}パッケージを定義します。
-私たちは、レロス、レロスのためのアセンブラのハードウェア実装、およびレロスの命令セットシミュレータ間のエンコード定数を共有したいです。
+\ifshowtranssecond %(仮訳 12/28 aki)
+ALUから、逆方向に作業して命令デコーダーを実装します。
+まず最初に、独自のScalaクラスと\emph{共有}パッケージを使って命令エンコーディングを定義します。
+Lerosのハードウェア実装、Lerosのアセンブラー、およびLerosの命令セットシミュレーターの間でエンコード定数を共有したいと思います。
 \fi
 
 \shortlist{code/leros_constants.txt}
@@ -12646,8 +12652,8 @@ which is later fed partially into the ALU.
 デコード成分のため、我々は、後でALUに部分的に供給される出力用\code{Bundle}を定義します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-デコード成分のため、我々は、後でALUに部分的に供給される出力用\code{Bundle}を定義します。
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent デコードコンポーネントに出力の\code{バンドル}を定義します。バンドルは後で部分的にALUに供給されます。
 \fi
 
 \shortlist{code/leros_decode_bundle.txt}
@@ -12662,9 +12668,9 @@ as output. Those driving signals are assigned a default value with \code{WireDef
 これらの駆動信号は\code{WireDefault}と、デフォルト値が割り当てられています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-デコードは、入力として、8ビットのオペコードを受け取り、出力として復号信号を送出します。
-これらの駆動信号は\code{WireDefault}と、デフォルト値が割り当てられています。
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent デコードは8ビットのオペコードを入力として受け取り、デコードされた信号を出力として出力します。
+これらの駆動信号は、\code{WireDefault}でデフォルト値が割り当てられます。
 \fi
 
 \shortlist{code/leros_decode_init.txt}
@@ -12679,8 +12685,8 @@ instruction that represents the opcode (in Leros for most instructions the upper
 デコーディング自体はほとんどの命令上位8ビット用のレロスにオペコードを（表し命令の一部にだけ大きなスイッチ文です。）
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-デコーディング自体はほとんどの命令上位8ビット用のレロスにオペコードを（表し命令の一部にだけ大きなスイッチ文です。）
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent デコードは、オペコードに含まれる命令の部分に対する大きなスイッチ文に過ぎません(Lerosでは、ほとんどの命令は上位8ビットです)。
 \fi
 
 \shortlist{code/leros_decode.txt}
@@ -12691,8 +12697,8 @@ instruction that represents the opcode (in Leros for most instructions the upper
 \ifshowtransfirst %(自動翻訳)
 \section{Assembling Instructions}
 \fi
-\ifshowtranssecond %(校正)
-\section{アセンブラ命令 (L12729 TODO)}
+\ifshowtranssecond %(仮訳 12/28 aki)
+\section{アセンブラ命令 (L12729 仮訳 12/28 aki)}
 \fi
 
 \index{Assembler}
@@ -12708,9 +12714,9 @@ which we use to initialize the instruction memory.
 しかし、非常に最初のテストのために、我々はハードコード数命令することができ、私たちは命令メモリを初期化するために使用Scalaの配列、にそれらを置きます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-レロスの書き込みプログラムに、私たちは、アセンブラが必要です。
-しかし、非常に最初のテストのために、我々はハードコード数命令することができ、私たちは命令メモリを初期化するために使用Scalaの配列、にそれらを置きます。
+\ifshowtranssecond %(仮訳 12/28 aki)
+Lerosのプログラムを書くにはアセンブラが必要です。
+しかし、最初のテストでは、いくつかの命令をハードコーディングしてScalaの配列に入れ、命令メモリの初期化に使用します。
 \fi
 
 \shortlist{code/leros_asm_hard.txt}
@@ -12736,14 +12742,15 @@ Scalaのような表情豊かな言語とアセンブラを書くことは、大
 したがって、我々はそれがある渡すかを示すためにパラメータで二回\code{assemble}を呼び出します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-しかし、これは、プロセッサをテストするための非常に非効率的なアプローチです。
-Scalaのような表情豊かな言語とアセンブラを書くことは、大きなプロジェクトではありません。
-したがって、我々は、コードの約100ライン内で可能であるレロスのための簡単なアセンブラを書きます。
-私たちは、アセンブラを呼び出す関数の\code{getProgram}を定義します。
-分岐先のために、我々は我々が\code{Map}に収集シンボルテーブルを、必要とします。
-2回のパスで古典アセンブラ実行：（1）シンボルテーブルの値を収集し、（2）最初のパスに収集記号でプログラムを組み立てます。
-したがって、我々はそれがある渡すかを示すためにパラメータで二回\code{assemble}を呼び出します。
+\ifshowtranssecond %(仮訳 12/28 aki)
+\noindent しかし、これはプロセッサをテストするには非常に非効率的なアプローチです。
+Scalaのような表現言語でアセンブラを書くのは大したプロジェクトではありません。
+そこで、100行程度のコードで可能なLeros用の簡単なアセンブラを書きます。
+アセンブラを呼び出す関数\code{getProgram}を定義しています。
+分岐先には、\code{Map}で収集したシンボルテーブルが必要です。
+古典的なアセンブラは二回のパスで実行されます。
+(1) シンボルテーブル値の収集を行い、(2)1回目のパスで集めたシンボルを使ってプログラムをアセンブルします。
+そのため、どのパスであるかを示すパラメータを指定して、\code{assemble}を2回呼び出します。
 \fi
 
 \shortlist{code/leros_asm_call.txt}
@@ -12763,10 +12770,9 @@ a register number.
 と二つの可能なオペランド解析するために2つのヘルパー関数を定義する：レジスタ番号を読み取るために（1）〜（10進数または16進数表記を可能にする）整数定数及び（2）。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-\code{assemble}機能は、ソースファイル
-\footnote{この関数は、実際にソースファイルを読み取ることはありませんが、この議論のために、我々は読み取り機能としてそれを考えることができるで読んで始まります。}
-と二つの可能なオペランド解析するために2つのヘルパー関数を定義する：レジスタ番号を読み取るために（1）〜（10進数または16進数表記を可能にする）整数定数及び（2）。
+\ifshowtranssecond %(仮訳 12/28 aki)
+\code{assemble}関数は、ソースファイル\footnote{この関数は実際にソースファイルを読み込むわけではありませんが、この議論では読み込み関数として考えることができます。}を読み込むことから始まり、2つの可能なオペランドを解析するための2つのヘルパー関数を定義します。
+(1) 整数定数(10進数または16進数表記が可能)と、(2) レジスタ番号を読み込みます。
 \fi
 
 \shortlist{code/leros_asm_start.txt}
@@ -12782,9 +12788,10 @@ A Scala \code{match} expression covers the core of the assembly function.
 スカラ\code{match}発現は、アセンブリ機能のコアを覆っています
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-リスト〜\ref{lst:leros-asm-match}はレロスのためのアセンブラのコアを示しています。
-スカラ\code{match}発現は、アセンブリ機能のコアを覆っています
+\ifshowtranssecond %(仮訳 12/28 aki)
+リスト~\ref{lst:leros-asm-match}にLerosアセンブラのコア部分を示します。
+Scalaの\code{match}式がアセンブリ関数のコアをカバーしています。
+\todo{コードについてもう少し説明します。}
 \fi
 
 \longlist{code/leros_asm_match.txt}{The main part of the Leros assembler.}{lst:leros-asm-match}
@@ -12795,8 +12802,8 @@ A Scala \code{match} expression covers the core of the assembly function.
 \ifshowtransfirst %(自動翻訳)
 \section{Exercise}
 \fi
-\ifshowtranssecond %(校正)
-\section{演習 (L12833 TODO)}
+\ifshowtranssecond %(仮訳 12/28 aki)
+\section{演習 (L12833 仮訳 12/28 aki)}
 \fi
 
 \ifshoworiginal
@@ -12809,9 +12816,10 @@ you find interesting.
 最後の章のいずれかで、この演習の割り当ては非常に自由な形です。
 あなたはChiselを通して、あなたの学習ツアーの最後に、あなたが面白いことを設計上の問題に取り組む準備ができています。
 \fi
-\ifshowtranssecond %(校正 TODO)
-最後の章のいずれかで、この演習の割り当ては非常に自由な形です。
-あなたはChiselを通して、あなたの学習ツアーの最後に、あなたが面白いことを設計上の問題に取り組む準備ができています。
+
+\ifshowtranssecond %(仮訳 12/28 aki))
+最後の章にあるこの演習課題は、非常に自由な形で出題されています。
+あなたは、Chiselを介してあなたの学習ツアーの最後にあり、あなたが面白いと思う設計の問題に取り組む準備ができています。
 \fi
 
 \ifshoworiginal
@@ -12821,10 +12829,11 @@ fiddle with the code by breaking it and see that tests fail.
 \fi
 
 \ifshowtransfirst %(自動翻訳)
-1つのオプションは、章を再読し、\myref{https://github.com/leros-dev/leros}{Leros repository}内のすべてのソースコードと一緒に読んで、テストケースを実行し、それを破壊することにより、コードとフィドルとテストが失敗することを確認することです。
+1つのオプションは、章を再読し、内のすべてのソースコードと一緒に読んで、テストケースを実行し、それを破壊することにより、コードとフィドルとテストが失敗することを確認することです。
 \fi
-\ifshowtranssecond %(校正 TODO)
-1つのオプションは、章を再読し、\myref{https://github.com/leros-dev/leros}{Leros repository}内のすべてのソースコードと一緒に読んで、テストケースを実行し、それを破壊することにより、コードとフィドルとテストが失敗することを確認することです。
+
+\ifshowtranssecond %(仮訳 12/28 aki)
+1つの選択肢は、この章を読み直して、\myref{https://github.com/leros-dev/leros}{Leros リポジトリ}にあるすべてのソースコードと一緒に読み、テストが失敗するほどコードをいじくり回し、コードを壊してテストケースを実行し、失敗することを確認することです。
 \fi
 
 \ifshoworiginal
@@ -12840,10 +12849,9 @@ or go creasy and superpipeline Leros for the highest possible clocking frequency
 あなただけの単一のパイプラインステージでレロスのChiselシミュレーションバージョンを書き込み、またはcreasyを行くと可能な限り最高のクロック周波数のためレロスをスーパーパイプがあります。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-別のオプションは、レロスの実装を記述することです。
-リポジトリ内の実装は、パイプラインのひとつの可能な組織です。
-あなただけの単一のパイプラインステージでレロスのChiselシミュレーションバージョンを書き込み、またはcreasyを行くと可能な限り最高のクロック周波数のためレロスをスーパーパイプがあります。
+\ifshowtranssecond %(仮訳 12/28 aki)
+別の選択肢は、Lerosの実装を書くことです。リポジトリにある実装は、パイプラインを構成するための一つの可能性に過ぎません。
+Chiselシミュレーション版のLerosを1つのパイプラインステージだけで書くこともできますし、最高のクロック周波数を得るためにLerosをスーパーパイプライン化することもできます。
 \fi
 
 \ifshoworiginal
@@ -12856,9 +12864,10 @@ design and implementation is no magic art, but the engineering that can be very 
 第三の選択肢は最初からあなたのプロセッサを設計することです。
 たぶんレロスプロセッサを構築する方法のデモンストレーションや必要なツールは、プロセッサの設計と実装は魔法アートが、非常に楽しいことができエンジニアリングではないことを確信しています。
 \fi
-\ifshowtranssecond %(校正 TODO)
-第三の選択肢は最初からあなたのプロセッサを設計することです。
-たぶんレロスプロセッサを構築する方法のデモンストレーションや必要なツールは、プロセッサの設計と実装は魔法アートが、非常に楽しいことができエンジニアリングではないことを確信しています。
+
+\ifshowtranssecond %(仮訳 12/28 aki)
+第3の選択肢は、ゼロからプロセッサを設計することです。
+Lerosプロセッサと必要なツールを構築する方法のデモンストレーションにより、プロセッサの設計と実装は魔法の芸術ではなく、非常に楽しいエンジニアリングであることがわかっていただけるでしょう
 \fi
 
 \ifshoworiginal
