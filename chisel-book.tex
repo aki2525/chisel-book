@@ -6682,7 +6682,7 @@ register \code{reg}.
 \fi
 
 \ifshowtranssecond %(仮訳 12/08 校正1 12/29 aki)
-リスト~\ref{lst:timer}はタイマーのChiselコードを示しています。
+コード~\ref{lst:timer}はタイマーのChiselコードを示しています。
 リセット初期値が\code{0}となる8ビットのレジスタ\code{cntReg}を使用します。
 ブール値\code{done}は\code{cntReg}を\code{0}と比較している結果です。
 入力マルチプレクサのために、デフォルト値が\code{0}のワイヤ\code{next}を導入します。
@@ -7224,7 +7224,7 @@ Listing~\ref{lst:memory} shows a component \code{Memory} that implements
 
 \ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
 オンチップメモリをサポートするために、Chiselはメモリコンストラクタ\code{SyncReadMem}を提供しています。
-リスト~\ref{lst:memory}は、バイト単位の入出力データとライトイネーブルを持つ1~KiBのメモリを実装したコンポーネント\code{Memory}を示しています。
+コード~\ref{lst:memory}は、バイト単位の入出力データとライトイネーブルを持つ1~KiBのメモリを実装したコンポーネント\code{Memory}を示しています。
 \fi
 
 \longlist{code/memory.txt}{1\,KiB of synchronous memory.}{lst:memory}
@@ -7310,7 +7310,7 @@ data from memory.
 \fi
 
 \ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
-リスト\ref{lst:memory:forward}に、フォワード(転送)回路を含む同期メモリのChiselコードを示します。
+コード~\ref{lst:memory:forward}に、フォワード(転送)回路を含む同期メモリのChiselコードを示します。
 次のクロックサイクルでも読み出し値を提供する同期メモリとするために、次のクロックサイクルで利用可能なレジスタ(\code{wrDataReg})に書き込みデータを保持しておきます。
 2つの入力アドレス(\code{wrAddr}と\code{rdAddr})を比較して、フォワード(転送)条件で\code{wrEna}が真であるかどうかを確認します。
 その条件も1クロックサイクル遅れます。
@@ -8608,7 +8608,7 @@ the default assignment to the output (\code{false.B}) counts.
 \fi
 
 \ifshowtranssecond %(仮訳 12/15 校正1 01/01 aki)
-リスト~\ref{lst:fsm:rising}は、ミーリーマシンを用いた立ち上がりエッジ検出のためのChiselコードです。
+コード~\ref{lst:fsm:rising}は、ミーリーマシンを用いた立ち上がりエッジ検出のためのChiselコードです。
 前の例と同様に、シングルビットの入力と出力にChisel型の\code{Bool}を使用しています。
 出力ロジックは次の状態ロジックの一部となり、\code{zero}から\code{one}への遷移時に出力は\code{true.B}となります。
 それ以外の場合は、出力へのデフォルトの割り当て(\code{false.B}がカウントされます。
@@ -9165,7 +9165,7 @@ is done. Listing~\ref{lst:flasher2:master} shows the master FSM for the double r
 
 \ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 \noindent カウンターは\emph{残り}のフラッシュをカウントし、タイマーが終了したステートの\code{合間}でデクリメントされるので、3回のフラッシュに対して2回のロードとなることに注意してください。
-リスト~\ref{lst:flasher2:master}はダブルリファクタリングされたフラッシャーのマスターFSMを示しています。
+コード~\ref{lst:flasher2:master}はダブルリファクタリングされたフラッシャーのマスターFSMを示しています。
 \fi
 
 \longlist{code/flasher2_fsm.txt}{Master FSM of the double refactored light flasher.}{lst:flasher2:master}
@@ -10664,8 +10664,8 @@ If we do not trust the synthesize tool to rearrange our adder chain, we can use 
 \ifshowtransfirst %(自動翻訳)
 \chapter{Example Designs}
 \fi
-\ifshowtranssecond %(仮訳 12/22 aki)
-\chapter{デザイン例 (L10642 仮訳 12/22 aki)} %(仮訳 12/22 aki  11章 ========================================================================)
+\ifshowtranssecond %(校正)
+\chapter{デザイン例 (L10642 仮訳 12/22 01/02 校正1 aki)} %(仮訳 12/22 aki  11章 ========================================================================)
 \fi
 
 \ifshoworiginal
@@ -10679,10 +10679,10 @@ which itself may use the FIFO buffer.
 このセクションでは、我々は、このような大規模な設計のためのビルディングブロックとして使用されているFIFOバッファ、などいくつかの小さなサイズのデジタル設計を、探ります。
 別の例として、我々は、それ自体がFIFOバッファを使用することができる（また、UARTと呼ばれる）シリアルインタフェースを設計します。
 \fi
-\ifshowtranssecond %(校正 6/20 mune10)
-このセクションでは、以下のようないくつかの小さなサイズのデジタルデザインを探索します。
-これらは、より大きな設計のためのビルディングブロックとして使用されます。
-別の例として、シリアル・インターフェース（UARTとも呼ばれます）を設計しますが、これ自体はFIFOバッファを使用します。
+
+\ifshowtranssecond %(校正 6/20 mune10 校正1 01/02 aki)
+このセクションでは、FIFOバッファなど、より大きなデザインのビルディングブロックとして使用するいくつかの小さなデジタルデザインを探索します。
+別の例として、シリアル・インターフェース(UARTとも呼ばれます)を設計しますが、これはFIFOバッファを使用します。
 \fi
 
 \ifshoworiginal
@@ -10691,8 +10691,8 @@ which itself may use the FIFO buffer.
 \ifshowtransfirst %(自動翻訳)
 \section{FIFO Buffer}
 \fi
-\ifshowtranssecond %(仮訳 12/22 aki)
-\section{FIFO バッファ (L10098 仮訳 12/22 aki)}
+\ifshowtranssecond %(校正)
+\section{FIFO バッファ (L10098 仮訳 12/22 校正1 01/02 aki)}
 \fi
 
 \label{sec:fifo}
@@ -10722,9 +10722,9 @@ ERROR-TBD
 データは、アクティブ\code{read}信号に\code{dout}にリーダによってFIFOから読み出されます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 ライタとリーダの間にバッファを設けることで、書き込み(送信者)とリーダ(受信者)を切り離すことができます。
-共通のバッファは、先入れ先出し(\href{https://en.wikipedia.org/wiki/FIFO_%28computing_and_electronics%29}{FIFO})バッファである。
+共通のバッファは、先入れ先出し(\href{https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)}{FIFO})バッファです。
 図~\ref{fig:fifo}は、ライタ、FIFO、リーダを示しています。
 \code{write}信号がアクティブなときに\code{din}のデータがライタによってFIFOに入れられます。
 \code{read}信号がアクティブなときにFIFOがリーダにより\code{dout}にDataが読み出されます。
@@ -10753,10 +10753,10 @@ A FIFOは\code{empty}信号によって選抜、最初は空です。
 換言すれば、信号\code{empty}と\code{full}はハンドシェーク信号として働きます
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
-FIFOは初期状態では空で、\code{エンプティ}信号で区切られています。
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
+FIFOは初期状態では空で、\code{エンプティ}信号で状態が示されています。
 空のFIFOからの読み出しは通常未定義です。
-データが書き込まれても読み出されない場合、FIFO は\code{フル}になります。
+データが書き込まれても読み出されない場合、FIFOは\code{フル}になります。
 フルFIFOへの書き込みは通常無視され、データは失われます。
 つまり、\code{エンプティ}と\code{フル}信号はハンドシェイク信号として機能します。
 \fi
@@ -10784,7 +10784,7 @@ ERROR-TBD
 %｝
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 FIFOのいくつかの異なる実装が可能です :
 たとえば、オンチップメモリと読み出しポインターおよび書き込みポインターを使用したり、または極小のステートマシンを持つ単純なレジスタのチェーンを使用したものなどです。
 小規模なバッファ(最大数十エレメント)の場合、個々のレジスタをバッファのチェーンに接続して構成されたFIFOは、リソース要件が小さい単純なインプリメンテーションとなります。
@@ -10808,7 +10808,7 @@ at the writer side.
 信号\code{full}ライター側に\myref{https://en.wikipedia.org/wiki/Flow_control_(data)}{flow control}を行います。
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 まずは、ライタとリーダ側のIO信号の定義から始めます。
 データのサイズは\code{size}で設定可能です。
 書き込みデータは\code{din}で与えて、書き込みは\code{write}信号で行います。
@@ -10828,9 +10828,9 @@ at the reader side.
 \code{empty}信号は、リーダ側でフロー制御を担当します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 リーダ側は\code{dout}でデータを提供し、\code{read}でリードを開始します。
-\code{エンプティ}信号は、リーダ側のフロー制御を担当する。
+\code{エンプティ}信号は、リーダ側のフロー制御を担当します。
 \fi
 
 \shortlist{code/bubble_fifo_reader_io.txt}
@@ -10859,10 +10859,10 @@ FSMは、2つの状態しかあり：バッファのいずれかが\code{empty}�
 IOポート\code{full}と\code{empty}ライターとリーダーのためのバッファの状態を表します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
-リスト~\ref{lst:fifo:stage}は1つのバッファを示しています。
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
+コード~\ref{lst:fifo:stage}は1つのバッファを示しています。
 バッファは\code{WriterIO}型のエンキューイングポート\code{enq}と\code{ReaderIO}型のデキューイングポート\code{deq}を持っています。
-バッファのステート要素は、データを保持する1つのレジスタ(\code{dataReg}と単純なFSM用の1つのステートレジスタ\code{stateReg})です。)
+バッファのステート要素は、データを保持する1つのレジスタ(\code{dataReg}と単純なFSM用の1つのステートレジスタ(\code{stateReg})です。
 FSMには2つの状態しかありません。
 バッファが\code{空}か\code{満杯}かのどちらかです。
 バッファが\code{空}の場合、書き込みは入力データを登録して\code{満杯}状態に変更します。
@@ -10901,12 +10901,14 @@ Scalaの\code{for}ループでは、個々のバッファを接続してくだ�
 最初のバッファのエンキュー側は、完全なFIFOのデキュー側に完全なFIFOのエンキューIOと最後のバッファのデキュー側に接続されています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
-リスト~\ref{lst:fifo}は、完全なFIFOを示しています。
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
+コード~\ref{lst:fifo}は、完全なFIFOを示しています。
 完全なFIFOは、それぞれのFIFOバッファと同じIOインターフェースを持っています。
 \code{BubbleFifo}は、データワードの\code{サイズ}とバッファステージの\code{深さ}をパラメータとして持っています。
-\code{深さ}\code{FifoRegister}から\code{深さ}ステージのバブルFIFOを構築することができます。
-Scala\code{配列}につめこんでステージを作成します。
+% 超意訳
+% \code{深さ}\code{FifoRegister}から、\code{深さ}ステージを持ったバブルFIFOを構築することができます。
+% Scala\code{Array}につめこんでステージを作成します。
+Scalaの\code{Array}にfillを使って、\code{深さ}\code{FifoRegister}個分のBubbleをつめこんで、そのバッファステージの深さを持ったバブルFIFOを構築します。
 Scalaの配列にはハードウェア的な意味はなく、作成したバッファへの参照を持つためのコンテナを提供してくれる\emph{だけ}です。
 Scalaの\code{for}ループでは、それぞれのバッファを接続します。
 最初のバッファのエンキューは完全なFIFOのエンキューIOに接続され、最後のバッファのデキューは完全なFIFOのデキュー側に接続されています。
@@ -10929,7 +10931,7 @@ in the next section.
 、次のセクションで提示されているシリアルポート用デカップルバッファとして。
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 それぞれのバッファを接続してFIFOキューを実装するというアイデアは、データが泡のようにキューを通るので、バブルFIFOと呼ばれています。
 これは単純であり、データレートがクロックレートよりもかなり遅い場合、例えば、次のセクションで提示されるシリアルポートのためのデカップリングバッファとして、良好な解決策です。
 \fi
@@ -10949,10 +10951,10 @@ I will present other possible implementations of FIFOs in Section~\ref{sec:more:
 私は節〜\ref{sec:more:fifo}にFIFOの他の可能な実装を紹介します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/22 aki)
+\ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 しかし、データレートがクロック周波数に近づくと、バブルFIFOには2つの制限があります : 
 (1) 各バッファの状態は\emph{空}と\emph{満杯}を切り替えなければならないため、FIFOの最大スループットは1ワードあたり2クロックサイクルです。
-(2) データは完全なFIFO を通ってバブルする必要があるため、入力から出力までのレイテンシは少なくともバッファの数になります。
+(2) データの泡はすべてのFIFOを伝搬する必要があるため、入力から出力までのレイテンシは少なくともバッファの数になります。
 節~\ref{sec:more:fifo}でFIFOの他の可能な実装を提示紹介します。
 \fi
 
@@ -10962,8 +10964,8 @@ I will present other possible implementations of FIFOs in Section~\ref{sec:more:
 \ifshowtransfirst %(自動翻訳)
 \section{A Serial Port}
 \fi
-\ifshowtranssecond %(仮訳 12/23 aki)
-\section{シリアルポート (L10368 仮訳 12/23 aki)}
+\ifshowtranssecond %(校正)
+\section{シリアルポート (L10368 仮訳 12/23 校正1 01/02 aki)}
 \fi
 
 \label{sec:uart}
@@ -10989,13 +10991,13 @@ Figure~\ref{fig:uart:wave} shows the timing diagram of one byte transmitted.
 図〜\ref{fig:uart:wave}は、送信された1バイトのタイミング図を示します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 シリアルポート(\myref{https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter}{UART}または\myref{https://en.wikipedia.org/wiki/RS-232}{RS-232}とも呼ばれる)は、ラップトップとFPGAボードの間で通信するための最も簡単なオプションの1つです。
 その名の通り、データはシリアルに送信されます。
 8ビットバイトは次のように送信されます :
 1つのスタートビット(0)、8ビットのデータ、最下位ビットが最初に送信され、その後1つまたは2つのストップビット(1)が送信されます。
-データが送信されていないときは、出力は１となります。 
-図~\ref{fig:uart:wave}に１バイト送信した場合のタイミング図を示します。
+データが送信されていないときは、出力は1となります。 
+図~\ref{fig:uart:wave}に1バイト送信した場合のタイミング図を示します。
 \fi
 
 \begin{figure}
@@ -11016,7 +11018,7 @@ a buffer, and then usage of those base components.
 我々は、送信機（TX）、受信機（RX）、緩衝液、及びそれらのベースコンポーネントの使用を提示します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 モジュールごとの機能を最小限に抑えたモジュールでUARTを設計しました。
 送信機(TX)、受信機(RX)、バッファ、そしてそれらの基本コンポーネントを使用しています。
 \fi
@@ -11036,7 +11038,7 @@ UARTの設計のために、我々は送信機から見られるように方向�
 準備/有効なインターフェイスの大会は\code{ready}と\code{valid}の両方がアサートされたときにデータが転送されていることです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 まず、インターフェースとポートの定義が必要です。
 UART設計では、送信機から見た方向で、ready/validハンドシェイクインターフェースを使用します。
 \shortlist{code/uart_channel.txt}
@@ -11060,8 +11062,8 @@ IOポートは、シリアルデータが送信される\code{txd}ポート、�
 正しいタイミングを生成するために、我々は1つのシリアルビットのためのクロック・サイクルの時間を計算することによってための定数を計算します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
-リスト~\ref{lst:uart:tx}はベアボーンのシリアル送信機(\code{Tx})を示しています。
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
+コード~\ref{lst:uart:tx}はベアボーンのシリアル送信機(\code{Tx})を示しています。
 IOポートはシリアルデータが送信される\code{txd}ポートと、送信機がシリアライズして送信する文字を受信できる\code{チャネル}です。
 正しいタイミングを生成するために、1つのシリアルビットのクロックサイクルの時間を計算して定数を算出しています。
 \fi
@@ -11080,10 +11082,10 @@ those three registers.
 FSMの追加の状態レジスタを必要としない、すべての状態は、これらの3つのレジスタでエンコードされています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 3つのレジスタを使用しています。
-(1) データをシフト(シリアライズ)するためのレジスタ(\code{shiftReg})です。
-(2) 正しいボーレートを生成するためのカウンタ(\code{cntReg})と
+(1) データをシフト(シリアライズ)するためのレジスタ(\code{shiftReg})、
+(2) 正しいボーレートを生成するためのカウンタ(\code{cntReg})と、
 (3) まだシフトアウトする必要があるビット数のカウンタ。
 FSMの追加のステートレジスタは必要なく、すべてのステートはこれら3つのレジスタにエンコードされます。
 \fi
@@ -11103,11 +11105,11 @@ when \code{cntReg} is 0 and no bits are left to shift out.
 \code{cntReg}が0でないビットがシフトアウトするために残っていない場合したがって、チャネルのみ準備ができています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 カウンタ\code{cntReg}はずっと動作しています(0までカウントダウンし、0になると開始値にリセットされます)。
 すべての動作は、\code{cntReg}が0の時にのみ行われます。
 最小限の送信機を構築しているので、データを保存するためのシフトレジスタしかありません。
-したがって、チャンネルは、\code{cntReg}が0のときだけ準備ができており、シフトアウトするビットが残っていません。
+したがって、チャンネルは、\code{cntReg}が0のときだけ準備ができており、シフトアウトするビットは残っていません。
 \fi
 
 \ifshoworiginal
@@ -11119,7 +11121,7 @@ of the shift register.
 IOポート\code{txd}直接シフトレジスタの最下位ビットに接続されています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 IOポート\code{txd}は、シフトレジスタの最下位ビットに直接接続されています。
 \fi
 
@@ -11140,10 +11142,10 @@ two stop bits (1). Therefore, the bit count is set to 11.
 したがって、ビット数は11に設定されています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 シフトアウトするビットがさらにある場合(\code{bitsReg =/= 0.U})、ビットを右にシフトし、先頭から1(送信機のアイドルレベル)で埋めます。
-シフトアウトする必要がない場合は、チャネルにデータが含まれているかどうかをチェックします(\code{valid}なポートでシグナルされます)。
-そうであれば、シフトアウトされるビット列は、1つのスタートビット(0)、8ビットのデータ、2つのストップビット(1)で構成されます。したがって、ビット数は11に設定されます。
+シフトアウトする必要がない場合は、チャネルにデータが含まれているかどうかをチェックします(\code{valid}なポートをシグナルします)。
+そうであれば、シフトアウトされるビット列は、1つのスタートビット(0)、8ビットのデータ、2つのストップビット(1)で構成されます。したがって、ビット数は11となります。
 \fi
 
 \ifshoworiginal
@@ -11162,8 +11164,8 @@ space in the shift register. However, we do not want to add this
 しかし、我々は、送信機に、この ``複雑「」を追加しますが、バッファにそれを委任する必要はありません。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
-この非常に小さな送信機は、追加のバッファを持たず、シフトレジスタが空の時と、\code{cntReg}が0の時のクロックサイクルでのみ、新しい文字を受け付けることができます。
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
+この非常に小さな送信機は、追加のバッファを持たず、シフトレジスタが空の時と、\code{cntReg}が0の時のクロックサイクルでだけ、新しい文字を受け付けることができます。
 \code{cntReg}が0の時にのみ新しいデータを受け入れるということは、シフトレジスタに空きがある場合には、レディフラグも解除されることを意味します。
 しかし、この``複雑さ''を送信機に追加するのではなく、バッファにまかせることにします。
 \fi
@@ -11186,10 +11188,10 @@ register.
 バッファ駆動ハンドシェーク信号（\code{in.ready}と\code{out.valid}は、状態レジスタに依存します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 \longlist{code/uart_buffer.txt}{A single-byte buffer with a ready/valid interface.}{lst:uart:buffer}
-リスト~\ref{lst:uart:buffer}は、バブルFIFO用のFIFOレジスタに似たシングルバイトバッファを示しています。
-入力ポートは\code{Channel}インターフェースであり、出力は方向が反転した\code{Channel}インターフェースです。
+コード~\ref{lst:uart:buffer}は、バブルFIFO用のFIFOレジスタに似たシングルバイトバッファを示しています。
+入力ポートは\code{Channel}インターフェースで、出力は方向が反転した\code{Channel}インターフェースです。
 バッファには、\code{空}か\code{フル}かを示すためのミニマムステートマシンが含まれています。
 バッファ駆動のハンドシェイク信号(\code{in.ready}と\code{out.valid})はステートレジスタに依存します。
 \fi
@@ -11207,9 +11209,9 @@ back to state \code{empty}.
 状態が\code{full}であり、そして下流受信機は\code{ready}である場合、ダウンストリームのデータ転送が発生し、そして我々は、状態\code{empty}に戻します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 ステートが\code{空}で、入力データが\code{有効}な場合は、データを登録して\code{フル}ステートに移行します。
-ステートが\code{フル}になり、下流側の受信機が\code{ready}になったら、下流側のデータ転送が行われ、状態を\code{空}に戻します。
+ステートが\code{フル}になり、下流側の受信機が\code{ready}になったら、下流側のデータ転送が行われ、ステートを\code{空}に戻します。
 \fi
 
 \ifshoworiginal
@@ -11231,10 +11233,10 @@ and needs no change in the transmitter or the single byte buffer.
 実際のFIFOへの単一ワードバッファの拡張が簡単に行われ、送信または単一バイトのバッファには変化を必要としないことができます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 \longlist{code/uart_buffered_tx.txt}{A transmitter with an additional buffer.}{lst:uart:buffered:tx}
 このバッファがあれば、ベアボーン送信機を拡張することができます。
-リスト~\ref{lst:uart:buffered:tx}は、単一のバッファが前にある送信機\code{Tx}の連携示しています。
+コード~\ref{lst:uart:buffered:tx}は、単一のバッファが前にある送信機\code{Tx}の連携を示しています。
 このバッファは、\code{Tx}がシングルクロックサイクルのみ\code{準備}ができていたという問題を緩和します。
 この問題の解決はバッファモジュールに任せました。
 シングルワードバッファの実FIFOへの拡張は簡単にでき、送信機やシングルバイトバッファを変更する必要はありません。
@@ -11264,14 +11266,14 @@ After 8 bits are shifted in, \code{valReg} signals an available byte
 8ビットがシフトインされた後、\code{valReg}は、利用可能なバイトを通知します
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 \longlist{code/uart_rx.txt}{A receiver for a serial port.}{lst:uart:rx}
-リスト~\ref{lst:uart:rx}にレシーバー (Rx)のコードを示します。
+コード~\ref{lst:uart:rx}にレシーバー(Rx)のコードを示します。
 レシーバーはシリアルデータのタイミングを再構築する必要があるので、少し厄介です。
 受信機はスタートビットの立ち下がりを待ちます。
 このイベントから、受信機はビット0の中央に位置するように1.5ビットの時間を待ちます。
 その後、ビット毎にシフトしていきます。この２つの待ち時間を\code{START\_CNT}と\code{BIT\_CNT}として観測することができます。どちらも同じカウンタ(\code{cntReg})を使用します。
-8ビットシフトインした後、\code{valReg}に利用可能なバイトを通知します。
+8ビットシフトインした後、\code{valReg}にバイトデータが有効であることを通知します。
 \fi
 
 \ifshoworiginal
@@ -11306,9 +11308,9 @@ Scalaの文字列は\code{map}メソッドをサポートしていシーケン�
 送信者は、最後の文字が送信されるまで\code{valid}がアサートし続けます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 \longlist{code/uart_sender.txt}{Sending ``Hello World!" via the serial port.}{lst:uart:sender}
-リスト~\ref{lst:uart:sender}は、フレンドリーなメッセージを送信するシリアルポート送信機の使い方を示しています。
+コード~\ref{lst:uart:sender}は、フレンドリーなメッセージを送信するシリアルポート送信機の使い方を示しています。
 メッセージはScalaの文字列(\code{msg})で定義し、それを\code{UInt}のChisel \code{Vec}に変換しています。
 Scalaの文字列は\code{map}メソッドをサポートするシーケンスです。
 \code{map}メソッドは関数リテラルを引数にとり、その関数を各要素に適用し、関数の戻り値のシーケンスを構築します。
@@ -11316,7 +11318,7 @@ Scalaの文字列は\code{map}メソッドをサポートするシーケンス�
 この関数リテラルは、Chiselメソッド\code{.U}を使ってScalaの\code{Char}をChiselの\code{UInt}に変換します。
 シーケンスは\code{VecInit}に渡され、Chiselの\code{Vec}が構築されます。
 バッファリングされた送信機にベクトル\code{text}とカウンタ\code{cntReg}のインデックスを使ってそれぞれの文字を渡します。
-各\code{ready}信号で、完全な文字列が送信されるまでカウンタを増加させます。
+各\code{ready}信号で、文字列すべてが送信されるまでカウンタを増加させます。
 送信は、最後の文字が送出されるまで\code{valid}なアサートを維持します。
 \fi
 
@@ -11332,9 +11334,9 @@ received character is sent back (echoed).
 この接続は、各受信された文字が送り返される\code{Echo}回路を生成する（エコー）。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki)
+\ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 \longlist{code/uart_echo.txt}{Echoing data on the serial port.}{lst:uart:echo}
-リスト~\ref{lst:uart:echo}は、受信機と送信機を接続した場合の使い方を示しています。
+コード~\ref{lst:uart:echo}は、受信機と送信機を接続した場合の使い方を示しています。
 この接続により、受信した各文字を(エコーして)送り返す\code{エコー}回路が生成されます。
 \fi
 
@@ -11344,8 +11346,8 @@ received character is sent back (echoed).
 \ifshowtransfirst %(自動翻訳)
 \section{FIFO Design Variations}
 \fi
-\ifshowtranssecond %(仮訳 12/23 aki)
-\section{ FIFO設計のバリエーション (L11322 仮訳 12/23 aki)}
+\ifshowtranssecond %(校正)
+\section{ FIFO設計のバリエーション (L11322 仮訳 12/23 校正1 01/03 aki)}
 \fi
 
 \label{sec:more:fifo}
@@ -11361,7 +11363,7 @@ as introduced in Section~\ref{sec:inheritance}.
 節〜\ref{sec:inheritance}で導入され、これらの実装は、私たちが継承を使用する交換可能にします。
 \fi
 
-\ifshowtranssecond %(仮訳 12/23 aki))
+\ifshowtranssecond %(仮訳 12/23 校正1 01/03 aki))
 この節では、FIFOキューのさまざまなバリエーションを実装します。
 これらの実装を互換性のあるものにするために、私たちは節~\ref{sec:inheritance}で紹介したように、継承を使用します。
 \fi
@@ -11372,8 +11374,8 @@ as introduced in Section~\ref{sec:inheritance}.
 \ifshowtransfirst %(自動翻訳)
 \subsection{Parameterizing FIFOs}
 \fi
-\ifshowtranssecond %(仮訳 12/24 aki)
-\subsection{FIFOのパラメータ化 (L1135 仮訳 12/24 aki)}
+\ifshowtranssecond %(校正)
+\subsection{FIFOのパラメータ化 (L1135 仮訳 12/24 校正1 01/03 aki)}
 \fi
 
 \ifshoworiginal
@@ -11388,7 +11390,7 @@ parameter \code{depth} has a useful value.
 抽象クラスでは、我々はまた、パラメータ\code{depth}が有用価値を持っていることをテストします。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 ここでは、任意のChiselデータ型をバッファリングできるように、Chisel型をパラメータとする抽象FIFOクラスを定義しています。
 抽象クラスでは、パラメータの\code{深さ}が有用な値であることもテストしています。
 \fi
@@ -11410,7 +11412,7 @@ it is not \code{full}.
 それは\code{full}ないとき、私たちは、FIFOに\code{write}。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 節\ref{sec:fifo}では、\code{write}, \code{full}, \code{din}, \code{read}, \code{empty}, と \code{dout}などの信号に共通の名前を付けて、インターフェースのための独自の型を定義しました。
 このようなバッファの入出力は、データとハンドシェイクのための2つの信号で構成されます(たとえば、FIFOが\code{full}でないときはFIFOに\code{書き込まれ}ます)。
 \fi
@@ -11434,10 +11436,10 @@ ERROR-TBD
 %\footnote{\codefoot{DecoupledIO}が実際に抽象クラスを拡張するように、これは、単純化です。｝
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 しかし、このハンドシェイクは、ready-validインターフェイスと呼ばれるものに一般化することができます。
 例えば、FIFOが\code{ready}のときに、要素をエンキュー(FIFOへの書き込み)することができます。
-このとき書き込み側で\code{valid}信号に通知します。
+このとき書き込み側が\code{valid}信号に通知します。
 このready-validインターフェースは非常に一般的なものなので、Chiselは\code{DecoupledIO}でこのインターフェースの定義を以下のように提供しています : 
 \footnote{\codefoot{DecoupledIO}実際には抽象クラスを拡張しており、これは単純化されています。}
 \fi
@@ -11458,9 +11460,9 @@ Therefore, enqueue port of the FIFO needs to flip the signal directions.
 したがって、FIFOのエンキューポート信号方向を反転する必要があります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 \noindent \code{DecoupledIO}インタフェースを使用して、FIFOのインタフェースを定義します : 
-\code{enq} エンキューと\code{enq} デキューポートを備えた\code{FifoIO}であって、read-validインターフェイスで構成されます。
+\code{enq}エンキューと\code{enq}デキューポートを備えた\code{FifoIO}であって、read-validインターフェイスで構成されます。
 \code{DecoupledIO}インターフェイスは、作者(プロデューサ)の視点から定義されます。したがって、FIFOのエンキューポートは信号の方向を反転させる必要があります。
 \fi
 
@@ -11479,8 +11481,8 @@ or just simplicity).
 抽象基底クラスとインタフェースで、私たちは、異なるパラメータ（速度、面積、消費電力、または単にシンプル）用に最適化された別のFIFOの実装のために特化することができます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-抽象的な基底クラスとインターフェースを使用することで、異なるパラメータ(速度、面積、電力、または単純さ)に対して最適化されたFIFOインプリメンテーションとすることができます。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+抽象的な基底クラスとインターフェースを使用することで、異なるパラメータ(速度、面積、電力、または単純さ)に対して最適化されたFIFOの実装とすることができます。
 \fi
 
 \ifshoworiginal
@@ -11489,8 +11491,8 @@ or just simplicity).
 \ifshowtransfirst %(自動翻訳)
 \subsection{Redesigning the Bubble FIFO}
 \fi
-\ifshowtranssecond %(仮訳 12/24 aki)
-\subsection{バブルFIFOの再設計 (L11471 仮訳 12/24 aki)}
+\ifshowtranssecond %(校正)
+\subsection{バブルFIFOの再設計 (L11471 仮訳 12/24 校正1 01/03 aki)}
 \fi
 
 \ifshoworiginal
@@ -11502,8 +11504,8 @@ ready-valid interfaces and being parametrizable with a Chisel data type.
 我々は、標準的な既製の有効なインターフェースを使用してChiselデータ型でパラメータ化され、セクション〜\ref{sec:fifo}から私たちのバブルFIFOを再定義することができます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-標準的なready-validインターフェースを使用して、Chiselのデータ型でパラメトリック化することで、節~\ref{sec:fifo}のバブルFIFOを再定義することができます。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+標準的なready-validインターフェースを使用して、Chiselのデータ型でパラメータ化することで、節~\ref{sec:fifo}のバブルFIFOを再定義することができます。
 \fi
 
 \longlist{code/fifo_bubble.txt}{A bubble FIFO with a ready-valid interface.}{lst:fifo:bubble}
@@ -11525,8 +11527,8 @@ the state of the buffer: full or empty.
 代わりFSM電子用途の単一ビット、\code{fullReg}は、バッファの状態注：フルまたは空。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-リスト~\ref{lst:fifo:bubble}は、Bubble FIFOを、ready-validインターフェイスでリファクタリングしたものです。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+コード~\ref{lst:fifo:bubble}は、Bubble FIFOを、ready-validインターフェイスでリファクタリングしたものです。
 \code{バブルFifo}のプライベートクラスとして\code{Buffer}コンポーネントを内包していることに注意してください。
 このヘルパークラスは、このコンポーネントのためだけに必要なものなので、名前空間を汚さないように隠しています。
 また、バッファクラスも簡素化されています。
@@ -11544,7 +11546,7 @@ bandwidth of this FIFO is two clock cycles per word.
 各バッファ段が空と満杯を切り替えなければならないしかし、このFIFOの最大帯域幅は、ワード当たり2回のクロックサイクルです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 バブルFIFOはシンプルでわかりやすく、最小限のリソースしか使用しません。
 ただし、各バッファステージは空と満タンの間で行き来する必要があるため、このFIFOの最大帯域幅は1ワードあたり2クロックサイクルです。
 \fi
@@ -11561,8 +11563,8 @@ to the producer handshake, which violates the semantics of the ready-valid proto
 しかし、これは、すぐ有効なプロトコルのセマンティクスに違反プロデューサーの握手に消費者の握手から組み合わせパスを導入しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-プロデューサが\code{valid}で、コンシューマが\code{ready}なときに新しいワードを受け付けることができるように、バッファ内の両方のインタフェースを見るようにすることもできる。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+プロデューサが\code{valid}で、コンシューマが\code{ready}なときに新しいワードを受け付けることができるように、バッファ内の両方のインタフェースを見るようにすることもできます。
 しかし、これはコンシューマのハンドシェイクからプロデューサのハンドシェイクへの組み合わせパスを導入することになり、ready-validプロトコルのセマンティクスに違反することになります。
 \fi
 
@@ -11572,8 +11574,8 @@ to the producer handshake, which violates the semantics of the ready-valid proto
 \ifshowtransfirst %(自動翻訳)
 \subsection{Double Buffer FIFO}
 \fi
-\ifshowtranssecond %(仮訳 12/24 aki)
-\subsection{ダブルバッファFIFO (L11554 仮訳 12/24 aki)}
+\ifshowtranssecond %(校正)
+\subsection{ダブルバッファFIFO (L11554 仮訳 12/24 校正1 01/03 aki)}
 \fi
 
 \index{Double buffer FIFO}
@@ -11595,10 +11597,10 @@ the data register.
 消費者が再び\code{ready}になるとデータレジスタにデータが消費者にシャドウレジスタからレジスタから、データが転送されます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 一つの解決策は、バッファレジスタが一杯になっても\code{ready}な状態を保つことです。
 プロデューサからのデータワードを受け取れるようにするためには、コンシューマが\code{ready}でないときのために第2のバッファが必要です。
-バッファが一杯になると、新しいデータがシャドウレジスタに格納され、\code{ready}がデ・アサートされます。
+バッファが一杯になると、新しいデータがシャドウレジスタに格納され、\code{ready}がデアサートされます。
 コンシューマが再び\code{ready}になると、データはデータレジスタからコンシューマに転送され、シャドウレジスタからデータレジスタに転送されます。
 \fi
 
@@ -11625,8 +11627,8 @@ or \code{one}. The has valid data when it is in state \code{one} or \code{two}.
 それは状態\code{one}か\code{two}であるときに有効なデータを持っています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-リスト~\ref{lst:fifo:double:buffer}はダブルバッファを示しています。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+コード~\ref{lst:fifo:double:buffer}はダブルバッファを示しています。
 各バッファ要素が2つのエントリを格納できるので、バッファ要素の半分(\code{depth/2})しか必要ありません。
 \code{DoubleBuffer}には\code{dataReg}と\code{shadowReg}の2つのレジスタがあります。
 コンシューマは常に\code{shadowReg}から供給されます。
@@ -11651,10 +11653,10 @@ Similar the fall through latency is half of the bubble FIFO.
 レイテンシーによる同様の秋には、バブルFIFOの半分です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 FIFOがフルスピードで実行されて、コンシューマが常に\code{ready}であれば、ダブルバッファの定常状態は\code{one}になります。
-コンシューマが\code{ready}をデ・アサートした場合のみ、キューは一杯になり、バッファは\code{two}の状態になります。
-しかし、シングルバブルFIFOと比較すると、キューの再起動に要する時間は、同じバッファー容量の場合の半分のクロック サイクル数しかかかりません。
+コンシューマが\code{ready}をデアサートした場合のみ、キューは一杯になり、バッファは\code{two}の状態になります。
+しかし、シングルバブルFIFOと比較すると、キューの再起動に要する時間は、同じバッファー容量の場合の半分のクロックサイクル数しかかかりません。
 \fi
 
 \ifshoworiginal
@@ -11663,8 +11665,8 @@ FIFOがフルスピードで実行されて、コンシューマが常に\code{r
 \ifshowtransfirst %(自動翻訳)
 \subsection{FIFO with Register Memory}
 \fi
-\ifshowtranssecond %(仮訳 12/24 aki)
-\subsection{レジスタメモリ付きFIFO (L11646 仮訳 12/24 aki)}
+\ifshowtranssecond %(校正)
+\subsection{レジスタメモリ付きFIFO (L11646 仮訳 12/24 校正1 01/03 aki)}
 \fi
 
 \ifshoworiginal
@@ -11679,8 +11681,8 @@ elements. For small buffers this is probably the most efficient implementation.
 小さなバッファの場合、これはおそらく最も効率的な実装です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-ソフトウェアエンジニアリングの経験があるかたは、私たちが多くの小さな個々の小さなバッファ要素からハードウェアキューを構築し、すべての要素が並列に実行され、上流および下流の要素とのハンドシェイクを行っていることを不思議に思われるかもしれません。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+ソフトウェアエンジニアリングの経験があるかたは、私たちが多くの小さな個々のバッファ要素からハードウェアキューを構築し、すべての要素が並列に実行され、上流および下流の要素とのハンドシェイクを行っていることを不思議に思われるかもしれません。
 小さなバッファの場合は、これが最も効率的な実装でしょう。
 \fi
 
@@ -11712,10 +11714,10 @@ To distinguish between empty and full we need another flag.
 空とフル区別するために、我々は別のフラグが必要です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 ソフトウェアのキューは、通常、単一スレッド内のシーケンシャルなコードによって使用されます。
 または、プロデューサとコンシューマのスレッドを分離するために、キューを使います。
-この設定では、固定サイズのFIFOキューは通常\myref{https://en.wikipedia.org/wiki/Circular_buffer}{循環バッファ}として実装されます。
+固定サイズのFIFOキューは通常\myref{https://en.wikipedia.org/wiki/Circular_buffer}{循環バッファ}として実装されます。
 2つのポインタは、キュー用に確保されたメモリ内の読み取り位置と書き込み位置を指します。
 ポインターがメモリの終わりに到達すると、そのメモリの始まりに戻って設定されます。
 2つのポインタの違いは、キュー内の要素数です。
@@ -11738,10 +11740,10 @@ and read and write pointers.
 〜\ref{lst:fifo:reg:mem}ショーリストFIFOメモリを用いて実装し、読み取りと書き込みのポインタキュー。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 このようなメモリベースのFIFOキューをハードウェアでも実装することができます。
 小さなキューの場合は、レジスタファイル(すなわち、\code{Reg(Vec())})を使用することができます。
-リストListing~\ref{lst:fifo:reg:mem}は、メモリと読み書きポインタを使って実装されたFIFOキューを示しています。
+コード~\ref{lst:fifo:reg:mem}は、メモリと読み書きポインタを使って実装されたFIFOキューを示しています。
 \fi
 
 \verylonglist{code/fifo_reg_mem.txt}{A FIFO with a register based memory.}{lst:fifo:reg:mem}
@@ -11762,10 +11764,10 @@ The counter is incremented only when the input \code{incr} is \code{true.B}.
 カウンタは入力\code{incr}が\code{true.B}あるときにのみインクリメントされます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-動作したときにインクリメントされて、バッファのラップアラウンドを行うために、ラップカウンターを実装する関数\code{counter}を定義した、同じようにふるまいをする2つのポインターがあります。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+動作したときにインクリメントを行ったり、バッファのラップアラウンドを行う2つの同じ動作を行う2つのポインタがあるので、それをカウンターとして関数\code{counter}で実装しました。
 カウンタのビット長は、\code{log2Ceil(depth).W}で計算します。
-次の値は1のときはインクリメントするか0でラップアラウンドです。
+次の値は1のときはインクリメントするか0でラップアラウンドとなります。
 カウンタは入力\code{incr}が\code{true.B}のときだけインクリメントされます。
 \fi
 
@@ -11783,8 +11785,8 @@ such a duple is simply wrapping the comma separated values in parentheses:
 そのようなdupleは単にコンマをラップさ作成するための構文は、括弧内の値を分離しました：
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-さらに、可能な次の値(インクリメントまたはラップアラウンドの0)も必要なので、この値を\code{counter}関数からも返します。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+さらに、可能な次の値(インクリメントまたはラップアラウンドの0)も必要なので、この値も\code{counter}関数から返します。
 Scalaでは、いわゆる\emph{tuple}を返すことができます。これは、複数の値を保持するための単なるコンテナーです。
 このようなtupleを作成する構文は、カンマで区切られた値を括弧で囲むだけです : 
 \fi
@@ -11804,8 +11806,8 @@ on the left hand side of the assignment:
 我々は、割り当ての左側の括弧表記を使用してそのようなタプルを分解することができます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-\noindent 割り当ての左側にある括弧表記を使用して、このようなタプルを分解できます :
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+\noindent 割り当ての左側にある括弧表記を使用して、tupleを分解できます :
 \fi
 
 \begin{chisel}
@@ -11827,8 +11829,8 @@ We define two flags to for the notion of empty and full.
 私たちは、空とフルの概念のために二つのフラグを定義します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
-メモリにはChiselデータ型\code{gen}の(\code{Reg(Vec(depth, gen))}を使ったレジスタを使用します。
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
+メモリにはChiselデータ型\code{gen}のVector(\code{Reg(Vec(depth, gen))}を使ったレジスタを使用します。
 読み書きポインタをインクリメントし、関数\code{counter}で読み書きポインタを作成するための2つの信号を定義しています。
 両方のポインタが等しくなると、バッファは空か満杯になります。
 空と満杯を示すために、2つのフラグを定義しています。
@@ -11846,9 +11848,9 @@ write pointer), and (4) signal the write counter to increment.
 \code{emptyReg}がディアサートされていることを確認バッファに（1）書き込み、（2）書き込みポインタがでリードポインタに追いつくだろう場合、（3）は、フルバッファをマーク：プロデューサーがアサートすると\code{valid}とFIFOは、私たち一杯になっていません次のクロックサイクル（次の書き込みポインタと、現在の読み出しポインタを比較されたい）、及び（4）は増加への書き込みカウンタに信号を送ります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 プロデューサが\code{valid}をアサートし、FIFOが満杯でない場合は、次のようにします : 
-(1) バッファへの書き込み、(2) \code{emptyReg}のデ・アサートを確実に行います。
+(1) バッファへの書き込み、(2) \code{emptyReg}のデアサートを確実に行います。
 (3) 次のクロックサイクルで書き込みポインタが読み取りポインタに追いつく場合はバッファがいっぱいになるようにマークし(現在の読み取りポインタと次の書き込みポインタを比較)、(4) 書き込みカウンタをインクリメントするように信号を送ります。
 \fi
 
@@ -11863,9 +11865,9 @@ the next clock cycle, and (3) signal the read counter to increment.
 消費者が\code{ready}で、FIFOは、私たちを空にされていない場合：（1）\code{fullReg}がディアサートされていることを確認し、（2）読み出しポインタは、次のクロック・サイクルでの書き込みポインタに追いつくかどうバッファが空にマークし、 （3）は、増分に読み出しカウンタに信号を送ります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 コンシューマが\code{ready}で、FIFOが空でない場合は、次のようにします : 
-(1) \code{fullReg}がデ・アサートされていることを確認し、(2) 読み出しポインタが次のクロックサイクルで書き込みポインタに追いついた場合はバッファを空にし、(3) 読み出しカウンタをインクリメントするための信号を送ります。
+(1) \code{fullReg}がデアサートされていることを確認し、(2) 読み出しポインタが次のクロックサイクルで書き込みポインタに追いついた場合はバッファを空にし、(3) 読み出しカウンタをインクリメントするための信号を送ります。
 \fi
 
 \ifshoworiginal
@@ -11879,7 +11881,7 @@ FIFOの出力は、読み取りポインタアドレスのメモリ素子です�
 準備ができて、有効なフラグは、単にフルと空の旗から派生しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/24 aki)
+\ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 FIFOの出力は、読み出しポインタアドレスのメモリ内容です。
 readyフラグとvalidフラグは、単純に満杯フラグと空フラグから派生したものです。
 \fi
@@ -11890,8 +11892,8 @@ readyフラグとvalidフラグは、単純に満杯フラグと空フラグか�
 \ifshowtransfirst %(自動翻訳)
 \subsection{FIFO with On-Chip Memory}
 \fi
-\ifshowtranssecond %(仮訳 12/27 aki)
-\subsection{オンチップメモリ付きFIFO (L11872 仮訳 12/27 aki)}
+\ifshowtranssecond %(校正)
+\subsection{オンチップメモリ付きFIFO (L11872 仮訳 12/27 校正1 01/03 aki)}
 \fi
 
 \ifshoworiginal
@@ -11908,10 +11910,10 @@ FIFOの最後のバージョンは、小さなFIFOに適したソリューショ
 一覧〜\ref{lst:fifo:mem}は、ストレージのための同期メモリを使用してFIFOを示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-最後のバージョンのFIFOでは、メモリを表現するためにレジスタファイルを使用していましたが、これは小さなFIFOの場合には良い解決策です。
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+さきほどのFIFOでは、メモリを表現するためにレジスタファイルを使用していましたが、これは小さなFIFOの場合には良い解決策です。
 より大きなFIFOの場合は、オンチップメモリを使用する方が良いでしょう。
-リスト~\ref{lst:fifo:mem}は、ストレージに同期メモリを使用したFIFOを示しています。
+コード~\ref{lst:fifo:mem}は、ストレージに同期メモリを使用したFIFOを示しています。
 \fi
 
 \verylonglist{code/fifo_mem.txt}{A FIFO with a on-chip memory.}{lst:fifo:mem}
@@ -11928,9 +11930,9 @@ same clock cycle.
 しかし、同期オンチップメモリ​​は、レジスタファイルの読み出しが同じクロックサイクルで利用可能であった次のクロックサイクルにおいて、読み出しの結果を提供します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 読み出しポインタと書き込みポインタの取り扱いは、レジスタメモリのFIFOと同じです。
-しかし、レジスタファイルの読み出しが同じクロックサイクルで利用可能であったが、同期オンチップメモリでは、次のクロックサイクルで読み出しの結果を配信される。
+しかし、さきほどのものではレジスタファイルの読み出しが同じクロックサイクルで利用可能でしたが、同期オンチップメモリでは、次のクロックサイクルで読み出しの結果が通知されます。
 \fi
 
 \ifshoworiginal
@@ -11950,7 +11952,7 @@ valid data (the next element) from the memory.
 ステートマシンが表現するために3つの状態から成る：（1）空のFIFOは、（2）有効なデータがメモリから読み出され、シャドウ・レジスタと、有効データ（次の要素）内のキューの（3）頭部から想い出。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 ですから、このレイテンシを処理するために、いくつかの追加のFSMとシャドウレジスタが必要です。
 メモリを読み取り、キューの先頭の値を出力ポートに届けます。
 その値が消費されない場合は、メモリから次の値を読み出す間、シャドウレジスタ\code{shadowReg}に格納する必要があります。
@@ -11975,11 +11977,11 @@ FIFOベースのメモリを効率的にキューに大量のデータを保持�
 FIFOベースのメモリの出力では、我々は二重の出力からメモリ読み出し経路を分離するためにFIFOバッファを単一のステージを追加します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 メモリベースのFIFOは、効率的に大量のデータをキューに保持することができ、レイテンシの低下が少なくて済みます。
-最後のデザインでは、FIFOの出力はメモリの読み取りから直接来る場合があります。
+さきほどのデザインでは、FIFOの出力はメモリの読み取りから直接届く場合があります。
 このデータパスがデザインのクリティカルパスにある場合、2つのFIFOを組み合わせることで、デザインを簡単にパイプライン化することができます。
-リスト~\ref{lst:fifo:comb}はそのような組み合わせを示しています。メモリベースのFIFOの出力には、メモリ読み取りパスを出力から切り離すために、シングルステージのダブルバッファFIFOを追加します。
+コード~\ref{lst:fifo:comb}はそのような組み合わせを示しています。メモリベースのFIFOの出力には、メモリ読み取りパスを出力から切り離すために、シングルステージのダブルバッファFIFOを追加します。
 \fi
 
 \longlist{code/fifo_comb.txt}{Combining a memory based FIFO with double-buffer
@@ -11994,8 +11996,8 @@ stage.}{lst:fifo:comb}
 \ifshowtransfirst %(自動翻訳)
 \section{Exercises}
 \fi
-\ifshowtranssecond %(仮訳 12/27 aki)
-\section{演習 (L11980 仮訳 12/27 aki)}
+\ifshowtranssecond %(校正)
+\section{演習 (L11980 仮訳 12/27 校正1 01/03 aki)}
 \fi
 
 \ifshoworiginal
@@ -12011,8 +12013,8 @@ Source code for both exercises is included in the
 両方の練習のためのソースコードは、\myref{https://github.com/schoeberl/chisel-examples}{chisel-examples}リポジトリに含まれています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-この演習節、2つの演習が含まれているので、少し長くなります : 
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+この演習節には、2つの演習が含まれているので、少し長くなります : 
 (1) バブルFIFOを探索し、異なるFIFO設計を実装する。
 そして (2) UARTを調べて拡張する問題です。
 両方の練習問題のソースコードは\myref{https://github.com/schoeberl/chisel-examples}{chisel-examples}リポジトリに含まれています。
@@ -12024,8 +12026,8 @@ Source code for both exercises is included in the
 \ifshowtransfirst %(自動翻訳)
 \subsection{Explore the Bubble FIFO}
 \fi
-\ifshowtranssecond %(仮訳 12/27 aki)
-\subsection{バブルFIFOを探る (12004 仮訳 12/27 aki)}
+\ifshowtranssecond %(校正)
+\subsection{バブルFIFOを探る (12004 仮訳 12/27 校正1 01/03 aki)}
 \fi
 
 \ifshoworiginal
@@ -12047,8 +12049,8 @@ VCDファイルには、\myref{http://gtkwave.sourceforge.net/}{GTKWave}とし�
 テスタと生成された波形を探検。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-また、FIFOソースには、さまざまな読み書き動作を誘発し、\myref{https://en.wikipedia.org/wiki/Value_change_dump}{value change dump (VCD)}形式の波形を生成するテスタも含まれています。
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+また、FIFOソースには、さまざまな読み書き動作を行って、\myref{https://en.wikipedia.org/wiki/Value_change_dump}{value change dump (VCD)}形式の波形を生成するテスタも含まれています。
 VCDファイルは、\myref{http://gtkwave.sourceforge.net/}{GTKWave}などの波形ビューアでみることができます。
 リポジトリ内の\myref{https://github.com/schoeberl/chisel-examples/blob/master/src/test/scala/simple/FifoTester.scala}{FifoTester}をみてください。
 リポジトリには、例を実行するための\code{Makefile}が含まれています。FIFOの例では、次のように入力します : 
@@ -12068,7 +12070,7 @@ viewing. Explore the tester and the generated waveform.
 テスターと生成された波形を探ります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 このmakeコマンドでFIFOをコンパイルし、テストを実行し、波形を見るためにGTKWaveを起動します。
 テスターと生成された波形をみてみます。
 \fi
@@ -12086,8 +12088,8 @@ latency of a data word through the FIFO is equal to the depth of the FIFO.
 この泡立ちはまた、FIFOを介してデータワードのレイテンシはFIFOの深さに等しいことを意味します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-最初のサイクルでは、テスターは1つの単語を書きます。そのワードが\emph{bubble FIFO}と名付けられたFIFOを通って伝搬する様子を波形で観察できます。
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+最初のサイクルでは、テスターは1つのワードを書きます。そのワードが\emph{bubble FIFO}と名付けられたFIFOを通って伝搬する様子を波形で観察できます。
 この伝搬は、FIFOを通過するデータワードのレイテンシが FIFOの深さに等しいことも示します。
 \fi
 
@@ -12105,7 +12107,7 @@ a latency of the buffer depth for a read to affect the writer side.
 バブルFIFOがフルになると、それは作家側に影響を与えるために、読み取りのためのバッファの深さの待ち時間がかかります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 次のテストでは、FIFOが一杯になるまでFIFOを埋めます。その後、読み取りが1回行われます。
 空のワードがFIFOのリーダ側からライタ側に向かって伝搬する様子に注目してください。
 バブルFIFOが一杯になると、読み出しがライタ側に伝わるまでにバッファの深さのレイテンシが必要になります。
@@ -12124,7 +12126,7 @@ and full for a single word transfer.
 バッファ・ステージは、単一のワード転送のために、空と完全切り替えること常に有します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 テストの最後には、最大速度で書き込みと読み込みを試みるループが含まれています。
 バブルFIFOが最大帯域幅、つまり1ワードあたり2クロックサイクルで動作しているのがわかります。
 バッファステージは、1ワードの転送のために常に空と満タンの間で行き来することになります。
@@ -12143,7 +12145,7 @@ for the restart.
 $ N $ステージバブルFIFOの主な欠点がある：一つの単語毎に2クロックサイクル、（2）データワードがリーダー端に$ Nライタ端から$クロックサイクルを移動しなければならないでスループット（1）最大値、及び（3）完全なFIFOは、再起動のために$ N $クロック・サイクルを必要とします。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 バブルFIFOはシンプルで、小さなバッファの場合、必要なリソースが少なくて済みます。
 $n$ステージのバブルFIFOの主な欠点は次のとおりです : 
 (1) 最大スループットは、2クロックサイクルごとに1ワードであること、(2) データワードは、ライタ側からリーダ側へ$n$クロックサイクルで移動しなければならないこと、(3) フルFIFOは、再起動のために$n$クロックサイクルが必要であることです。
@@ -12167,9 +12169,9 @@ a vector of registers (\code{Reg(Vec(4, UInt(size.W)))}).
 ショートカットとして円形のバッファ使用、レジスタ（\code{Reg(Vec(4, UInt(size.W)))}）のベクトルの最初の実装のために。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-これらの欠点は、\myref{https://en.wikipedia.org/wiki/Circular_buffer}{循環バッファ}を用いたFIFO実装によって解決することができる。
-循環バッファは、メモリと読み書きポインタを用いて実装することができる。
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+これらの欠点は、\myref{https://en.wikipedia.org/wiki/Circular_buffer}{循環バッファ}を用いたFIFO実装によって解決することができます。
+循環バッファは、メモリと読み書きポインタを用いて実装することができます。
 同じインターフェイスを使用して4つの要素を持つ循環バッファとしてFIFOを実装し、テスターで異なる動作を確認してみてください。
 循環バッファーの初期実装では、簡単に実装を行うためにレジスタのベクトル((\code{Reg(Vec(4, UInt(size.W)))}))を使用します。
 \fi
@@ -12180,8 +12182,8 @@ a vector of registers (\code{Reg(Vec(4, UInt(size.W)))}).
 \ifshowtransfirst %(自動翻訳)
 \subsection{The UART}
 \fi
-\ifshowtranssecond %(仮訳 12/27 aki)
-\subsection{UART (L12162 仮訳 12/27 aki)}
+\ifshowtranssecond %(校正)
+\subsection{UART (L12162 仮訳 12/27 校正1 01/03 aki)}
 \fi
 
 \ifshoworiginal
@@ -12200,7 +12202,7 @@ UARTのたとえば、（通常はUSB接続で）あなたのラップトップ�
 、Linux上でWindowsまたは\code{gtkterm}上のハイパーターミナル：RRR000kxWLefJ0設定あなたのポートが、これは多くの場合、\code{/dev/ttyUSB0}のようなものであるUSBのUARTで、正しいデバイスを使用します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 UARTの例では、シリアルポートとラップトップ用のシリアルポート(通常は USB 接続)を備えたFPGAボードが必要です。
 FPGAボードとラップトップのシリアルポートの間にシリアルケーブルを接続します。
 WindowsのHypertermやLinuxの\code{gtkterm}などのターミナルプログラムを起動します : 
@@ -12222,8 +12224,8 @@ With the following command you can create the Verilog code for the UART:
 次のコマンドを使用すると、UARTのVerilogコードを作成することができますRRR000et1CmhaBは、次にデザインを合成するためにあなたのsynthesizeツールを使用します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-USB UARTでは、大抵の場合、これは\code{/dev/ttyUSB0}でしょう。
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+正しいデバイスを使用するようにポートを構成します。USB UARTではたいていの場合、これは\code{/dev/ttyUSB0}でしょう。
 ボーレートを115200に設定し、パリティやフロー制御(ハンドシェイク)をしないようにします。
 以下のコマンドで、UART用のVerilogコードを作成することができます : 
 \fi
@@ -12248,8 +12250,8 @@ Quartusでデザインを合成して、FPGAを設定するには、再生ボタ
 設定が完了したら、ターミナルでの挨拶のメッセージが表示されるはずです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-その後、合成ツールを使用してデザインを合成します。
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+つぎに、合成ツールを使用してデザインを合成します。
 リポジトリには、DE2-115 FPGAボード用のQuartusプロジェクトが含まれています。Quartusで再生ボタンを使ってデザインを合成し、FPGAをコンフィグレーションします。
 コンフィギュレーション後、ターミナルにグリーティングメッセージが表示されるはずです。
 \fi
@@ -12265,8 +12267,8 @@ UARTで点滅LEDの例を拡張し、LEDがオフとオンのとき、シリア�
 \code{Sender}の例のように、\code{BufferedTx}を使用してください。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-LEDの点滅の例をUARTで拡張して、LEDが消灯している時と点灯している時にシリアル・ラインに0と1を書き込みます。
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+LEDの点滅の例をUARTで拡張して、LEDが消灯している時と点灯している時にシリアルラインに0と1を書き込みます。
 \code{Sender}の例と同様に \code{BufferedTx}を使用します。
 \fi
 
@@ -12284,7 +12286,7 @@ to check if the transmit buffer is free.
 このケースでは、送信バッファが自由であるかどうかを確認するためにUARTのステータスをポーリングするためにあなたのステートマシンを拡張する必要があります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 文字の出力が遅い(1秒間に2文字)ので、UART送信レジスタにデータを書き込むことができ、Read\Validハンドシェイクを無視することができます。
 この例を拡張して、ボーレートが許す限りの速さで0～9の繰り返しの数字を書き込むようにします。
 この場合、ステートマシンを拡張してUARTの状態をポーリングし、送信バッファが空いているかどうかをチェックする必要があります。
@@ -12301,9 +12303,9 @@ and receiver.
 あなたは送信機と受信機にバッファリングを追加するために実装されていることをFIFOを追加すること自由に感じなさい。
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
-サンプルコードには、Tx用のバッファが1つしか含まれていません。
-送信機と受信機にバッファリングを追加するために実装したFIFOを自由に追加してください。
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
+サンプルコードには、Tx用のバッファが1つだけです。
+送信機と受信機にバッファリングのためのFIFOを自由に追加してみてください。
 \fi
 
 \ifshoworiginal
@@ -12312,8 +12314,8 @@ and receiver.
 \ifshowtransfirst %(自動翻訳)
 \subsection{FIFO Exploration}
 \fi
-\ifshowtranssecond %(仮訳 12/27 aki)
-\subsection{FIFO探査 (L12296 仮訳 12/27 aki)}
+\ifshowtranssecond %(校正)
+\subsection{FIFO探査 (L12296 仮訳 12/27 校正1 01/03 aki)}
 \fi
 
 \ifshoworiginal
@@ -12338,12 +12340,12 @@ alone. How much simpler is this design?
 このデザインは、どのようにはるかに簡単ですか？
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 専用レジスタに4つのバッファ要素を持つシンプルなFIFOを書きます。
 2ビットの読み書きカウンタを使用しますが、これではオーバーフローする可能性があります。
 さらに単純化して、読み出しおよび書き込みカウンタが2ビットの場合を考えます。
 ポインタは空のFIFOと同じです。つまり、最大で3つの要素を格納することができます。
-この単純化により、リスト~\ref{lst:fifo:reg:mem}の例にあるカウンター関数と、同じポインタ値を持つ空や満杯の扱いを避けることができます。
+この単純化により、コード~\ref{lst:fifo:reg:mem}の例にあるカウンター関数と、同じポインタ値を持つ空や満杯の扱いを避けることができます。
 これはポインタの値だけで導出できるので、空フラグや満杯フラグは必要ありません。
 このデザインはどのくらい簡単ですか?
 \fi
@@ -12365,9 +12367,9 @@ FPGAのためにそれらを合成することによって、異なるサイズ�
 4つのワード、16ワード、および256ワードのFIFOのためのスイートスポットはどこですか？
 \fi
 
-\ifshowtranssecond %(仮訳 12/27 aki)
+\ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
 提示された異なるFIFO設計は、以下の特性に関連して設計上のトレードオフが異なります : 
-(1) 最大スループット。(2) フォールスルーレイテンシ、(3) リソース要件、(4) 最大クロック周波数。FPGAに合成して、さまざまなサイズのFIFO のすべてのバリエーションを調べてみましょう。
+(1) 最大スループット、(2) フォールスルーレイテンシ、(3) リソース要件、(4) 最大クロック周波数。FPGAに合成して、さまざまなサイズのFIFO のすべてのバリエーションを調べてみましょう。
 4ワード、16ワード、256ワードのちょうどよいFIFOのサイズはどれでしょう?
 \fi
 
@@ -12521,7 +12523,7 @@ AN ALUは、通常、2つのオペランド入力（それら\code{a}と\code{b}
 
 \ifshowtranssecond %(仮訳 12/28 aki)
 \noindent ALUは通常、2つのオペランド入力(\code{a}と\code{b}と呼ぶ)と、関数を選択するための演算\code{op}(またはオペコード)入力と、出力\code{y}を持ちます。
-リスト~\ref{lst:leros-alu}はALUを示しています。
+コード~\ref{lst:leros-alu}はALUを示しています。
 \fi
 
 
@@ -12564,7 +12566,7 @@ For the testing, we write the ALU function in plain Scala, as shown in Listing~\
 \fi
 
 \ifshowtranssecond %(仮訳 12/28 aki)
-テストのため、リスト~\ref{lst:leros-alu-scala}に示すように、ALU関数を平易なScalaで記述したものを示します。
+テストのため、コード~\ref{lst:leros-alu-scala}に示すように、ALU関数を平易なScalaで記述したものを示します。
 \fi
 
 \longlist{code/leros_alu_ref.txt}{The Leros ALU function written in Scala.}{lst:leros-alu-scala}
@@ -12837,7 +12839,7 @@ A Scala \code{match} expression covers the core of the assembly function.
 \fi
 
 \ifshowtranssecond %(仮訳 12/28 aki)
-リスト~\ref{lst:leros-asm-match}にLerosアセンブラのコア部分を示します。
+コード~\ref{lst:leros-asm-match}にLerosアセンブラのコア部分を示します。
 Scalaの\code{match}式がアセンブリ関数のコアをカバーしています。
 \todo{コードについてもう少し説明します。}
 \fi
