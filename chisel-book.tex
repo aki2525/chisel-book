@@ -8046,7 +8046,7 @@ FSMは、同期順序回路と呼ばれています。
 
 \ifshowtranssecond %(仮訳 12/12 校正1 01/01 aki)
 有限オートマトン(FSM)は、デジタル設計の基本的な構成要素です。
-FSMは、状態と状態の間の遷移とその(ガードされた)条件を記述しています。
+FSMは、状態と状態の間の\emph{遷移}とその(ガードされた)条件を記述しています。
 FSMは、リセット時に設定される初期状態があります。
 FSMは同期シーケンシャル回路と呼ばれることもあります。
 \fi
@@ -8963,8 +8963,8 @@ for the next start.
 \begin{itemize}
 \item \code{start}が1クロックサイクルの間ハイの時、点滅シーケンスを開始します。
 \item シーケンスは3回点滅する。
-\item 点滅の間、\code{light}は、6クロックサイクル\emph{on}に、4クロックサイクル\emph{off}になります。
-\item シーケンスの後、FSMは\code{light}を\emph{off}にして次のスタートを待ちます。
+\item 点滅の間、\code{light}は、6クロックサイクル\emph{オン}に、4クロックサイクル\emph{オフ}になります。
+\item シーケンスの後、FSMは\code{light}を\emph{オフ}にして次のスタートを待ちます。
 \end{itemize}
 \fi
 
@@ -8986,7 +8986,7 @@ ERROR-TBD
 
 \ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 直接実装のFSM\footnote{状態図を~\cite[p.~376]{dally:vhdl:2016}に示します。}は27の状態を持っています。
-入力待ちの初期状態が1つ、3種類の\emph{on}状態が$3 \times 6$と、\emph{off}状態が$2 \times 4$あります。
+入力待ちの初期状態が1つ、3種類の\emph{オン}状態が$3 \times 6$と、\emph{オフ}状態が$2 \times 4$あります。
 このライトフラッシャーの単純明快な実装のコードは、ここでは示しません。
 \fi
 
