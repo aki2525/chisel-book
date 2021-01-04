@@ -12379,8 +12379,8 @@ FPGAのためにそれらを合成することによって、異なるサイズ�
 \ifshowtransfirst %(自動翻訳)
 \chapter{Design of a Processor}
 \fi
-\ifshowtranssecond %(仮訳 12/28 aki)
-\chapter{プロセッサの設計 (L12361 仮訳 12/27 aki)} %(仮訳 12/28 aki  12章 ========================================================================)
+\ifshowtranssecond %(校正)
+\chapter{プロセッサの設計 (L12361 仮訳 12/27 校正1 01/03 aki)} %(仮訳 12/28 aki  12章 ========================================================================)
 \fi
 
 \index{Processor}
@@ -12404,11 +12404,11 @@ architecture knowledge is needed to follow the presented code examples.
 これは高度な例であり、いくつかのコンピュータアーキテクチャの知識が提示コード例に従うことが必要であることに言及したいと思います。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 本書の最後の章として、中規模のプロジェクトを紹介します : 
-マイクロプロセッサの設計、シミュレーション、テストである。
+マイクロプロセッサの設計、シミュレーション、テストです。
 このプロジェクトを管理しやすくするために、単純なアキュムレータマシンを設計します。
-このプロセッサは\myref{https://leros-dev.github.io/}{Leros}~\cite{leros:arcs2019}と呼ばれ、オープンソースで\url{https://github.com/leros-dev/leros}から入手可能です。
+このプロセッサは\myref{https://leros-dev.github.io/}{Leros}~\cite{leros:arcs2019}と呼ばれ、オープンソースで\url{https://github.com/leros-dev/leros}から入手できます。
 これは高度な例であり、提示されたコード例に従うためには、いくつかのコンピュータアーキテクチャの知識が必要であることを言及したいと思います。
 \fi
 
@@ -12428,9 +12428,9 @@ and \code{AR} an address register for memory access.
 そのテーブルの\code{A}アキュムレータを表し、\code{PC}はプログラムカウンタであり、\code{i}が（0〜255）即値であり、\code{Rn}レジスタRRR011tYQBO6l0（0〜255）、RRR011NpcY2k6W分岐はRRR011RQtG1BaSに対してオフセット、及びRRR011jfje2hSnのアドレスレジスタメモリアクセス。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 Lerosはシンプルな設計ですが、Cコンパイラのターゲットとしては十分な性能を持っています。
-命令の記述は1ページに収まるようになっており、表~\ref{tab:leros:isa}を参照してください。
+命令の記述は1ページに収まるようになっており、表~\ref{tab:leros:isa}に一覧があります。
 その中で\code{A}はアキュムレータ、\code{PC}はプログラムカウンタ、\code{i}は即時値(0〜255)、\code{Rn}はレジスタ\code{n}(0〜255)、\code{o}は\code{PC}との相対的な分岐オフセット、\code{AR}はメモリアクセス用のアドレスレジスタを表しています。
 \fi
 
@@ -12482,8 +12482,8 @@ scall & scall A & System call (simulation hook) \\
 \ifshowtransfirst %(自動翻訳)
 \section{Start with an ALU}
 \fi
-\ifshowtranssecond %(仮訳 12/28 aki)
-\section{ALUから始める (L12464 仮訳 12/28 aki)}
+\ifshowtranssecond %(校正)
+\section{ALUから始める (L12464 仮訳 12/28 校正1 01/04 aki)}
 \fi
 
 \index{ALU}
@@ -12502,10 +12502,10 @@ First, we define an \code{Enum} to represent the different operations of the ALU
 まず、ALUの異なる操作を表現するために\code{Enum}を定義します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 プロセッサの中心的な構成要素は、\myref{https://en.wikipedia.org/wiki/Arithmetic_logic_unit}{arithmetic logic unit}、略してALUです。
 そこで、まずALUのコーディングとテストベンチから始めます。
-まず、ALUのさまざまな演算を表す\code{Enum}を定義します : 
+最初に、ALUのさまざまな演算を表す\code{Enum}を定義します : 
 \fi
 
 \shortlist{code/leros_types.txt}
@@ -12521,7 +12521,7 @@ AN ALUは、通常、2つのオペランド入力（それら\code{a}と\code{b}
 一覧〜\ref{lst:leros-alu}は、ALUを示しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 \noindent ALUは通常、2つのオペランド入力(\code{a}と\code{b}と呼ぶ)と、関数を選択するための演算\code{op}(またはオペコード)入力と、出力\code{y}を持ちます。
 コード~\ref{lst:leros-alu}はALUを示しています。
 \fi
@@ -12546,7 +12546,7 @@ switch文は、すべての操作を列挙し、それに応じて表現を割�
 最後に、我々は、ALUの出力\code{y}に結果\code{res}を割り当てます
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 最初に3つの入力の短い名前を定義します。
 \code{switch}文は\code{res}の計算のロジックを定義します。
 したがって、デフォルトの代入は0になります。
@@ -12565,7 +12565,7 @@ For the testing, we write the ALU function in plain Scala, as shown in Listing~\
 一覧〜\ref{lst:leros-alu-scala}に示すように、テストのために、私たちは、平野ScalaでALU関数を記述します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 テストのため、コード~\ref{lst:leros-alu-scala}に示すように、ALU関数を平易なScalaで記述したものを示します。
 \fi
 
@@ -12582,9 +12582,9 @@ Scalaの実装によってChiselに書き込まれたハードウェアのこの
 私たちは、テストベクトルとして、いくつかのコーナーケース値を使用します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
-\noindent Chiselで記述されたハードウェアの重複は、Scalaの実装仕様によりエラー検出をしません。少なくとも何らかの確かな確認にはなります。
-テストベクタとしていくつかのごくまれな値を使用します : 
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
+\noindent Chiselで記述されたハードウェアの重複は、Scalaの実装仕様によりエラー検出をしません。が、少なくとも何らかの確認程度にはなります。
+テストベクタとしていくつかの境界値や、まれな値を使用します : 
 \fi
 
 \shortlist{code/leros_alu_testvec.txt}
@@ -12597,7 +12597,7 @@ Scalaの実装によってChiselに書き込まれたハードウェアのこの
 我々は両方の入力にこれらの値を持つすべての機能をテストします。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 \noindent 両方の入力に、これらの値を使用してすべての関数をテストします : 
 \fi
 
@@ -12614,9 +12614,9 @@ to test against random inputs:
 コーナーケースに対してテストのほかに、それはランダムな入力に対してもテストに便利です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
-\noindent 32ビット引数に対するすべてに対する網羅的なテストは不可能であり、これが入力値としていくつかのまれな境界値を選択した理由です。
-まれな境界値に対するテストの他に、ランダムな入力に対するテストも有用です : 
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
+\noindent 32ビット引数のすべての値に対する網羅的なテストは不可能であり、これが入力値としていくつかのまれな境界値を選択した理由です。
+まれな境界値に対するテストの他に、ランダムな入力に対するテストも有用でしょう : 
 \fi
 
 \shortlist{code/leros_alu_rand.txt}
@@ -12629,8 +12629,8 @@ to test against random inputs:
 あなたがレロスのプロジェクト内でテストを実行することができます
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
-\noindent Lerosプロジェクトにテストを実行するには、次のようにします。
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
+\noindent Lerosプロジェクトでテストを実行するには、次のようにします。
 \fi
 
 \begin{verbatim}
@@ -12645,8 +12645,8 @@ and shall produce a success message similar to:
 とに似て成功メッセージを作成しなければなりません。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
-次のような成功メッセージが表示される : 
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
+次のような成功メッセージが表示されるでしょう : 
 \fi
 
 \begin{verbatim}
@@ -12662,8 +12662,8 @@ test Alu Success: 70567 tests passed in 70572 cycles taking
 \ifshowtransfirst %(自動翻訳)
 \section{Decoding Instructions}
 \fi
-\ifshowtranssecond %(仮訳 12/28 aki)
-\section{命令のデコード (L12644 仮訳 12/28 aki)}
+\ifshowtranssecond %(校正)
+\section{命令のデコード (L12644 仮訳 12/28 校正1 01/04 aki)}
 \fi
 
 \index{Processor!instruction decode}
@@ -12682,9 +12682,9 @@ ALUから、我々は後方に働くと命令デコーダを実装していま�
 私たちは、レロス、レロスのためのアセンブラのハードウェア実装、およびレロスの命令セットシミュレータ間のエンコード定数を共有したいです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 ALUから、逆方向に作業して命令デコーダーを実装します。
-まず最初に、独自のScalaクラスと\emph{共有}パッケージを使って命令エンコーディングを定義します。
+まず最初に、独自のScalaクラスと\emph{共有}パッケージを使って命令エンコーダーを定義します。
 Lerosのハードウェア実装、Lerosのアセンブラー、およびLerosの命令セットシミュレーターの間でエンコード定数を共有したいと思います。
 \fi
 
@@ -12702,8 +12702,8 @@ which is later fed partially into the ALU.
 デコード成分のため、我々は、後でALUに部分的に供給される出力用\code{Bundle}を定義します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
-\noindent デコードコンポーネントに出力の\code{バンドル}を定義します。バンドルは後で部分的にALUに供給されます。
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
+\noindent デコードコンポーネントに出力の\code{バンドル}を定義します。バンドルは後ほど部分的にALUへ供給されます。
 \fi
 
 \shortlist{code/leros_decode_bundle.txt}
@@ -12718,8 +12718,8 @@ as output. Those driving signals are assigned a default value with \code{WireDef
 これらの駆動信号は\code{WireDefault}と、デフォルト値が割り当てられています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
-\noindent デコードは8ビットのオペコードを入力として受け取り、デコードされた信号を出力として出力します。
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
+\noindent デコードは8ビットのオペコードを入力として受け取り、デコードされた信号を出力とします。
 これらの駆動信号は、\code{WireDefault}でデフォルト値が割り当てられます。
 \fi
 
@@ -12735,8 +12735,8 @@ instruction that represents the opcode (in Leros for most instructions the upper
 デコーディング自体はほとんどの命令上位8ビット用のレロスにオペコードを（表し命令の一部にだけ大きなスイッチ文です。）
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
-\noindent デコードは、オペコードに含まれる命令の部分に対する大きなスイッチ文に過ぎません(Lerosでは、ほとんどの命令は上位8ビットです)。
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
+\noindent デコードは、オペコードに含まれる命令の部分に対する大きなswitch文に過ぎません(Lerosでは、ほとんどの命令は上位8ビットです)。
 \fi
 
 \shortlist{code/leros_decode.txt}
@@ -12747,8 +12747,8 @@ instruction that represents the opcode (in Leros for most instructions the upper
 \ifshowtransfirst %(自動翻訳)
 \section{Assembling Instructions}
 \fi
-\ifshowtranssecond %(仮訳 12/28 aki)
-\section{アセンブラ命令 (L12729 仮訳 12/28 aki)}
+\ifshowtranssecond %(校正)
+\section{アセンブラ命令 (L12729 仮訳 12/28 校正1 01/04 aki)}
 \fi
 
 \index{Assembler}
@@ -12764,9 +12764,9 @@ which we use to initialize the instruction memory.
 しかし、非常に最初のテストのために、我々はハードコード数命令することができ、私たちは命令メモリを初期化するために使用Scalaの配列、にそれらを置きます。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 Lerosのプログラムを書くにはアセンブラが必要です。
-しかし、最初のテストでは、いくつかの命令をハードコーディングしてScalaの配列に入れ、命令メモリの初期化に使用します。
+しかし、最初のテストでは、いくつかの命令をハードコーディングしてScalaの配列に入れ、それを命令メモリの初期化に使用します。
 \fi
 
 \shortlist{code/leros_asm_hard.txt}
@@ -12792,14 +12792,14 @@ Scalaのような表情豊かな言語とアセンブラを書くことは、大
 したがって、我々はそれがある渡すかを示すためにパラメータで二回\code{assemble}を呼び出します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 \noindent しかし、これはプロセッサをテストするには非常に非効率的なアプローチです。
 Scalaのような表現言語でアセンブラを書くのは大したプロジェクトではありません。
 そこで、100行程度のコードで可能なLeros用の簡単なアセンブラを書きます。
 アセンブラを呼び出す関数\code{getProgram}を定義しています。
 分岐先には、\code{Map}で収集したシンボルテーブルが必要です。
 古典的なアセンブラは二回のパスで実行されます。
-(1) シンボルテーブル値の収集を行い、(2)1回目のパスで集めたシンボルを使ってプログラムをアセンブルします。
+(1) シンボルテーブル値の収集を行い、(2) 1回目のパスで集めたシンボルを使ってプログラムをアセンブルします。
 そのため、どのパスであるかを示すパラメータを指定して、\code{assemble}を2回呼び出します。
 \fi
 
@@ -12820,7 +12820,7 @@ a register number.
 と二つの可能なオペランド解析するために2つのヘルパー関数を定義する：レジスタ番号を読み取るために（1）〜（10進数または16進数表記を可能にする）整数定数及び（2）。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 \code{assemble}関数は、ソースファイル\footnote{この関数は実際にソースファイルを読み込むわけではありませんが、この議論では読み込み関数として考えることができます。}を読み込むことから始まり、2つの可能なオペランドを解析するための2つのヘルパー関数を定義します。
 (1) 整数定数(10進数または16進数表記が可能)と、(2) レジスタ番号を読み込みます。
 \fi
@@ -12838,7 +12838,7 @@ A Scala \code{match} expression covers the core of the assembly function.
 スカラ\code{match}発現は、アセンブリ機能のコアを覆っています
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 コード~\ref{lst:leros-asm-match}にLerosアセンブラのコア部分を示します。
 Scalaの\code{match}式がアセンブリ関数のコアをカバーしています。
 \todo{コードについてもう少し説明します。}
@@ -12852,8 +12852,8 @@ Scalaの\code{match}式がアセンブリ関数のコアをカバーしていま
 \ifshowtransfirst %(自動翻訳)
 \section{Exercise}
 \fi
-\ifshowtranssecond %(仮訳 12/28 aki)
-\section{演習 (L12833 仮訳 12/28 aki)}
+\ifshowtranssecond %(校正)
+\section{演習 (L12833 仮訳 12/28 校正1 01/04 aki)}
 \fi
 
 \ifshoworiginal
@@ -12867,7 +12867,7 @@ you find interesting.
 あなたはChiselを通して、あなたの学習ツアーの最後に、あなたが面白いことを設計上の問題に取り組む準備ができています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki))
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 最後の章にあるこの演習課題は、非常に自由な形で出題されています。
 あなたは、Chiselを介してあなたの学習ツアーの最後にあり、あなたが面白いと思う設計の問題に取り組む準備ができています。
 \fi
@@ -12882,8 +12882,8 @@ fiddle with the code by breaking it and see that tests fail.
 1つのオプションは、章を再読し、内のすべてのソースコードと一緒に読んで、テストケースを実行し、それを破壊することにより、コードとフィドルとテストが失敗することを確認することです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
-1つの選択肢は、この章を読み直して、\myref{https://github.com/leros-dev/leros}{Leros リポジトリ}にあるすべてのソースコードと一緒に読み、テストが失敗するほどコードをいじくり回し、コードを壊してテストケースを実行し、失敗することを確認することです。
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
+1つの選択肢は、この章を読み直して、\myref{https://github.com/leros-dev/leros}{Leros リポジトリ}にあるすべてのソースコードを読み、テストが失敗するほどコードをいじくり回し、コードを壊してテストケースを実行し、失敗することを確認することです。
 \fi
 
 \ifshoworiginal
@@ -12899,7 +12899,7 @@ or go creasy and superpipeline Leros for the highest possible clocking frequency
 あなただけの単一のパイプラインステージでレロスのChiselシミュレーションバージョンを書き込み、またはcreasyを行くと可能な限り最高のクロック周波数のためレロスをスーパーパイプがあります。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 別の選択肢は、Lerosの実装を書くことです。リポジトリにある実装は、パイプラインを構成するための一つの可能性に過ぎません。
 Chiselシミュレーション版のLerosを1つのパイプラインステージだけで書くこともできますし、最高のクロック周波数を得るためにLerosをスーパーパイプライン化することもできます。
 \fi
@@ -12915,9 +12915,9 @@ design and implementation is no magic art, but the engineering that can be very 
 たぶんレロスプロセッサを構築する方法のデモンストレーションや必要なツールは、プロセッサの設計と実装は魔法アートが、非常に楽しいことができエンジニアリングではないことを確信しています。
 \fi
 
-\ifshowtranssecond %(仮訳 12/28 aki)
+\ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 第3の選択肢は、ゼロからプロセッサを設計することです。
-Lerosプロセッサと必要なツールを構築する方法のデモンストレーションにより、プロセッサの設計と実装は魔法の芸術ではなく、非常に楽しいエンジニアリングであることがわかっていただけるでしょう
+Lerosプロセッサと必要なツールを構築する方法のデモンストレーションにより、プロセッサの設計と実装は魔法の芸術ではなく、非常に楽しいエンジニアリングであることがわかっていただけたでしょう。
 \fi
 
 \ifshoworiginal
