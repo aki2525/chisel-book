@@ -6026,8 +6026,8 @@ register output follows the input signal with one clock cycle delay.
 リセット前の最初のクロックサイクルでは、レジスタの内容が定義されていません。
 第2クロックサイクルではリセットがハイにアサートされ、このクロックサイクルの立ち上がりエッジ(ラベルB)でレジスタは初期値\code{0}になります。
 入力\code{inVal}は無視されています。
-次のクロックサイクルでは\code{リセット}は\code{0}になり、\code{inVal}の値は次の立ち上がりエッジ(ラベルC)でキャプチャされます。
-それ以降は\code{リセット}は\code{0}のままで、レジスタ出力は入力信号から1クロックサイクル遅れで追従します。
+次のクロックサイクルでは\code{reset}は\code{0}になり、\code{inVal}の値は次の立ち上がりエッジ(ラベルC)でキャプチャされます。
+それ以降は\code{reset}は\code{0}のままで、レジスタ出力は入力信号から1クロックサイクル遅れで追従します。
 \fi
 
 \ifshoworiginal
@@ -6121,7 +6121,7 @@ follows the input with one clock cycle delay. Only in the fourth clock cycle
 \ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 図~\ref{fig:register-en-wave}イネーブル付きレジスタの波形例を示します。
 ほとんどの場合、イネーブルをハイ(\code{true})にすると、レジスタは1クロックサイクルの遅延で入力に従ってやつで、います。
-4クロックサイクル目にのみ\code{イネーブル)がLowになり、Dの立ち上がりエッジでレジスタは値(5)を保持します。
+4クロックサイクル目にのみ\code{enable)がLowになり、Dの立ち上がりエッジでレジスタは値(5)を保持します。
 \fi
 
 \ifshoworiginal
@@ -6357,7 +6357,7 @@ to set \code{N} to 9. Setting \code{N} to 10 would be a classic example of an
 \fi
 
 \ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
-注、すべてのカウンタ例で、値はNを含めて\code{0}から\code{N}の間にあることに注意してください。
+注、すべてのカウンタ例で、値は\code{N}を含めて\code{0}から\code{N}の間にあることに注意してください。
 10クロックサイクルをカウントしたい場合は、\code{N}を9に設定する必要があります。
 このように、カウントと値が1つずれるのは、\myref{https://en.wikipedia.org/wiki/Off-by-one_error}{植木算}の古典的な例です。
 \fi
@@ -6900,7 +6900,6 @@ with a function call. Wire \code{sig} represents the modulated PWM signal.
 実数の除算はハードウェア上では非常に高価なので、単に右に10ビットシフトするだけで、$2^{10} = 1024$による除算と同じ結果を得てその値を使います。
 PWM回路を関数として定義したので、関数呼び出しでインスタンス化することができます。
 ワイヤ\code{sig}は変調されたPWM信号を表しています。
-
 \fi
 
 \ifshoworiginal
@@ -7149,7 +7148,7 @@ FPGA内のメモリは、通常、1点のリードと1つの書き込みポー�
 \fi
 
 \ifshowtranssecond %(仮訳 12/09 校正1 12/30 aki)
-ChiselにあるVecのRegで表されるメモリはレジスタの集まりで構築することができます。
+Chiselの型\code{Vec}の\code{Reg}でメモリはレジスタの集まりとして構築することができます。
 しかし、これはハードウェアでは高価であるので、大きなメモリ構造は\myref{https://en.wikipedia.org/wiki/Static_random-access_memory}{SRAM}で構築します。
 ASICでは、メモリコンパイラがメモリを構築します。
 FPGAは、ブロックRAMとも呼ばれるオンチップ・メモリ・ブロックを内臓しています。
@@ -7729,7 +7728,7 @@ cycle \code{tick} signal, as we have done in Section~\ref{sec:gen:timing}.
 
 \ifshowtranssecond %(仮訳 12/10 aki)
 デバウンスのChiselコードは、シンクロナイザー用のコードよりも少し進化します。
-サンプルタイミングは、Section~\ref{sec:gen:timing}で行ったように、1サイクルの\code{ティック}信号を出すカウンタで生成します。
+サンプルタイミングは、Section~\ref{sec:gen:timing}で行ったように、1サイクルの\code{tick}信号を出すカウンタで生成します。
 \fi
 
 \shortlist{code/input_fac.txt}
@@ -8130,9 +8129,9 @@ state only, this state machine is called a
 
 \ifshowtranssecond %(仮訳 12/12 校正1 01/01 aki)
 図~\ref{fig:fsm}は、FSMの回路図を示しています。
-レジスタには現在の\code{状態}が格納されています。
-次の状態ロジックは、現在の\code{状態}と入力(\code{in})から次の状態値(\code{next\_state})を計算します。
-次のクロックティックで\code{状態}が\code{next\_state}になります。
+レジスタには現在の\code{state}が格納されています。
+次の状態ロジックは、現在の\code{state}と入力(\code{in})から次の状態値(\code{next\_state})を計算します。
+次のクロックティックで\code{state}が\code{next\_state}になります。
 出力ロジックは、出力(\code{out})を計算します。
 出力は現在の状態にのみ依存するので、この状態マシンを\myref{https://en.wikipedia.org/wiki/Moore_machine}{ムーアマシン}と呼びます。
 \fi
@@ -8535,8 +8534,8 @@ The output logic computes the output (\code{out}) from the current state
 
 \ifshowtranssecond %(仮訳 12/15 校正1 01/01 aki)
 図~\ref{fig:mealy}にミーリー型FSMの回路図を示します。
-ムーア型FSMと同様に、レジスタには現在の\code{状態}が格納され、次の状態ロジックは現在の\code{状態}と入力(\code{in})から次の状態値(\code{next\_state})を計算します。
-次のクロックティックで\code{状態}は\code{next\_state}になります。
+ムーア型FSMと同様に、レジスタには現在の\code{state}が格納され、次の状態ロジックは現在の\code{state}と入力(\code{in})から次の状態値(\code{next\_state})を計算します。
+次のクロックティックで\code{state}は\code{next\_state}になります。
 出力ロジックは、現在の状態\emph{と}FSMへの入力から出力(\code{out})を計算します。
 \fi
 
@@ -8582,7 +8581,7 @@ puls for each rising edge of the input.
 状態レジスタは単一のDフリップフロップで構成されているため、2つの状態のみが可能であり、この例では\code{zero}と\code{one}と名付けています。
 ミーリーFSMの出力は、状態だけでなく入力にも依存するため、出力を状態円の一部として記述することはできません。
 かわりに、状態間の遷移は入力値(条件)\emph{と}出力(スラッシュの後)でラベル付けされます。
-また、自己遷移を描画することにも注意してください。例えば、入力が\code{0}の場合、状態\code{zero}ではFSMは状態\code{zero}のままで、出力は0になります。
+また、自己遷移を描画することにも注意してください。例えば、入力が\code{0}の場合、状態\code{zero}ではFSMは状態\code{zero}のままで、出力は{0}になります。
 立ち上がりエッジのFSMは、状態\code{zero}から状態\code{one}への遷移でのみ\code{1}の出力を生成します。
 入力が\code{1}になったことを表す状態\code{one}では、出力は\code{0}になります。
 入力の立ち上がりエッジごとに1つの(サイクルの)パルスが欲しいだけです。
@@ -8708,8 +8707,8 @@ FSM output within the state representing circles.
 \ifshowtranssecond %(仮訳 12/19 校正1 01/01 aki)
 図~\ref{fig:diag:rising:moore}は、ムーアFSMによる立ち上がりエッジ検出の状態図です。
 まず注目すべきは、ムーアFSMでは3つの状態が必要なのに対し、ミーリー版では2つの状態であることです。
-状態\code{パルス}は、シングルサイクルパルスを生成するために必要です。
-FSMは、1クロックサイクルの間\code{パルス}状態を維持し、入力が再び0になるのを待って、開始状態の\code{zero}に戻るか、\code{one}の状態に戻ります。
+状態\code{puls}は、シングルサイクルパルスを生成するために必要です。
+FSMは、1クロックサイクルの間\code{puls}状態を維持し、入力が再び0になるのを待って、開始状態の\code{zero}に戻るか、\code{one}の状態に戻ります。
 状態遷移矢印に入力条件を示し、円で示した状態の中にFSMの出力を示します。
 \fi
 
@@ -9164,7 +9163,7 @@ is done. Listing~\ref{lst:flasher2:master} shows the master FSM for the double r
 \fi
 
 \ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
-\noindent カウンターは\emph{残り}のフラッシュをカウントし、タイマーが終了したステートの\code{合間}でデクリメントされるので、3回のフラッシュに対して2回のロードとなることに注意してください。
+\noindent カウンターは\emph{残り}のフラッシュをカウントし、タイマーが終了したステートの\code{space}でデクリメントされるので、3回のフラッシュに対して2回のロードとなることに注意してください。
 コード~\ref{lst:flasher2:master}はダブルリファクタリングされたフラッシャーのマスターFSMを示しています。
 \fi
 
@@ -9348,13 +9347,13 @@ FSMは、次の状態\code{Count}に進み、 `1基のの存在数を順次カ�
 
 \ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 次のステップとして、図~\ref{fig:popcnt-states}に示す状態図から始めて、FSMを設計することができます。
-FSMは入力を待つ\code{アイドル}状態からスタートします。
-データが到着し、有効な信号が送られてくると、FSMはシフトレジスタをロードするために、状態\code{ロード}に進みます。
-FSMは次のステート\code{カウント}に進み、そこで`1'の数が順次カウントされます。
+FSMは入力を待つ\code{Idle}状態からスタートします。
+データが到着し、有効な信号が送られてくると、FSMはシフトレジスタをロードするために、状態\code{Load}に進みます。
+FSMは次のステート\code{Count}に進み、そこで`1'の数が順次カウントされます。
 シフトレジスタ、加算器、アキュムレータレジスタ、ダウンカウンタを使用して計算を行います。
-ダウンカウンタがゼロになると計算が終了し、FSMは\code{終了}の状態に移行します。
+ダウンカウンタがゼロになると計算が終了し、FSMは\code{Done}の状態に移行します。
 ここでFSMはpopcount値が消費される準備ができたことをvalid信号で通知します。
-受信機からの準備完了の信号でFSMは\code{アイドル}状態に戻り、次のpopcountを計算する準備ができています。
+受信機からの準備完了の信号でFSMは\code{Idle}状態に戻り、次のpopcountを計算する準備ができています。
 \fi
 
 \ifshoworiginal
@@ -9410,7 +9409,7 @@ FSMは状態\code{Done}及び信号に\code{popCntReady}をアサートするこ
 `1'の数をカウントするために、\code{shf}レジスタを右にシフトし、クロックサイクルごとに最下位ビットを\code{cnt}に加算する。
 図に示されていないカウンタは、全てのビットが最下位ビットを通過するまでカウントダウンします。カウンタがゼロになると、ポップカウントは終了します。
 FSMは\code{終了}の状態に切り替わり、\code{popCntReady}をアサートすることで結果を通知します。
-結果が読み出された場合は\code{popCntValid}をアサートすることで、FSWは\code{アイドル}状態に戻ります。
+結果が読み出された場合は\code{popCntValid}をアサートすることで、FSWは\code{Idle}状態に戻ります。
 \fi
 
 
@@ -9425,7 +9424,7 @@ set to the number of shifts to be performed.
 \fi
 
 \ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
-\code{ロード}信号では、\code{regData}レジスタに入力が読み込まれ、\code{regPopCount}レジスタが0にリセットされ、カウンタレジスタ\code{regCount}が実行するシフト数に設定されます。
+\code{load}信号では、\code{regData}レジスタに入力が読み込まれ、\code{regPopCount}レジスタが0にリセットされ、カウンタレジスタ\code{regCount}が実行するシフト数に設定されます。
 \fi
 
 \longlist{code/popcnt_data.txt}{Datapath of the popcount circuit.}{lst:pop:data}
@@ -9531,10 +9530,10 @@ no transfer takes place.
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-ready-validインタフェース~\cite[p.~480]{dally:vhdl:2016}は、送信側(プロデューサ)では\code{データ}と\code{バリッド}信号、受信側(コンシューマ)では\code{レディ}信号で構成される単純なフロー制御インタフェースです。
+ready-validインタフェース~\cite[p.~480]{dally:vhdl:2016}は、送信側(プロデューサ)では\code{data}と\code{valid}信号、受信側(コンシューマ)では\code{ready}信号で構成される単純なフロー制御インタフェースです。
 図~\ref{fig:readyvalid}は、ready-valid接続を示しています。
-送信側は\code{データ}があるときに\code{バリッド}をアサートし、受信側は1ワードのデータを受信する準備ができているときに\code{レディ}をアサートします。
-データの送信は、\code{バリッド}と\code{レディ}の両方の信号がアサートされたときに行われます。
+送信側は\code{data}があるときに\code{valid}をアサートし、受信側は1ワードのデータを受信する準備ができているときに\code{ready}をアサートします。
+データの送信は、\code{valid}と\code{ready}の両方の信号がアサートされたときに行われます。
 2つの信号のいずれかがアサートされない場合、転送は行われません。
 \fi
 
@@ -9563,10 +9562,10 @@ When the receiver can receive data in every clock cycle, it is called an
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-図~\ref{fig:ready_valid1}は、送信機がデータを持つ前に(クロックサイクル１から)受信機が\code{レディ}信号を出すready-validトランザクションのタイミング図を示しています。
+図~\ref{fig:ready_valid1}は、送信機がデータを持つ前に(クロックサイクル１から)受信機が\code{ready}信号を出すready-validトランザクションのタイミング図を示しています。
 データ転送はクロックサイクル3で行われます。
 クロックサイクル4からは、送信者がデータを持っておらず受信者も次の受信の準備はできていません。
-受信機がすべてのクロックサイクルでデータを受信できる場合、それは``常時レディ''インターフェースと呼ばれ、\code{レディ}は\code{true}にハードコードすることができます。
+受信機がすべてのクロックサイクルでデータを受信できる場合、それは``常時レディ''インターフェースと呼ばれ、\code{ready}は\code{true}にハードコードすることができます。
 \fi
 
 \begin{figure}
@@ -9596,11 +9595,11 @@ interface. However, in that case the data will probably not change on signaling
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-図~\ref{fig:ready_valid2}は、送信者が受信機の準備が整う前に(クロックサイクル１から)\code{バリッド}な信号を送信するready-validトランザクションのタイミング図を示しています。
+図~\ref{fig:ready_valid2}は、送信者が受信機の準備が整う前に(クロックサイクル１から)\code{valid}な信号を送信するready-validトランザクションのタイミング図を示しています。
 データ転送は、クロックサイクル3で行われます。
 クロックサイクル4以降は、送信者も受信者も次の転送の準備ができていません。
 ``常時レディ''インターフェイスと同様に、常に有効なインターフェイスを想定することができます。
-しかし、その場合はおそらく\code{レディ}信号の変化でデータが変わることはなく、単純にハンドシェイク信号を落とすことになるでしょう。
+しかし、その場合はおそらく\code{ready}信号の変化でデータが変わることはなく、単純にハンドシェイク信号を落とすことになるでしょう。
 \fi
 
 \begin{figure}
@@ -9627,7 +9626,7 @@ clock cycle) as shown in clock cycles 4 and 5 with the transfer of
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 図~\ref{fig:ready_valid2}は、ready-validインタフェースの更なるバリエーションを示しています。
-クロックサイクル1では、両方の信号(\code{レディ}および\code{バリッド})が1クロックサイクルの間だけアサートされ、\code{D1}のデータ転送が起こる。
+クロックサイクル1では、両方の信号(\code{ready}および\code{valid})が1クロックサイクルの間だけアサートされ、\code{D1}のデータ転送が起こる。
 \code{D2}と\code{D3}の転送で、クロックサイクル4と5に示すように、データをバック・トゥ・バック(クロックサイクル毎)に転送することができます。
 \fi
 
@@ -9644,7 +9643,7 @@ bundle, similar to the following:
 \fi
 
 \ifshowtranssecond %((仮訳 12/21 校正1 01/01 aki)
-このインターフェイスを構成可能にするために、\code{レディ}とnot \code{バリッド}は他の信号との組み合わせに依存することは許されていません。
+このインターフェイスを構成可能にするために、\code{ready}とnot \code{valid}は他の信号との組み合わせに依存することは許されていません。
 このインタフェースは非常に一般的なものなので、Chiselでは、以下のような\code{DecoupledIO}バンドルを定義しています : 
 \fi
 
@@ -9662,8 +9661,8 @@ Chiselによって定義されたインタフェースは、データのフィ�
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-\noindent \code{DecoupledIO}バンドルは、\code{データ}の型でパラメータ化されています。
-Chiselで定義されたインターフェースは、データのフィールド\code{ビット}を使用します。
+\noindent \code{DecoupledIO}バンドルは、\code{data}の型でパラメータ化されています。
+Chiselで定義されたインターフェースは、データのフィールド\code{bits}を使用します。
 \fi
 
 \ifshoworiginal
@@ -9685,7 +9684,7 @@ but needs to be defined by the concrete usage of the interface.
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-1つの疑問が残るのは、アクティブな状態でデータ転送が行われて\emph{いない}場合に、\code{レディ}または\code{バリッド}な状態がデアサートされる可能性があるかどうかです。
+1つの疑問が残るのは、アクティブな状態でデータ転送が行われて\emph{いない}場合に、\code{ready}または\code{valid}な状態がデアサートされる可能性があるかどうかです。
 例えば、受信機はしばらくの間準備ができていてデータを受信していないかもしれないが、他のイベントのために準備ができていない状態になるかもしれない。
 送信側でも同じことが考えられ、データが有効なのはいくつかのクロックサイクルだけで、データ転送が起こらず有効でなくなることがあります。
 この動作が許されるかどうかは、ready-validインタフェースの一部ではなく、インタフェースの具体的な使用法によって定義される必要があります。
@@ -9704,7 +9703,7 @@ on the sender:
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-Chiselでは、\code{DecoupledIO}クラスを使用した場合、\code{レディ}と\code{バリッド}のシグナリングには何の制約もありません。
+Chiselでは、\code{DecoupledIO}クラスを使用した場合、\code{ready}と\code{valid}のシグナリングには何の制約もありません。
 ただし、\code{IrrevocableIO}クラスは送信者に次のような制限をかけています :
 \fi
 
@@ -9724,13 +9723,13 @@ Additionally, once \code{valid} is raised it will never be lowered until after
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 \begin{quote}
-\code{ReadyValidIO}のサブクラスで、\code{バリッド}がHighで\code{レディ}がLowのサイクルの後は\code{ビット}の値を変更しないことを約束します。
-さらに、一度\code{バリッド}が上がった後は、\code{レディ}が上がった後まで値が下がることはありません。
+\code{ReadyValidIO}のサブクラスで、\code{valid}がHighで\code{ready}がLowのサイクルの後は\code{bits}の値を変更しないことを約束します。
+さらに、一度\code{valid}が上がった後は、\code{ready}が上がる後まで値が下がることはありません。
 \end{quote}
 \fi
 
 \ifshoworiginal
-\noindent Note that this is a convention that cannot be enforced by using the class
+\noindent Note that this is a convention that cannot be enforced by using the class \code{IrrevocableIO}.
 \fi
 
 \ifshowtransfirst %(自動翻訳)
@@ -9738,10 +9737,9 @@ Additionally, once \code{valid} is raised it will never be lowered until after
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-\noindent これは、クラスを使用して強制することができない規約であることに注意してください。
+\noindent これは、クラス\code{IrrevocableIO}を使用して強制することができない規約であることに注意してください。
 \fi
 
-\code{IrrevocableIO}.
 
 \ifshoworiginal
 AXI uses one ready-valid interface for each of the following parts of the bus:
@@ -9758,7 +9756,7 @@ AXIは\code{ready}または\code{valid}がアサートされると、データ�
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
 AXIは次のバスの各部分に1つのready-validインターフェースを使用します : 
 読み出しアドレス、読み出しデータ、書き込みアドレス、および書き込みデータ。
-AXIは、一度\code{レディ}または\code{バリッド}がアサートされると、データ転送が起こるまでアサートが解除されないようにインターフェイスを制限します。
+AXIは、一度\code{ready}または\code{valid}がアサートされると、データ転送が起こるまでアサートが解除されないようにインターフェイスを制限します。
 \fi
 
 \todo{Read and cite AXI, and check if the above is true}
@@ -10754,11 +10752,11 @@ A FIFOは\code{empty}信号によって選抜、最初は空です。
 \fi
 
 \ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
-FIFOは初期状態では空で、\code{エンプティ}信号で状態が示されています。
+FIFOは初期状態では空で、\code{empty}信号で状態が示されています。
 空のFIFOからの読み出しは通常未定義です。
-データが書き込まれても読み出されない場合、FIFOは\code{フル}になります。
+データが書き込まれても読み出されない場合、FIFOは\code{full}になります。
 フルFIFOへの書き込みは通常無視され、データは失われます。
-つまり、\code{エンプティ}と\code{フル}信号はハンドシェイク信号として機能します。
+つまり、\code{empty}と\code{full}信号はハンドシェイク信号として機能します。
 \fi
 
 \ifshoworiginal
@@ -10830,7 +10828,7 @@ at the reader side.
 
 \ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 リーダ側は\code{dout}でデータを提供し、\code{read}でリードを開始します。
-\code{エンプティ}信号は、リーダ側のフロー制御を担当します。
+\code{empty}信号は、リーダ側のフロー制御を担当します。
 \fi
 
 \shortlist{code/bubble_fifo_reader_io.txt}
@@ -10864,10 +10862,10 @@ IOポート\code{full}と\code{empty}ライターとリーダーのためのバ�
 バッファは\code{WriterIO}型のエンキューイングポート\code{enq}と\code{ReaderIO}型のデキューイングポート\code{deq}を持っています。
 バッファのステート要素は、データを保持する1つのレジスタ(\code{dataReg}と単純なFSM用の1つのステートレジスタ(\code{stateReg})です。
 FSMには2つの状態しかありません。
-バッファが\code{空}か\code{満杯}かのどちらかです。
-バッファが\code{空}の場合、書き込みは入力データを登録して\code{満杯}状態に変更します。
-バッファが\code{満杯}の場合、読み出しはデータを消費して\code{空}の状態にかわります。
-IOポートの\code{満杯}と\code{空}は、ライタとリーダのバッファの状態を表しています。
+バッファが\code{empty}か\code{full}かのどちらかです。
+バッファが\code{empty}の場合、書き込みは入力データを登録して\code{full}状態に変更します。
+バッファが\code{full}の場合、読み出しはデータを消費して\code{empty}の状態にかわります。
+IOポートの\code{full}と\code{empty}は、ライタとリーダのバッファの状態を表しています。
 \fi
 
 
@@ -10904,11 +10902,11 @@ Scalaの\code{for}ループでは、個々のバッファを接続してくだ�
 \ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 コード~\ref{lst:fifo}は、完全なFIFOを示しています。
 完全なFIFOは、それぞれのFIFOバッファと同じIOインターフェースを持っています。
-\code{BubbleFifo}は、データワードの\code{サイズ}とバッファステージの\code{深さ}をパラメータとして持っています。
+\code{BubbleFifo}は、データワードの\code{size}とバッファステージの\code{depth}をパラメータとして持っています。
 % 超意訳
-% \code{深さ}\code{FifoRegister}から、\code{深さ}ステージを持ったバブルFIFOを構築することができます。
+% \code{depth}\code{FifoRegister}から、\code{depth}ステージを持ったバブルFIFOを構築することができます。
 % Scala\code{Array}につめこんでステージを作成します。
-Scalaの\code{Array}にfillを使って、\code{深さ}\code{FifoRegister}個分のBubbleをつめこんで、そのバッファステージの深さを持ったバブルFIFOを構築します。
+Scalaの\code{Array}にfillを使って、\code{depth}\code{FifoRegister}個分のBubbleをつめこんで、そのバッファステージの深さを持ったバブルFIFOを構築します。
 Scalaの配列にはハードウェア的な意味はなく、作成したバッファへの参照を持つためのコンテナを提供してくれる\emph{だけ}です。
 Scalaの\code{for}ループでは、それぞれのバッファを接続します。
 最初のバッファのエンキューは完全なFIFOのエンキューIOに接続され、最後のバッファのデキューは完全なFIFOのデキュー側に接続されています。
@@ -11064,7 +11062,7 @@ IOポートは、シリアルデータが送信される\code{txd}ポート、�
 
 \ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 コード~\ref{lst:uart:tx}はベアボーンのシリアル送信機(\code{Tx})を示しています。
-IOポートはシリアルデータが送信される\code{txd}ポートと、送信機がシリアライズして送信する文字を受信できる\code{チャネル}です。
+IOポートはシリアルデータが送信される\code{txd}ポートと、送信機がシリアライズして送信する文字を受信できる\code{Channel}です。
 正しいタイミングを生成するために、1つのシリアルビットのクロックサイクルの時間を計算して定数を算出しています。
 \fi
 
@@ -11192,7 +11190,7 @@ register.
 \longlist{code/uart_buffer.txt}{A single-byte buffer with a ready/valid interface.}{lst:uart:buffer}
 コード~\ref{lst:uart:buffer}は、バブルFIFO用のFIFOレジスタに似たシングルバイトバッファを示しています。
 入力ポートは\code{Channel}インターフェースで、出力は方向が反転した\code{Channel}インターフェースです。
-バッファには、\code{空}か\code{フル}かを示すためのミニマムステートマシンが含まれています。
+バッファには、\code{empty}か\code{full}かを示すためのミニマムステートマシンが含まれています。
 バッファ駆動のハンドシェイク信号(\code{in.ready}と\code{out.valid})はステートレジスタに依存します。
 \fi
 
@@ -11210,8 +11208,8 @@ back to state \code{empty}.
 \fi
 
 \ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
-ステートが\code{空}で、入力データが\code{有効}な場合は、データを登録して\code{フル}ステートに移行します。
-ステートが\code{フル}になり、下流側の受信機が\code{ready}になったら、下流側のデータ転送が行われ、ステートを\code{空}に戻します。
+ステートが\code{full}で、入力データが\code{valid}な場合は、データを登録して\code{full}ステートに移行します。
+ステートが\code{full}になり、下流側の受信機が\code{ready}になったら、下流側のデータ転送が行われ、ステートを\code{empty}に戻します。
 \fi
 
 \ifshoworiginal
@@ -11237,7 +11235,7 @@ and needs no change in the transmitter or the single byte buffer.
 \longlist{code/uart_buffered_tx.txt}{A transmitter with an additional buffer.}{lst:uart:buffered:tx}
 このバッファがあれば、ベアボーン送信機を拡張することができます。
 コード~\ref{lst:uart:buffered:tx}は、単一のバッファが前にある送信機\code{Tx}の連携を示しています。
-このバッファは、\code{Tx}がシングルクロックサイクルのみ\code{準備}ができていたという問題を緩和します。
+このバッファは、\code{Tx}がシングルクロックサイクルのみ\code{ready}であるという問題を緩和します。
 この問題の解決はバッファモジュールに任せました。
 シングルワードバッファの実FIFOへの拡張は簡単にでき、送信機やシングルバイトバッファを変更する必要はありません。
 \fi
@@ -11273,7 +11271,7 @@ After 8 bits are shifted in, \code{valReg} signals an available byte
 受信機はスタートビットの立ち下がりを待ちます。
 このイベントから、受信機はビット0の中央に位置するように1.5ビットの時間を待ちます。
 その後、ビット毎にシフトしていきます。この２つの待ち時間を\code{START\_CNT}と\code{BIT\_CNT}として観測することができます。どちらも同じカウンタ(\code{cntReg})を使用します。
-8ビットシフトインした後、\code{valReg}にバイトデータが有効であることを通知します。
+8ビットシフトインした後、\code{valReg}のバイトデータが有効であることを通知します。
 \fi
 
 \ifshoworiginal
@@ -11392,7 +11390,7 @@ parameter \code{depth} has a useful value.
 
 \ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 ここでは、任意のChiselデータ型をバッファリングできるように、Chisel型をパラメータとする抽象FIFOクラスを定義しています。
-抽象クラスでは、パラメータの\code{深さ}が有用な値であることもテストしています。
+抽象クラスでは、パラメータの\code{depth}が有用な値であることもテストしています。
 \fi
 
 \shortlist{code/fifo_abstract.txt}
@@ -11529,7 +11527,7 @@ the state of the buffer: full or empty.
 
 \ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 コード~\ref{lst:fifo:bubble}は、Bubble FIFOを、ready-validインターフェイスでリファクタリングしたものです。
-\code{バブルFifo}のプライベートクラスとして\code{Buffer}コンポーネントを内包していることに注意してください。
+\code{BubbleFifo}のプライベートクラスとして\code{Buffer}コンポーネントを内包していることに注意してください。
 このヘルパークラスは、このコンポーネントのためだけに必要なものなので、名前空間を汚さないように隠しています。
 また、バッファクラスも簡素化されています。
 FSMの代わりに、バッファの状態(fullかemptyか)を記録するために、\code{fullReg}という1ビットだけを使用します。
