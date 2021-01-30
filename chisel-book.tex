@@ -7443,7 +7443,7 @@ Sketch the block diagram for the following circuits:
 \chapter{Input Processing}
 \fi
 \ifshowtranssecond %(校正)
-\chapter{入力処理 (L7452 仮訳 12/10 aki)}%(校正  第7章  ========================================================================)
+\chapter{入力処理 (L7519 12/30 初回校正済み)}%(校正  第7章  ========================================================================)
 \fi
 
 \ifshoworiginal
@@ -7481,9 +7481,8 @@ to deal with those issues in the digital domain.
 しかし、それはデジタル領域でこれらの問題に対処するために多くの（費用）効率的です。
 \fi
 
-\ifshowtranssecond %(仮訳 12/10 aki)
-後者の2つの問題、デバウンススイッチとフィルタリングノイズは、外付けのアナログ部品でも解決できます。
-しかし、これらの問題はデジタル側で対処するのが(コスト的に)効率的です。
+\ifshowtranssecond %(校正 12/8 diningyo)
+後者の2つ、デバウンススイッチとノイズフィルタリングについては、アナログ素子を使って解決することもできます。しかし、これらの問題はデジタル領域で対策を行った方が、（コスト面において）より効率的です。
 \fi
 
 \ifshoworiginal
@@ -7493,13 +7492,16 @@ to deal with those issues in the digital domain.
 \section{Asynchronous Input}
 \fi
 \ifshowtranssecond %(校正)
-\section{非同期入力 (L7502 仮訳 12/10 aki)}
+\section{非同期入力 (L7502 初回校正済 12/8 mune10, aki, diningyo)}
 \fi
 
 \index{Asynchronous Input}
 \index{Metastability}
+
+\ifshowtranssecond %(追記 12/30 mune10)
 \index{非同期入力}
 \index{メタステーブル}
+\fi
 
 \todo{read Dally on this topic to check for correct wording and facts.}
 
@@ -7521,12 +7523,14 @@ stabilize at 0 or 1.
 しかし、いくつかの時間後に、フリップフロップは、0または1で安定します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/10 aki)
-システムクロックに同期しない入力信号は非同期信号と呼ばれます。
-これらの信号は、フリップフロップに入力されるセットアップおよびホールド時間に違反するでしょう。
-この違反により、フリップフロップの\myref{https://en.wikipedia.org/wiki/Metastability_(electronics)}{メタスタビリティ}が発生する可能性があります。
-メタスタビリティの結果、出力に0と1を繰り返したり 結果が発振のようになるでしょう。
-しかし、しばらくするとフリップフロップは0または1で安定します。
+\ifshowtranssecond %(校正 12/8 diningyo)
+システムクロックに同期していない入力信号は非同期信号と呼ばれています。
+これらの信号は、フリップフロップの入力のセットアップおよびホールド時間に違反することがあります。
+この違反はフリップフロップの
+\myref{https://en.wikipedia.org/wiki/Metastability_(electronics)}{Metastability(英語)}
+を引き起こすことがあります。
+メタスタビリティは出力信号が0と1の間の値となったり、発振したりする結果を引き起こします。
+しかし、ある程度の時間を経ると、フリップフロップの値は0か1で安定します。
 \fi
 
 
@@ -7550,12 +7554,23 @@ second flip-flop will not be violated.
 1 番目のフリップフロップがメタスタビリティになると、クロック周期内に安定した状態に落ち着き、2 番目のフリップフロップのセットアップ時間とホールド時間が侵害されないようになります。
 \fi
 
+\ifshoworiginal
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/synchronizer}
   \caption{Input synchronizer.}
   \label{fig:synchronizer}
 \end{figure}
+\fi
+
+\ifshowtranssecond %(校正 1/1 mune10)
+\begin{figure}
+  \centering
+  \includegraphics[scale=\scale]{figures/synchronizer}
+  \caption{入力信号のシンクロナイザ}
+  \label{fig:synchronizer}
+\end{figure}
+\fi
 
 \ifshoworiginal
 Figure~\ref{fig:synchronizer} shows the border between the synchronous
@@ -7570,10 +7585,10 @@ instantiates two registers.
 入力同期用Chiselのコードは、2つのレジスタをインスタンスワンライナーです。
 \fi
 
-\ifshowtranssecond %(仮訳 12/10 aki)
-図~\ref{fig:synchronizer}は、同期回路と外の世界の境界を示しています。
-入力同期器は2つのフリップフロップで構成されています。
-Chiselの入力同期器は気がきいていて、2つのレジスタをインスタンス化してくれます。
+\ifshowtranssecond %(校正 12/8 diningyo)
+図~\ref{fig:synchronizer}は同期回路と外部の間の境界線を示しています。
+入力信号のシンクロナイザは、2つのフリップフロップから構成されています。
+Chiselではシンクロナイザのコードを、2つのレジスタをインスタンスするワンライナーで表現できます。
 \fi
 
 \shortlist{code/input_sync.txt}
@@ -7598,12 +7613,12 @@ to be synchronous to the clock.
 クロックに同期するリセットニーズのデアサーションコンクリート。
 \fi
 
-\ifshowtranssecond %(仮訳 12/10 aki)
-すべての非同期外部信号には入力同期器が必要です。
-\footnote{例外は、入力信号が同期出力信号に依存している場合で、最大伝搬遅延が分かっている場合です。典型的な例は、非同期SRAMをマイクロプロセッサなどの同期回路に接続する場合です。}
-また、外部のリセット信号と同期させる必要があります。
-リセット信号は、回路内の他のフリップフロップのリセット信号として使用される前に、2つのフリップフロップを通過しなければなりません。
-具体的には、リセットのディアサートはクロックと同期している必要があります。
+\ifshowtranssecond %(校正 12/8 diningyo)
+すべての外部からの非同期信号には入力シンクロナイザが必要です。
+\footnote{例外は入力信号が同期出力信号に依存している場合で、最大伝搬遅延を知ることができます。古典的な例は、マイクロプロセッサにおける非同期SRAMの同期回路へのインターフェイスです。}
+また、外部リセット信号についても同期する必要があります。
+リセット信号は他のフリップフロップ回路のリセット信号として使用する前に、2つフリップフロップを通過させておきます。
+クロックに同期させるために、リセット信号のディアサートが定まることが必要です。
 \fi
 
 \ifshoworiginal
@@ -7613,10 +7628,13 @@ to be synchronous to the clock.
 \section{Debouncing}
 \fi
 \ifshowtranssecond %(校正)
-\section{デバウンス (L7640 仮訳 12/10 aki)}
+\section{デバウンス (L7640 初回校正済 12/8 mune10, aki, diningyo)}
 \fi
 
 \index{Debouncing}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{デバウンス}
+\fi
 
 \ifshoworiginal
 Switches and buttons may need some time to transition between on and off.
@@ -7637,12 +7655,12 @@ sampled signal further downstream.
 私たちは、さらに下流のサンプリングされた信号を使用します。
 \fi
 
-\ifshowtranssecond %(仮訳 12/10 aki)
-スイッチやボタンは、オンとオフの間で切り替わるのに時間がかかる場合があります。
-切り替わりの間、スイッチはこれらの2つの状態の間であばれます。
-このような信号をさらに処理せずに使用すると、必要以上に多くの切り替わりイベントを検出してしまう可能性があります。
-1つの解決策は、時間を使用してこのバウンドをフィルタリングすることです。
-バウンスの最大時間を$t_{bounce}$と仮定して、入力信号を$T > t_{bounce}$の周期でサンプリングします。サンプリングされた信号は、さらに下流でのみ使用します。
+\ifshowtranssecond %(校正 12/8 diningyo)
+スイッチやボタンは、オンとオフの間の遷移にある程度の時間が必要な場合があります。
+遷移の間、スイッチは、これら2つの状態の間を行き来することがあります。
+このような信号を、追加の処理を行わずにそのまま使用した場合、意図したより多くの遷移イベントを検出することがあります。
+一つの解決策は、このバウンスをフィルタリングするために時間を使うことです。
+最大バウンス時間を $ t_ {bounce}$と仮定して、期間$ T> t_ {bounce} $で入力信号をサンプリングし、この信号のみを回路内部で使用します。
 \fi
 
 \ifshoworiginal
@@ -7669,12 +7687,23 @@ is that we have only one transition from 0 to 1.
 重要なのは、0から1への遷移が1つしかないということです。
 \fi
 
+\ifshoworiginal
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/debounce}
   \caption{Debouncing an input signal.}
   \label{fig:debounce}
 \end{figure}
+\fi
+
+\ifshowtranssecond %(校正 1/1 mune10)
+\begin{figure}
+  \centering
+  \includegraphics[scale=\scale]{figures/debounce}
+  \caption{入力信号のデバウンス}
+  \label{fig:debounce}
+\end{figure}
+\fi
 
 \ifshoworiginal
 Figure~\ref{fig:debounce} shows the sampling for the debouncing in action.
@@ -7728,7 +7757,7 @@ cycle \code{tick} signal, as we have done in Section~\ref{sec:gen:timing}.
 
 \ifshowtranssecond %(仮訳 12/10 aki)
 デバウンスのChiselコードは、シンクロナイザー用のコードよりも少し進化します。
-サンプルタイミングは、Section~\ref{sec:gen:timing}で行ったように、1サイクルの\code{tick}信号を出すカウンタで生成します。
+サンプルタイミングは、Section~\ref{sec:gen:timing}で行ったように、1サイクルの\code{ティック}信号を出すカウンタで生成します。
 \fi
 
 \shortlist{code/input_fac.txt}
@@ -7791,10 +7820,13 @@ we can further process it in the digital domain.
 \section{Filtering of the Input Signal}
 \fi
 \ifshowtranssecond %(校正)
-\section{ 入力信号のフィルタリング (L7820 TODO)}
+\section{ 入力信号のフィルタリング (L7872 12/30 mune10)}
 \fi
 
 \index{Majority voting}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{多数決}
+\fi
 
 \ifshoworiginal
 Sometimes our input signal may be noisy, maybe containing spikes
@@ -7818,21 +7850,34 @@ Majority voting ensures that the signal is stable for longer than the sampling p
 信号がサンプリング周期よりも長いため安定していることを多数決保証します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-時々、私たちの入力信号は、多分私達は、入力同期とデバウンス単位で意図せずにサンプリング可能性があるスパイクを含む、うるさいかもしれません。
-それらの入力スパイクをフィルタリングするための1つのオプションは、多数決回路を使用することです。
-最も単純なケースでは、我々は三つのサンプルを取り、多数決を行います。
-中央値関数に関連する\myref{https://en.wikipedia.org/wiki/Majority_function}{majority function}は、大部分の値になります。
-私たちはデバウンスのためのサンプリングを使用我々のケースでは、我々は、サンプリングされた信号の多数決を行います。
-信号がサンプリング周期よりも長いため安定していることを多数決保証します。
+\ifshowtranssecond %(校正 12/30 mune10)
+時々、入力信号がノイズを含んでいる場合があります。こうしたノイズを入力同期器やデバウンスユニットで意図せずにサンプリングしてしまう可能性があります。
+これらの入力スパイクをフィルタリングする方法の一つとして、多数決回路を使用する方法があります。
+最も単純なケースでは、3つのサンプルを取り、多数決を行います。
+中央値に関係する
+\myref{https://en.wikipedia.org/wiki/Majority_function}{majority function(英語)}/多数決関数(日本語)
+では、結果として多数派の値が得られます。
+デバウンスにサンプリングを用いる場合は、サンプリングされた信号に対して多数決を行います。
+多数決により、サンプリング周期よりも長い時間、信号が安定していることが保証されます。
 \fi
 
+\ifshoworiginal
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/majority}
   \caption{Majority voting on the sampled input signal.}
   \label{fig:majority}
 \end{figure}
+\fi
+
+\ifshowtranssecond %(校正 1/1 mune10)
+\begin{figure}
+  \centering
+  \includegraphics[scale=\scale]{figures/majority}
+  \caption{入力信号のサンプリングによる多数決回路}
+  \label{fig:majority}
+\end{figure}
+\fi
 
 \ifshoworiginal
 Figure~\ref{fig:majority} shows the circuit of the majority voter.
@@ -7849,11 +7894,11 @@ any signal change shorter than the sample period.
 多数決関数は、サンプル期間よりも短い任意の信号変化をフィルタリングします。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-図〜\ref{fig:majority}は、大多数の有権者の回路を示しています。
-これは、レジスタは、我々がデバウンスサンプリングに使用\code{tick}信号によってイネーブル3ビットのシフトで構成されています。
-3つのレジスタの出力は、多数決回路に供給されます。
-多数決関数は、サンプル期間よりも短い任意の信号変化をフィルタリングします。
+\ifshowtranssecond %(校正 12/30 mune10)
+図〜\ref{fig:majority}は、多数決回路を示しています。
+デバウンスサンプリングに使用した\code{tick}信号により有効化された3ビットのシフトレジスタで構成されています。
+3つのレジスタの出力は多数決回路に送り込まれます。
+多数決機能は、サンプル期間より短い信号変化をフィルタリングします。
 \fi
 
 \ifshoworiginal
@@ -7865,8 +7910,8 @@ The following Chisel code shows the 3-bit shift register, enabled by the
 以下Chiselコード示す3ビットのシフトレジスタ、信号\code{btnClean}その結果、\code{tick}信号と投票機能により可能となりました。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-以下Chiselコード示す3ビットのシフトレジスタ、信号\code{btnClean}その結果、\code{tick}信号と投票機能により可能となりました。
+\ifshowtranssecond %(校正 12/30 mune10)
+次のChiselコードの３ビットシフトレジスタは、\code{tick}信号よって駆動され、投票機能の結果として\code{btnClean}信号を返します。
 \fi
 
 \ifshoworiginal
@@ -7892,11 +7937,14 @@ signal with the current value of \code{btnClean} to enable the counter to increm
 当社慎重に処理された入力信号の出力を使用するには、まず\code{RegNext}遅延素子との立ち上がりエッジを検出し、その後増加にカウンターを有効にするために\code{btnClean}の現在の値と、この信号を比較します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-当社慎重に処理された入力信号の出力を使用するには、まず\code{RegNext}遅延素子との立ち上がりエッジを検出し、その後増加にカウンターを有効にするために\code{btnClean}の現在の値と、この信号を比較します。
+\ifshowtranssecond %(校正 12/30 mune10)
+慎重に処理された入力信号の出力を使用するには、まず、\code{RegNext} 遅延要素で立ち上がりエッジを検出し、この信号を\code{btnClean}の現在の値と比較して、カウンタのインクリメントを行います。
 \fi
 
 \index{Edge detection}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{エッジ検出}
+\fi
 
 \shortlist{code/input_usage.txt}
 
@@ -7907,7 +7955,7 @@ signal with the current value of \code{btnClean} to enable the counter to increm
 \section{Combining the Input Processing with Functions}
 \fi
 \ifshowtranssecond %(校正)
-\section{入力処理と関数の組み合わせ (L7936 TODO)}
+\section{入力処理と関数の組み合わせ (L7936 12/30 mune10)}
 \fi
 
 \ifshoworiginal
@@ -7932,18 +7980,22 @@ If useful, those functions can be elevated to some utility class object.
 便利な場合は、それらの機能は、いくつかのユーティリティクラスオブジェクトに上昇させることができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-入力処理を要約すると、我々はいくつかのより多くのChiselのコードを示しています。
-提示回路は小さなことが、再利用可能なビルディング・ブロックかもしれませんが、我々は機能でそれらをカプセル化します。
-節〜\ref{sec:functions}ではなく、完全なモジュールの軽量リグ機能でどのように我々はできる、抽象小さなビルディングブロックを示しました。
-これらのリグ機能は、電子をハードウェアのインスタンスを作成します。
-グラム。
-、機能\code{sync}は、2個の入力に、互いに接続されたフリップフロップ作成します。
-関数は、第2のフリップフロップの出力を返します。
-便利な場合は、それらの機能は、いくつかのユーティリティクラスオブジェクトに上昇させることができます。
+\ifshowtranssecond %(校正 12/30 mune10)
+入力処理をまとめるために、さらにChiselのコードをいくつか示します。
+ここで提示された回路は小さくても再利用可能なビルディングブロックかもしれないので、ここでは関数の形で表現しています。
+セクション\ref{sec:functions}では、完全なモジュールではなく、軽量なChisel関数の中に小さなビルディングブロックを抽象化する方法を示しました。
+これらの Chisel 関数はハードウェアインスタンスを生成します。例えば、関数 \code{sync} は入力と相互に接続された 2 つのフリップフロップを生成します。
+この関数は、2 番目のフリップフロップの出力を返します。
+もし有用であれば、これらの関数をいくつかのユーティリティクラスオブジェクトに昇格させることができます。
 \fi
 
+\ifshoworiginal
 \longlist{code/input_func.txt}{Summarizing input processing with functions.}{lst:input:func}
+\fi
+
+\ifshowtranssecond %(校正 )
+\longlist{code/input_func.txt}{関数を使った入力信号処理のまとめ}{lst:input:func}
+\fi
 
 \ifshoworiginal
 \section{Exercise}
@@ -7952,7 +8004,7 @@ If useful, those functions can be elevated to some utility class object.
 \section{Exercise}
 \fi
 \ifshowtranssecond %(校正)
-\section{演習 (L7981 DONE)}
+\section{演習 (L8037 12/30 mune10)}
 \fi
 
 \ifshoworiginal
@@ -8002,6 +8054,7 @@ longer than 1--2 seconds.
 また、ボタンのリリースは、過半数が投票しています。
 それは1--2秒よりも長いときにそのため、回路にのみリリースを認識します。
 \fi
+
 \ifshowtranssecond %(校正 6/20 mune10)
 最近のボタンは必ず跳ね返るという保証はありませんので、手動でボタンを高速で連続して押し、低いサンプル周波数を使用することで、跳ね返りやスパイクをシミュレートすることができます。
 サンプル周波数としては、例えば1秒を選択してください。
@@ -9768,10 +9821,13 @@ AXIは、一度\code{ready}または\code{valid}がアサートされると、�
 \chapter{Hardware Generators}
 \fi
 \ifshowtranssecond %(校正)
-\chapter{ハードウェアジェネレータ (L9245 TODO)} %(校正  第10章  ========================================================================)
+\chapter{ハードウェアジェネレータ (L9245 初回校正済 12/22 mune10, diningyo)} %(校正  第10章  ========================================================================)
 \fi
 
 \index{Hardware generators}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{ハードウェアジェネレータ}
+\fi
 
 \ifshoworiginal
 The strength of Chisel is that it allows us to write so-called hardware generators.
@@ -9793,14 +9849,12 @@ Chiselでは、スカラ（及びJavaライブラリー）のフルパワーは�
 したがって、我々は同じ言語で、当社ハードウェアジェネレータを書いて、Chisel回路生成の一部としてそれらを実行することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Chiselの強さは、それが、私たちは、いわゆるハードウェアジェネレータを書くことができることです。
-そのようなVHDLおよびVerilogなどの古いハードウェア記述言語、で、我々は通常、別の言語、Eを使用しています。
-グラム。
-、JavaやPythonの、ハードウェアを生成します。
-著者は、多くの場合、VHDLテーブルを生成するために、小さなJavaプログラムを書いています。
-Chiselでは、スカラ（及びJavaライブラリー）のフルパワーは、ハードウェア構成で利用可能です。
-したがって、我々は同じ言語で、当社ハードウェアジェネレータを書いて、Chisel回路生成の一部としてそれらを実行することができます。
+\ifshowtranssecond %(校正 12/22 diningyo)
+Chiselの強みはいわゆるハードウェア・ジェネレータを書けることです。
+VHDLやVerilogといった古いハードウェア記述言語では、この機能をつかうためにJavaやPythonといった他の言語を併用する必要があります。
+実装者はしばしばVHDLのテーブルを生成する小さなJavaのプログラムを書いたりします。
+ChiselではScalaの全機能（とJavaのライブラリ）をハードウェア構築に利用できます。
+これにより、ハードウェア・ジェネレータを同じ言語で記述し、それをChiselの回路生成の一部として実行できます。
 \fi
 
 \ifshoworiginal
@@ -9810,10 +9864,13 @@ Chiselでは、スカラ（及びJavaライブラリー）のフルパワーは�
 \section{Configure with Parameters}
 \fi
 \ifshowtranssecond %(校正)
-\section{パラメータを使って設定する (L8932 TODO)}
+\section{パラメータを使って設定する (L8932 12/22- 校正済 mune10, diningyo)}
 \fi
 
 \index{Parameters}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{パラメータ}
+\fi
 
 \ifshoworiginal
 Chisel components and functions can be configured with parameters.
@@ -9837,7 +9894,7 @@ Chiselのコンポーネントや関数は、パラメータを使って設定�
 \subsection{Simple Parameters}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{シンプルなパラメータ (L9816 TODO)}
+\subsection{シンプルなパラメータ (L9816 12/22 初回校正済み diningyo)}
 \fi
 
 \ifshoworiginal
@@ -9856,11 +9913,11 @@ passed into the constructor that can be used in the IO bundle.
 \code{n}幅ビットがIOバンドルに使用することができるコンストラクタに渡された成分の（スカラ型\code{Int}の）パラメータです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-回路をパラメータ化するための基本的な方法は、パラメータとしてビット幅を定義することです。
-パラメータは、Chiselモジュールのコンストラクタの引数として渡すことができます。
-例に続いて、設定ビット幅の加算器を実装モジュールのおもちゃの一例です。
-\code{n}幅ビットがIOバンドルに使用することができるコンストラクタに渡された成分の（スカラ型\code{Int}の）パラメータです。
+\ifshowtranssecond %(校正 12/22 diningyo)
+回路をパラメタライズする基本的な方法は、信号のビット幅をパラメタライズとして定義することです。
+パラメータはChiselモジュールのコンストラクタに引数として渡すことができます。
+次に示すのは加算器のビット幅を可変にした簡単なモジュールの例です。
+Scalaの\code{Int}型の変数\code{n}が、ビット幅を示すパラメータとしてコンストラクタに渡され、そのパラメータがIOバンドルで使用されています。
 \fi
 
 \shortlist{code/param_adder.txt}
@@ -9873,8 +9930,8 @@ passed into the constructor that can be used in the IO bundle.
 次のように加算器のパラメータ化されたバージョンを作成することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-次のように加算器のパラメータ化されたバージョンを作成することができます。
+\ifshowtranssecond %(校正 12/22 diningyo)
+\noindent パラメタライズされた加算器は次のようにして生成できます。
 \fi
 
 \shortlist{code/use_param_adder.txt}
@@ -9886,10 +9943,13 @@ passed into the constructor that can be used in the IO bundle.
 \subsection{Functions with Type Parameters}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{型パラメータを持つ関数 (L9865 TODO)}
+\subsection{型パラメータを持つ関数 (L9865 12/22-12/23 初回校正済み diningyo)}
 \fi
 
 \index{Type parameters}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{型パラメータ}
+\fi
 
 \ifshoworiginal
 Having the bit width as a configuration parameter is just the starting point for
@@ -9908,16 +9968,15 @@ Chiselは、多重化のための任意のタイプを受け入れることが�
 次の関数は、マルチプレクサを定義します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-設定パラメータとしてビット幅を有するハードウェア発生のためだけの出発点です。
-非常に柔軟な構成は、型の使用です。
-Chiselは、多重化のための任意のタイプを受け入れることができ、マルチプレクサ（\code{Mux}）を提供するためにその機能が可能となります。
-コンフィギュレーションのための型を使用する方法を示すために、我々は、任意のタイプを受け入れるマルチプレクサを構築します。
-次の関数は、マルチプレクサを定義します。
+\ifshowtranssecond %(校正 12/22 diningyo)
+設定パラメータとしてビット幅を持つことは、ハードウェア・ジェネレータとしての出発点となります。
+型パラメータを使用することで、さらに柔軟な設定ができます。
+この機能を使って実装されたのがChiselのマルチプレクサ（\code{Mux})で、任意の型を受け入れることができます。
+どの様にして型パラメータを使用するかを示すために、任意の型を受け入れるマルチプレクサを構築してみます。
+次の関数は、マルチプレクサを定義しています。
 \fi
 
 \shortlist{code/param_func.txt}
-
 
 \ifshoworiginal
 Chisel allows parameterizing functions with types, in our case with Chisel
@@ -9932,10 +9991,9 @@ ChiselはChiselタイプと我々の場合には、型をパラメータ化機�
 \code{Data}はChisel型システムのルートです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-ChiselはChiselタイプと我々の場合には、型をパラメータ化機能を可能にします。
-角括弧内の式\code{[T <: Data]}定義型\code{T}セットパラメータは\code{Data}又は\code{Data}のサブクラスです。
-\code{Data}はChisel型システムのルートです。
+\ifshowtranssecond %(校正 12/22 diningyo)
+型パラメータとしてChiseの型を使ってパラメタライズすることが可能です。角括弧\code{[T <: Data]}を使った表現で、\code{Data}とそのサブクラスを型パラメータ\code{T}として定義します。
+\code{Data}はChiselのデータの大元となる型です。
 \fi
 
 \ifshoworiginal
@@ -9957,12 +10015,12 @@ At the end of the function, we return the multiplexer hardware.
 関数の最後に、我々は、マルチプレクサのハードウェアを返します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-ブール条件、真のパスに1つのパラメータ、および偽のパスのための一つのパラメータ：当社のマルチプレクサ機能は、次の3つのパラメータがあります。
-両方のパスパラメータがタイプ\code{T}、関数呼び出しで提供される情報です。
-機能自体は単純です：私たちは\code{fPath}のデフォルト値を持つ線を定義し、条件が\code{tPath}に真である場合には、値を変更します。
-この条件は、古典的なマルチプレクサ機能です。
-関数の最後に、我々は、マルチプレクサのハードウェアを返します。
+\ifshowtranssecond %(校正 12/23 diningyo)
+ここで定義したのマルチプレクサ関数（\code{myMux}）は次の3つのパラメータを持ちます。１つ目はブール値の条件、２つ目は条件が真の場合のパスで、３つ目は条件が偽の場合のパスです。
+真・偽の両方のパスのパラメータは\code{T}型で、関数呼び出し時に提供される情報となります。
+関数の機能自体は単純で、デフォルトの値となる\code{fPath}を定義し、条件が真となる時\code{tPath}に値を変更します。
+この条件は古典的なマルチプレクサ機能です。
+関数の最後でマルチプレクサの機能を持ったハードウェアを返却します。
 \fi
 
 \ifshoworiginal
@@ -9974,8 +10032,8 @@ We can use our multiplexer function with simple types such as
 私たちは、このような\code{UInt}ような単純なタイプで、当社のマルチプレクサ機能を使用することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-私たちは、このような\code{UInt}ような単純なタイプで、当社のマルチプレクサ機能を使用することができます。
+\ifshowtranssecond %(校正 12/23 diningyo)
+\code{UInt}型のような単純な型で、このマルチプレクサ機能を使うと次のようになります。
 \fi
 
 \shortlist{code/param_func_simple.txt}
@@ -10004,8 +10062,8 @@ Following wrong usage of the multiplexer results in a runtime error:
 我々は2つのフィールドを持つ\code{Bundle}として私たちのタイプを定義します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-我々は2つのフィールドを持つ\code{Bundle}として私たちのタイプを定義します。
+\ifshowtranssecond %(校正 12/23 diningyo)
+\noindent ここで2つのフィールドを持つ\code{Bundle}を定義します。
 \fi
 
 \shortlist{code/param_func_type.txt}
@@ -10021,9 +10079,9 @@ Then we can use our parameterized multiplexer with this complex type.
 その後、我々は、この複合型で、当社のパラメータ化マルチプレクサを使用することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-私たちは、最初の\code{Wire}を作成し、サブフィールドを設定することにより、\code{Bundle}定数を定義することができます。
-その後、我々は、この複合型で、当社のパラメータ化マルチプレクサを使用することができます。
+\ifshowtranssecond %(校正 12/23 diningyo)
+\noindent 最初に\code{Wire}を作成し、その後に各要素を設定することで\code{Bundle}型の定数を定義できます。
+この様にすることでパラメタライズされたマルチプレクサで複雑な型を使用できます。
 \fi
 
 \shortlist{code/param_func_complex.txt}
@@ -10042,10 +10100,10 @@ Following function shows the alternative way to code the multiplexer.
 機能ショー、次のマルチプレクサをコーディングする別の方法。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-機能の私たちの最初の設計では、デフォルト値を持つタイプ\code{T}と線を作成するために\code{WireDefault}を使用しました。
-私たちは、デフォルト値を使用せずに、単にChisel型のワイヤーを作成する必要がある場合、我々はChiselタイプを取得するために\code{fPath.cloneType}を使用することができます。
-機能ショー、次のマルチプレクサをコーディングする別の方法。
+\ifshowtranssecond %(校正 12/23 diningyo)
+この関数の最初の設計時に、デフォルト値を持った\code{T}型のワイヤーを\code{WireDefault}を使って作成しました。
+デフォルト値が不要なワイヤーを作成したい場合は\code{fPath.cloneType}を使うことで、Chiselの型を複製できます。
+次に示す関数はマルチプレクサの別の方法で実装したものです。
 \fi
 
 \shortlist{code/param_func_alt.txt}
@@ -10057,7 +10115,7 @@ Following function shows the alternative way to code the multiplexer.
 \subsection{Modules with Type Parameters}
 \fi
 \ifshowtranssecond %(校正)
-\subsection{タイプパラメータを持つモジュール (10036 TODO)}
+\subsection{型パラメータを持つモジュール (L10036 12/23 校正済 diningyo)}
 \fi
 
 \ifshoworiginal
@@ -10080,13 +10138,11 @@ of router ports configurable.
 また、この例では、我々はまた、ルータのポート数を設定可能にします。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-また、Chiselタイプとモジュールのパラメータを設定することができます。
-私たちは別の処理コアの間でデータを移動するために、ネットワーク・オン・チップを設計したいと仮定しましょう。
-しかし、我々は、ルータインターフェイスでのデータ形式をハードコーディングする必要はありません。我々は\emph{parameterize}それにしたいです。
-関数の型パラメータと同様に、我々は、モジュールのコンストラクタに\code{T}パラメータタイプを追加します。
-さらに、我々はそのタイプの1つのコンストラクタのパラメータを持っている必要があります。
-また、この例では、我々はまた、ルータのポート数を設定可能にします。
+\ifshowtranssecond %(校正 12/23 diningyo)
+Chiselの型をパラメータとしてモジュールを作成することも可能です。
+異なるプロセッサ間のデータを移動するNoC（Network on Chip）を作成したいと考えたとします。
+ルータのインターフェイスのデータフォーマットをコード中に固定するのは望ましくないので、これをパラメタライズしたいと考えました。
+関数で型パラメータを使ったときと同様に、モジュールのコンストラクタでも型パラメータ\code{T}を追加します。さらにこの型をパラメータの１つとするコンストラクタが必要になります。加えてこの例では、ルータのポート数を可変にするための変数も追加してあります。
 \fi
 
 \shortlist{code/param_mod.txt}
@@ -10102,10 +10158,8 @@ as a Chisel \code{Bundle}:
 、Chisel\code{Bundle}として：
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-私たちのルータ、ルートに私たちが望むデータ型を定義するために、私たち最初の必要性、電子を使用します。
-グラム。
-、Chisel\code{Bundle}として：
+\ifshowtranssecond %(校正 12/23 diningyo)
+\noindent このルータを使用するため、最初にChiselの\code{Bundle}などを用いて、ルーティングしたいデータ型を定義する必要があります。
 \fi
 
 \shortlist{code/param_mod_type.txt}
@@ -10147,10 +10201,9 @@ is parametrized. Something like:
 何かのようなもの：
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-アドレスのための1つおよびパラメータ化されたデータのためのいずれかのルータの例では、ルータの入力用フィールドの二つの異なるベクターを使用します。
-よりエレガントな解決策は、それ自体がパラメータ化されていることを\code{Bundle}を持っていることであろう。
-何かのようなもの：
+\ifshowtranssecond %(校正 12/23 diningyo)
+この例では、ルータの入力として、２つの異なる型を持つベクターを使用しました。１つはアドレス用のベクターで、もう１つはデータ用でパラメタライズされたものとなります。
+よりエレガントな解決策は、次の例のようにこの２つのベクター自体がパラメータ化された\code{Bundle}を持っていることです。
 \fi
 
 \shortlist{code/param_bundle_issue.txt}
@@ -10176,14 +10229,12 @@ Chiselは\code{Bundle}、Eのタイプのクローンを作成する必要があ
 この問題の解決策（回避策）は、パラメータフィールドをプライベートにすることです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-\code{Bundle}はChiselの\code{Data}型のサブタイプであるタイプ\code{T}のパラメータを持っています。
-バンドル内では、我々はパラメータに\code{cloneType}を呼び出すことによって、フィールド\code{data}を定義します。
-私たちは、コンストラクタのパラメータを使用する場合ただし、このパラメータは、クラスのパブリックフィールドになります。
-Chiselは\code{Bundle}、Eのタイプのクローンを作成する必要がある場合。
-グラム。
-それは\code{Vec}で使用されている場合、このパブリックフィールドが道です。
-この問題の解決策（回避策）は、パラメータフィールドをプライベートにすることです。
+\ifshowtranssecond %(校正 12/23 diningyo)
+\code{Bundle}はChiselの\code{Data}型のサブタイプである\code{T}型のパラメータを持っています。
+バンドル内では、パラメータが持つ\code{cloneType}を呼び出すことで、フィールド\code{data}を定義します。
+しかしコンストラクタのパラメータを使用する場合、このパラメータはクラスのパブリックフィールドになります。
+Chiselが\code{Bundle}を複製する必要がある場合、例えば\code{Vec}に使用されるような場合には、パブリック・フィールドはデータパスになります。
+この問題の解決策は、パラメータフィールドをプライベートにすることです。
 \fi
 
 \shortlist{code/param_bundle.txt}
@@ -10196,8 +10247,8 @@ Chiselは\code{Bundle}、Eのタイプのクローンを作成する必要があ
 その新しい\code{Bundle}では、我々は、ルータのポートを定義することができます
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-その新しい\code{Bundle}では、我々は、ルータのポートを定義することができます
+\ifshowtranssecond %(校正 12/29 diningyo)
+\noindent 新しい\code{Bundle}を使うと、ルータのポートを次のように定義することができます。
 \fi
 
 \shortlist{code/param_mod2.txt}
@@ -10211,8 +10262,8 @@ a \code{Payload} as a parameter:
 パラメータとして\code{Payload}を取る\code{Port}でそのルータをインスタンス化します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-パラメータとして\code{Payload}を取る\code{Port}でそのルータをインスタンス化します。
+\ifshowtranssecond %(校正 12/29 diningyo)
+\noindent またパラメータとして\code{Payload}を取る\code{Port}を渡して、ルータをインスタンス化します。
 \fi
 
 \shortlist{code/param_mod_use2.txt}
@@ -10224,7 +10275,7 @@ a \code{Payload} as a parameter:
 \section{Generate Combinational Logic}
 \fi
 \ifshowtranssecond %(校正)
-\section{組合せ論理回路の生成 (L10203 TODO)}
+\section{組合せ論理回路の生成 (L10203 12/29 dinnigyo)}
 \fi
 
 \index{Logic generation}
@@ -10248,11 +10299,10 @@ Chiselでは、我々は簡単にScalaの\code{Array}からChisel\code{Vec}と�
 テキスト表現の定数整数含まTXT「」、。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Chiselでは、我々は簡単にScalaの\code{Array}からChisel\code{Vec}との論理表を作成することにより、ロジックを生成することができます。
-我々は、論理テーブルのためのハードウェア生成時間の間で読むことができることを、ファイル内のデータを持っているかもしれません。
-一覧〜\ref{lst:file:reader}ショーどのようにファイル ``データを読み込むためのScala標準ライブラリのフォームのScala \code{Source}クラスを使用します。
-テキスト表現の定数整数含まTXT「」、。
+\ifshowtranssecond %(校正 12/29 diningyo)
+ChiselではScalaの\code{Array}から派生したChiselの型である\code{Vec}を使った論理テーブルを作ることで、簡単にロジックを生成できます。
+ハードウェア生成時に読み込めるような論理テーブルを記載したデータファイルがあるとします。
+コード~\ref{lst:file:reader}はScalaの標準ライブラリである\code{Source}を使って、整数データが含まれる`data.txt`を読み込む方法を示しています。
 \fi
 
 \ifshoworiginal
@@ -10263,8 +10313,9 @@ A few words on the maybe a bit intimidating expression:
 多分少し威圧的な表現上のいくつかの単語：RRR000DfcAcbmE
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-多分少し威圧的な表現上のいくつかの単語：RRR000DfcAcbmE
+\ifshowtranssecond %(校正 12/29 diningyo)
+
+少し読むのがためらわれる文字列：RRR000DfcAcbmE
 \fi
 
 \begin{chisel}
@@ -10289,16 +10340,25 @@ Aスカラ\code{Array}は、暗黙的に写像関数\code{map}をサポートし
 Chiselオブジェクト\code{VecInit}は、Chiselタイプのシーケンス\code{Seq}からChisel\code{Vec}を作成します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Aスカラ\code{Array}は、暗黙的に写像関数\code{map}をサポートしている配列（\code{Seq}）に変換することができます。
-\code{map}は、配列の各要素に対して関数を呼び出し、関数の戻り値のシーケンスを返します。
-我々の機能\code{\_.U(8.W)}は\code{\_}としてScalaのアレイからの各\code{Int}値を表し、8ビットのサイズで、Chisel\code{UInt}のリテラルへスカラRRR011o9mPLVVq値から変換を行います。
-Chiselオブジェクト\code{VecInit}は、Chiselタイプのシーケンス\code{Seq}からChisel\code{Vec}を作成します。
+\ifshowtranssecond %(校正 12/29 diningyo)
+\noindent Scalaの\code{Array}は\code{map}をサポートしたシーケンス（\code{Seq}）が暗黙的に変換されたものです。
+\code{map}は、配列の各要素に対して関数を呼び出し、関数の戻り値からなるシーケンスを返します。
+上記の例で\code{\_.U(8.W)}は\code{\_}がScalaの\code{Array}から各要素を\code{Int}値として扱い、その値をChiselの8ビットの\code{UInt}に変換します。
+Chiselのオブジェクトである\code{VecInit}は\code{Seq}のようなシーケンスを元にChiselの\code{Vec}を生成します。
 \fi
 
 \index{File reading}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{ファイル読み出し？}
+\fi
 
+\ifshoworiginal
 \longlist{code/file_reader.txt}{Reading a text file to generate a logic table.}{lst:file:reader}
+\fi
+
+\ifshowtranssecond %(校正 12/31 mune10)
+\longlist{code/file_reader.txt}{テキストファイルを読んで論理テーブル生成}{lst:file:reader}
+\fi
 
 \ifshoworiginal
 We can use the full power of Scala to generate our logic (tables).
@@ -10324,6 +10384,9 @@ Scalaのパワーをフルに使って、ロジック（テーブル）を生成
 
 \index{Binary-coded decimal}
 \index{BCD}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{二進化十進数}
+\fi
 
 \ifshoworiginal
 A classic example is the conversion of a binary number
@@ -10342,11 +10405,16 @@ BCDは、各進数字の4ビットを使用して10進形式で番号を表す�
 BCDは小数で表示数、進よりユーザーフレンドリーな数の表現を可能にします。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-古典的な例は、\myref{https://en.wikipedia.org/wiki/Binary-coded_decimal}{binary-coded decimal}（BCD）表現に進数の変換です。
+\ifshowtranssecond %(校正 12/29 diningyo)
+古典的な例は、
+\myref{https://en.wikipedia.org/wiki/Binary-coded_decimal}{binary-coded decimal(英語)}/
+%%begin novalidate
+\href{https://ja.wikipedia.org/wiki/%E4%BA%8C%E9%80%B2%E5%8C%96%E5%8D%81%E9%80%B2%E8%A1%A8%E7%8F%BE}{二進化十進表現(日本語)}
+%%end novalidate
+（BCD）表現に進数の変換です。
 BCDは、各進数字の4ビットを使用して10進形式で番号を表すために使用されます。
-例えば、小数\code{13}バイナリ\code{1101}であり、BCDはバイナリ1及び3としてエンコード：\code{00010011}。
-BCDは小数で表示数、進よりユーザーフレンドリーな数の表現を可能にします。
+例えば、10進数の\code{13}は2進数では\code{1101}ですが、BCDでは1と3としてエンコードされ、結果として\code{00010011}を得ます。
+BCDは10進数をよりユーザーフレンドリーな形で表現することができます。
 \fi
 
 \ifshoworiginal
@@ -10379,12 +10447,18 @@ Chiselで、我々はハードウェアの世代の一部として直接この�
 一覧〜\ref{lst:bcd}はBCDへの変換バイナリ用テーブルの生成を示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Chiselで、我々はハードウェアの世代の一部として直接この表を計算することができます。
-一覧〜\ref{lst:bcd}はBCDへの変換バイナリ用テーブルの生成を示しています。
+\ifshowtranssecond %(校正 12/29 diningyo)
+Chiselではこの論理テーブルをハードウェア生成処理の一部として扱うことができます。
+コード~\ref{lst:bcd}はBCDへの変換バイナリ用テーブルの生成を示しています。
 \fi
 
+\ifshoworiginal
 \longlist{code/bcd_table.txt}{Binary to binary-coded decimal conversion.}{lst:bcd}
+\fi
+
+\ifshowtranssecond %(校正 12/31 mune10)
+\longlist{code/bcd_table.txt}{バイナリからBCDへの変換}{lst:bcd}
+\fi
 
 \ifshoworiginal
 \section{Use Inheritance}
@@ -10393,13 +10467,17 @@ Chiselで、我々はハードウェアの世代の一部として直接この�
 \section{Use Inheritance}
 \fi
 \ifshowtranssecond %(校正)
-\section{継承を利用する (L10372 TODO)}
+\section{継承を利用する (L10372 12/29 diningyo)}
 \fi
 
 \label{sec:inheritance}
 
 \index{Inheritance}
 \index{Object-oriented}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{継承}
+\index{オブジェクト指向}
+\fi
 
 \ifshoworiginal
 Chisel is an object-oriented language. A hardware component, the Chisel \code{Module}
@@ -10414,11 +10492,10 @@ Chiselは、オブジェクト指向言語です。
 ここでは、例と継承を使用する方法を探ります。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Chiselは、オブジェクト指向言語です。
-ハードウェアコンポーネントは、Chisel\code{Module}はScalaのクラスです。
-したがって、我々は、親クラスに要因に共通の動作を継承して使用することができます。
-ここでは、例と継承を使用する方法を探ります。
+\ifshowtranssecond %(校正 12/29 diningyo)
+Chiselはオブジェクト指向言語であり、ハードウェアを構成する要素の1つある\code{Module}はScalaのクラスです。
+したがって、親クラスに共通の動作を実装し、継承して使用することができます。
+ここでは、サンプルコードとともに継承を使用する方法を探ります。
 \fi
 
 \ifshoworiginal
@@ -10436,12 +10513,10 @@ We start with an abstract class to define the ticking interface:
 私たちは、刻々と過ぎインタフェースを定義する抽象クラスで起動します。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-節〜\ref{sec:counter}では、低周波ダニの生成に使用することができるカウンターの異なる形態を模索しています。
-私たちは、これらの異なるバージョン、電子を探検したいと仮定しましょう。
-グラム。
-、そのリソース要件を比較します。
-私たちは、刻々と過ぎインタフェースを定義する抽象クラスで起動します。
+\ifshowtranssecond %(校正 12/30 diningyo)
+\ref{sec:counter}節では、低周波のパルスを生成できる異なる種類のカウンターを紹介しました。
+ここではリソースの使用量を比較するため、複数のバージョンを試したいと考えたとしましょう。
+最初にするのは抽象クラスでカウンタのパルス出力のインターフェースを定義することです。
 \fi
 
 \shortlist{code/ticker.txt}
@@ -10455,11 +10530,17 @@ with a counter, counting up, for the tick generation.
 一覧〜\ref{lst:ticker:up}は、ダニの発生のために、カウントアップ、カウンタとその抽象クラスの最初の実装を示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-一覧〜\ref{lst:ticker:up}は、ダニの発生のために、カウントアップ、カウンタとその抽象クラスの最初の実装を示しています。
+\ifshowtranssecond %(校正 12/30 diningyo)
+コード~\ref{lst:ticker:up}は抽象クラスを使った最初の実装で、カウントパルスを発生させるためのカウンタ、カウントアップ処理を備えています。
 \fi
 
+\ifshoworiginal
 \longlist{code/up_ticker.txt}{Tick generation with a counter.}{lst:ticker:up}
+\fi
+
+\ifshowtranssecond %(校正 12/31 mune10)
+\longlist{code/up_ticker.txt}{カウンタを使ったティック生成}{lst:ticker:up}
+\fi
 
 \ifshoworiginal
 We can test all different versions of our \emph{ticker} logic with a single test bench.
@@ -10481,15 +10562,21 @@ different implementations) and then checks that \code{tick} repeats every $n$ cl
 \code{tick}はすべて$ N $クロックサイクルを繰り返すことティック（開始は異なる実装のために異なるかもしれない）、次いで、チェックの最初の発生のためにテスターを待ちます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-我々は、単一のテストベンチで私たちの\emph{ticker}ロジックのすべての異なるバージョンをテストすることができます。
-我々\code{Ticker}のサブタイプを受け入れるようにテストベンチを定義する必要が\emph{just}。
-〜\ref{lst:ticker:test}をリストテスター用Chiselコードを示します。
-（1）\code{Ticker}又は\code{T}またはそのサブタイプタイプである\code{Ticker}から継承する任意のクラス、（2）テスト中の設計、およびクロックの（3）数を受け入れる\code{[T <: Ticker]}パラメータタイプ：\code{TickerTester}は、いくつかのパラメータを有しますサイクルは、我々はそれぞれの目盛りのために期待しています。
-\code{tick}はすべて$ N $クロックサイクルを繰り返すことティック（開始は異なる実装のために異なるかもしれない）、次いで、チェックの最初の発生のためにテスターを待ちます。
+\ifshowtranssecond %(校正 12/30 diningyo)
+\emph{ticker}を使って作成した異なるすべての論理は、単一のテストベンチを用いてテストできます。
+方法は簡単で、テストベンチで\emph{Ticker}の派生クラスを受け入れるようにする\emph{だけ}です。
+コード~\ref{lst:ticker:test}はテスターのためのコードです。
+\code{TickerTester}は複数のパラメータを持ちます。1つ目の型パラメータ\code{[T <: Ticker]}は\code{Ticker}は又は\code{T}または\code{Ticker}を継承する任意のクラスを受け取れまます。2つ目は\code{T}の型を持つDUTで、3つ目は期待するカウントパルスのクロック周期です。
+テスターではカウントパルスの最初の出力を待ちます。これはテストするDUTの論理によって、スタートが異なる可能性があるためです。その後\code{tick}が$n$の周期で繰り返すことを確認します。
 \fi
 
+\ifshoworiginal
 \longlist{code/ticker_tester.txt}{A tester for different versions of the ticker.}{lst:ticker:test}
+\fi
+
+\ifshowtranssecond %(校正 12/31 mune10)
+\longlist{code/ticker_tester.txt}{異なったティッカーに対するテスターコード}{lst:ticker:test}
+\fi
 
 \ifshoworiginal
 With a first, easy implementation of the ticker, we can test the tester
@@ -10508,16 +10595,28 @@ less hardware by avoiding the comparator.
 一覧〜\ref{lst:ticker:nerd}は、コンパレータを回避することにより、より少ないハードウェアを使用することに-1カウント・ダウンのオタクのバージョンを示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-ティッカーの最初の、簡単な実装では、我々は、おそらくいくつかの\code{println}のデバッグで、テスター自体をテストすることができます。
-私たちは、単純なティッカーやテスターが正しいことを確信しているとき、私たちは、ティッカーの2つのバージョンを続行して探索することができます。
-一覧〜\ref{lst:ticker:down}は0までカウントダウンカウンタでダニの生成を示しています。
-一覧〜\ref{lst:ticker:nerd}は、コンパレータを回避することにより、より少ないハードウェアを使用することに-1カウント・ダウンのオタクのバージョンを示しています。
+\ifshowtranssecond %(校正 12/30 diningyo)
+最初の簡単なティッカーといくつかの\code{println}デバッグを用いて、テスター自身のテストができます。
+このようにして簡単なティッカーとテスターが正しいことを確認したのち、異なるバージョンのティッカーの実装へ進むことができます。
+コード~\ref{lst:ticker:down}は0までカウントダウンカウンタを使ったカウントパルスの生成を示しています。
+コード~\ref{lst:ticker:nerd}は-1までカウントダウンする凝った実装で、コンパレータを使用しないため、より少ないハードウェアで済みます。
 \fi
 
+\ifshoworiginal
 \longlist{code/down_ticker.txt}{Tick generation with a down counter.}{lst:ticker:down}
+\fi
 
+\ifshowtranssecond %(校正 12/31 mune10)
+\longlist{code/down_ticker.txt}{カウントダウンカウンタを使ったティック(カウントパルス)の生成}{lst:ticker:down}
+\fi
+
+\ifshoworiginal
 \longlist{code/nerd_ticker.txt}{Tick generation by counting down to -1.}{lst:ticker:nerd}
+\fi
+
+\ifshowtranssecond %(校正 12/31 mune10)
+\longlist{code/nerd_ticker.txt}{-1までカウントダウンするカウンタを使ったティック(カウントパルス)の生成}{lst:ticker:nerd}
+\fi
 
 \ifshoworiginal
 We can test all three versions of the ticker by using ScalaTest specifications,
@@ -10531,16 +10630,28 @@ We run only the ticker tests with:
 〜\ref{lst:ticker:spec}のリストの仕様を示しています。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
+\ifshowtranssecond %(校正 12/30 diningyo)
+ScalaTestの仕様を用いて、これら3つの異なるティッカーをテストできます。
+
 私たちは、ScalaTest仕様を使用してティッカーの異なるバージョンのインスタンスを作成し、一般的なテストベンチに渡すことでティッカーのすべての3つのバージョンをテストすることができます。
-〜\ref{lst:ticker:spec}のリストの仕様を示しています。
+コード~\ref{lst:ticker:spec}はテストの仕様を記載したものです。
+テストを実行するために必要なのは、次のコマンドを実行することのみです。
 \fi
 
 \begin{chisel}
 sbt "testOnly TickerSpec"
 \end{chisel}
 
+\ifshoworiginal
 \longlist{code/ticker_spec.txt}{ScalaTest specifications for the ticker tests.}{lst:ticker:spec}
+\fi
+
+\ifshowtranssecond %(校正 12/31 mune10)
+\longlist{code/ticker_spec.txt}{ティッカーテストのための ScalaTest の仕様}{lst:ticker:spec}
+\fi
+
+% 12/30 mune output all lists here
+\clearpage
 
 \ifshoworiginal
 \section{Hardware Generation with Functional Programming}
@@ -10549,11 +10660,14 @@ sbt "testOnly TickerSpec"
 \section{Hardware Generation with Functional Programming}
 \fi
 \ifshowtranssecond %(校正)
-\section{関数型プログラミングによるハードウェア生成 (L19523 TODO)}
+\section{関数型プログラミングによるハードウェア生成 (L19523 12/30 mune10)}
 \fi
 
 \label{sec:functional}
 \index{Functional programming}
+\ifshowtranssecond %(追記 12/30 mune10)
+\index{関数型プログラミング}
+\fi
 
 \ifshoworiginal
 Scala supports functional programming, so does Chisel then.
@@ -10568,10 +10682,10 @@ Scalaは関数型プログラミングをサポートしていますので、Chi
 私たちは、簡単な例で、ベクトルの総和を始めましょう：
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-Scalaは関数型プログラミングをサポートしていますので、Chiselは、ありません。
-我々は、ハードウェアを表現する関数を使用して（「」いわゆる ``高次関数を用いて）、機能プログラミングと、これらのハードウェアコンポーネントを組み合わせることができます。
-私たちは、簡単な例で、ベクトルの総和を始めましょう：
+\ifshowtranssecond %(校正 12/30 mune10)
+Chiselもそうですが、Scalaは関数型プログラミングをサポートしています。
+関数を使ってハードウェアを表現し、それらのハードウェアコンポーネントを（いわゆる「高次関数」を使う）関数型プログラミングと組み合わせることができます。
+ベクトルの和という簡単な例から始めましょう。
 \fi
 
 \shortlist{code/fun_first.txt}
@@ -10594,13 +10708,13 @@ with the next element, until a single result is left.
 単一の結果が残されるまで結果は、その後、次の要素と組み合わされます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-まず、機能\code{add}における加算器のハードウェアを定義します。
-ベクトルは\code{vec}に位置しています。
-スカラ\code{reduce()}方法は、単一の値を生成する、バイナリ操作でコレクションのすべての要素を組み合わせました。
-\code{reduce()}方法は、左から順に減少します。
-これは、最初の2つの要素とを行う操作を要します。
-単一の結果が残されるまで結果は、その後、次の要素と組み合わされます。
+\ifshowtranssecond %(校正 12/30 mune10)
+\noindent  まず、関数 \code{add}で加算器のハードウェアを定義します。
+ベクトルは \code{vec}にあります。
+Scalaの\code{reduce()}メソッドは，コレクションの全要素を2進演算で結合し，1つの値を生成します．
+\code{reduce()} メソッドは、左から順番に縮小(reduce)します。
+最初の 2 つの要素を取り、演算を実行します。
+結果は、単一の結果が残るまで、次の要素と結合されます。
 \fi
 
 \ifshoworiginal
@@ -10614,9 +10728,10 @@ the sum of the elements of vector \code{vec}.
 得られたハードウェアは、ベクトル\code{vec}の要素の和を計算する加算器のチェーンです。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-要素に結合する機能は、我々の場合、加算器を返し\code{add}に、\code{reduce}にパラメータとして提供されます。
-得られたハードウェアは、ベクトル\code{vec}の要素の和を計算する加算器のチェーンです。
+\ifshowtranssecond %(校正 12/30 mune10)
+要素を結合する関数は \code{reduce} のパラメータとして提供されています。
+ここでは加算器を返す\code{add}になります。
+結果として得られるハードウェアは，ベクトル \code{vec}の要素の和を計算する加算器のチェーンとなります．
 \fi
 
 \ifshoworiginal
@@ -10629,8 +10744,8 @@ two operands.
 代わりに（簡単な）\code{add}関数を定義するので、私たちは、無名関数として加算を提供し、2つのオペランドを表すために、Scalaのワイルドカード `` \code{\_}「」を使用することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-代わりに（簡単な）\code{add}関数を定義するので、私たちは、無名関数として加算を提供し、2つのオペランドを表すために、Scalaのワイルドカード `` \code{\_}「」を使用することができます。
+\ifshowtranssecond %(校正 12/30 mune10)
+(単純な)add関数を定義する代わりに、匿名関数としてaddを提供し、Scalaのワイルドカード ``\code{\_}'' を使った2つのオペランドで表現することもできます。
 \fi
 
 \shortlist{code/fun_func_lit.txt}
@@ -10648,10 +10763,10 @@ If we do not trust the synthesize tool to rearrange our adder chain, we can use 
 我々は、加算器チェーンを再配置するのsynthesizeツールを信用しない場合、我々は、加算器のツリー生成にChiselの\code{reduceTree}メソッドを使用することができます。
 \fi
 
-\ifshowtranssecond %(校正 TODO)
-この1つのライナーで、私たちは、加算器のチェーンを生成しました。
-チェーンは、理想的な構成ではありませんSUM関数の場合は、ツリーが短い組み合わせ遅延を持つことになります。
-我々は、加算器チェーンを再配置するのsynthesizeツールを信用しない場合、我々は、加算器のツリー生成にChiselの\code{reduceTree}メソッドを使用することができます。
+\ifshowtranssecond %(校正 12/30 mune10)
+\noindent  このワンライナー(1行コード)で、加算器のチェーン（連鎖）を生成しました。
+チェーンで構成する加算関数は理想的ではありません。ツリーの方が組み合せ回路の遅延が少なくなります。
+論理合成ツールの加算器チェーンを再配置(最適化)機能を信用しないのであれば、Chiselの\code{reduceTree}メソッドを使ってツリー型の加算器を生成することができます。
 \fi
 
 \shortlist{code/fun_reduce_tree.txt}
