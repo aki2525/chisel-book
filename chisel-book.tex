@@ -5779,7 +5779,7 @@ Dフリップフロップキャプチャクロックとその出力で記憶す�
 \ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 順序回路を構築するための基本的な要素は、レジスタです。
 レジスタは\myref{https://en.wikipedia.org/wiki/Flip-flop_(electronics)\#D_flip-flop}{D flip-flops}の集まりです。
-D フリップフロップは、クロックの立ち上がりエッジで入力の値をキャプチャして保持し、出力します。
+Dフリップフロップは、クロックの立ち上がりエッジで入力の値をキャプチャして保持し、出力します。
 別の言い方をすれば、レジスタはクロックの立ち上がりエッジの入力値で出力を更新します。
 \fi
 
@@ -5844,7 +5844,7 @@ made out of a combination of vectors and bundles.
 \ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 \noindent レジスタにクロックを接続する必要はありません。
 Chiselは暗黙のうちにこれを行います。
-レジスタの入力と出力は、ベクトルと束の組み合わせで作られた任意の複雑な型にすることができます。
+レジスタの入力と出力は、ベクトルとバンドルの組み合わせで作られた任意の複雑な型にすることができます。
 \fi
 
 \ifshoworiginal
@@ -5882,8 +5882,8 @@ Variable names start with lowercase and classes start with upper case.
 \fi
 
 \ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
-まず、我々は、レジスタを定義し、名前を付けます。
-第二に、我々は、レジスタの入力に\code{delayIn}信号を接続します。
+まず、我々はレジスタを定義し、名前を付けます。
+第二に、レジスタの入力に\code{delayIn}信号を接続します。
 レジスタの名前は、文字列\code{Reg}が含まれていることにも注意してください。
 簡単に組み合わせ回路と順序回路を区別するために、名前の一部にマーカーとして\code{Reg}をつけておくのが一般的です。
 また、Scala(ですからChiselも)の命名規則は通常\myref{https://en.wikipedia.org/wiki/Camel_case}{CamelCase}が使われます。
@@ -5980,7 +5980,7 @@ by a diagram showing the signals over time. Such a diagram is called a waveform 
 
 \ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 順序回路は、時間の経過とともにその値が変わります。
-そのふるまいは、時間の経過とともに変化する信号を示すダイアグラムによってみることができます。このようなダイアグラムは、ウェーブフォームまたは\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
+そのふるまいは、時間の経過とともに変化する信号を示すダイアグラムによってみることができます。このようなダイアグラムは、波形または\myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram}と呼ばれています。
 \fi
 
 \index{Timing diagram}
@@ -6020,7 +6020,7 @@ register output follows the input signal with one clock cycle delay.
 \fi
 
 \ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
-図~\ref{fig:register-wave}に、リセットと一部の入力データが適用されたレジスタのウェーブフォームを示します。
+図~\ref{fig:register-wave}に、リセットと一部の入力データが適用されたレジスタの波形を示します。
 時間は左から右へと進みます。
 図の一番上には、回路を駆動するクロックが表示されています。
 リセット前の最初のクロックサイクルでは、レジスタの内容が定義されていません。
@@ -6071,7 +6071,7 @@ output of the register.
 典型的なデザインパターンは、イネーブル信号を持つレジスタです。
 イネーブル信号が\code{true}(高)の場合のみ、レジスタは入力をキャプチャし、そうでない場合は古い値を保持します。
 イネーブルは、同期リセットと同様に、レジスタの入力にマルチプレクサを使用してインプリメントすることができます。
-マルチプレクサへの入力の1つは、レジスタの出力のフィードバックです。
+マルチプレクサへの入力の1つは、レジスタの出力からのフィードバックです。
 \fi
 
 \begin{figure}
@@ -6120,7 +6120,7 @@ follows the input with one clock cycle delay. Only in the fourth clock cycle
 
 \ifshowtranssecond %(仮訳 12/06 校正1 12/29 aki)
 図~\ref{fig:register-en-wave}イネーブル付きレジスタの波形例を示します。
-ほとんどの場合、イネーブルをハイ(\code{true})にすると、レジスタは1クロックサイクルの遅延で入力に従ってやつで、います。
+ほとんどの場合、イネーブルをhigh(\code{true})にすると、レジスタは1クロックサイクルの遅延で入力に従っています。
 4クロックサイクル目にのみ\code{enable)がLowになり、Dの立ち上がりエッジでレジスタは値(5)を保持します。
 \fi
 
@@ -6148,7 +6148,7 @@ with a conditional update:
 \fi
 
 \ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
-\noindent また、イネーブルのレジスタをリセットすることもできます。
+\noindent また、イネーブル付きのレジスタをリセットすることもできます。
 \fi
 
 \shortlist{code/sequ_reg_init_ena.txt}
@@ -6180,7 +6180,7 @@ good use and build more interesting sequential circuits.
 \fi
 
 \ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
-レジスタの基本的な使用法をすべて説明したところで、これらのレジスタを有効に使用して、より興味深いシーケンシャル回路を構築します。
+レジスタの基本的な使用法をすべて説明したところで、これらのレジスタを活用して、より興味深いシーケンシャル回路を構築します。
 \fi
 
 \ifshoworiginal
@@ -6325,7 +6325,7 @@ define a function with a parameter to generate a counter for us.
 我々はコーディングや複数のカウンタを使用しているように、私たちは私たちのためにカウンタを生成するためのパラメータで関数を定義することができます。
 \fi
 \ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
-\noindent 私たちはコーディングをしていて、より多くのカウンタを使っているので、カウンタを生成するためのパラメータを持つ関数を定義することができます。
+\noindent 私たちはこれまでのカウンタに対する経験を活かして、パラメータを持つカウンタ関数を定義し生成することができます。
 \fi
 
 \shortlist{code/function_counter.txt}
@@ -6394,7 +6394,7 @@ at some frequency as we have shown in the Chisel ``Hello World'' example.
 \fi
 
 \ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
-イベントを数える以外にも、カウンタは時間の概念を生成するためによく使われます（壁掛け時計の時間としての時間）。
+イベントを数える以外にも、カウンタは時間の概念を生成するためによく使われます(壁掛け時計の時刻)。
 同期回路は一定の周波数の時計で動作しています。
 回路はそれらのクロックの刻みで進行します。デジタル回路では、クロックの刻みを数える以外に時間の概念はありません。
 クロックの周波数がわかれば、例えば Chisel の ``Hello World'' の例で示したようにある周波数で LED を点滅させるような時間的なイベントを発生させる回路を作ることができます。
@@ -6492,7 +6492,7 @@ slow counter that increments every tick ($n$ clock cycles).
 \fi
 
 \ifshowtranssecond %(仮訳 12/07 校正1 12/29 aki)
-\noindent 図~\ref{fig:tick-count-wave}は、ティックのウェーブフォームとティック$n$(クロックサイクル)ごとにインクリメントするスローカウンタのウェーブフォームを示しています。
+\noindent 図~\ref{fig:tick-count-wave}は、ティックの波形とティック$n$(クロックサイクル)ごとにインクリメントするスローカウンタの波形を示しています。
 \fi
 
 \index{Logical clock}
@@ -6525,7 +6525,7 @@ results in a counter with a width of a single bit.
 \fi
 
 \ifshowtranssecond %(仮訳 12/07 校正1 12/29 aki)
-幅推論ではレジスタのサイズを決める必要がありますが、レジスタ定義時の型や初期化値で明示的に幅を指定した方が良いでしょう。明示的に幅を定義することで、リセット値\code{0.U}の結果として1ビットの幅を持つカウンタが生成されてしまい、驚くことがなくなります。
+幅推論ではレジスタのサイズを決める必要がありますが、レジスタ定義時の型や初期化値で明示的に幅を指定した方が良いでしょう。明示的に幅を定義することで、リセット値\code{0.U}の結果として1ビットの幅を持つカウンタが生成されてしまうようなことがなくなります。
 \fi
 
 \ifshoworiginal
@@ -6565,7 +6565,7 @@ against 0 or 1. The resource requirement is the same for the up and down counter
 
 \ifshowtranssecond %(仮訳 12/07 校正1 12/29 aki)
 多くの人が、たまに\myref{https://en.wikipedia.org/wiki/Nerd}{オタク}になった気分になることがあります。
-例えば、カウンタ/ティック生成の高度に最適化されたバージョンを設計したいとします。
+例えば、カウンタ/ティック生成の高度に最適化された設計をしたいとします。
 標準的なカウンタは、1つのレジスタ、1つの加算器（または減算器）、およびコンパレータというリソースを必要とします。レジスタや加算器についてはあまり手を加えることができません。カウントアップする場合は、ビット文字列である数値と比較する必要があります。
 コンパレータは、ビット文字列に対する大きなANDゲートから構築することができます。
 ゼロまでカウントダウンする場合、コンパレータは大型のNORゲートで、ASICに組み込んだ定数と比較するものよりも少し安価になるかもしれません。
@@ -6590,8 +6590,8 @@ that our counter reached -1. Here it is, the counter created by a nerd:
 \fi
 \ifshowtranssecond %(校正 6/20 mune10 校正1 12/29 aki)
 しかし、巧妙なハードウェア設計者が引き出せるトリックがもう一つあります。
-上か下かをカウントするには、これまでのところ、すべてのカウントビットとの比較が必要でした。
-N-2から-1までカウントするとどうなるでしょうか？負の数は最上位ビットが1に設定されており、正の数はこのビットが0に設定されています。
+カウントアップもしくはカウントダウンを行ってゆくには、すべてのカウントビットとの比較が必要でした。
+しかし、N-2から-1までカウントするとどうなるでしょうか？負の数は最上位ビットが1に設定されており、正の数はこのビットが0に設定されています。
 このビットだけをチェックして，カウンタが-1に達したことを検出すればよいのです。これがオタクが作ったカウンタです．
 \fi
 
@@ -6754,7 +6754,7 @@ two cycles it is 75\,\%. The pulse width is modulated between 25\,\% and 75\,\%.
 
 \ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 図~\ref{fig:pwm}はPWM信号を示しています。矢印は信号の周期の始まりを示しています。
-信号が高い時間の割合は、また、デューティ・サイクルと呼ばれます。
+信号が高い時間の割合は、デューティ・サイクルと呼ばれます。
 最初の2周期は、デューティ・サイクルは25\,\%, つぎの2周期は50\,\%,\, そして最後の2期間は、75\,\%です。
 パルス幅は、25\,\%と75\,\%の間で変調されています。
 \fi
@@ -6897,7 +6897,7 @@ with a function call. Wire \code{sig} represents the modulated PWM signal.
 
 \ifshowtranssecond %(仮訳 12/08 校正1 12/30 aki)
 このPWMは1\,kHzの信号を生成するための周波数を1000分の1までしかカウントできないので、変調信号を1000で割る必要があります。
-実数の除算はハードウェア上では非常に高価なので、単に右に10ビットシフトするだけで、$2^{10} = 1024$による除算と同じ結果を得てその値を使います。
+実数の除算はハードウェア上では非常に高価なので、単に右に10ビットシフトするだけで、$2^{10} = 1024$による除算で代用します。
 PWM回路を関数として定義したので、関数呼び出しでインスタンス化することができます。
 ワイヤ\code{sig}は変調されたPWM信号を表しています。
 \fi
@@ -7284,7 +7284,7 @@ memory read data. The write data is delayed by one clock cycle with a register.
 新しく書き込んだ値を読み出したい場合は、アドレスが等しいことを検出して書き込みデータを送る\emph{フォワード(転送)}回路を構築すればできます。
 図~\ref{fig:memory:forwarding}は、フォワード(転送)回路を搭載したメモリを示しています。
 リードアドレスとライトアドレスを比較し、ライトデータの転送パスとメモリのリードデータの転送パスをライトイネーブルでゲーティングして選択します。
-書き込みデータはレジスタで1クロック遅延されます。
+書き込みデータはレジスタで1クロック遅延となります。
 \fi
 
 \ifshoworiginal
@@ -8186,7 +8186,7 @@ FSMは\emph{green}レベルで開始します。
 
 \ifshowtranssecond %(仮訳 12/12 校正1 01/01 aki)
 図~\ref{fig:diag-moore}に、簡単なFSMの状態図例を示します。
-FSMは3つの状態 :アラームレベルを示す、\emph{緑}、\emph{橙}、\emph{赤}があります。
+FSMは3つの状態 :アラームレベルを示す、\emph{green(緑)}、\emph{orange(橙)}、\emph{red(赤)}があります。
 FSMは\emph{緑}のレベルから始まります。
 \emph{悪いできごと}が発生すると、アラームレベルは\emph{橙}に切り替わります。
 2回目の悪いできごとが発生すると、アラームレベルは\emph{赤}に切り替わります。
@@ -8235,7 +8235,7 @@ output logic.
 現在の状態、入力値、結果として得られる次の状態、現在の状態の出力値をリストアップしました。
 原則として、すべての可能な状態に対して、すべての可能な入力を指定する必要があります。
 この表は、$3 \times 4 = 12$行で構成されています。
-\emph{悪いできごと}が発生したときに\emph{クリア}入力が無視されることを示して、表を単純化しています。
+\emph{悪いできごと}が発生したときに\emph{クリア}入力が無視されることとして、表を単純化しています。
 つまり、\emph{悪いできごと}は\emph{クリア}よりも優先されます。
 出力の列には繰り返しがあります。
 もし、FSMが大きくなったり、出力が多くなったりした場合は、テーブルを次の状態のロジックと出力のロジックの2つに分割することができます。
@@ -8304,7 +8304,7 @@ The FSM has two input and a single output signal, captured in a Chisel \code{Bun
 \ifshowtranssecond %(校正 6/20 mune10 校正1 01/01 aki)
 このシンプルなFSMのための完全なChiselコードは1ページに収まっています。
 個々の部分を順を追って見ていきましょう。
-FSMは2つの入力と1つの出力信号を持っています。Chisel \code{Bundle}でキャプチャされています。
+FSMは2つの入力と1つの出力信号を持っており、Chisel \code{Bundle}でキャプチャされます。
 \fi
 
 \shortlist{code/simple_fsm_io.txt}
@@ -8633,11 +8633,11 @@ which is more important. Therefore, the one-liner is the preferred solution.
 \fi
 
 \ifshowtranssecond %(校正 6/20 mune10)
-特に、同じ機能のChisel ワンライナーを見たことがあるので、エッジ検出回路に本格的なFSMが最適かどうかを問うことができます。
+私たちは、同じ機能のChisel ワンライナーを見たことがあるので、エッジ検出回路に本格的なFSMが最適かどうかを比較することができます。
 ハードウェア消費量は似ています。
 どちらのソリューションも、ステート用に単一のDフリップフロップを必要とします。
-FSM の組み合わせ ロ ジ ッ ク は、 状態の変化が現在の状態 と 入力値に依存す る ため、 多少複雑にな り ます。
-この機能のためには、ワンライナーの方が書きやすく、読みやすいので、より重要です。したがって、ワンライナーが好ましい解決策である。
+FSMの組み合わせロジックは、 状態の変化が現在の状態と入力値に依存するため、多少複雑になります。
+この機能により重要なのは、ワンライナーの方が書きやすく、読みやすいことです。したがって、ワンライナーが好ましい解決策でしょう。
 \fi
 
 \ifshoworiginal
@@ -8757,7 +8757,7 @@ output is usually less than a clock cycle.
 \ifshowtranssecond %(仮訳 12/19 校正1 01/01 aki)
 図~\ref{fig:rising}は立ち上がりエッジ検出FSMのミーリー版とムーア版の波形を示しています。
 ミーリー出力は入力された立ち上がりエッジに忠実に追従しているのに対し、ムーア出力はクロックティック後に立ち上がります。
-また、ムーア版の出力は1クロック周期の幅があるのに対し、Mealy版の出力は通常1クロック周期以下であることがわかります。
+また、ムーア版の出力は1クロック周期の幅があるのに対し、ミーリー版の出力は通常1クロック周期以下であることがわかります。
 \fi
 
 \ifshoworiginal
@@ -8856,8 +8856,8 @@ FSMのための古典的な例は、トラフィック光コントローラ（�
 \fi
 
 \ifshowtranssecond %(仮訳 12/19 校正1 01/01 aki)
-FSMの典型的な例は、信号機コントローラです(\cite[Section~14.3]{dally:vhdl:2016}を参照ください)。
-信号制御器は、赤から緑への切り替えの際に、交差点内の両方の道路が進入禁止信号(赤とオレンジ)を待っている間の段階がなくてはなりません。
+FSMの典型的な例は、信号機です(\cite[Section~14.3]{dally:vhdl:2016}を参照ください)。
+信号機は、赤から緑への切り替えの際に、交差点内の両方の道路が進入禁止信号(赤とオレンジ)を待っている間の段階がなくてはなりません。
 この例をもう少し面白くするために、優先道路を考えてみましょう。
 マイナーな道路には2つの車両検知器があります(交差点の両方の入口にあります)。
 車が検知されたときだけマイナー道路を緑に切り替えてから、優先道路を緑に戻します。
@@ -9280,8 +9280,8 @@ For a binary string, this is the number of `1's.
 
 \ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
 図~\ref{fig:popcnt-fsmd}に示すFSMDは、また\myref{https://en.wikipedia.org/wiki/Hamming_weight}{Hamming weight}と呼ばれるポップカウントを計算する例です。
-ハミングウェイトは、ゼロシンボルとは異なるシンボルの数です。
-バイナリ文字列の場合、これは`1'個となります。
+ハミングウェイトは、0ではないシンボルの個数です。
+バイナリ文字列の場合、これは`1'の数となります。
 \fi
 
 \ifshoworiginal
@@ -9406,7 +9406,7 @@ FSMは状態\code{Done}及び信号に\code{popCntReady}をアサートするこ
 図~\ref{fig:popcnt-data}はpopcount回路のデータパスを示しています。
 データは\code{shf}レジスタにロードされます。
 ロード時には\code{cnt}レジスタも0にリセットされます。
-`1'の数をカウントするために、\code{shf}レジスタを右にシフトし、クロックサイクルごとに最下位ビットを\code{cnt}に加算する。
+`1'の数をカウントするために、\code{shf}レジスタを右にシフトし、クロックサイクルごとに最下位ビットを\code{cnt}に加算します。
 図に示されていないカウンタは、全てのビットが最下位ビットを通過するまでカウントダウンします。カウンタがゼロになると、ポップカウントは終了します。
 FSMは\code{終了}の状態に切り替わり、\code{popCntReady}をアサートすることで結果を通知します。
 結果が読み出された場合は\code{popCntValid}をアサートすることで、FSWは\code{Idle}状態に戻ります。
@@ -9445,7 +9445,7 @@ circuit.
 \fi
 
 \ifshowtranssecond %(仮訳 12/20 校正1 01/01 aki)
-そうでない場合は、\code{regData}レジスタが右にシフトされ、\code{regData}レジスタの最下位ビットが\code{regPopCount}レジスタに追加され、カウンタが0になるまでデクリメントされます。
+そうでない場合は、\code{regData}レジスタを右にシフトして、\code{regData}レジスタの最下位ビットを\code{regPopCount}レジスタに追加し、カウンタが0になるまでデクリメントされます。
 カウンタが0の時、出力はpopcountとなります。
 コード~\ref{lst:pop:data}はpopcount回路のデータパスのためのChiselコードを示しています。
 \fi
@@ -9562,7 +9562,7 @@ When the receiver can receive data in every clock cycle, it is called an
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-図~\ref{fig:ready_valid1}は、送信機がデータを持つ前に(クロックサイクル１から)受信機が\code{ready}信号を出すready-validトランザクションのタイミング図を示しています。
+図~\ref{fig:ready_valid1}は、送信機がデータを持つ前に(クロックサイクル1から)受信機が\code{ready}信号を出すready-validトランザクションのタイミング図を示しています。
 データ転送はクロックサイクル3で行われます。
 クロックサイクル4からは、送信者がデータを持っておらず受信者も次の受信の準備はできていません。
 受信機がすべてのクロックサイクルでデータを受信できる場合、それは``常時レディ''インターフェースと呼ばれ、\code{ready}は\code{true}にハードコードすることができます。
@@ -9595,10 +9595,10 @@ interface. However, in that case the data will probably not change on signaling
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-図~\ref{fig:ready_valid2}は、送信者が受信機の準備が整う前に(クロックサイクル１から)\code{valid}な信号を送信するready-validトランザクションのタイミング図を示しています。
+図~\ref{fig:ready_valid2}は、送信者が受信機の準備が整う前に(クロックサイクル1から)\code{valid}な信号を送信するready-validトランザクションのタイミング図を示しています。
 データ転送は、クロックサイクル3で行われます。
 クロックサイクル4以降は、送信者も受信者も次の転送の準備ができていません。
-``常時レディ''インターフェイスと同様に、常に有効なインターフェイスを想定することができます。
+``常時レディ''インターフェイスと同様に、常に有効なインターフェイスに似ています。
 しかし、その場合はおそらく\code{ready}信号の変化でデータが変わることはなく、単純にハンドシェイク信号を落とすことになるでしょう。
 \fi
 
@@ -9684,9 +9684,9 @@ but needs to be defined by the concrete usage of the interface.
 \fi
 
 \ifshowtranssecond %(仮訳 12/21 校正1 01/01 aki)
-1つの疑問が残るのは、アクティブな状態でデータ転送が行われて\emph{いない}場合に、\code{ready}または\code{valid}な状態がデアサートされる可能性があるかどうかです。
-例えば、受信機はしばらくの間準備ができていてデータを受信していないかもしれないが、他のイベントのために準備ができていない状態になるかもしれない。
-送信側でも同じことが考えられ、データが有効なのはいくつかのクロックサイクルだけで、データ転送が起こらず有効でなくなることがあります。
+残る疑問の1つは、アクティブな状態でデータ転送が行われて\emph{いない}場合に、\code{ready}または\code{valid}な状態がデアサートされる可能性があるかどうかです。
+例えば、受信機はデータを受信していなくても、他のイベントのために準備ができていないかもしれません。
+同じことが送信機にも考えられ、有効なデータがあるのは少しのクロックサイクルだけで、データ転送が起らないことがあります。
 この動作が許されるかどうかは、ready-validインタフェースの一部ではなく、インタフェースの具体的な使用法によって定義される必要があります。
 \fi
 
@@ -10679,8 +10679,8 @@ which itself may use the FIFO buffer.
 \fi
 
 \ifshowtranssecond %(校正 6/20 mune10 校正1 01/02 aki)
-このセクションでは、FIFOバッファなど、より大きなデザインのビルディングブロックとして使用するいくつかの小さなデジタルデザインを探索します。
-別の例として、シリアル・インターフェース(UARTとも呼ばれます)を設計しますが、これはFIFOバッファを使用します。
+この章では、FIFOバッファなど、より大きなデザインのビルディングブロックとして使用するいくつかの小さなデジタルデザインを探索します。
+別の例として、シリアルインターフェース(UARTとも呼ばれます)を設計しますが、これはFIFOバッファを使用します。
 \fi
 
 \ifshoworiginal
@@ -10721,7 +10721,7 @@ ERROR-TBD
 \fi
 
 \ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
-ライタとリーダの間にバッファを設けることで、書き込み(送信者)とリーダ(受信者)を切り離すことができます。
+ライタとリーダの間にバッファを設けることで、ライタ(送信者)とリーダ(受信者)を切り離すことができます。
 共通のバッファは、先入れ先出し(\href{https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)}{FIFO})バッファです。
 図~\ref{fig:fifo}は、ライタ、FIFO、リーダを示しています。
 \code{write}信号がアクティブなときに\code{din}のデータがライタによってFIFOに入れられます。
@@ -10783,9 +10783,9 @@ ERROR-TBD
 \fi
 
 \ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
-FIFOのいくつかの異なる実装が可能です :
+FIFOのいくつかの異なる実装ができます :
 たとえば、オンチップメモリと読み出しポインターおよび書き込みポインターを使用したり、または極小のステートマシンを持つ単純なレジスタのチェーンを使用したものなどです。
-小規模なバッファ(最大数十エレメント)の場合、個々のレジスタをバッファのチェーンに接続して構成されたFIFOは、リソース要件が小さい単純なインプリメンテーションとなります。
+小規模なバッファ(最大数十エレメント)の場合、個々のレジスタをバッファのチェーンに接続して構成されたFIFOは、リソース要件が小さい単純な実装となります。
 バブルFIFOのコードは\myref{https://github.com/schoeberl/chisel-examples}{chisel-examples}リポジトリにあります。
 \footnote{完全性を確保するために、Chisel bookリポジトリにはFIFOコードのコピーも含まれています。}
 \fi
@@ -10860,7 +10860,7 @@ IOポート\code{full}と\code{empty}ライターとリーダーのためのバ�
 \ifshowtranssecond %(仮訳 12/22 校正1 01/02 aki)
 コード~\ref{lst:fifo:stage}は1つのバッファを示しています。
 バッファは\code{WriterIO}型のエンキューイングポート\code{enq}と\code{ReaderIO}型のデキューイングポート\code{deq}を持っています。
-バッファのステート要素は、データを保持する1つのレジスタ(\code{dataReg}と単純なFSM用の1つのステートレジスタ(\code{stateReg})です。
+バッファのステート要素は、データを保持する1つのレジスタ(\code{dataReg})と単純なFSM用の1つのステートレジスタ(\code{stateReg})です。
 FSMには2つの状態しかありません。
 バッファが\code{empty}か\code{full}かのどちらかです。
 バッファが\code{empty}の場合、書き込みは入力データを登録して\code{full}状態に変更します。
@@ -10953,7 +10953,7 @@ I will present other possible implementations of FIFOs in Section~\ref{sec:more:
 しかし、データレートがクロック周波数に近づくと、バブルFIFOには2つの制限があります : 
 (1) 各バッファの状態は\emph{空}と\emph{満杯}を切り替えなければならないため、FIFOの最大スループットは1ワードあたり2クロックサイクルです。
 (2) データの泡はすべてのFIFOを伝搬する必要があるため、入力から出力までのレイテンシは少なくともバッファの数になります。
-節~\ref{sec:more:fifo}でFIFOの他の可能な実装を提示紹介します。
+節~\ref{sec:more:fifo}でFIFOの他の可能な実装をご紹介します。
 \fi
 
 \ifshoworiginal
@@ -11062,7 +11062,7 @@ IOポートは、シリアルデータが送信される\code{txd}ポート、�
 
 \ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 コード~\ref{lst:uart:tx}はベアボーンのシリアル送信機(\code{Tx})を示しています。
-IOポートはシリアルデータが送信される\code{txd}ポートと、送信機がシリアライズして送信する文字を受信できる\code{Channel}です。
+IOポートはシリアルデータが送信される\code{txd}ポートと、送信機がシリアライズして送信した文字を受信できる\code{Channel}です。
 正しいタイミングを生成するために、1つのシリアルビットのクロックサイクルの時間を計算して定数を算出しています。
 \fi
 
@@ -11085,7 +11085,7 @@ FSMの追加の状態レジスタを必要としない、すべての状態は�
 (1) データをシフト(シリアライズ)するためのレジスタ(\code{shiftReg})、
 (2) 正しいボーレートを生成するためのカウンタ(\code{cntReg})と、
 (3) まだシフトアウトする必要があるビット数のカウンタ。
-FSMの追加のステートレジスタは必要なく、すべてのステートはこれら3つのレジスタにエンコードされます。
+FSMの追加のステートレジスタは必要なく、すべてのステートはこれら3つのレジスタでエンコードされます。
 \fi
 
 \ifshoworiginal
@@ -11266,8 +11266,8 @@ After 8 bits are shifted in, \code{valReg} signals an available byte
 
 \ifshowtranssecond %(仮訳 12/23 校正1 01/02 aki)
 \longlist{code/uart_rx.txt}{A receiver for a serial port.}{lst:uart:rx}
-コード~\ref{lst:uart:rx}にレシーバー(Rx)のコードを示します。
-レシーバーはシリアルデータのタイミングを再構築する必要があるので、少し厄介です。
+コード~\ref{lst:uart:rx}に受信機(Rx)のコードを示します。
+受信機はシリアルデータのタイミングを再構築する必要があるので、少し厄介です。
 受信機はスタートビットの立ち下がりを待ちます。
 このイベントから、受信機はビット0の中央に位置するように1.5ビットの時間を待ちます。
 その後、ビット毎にシフトしていきます。この２つの待ち時間を\code{START\_CNT}と\code{BIT\_CNT}として観測することができます。どちらも同じカウンタ(\code{cntReg})を使用します。
@@ -11627,7 +11627,7 @@ or \code{one}. The has valid data when it is in state \code{one} or \code{two}.
 
 \ifshowtranssecond %(仮訳 12/24 校正1 01/03 aki)
 コード~\ref{lst:fifo:double:buffer}はダブルバッファを示しています。
-各バッファ要素が2つのエントリを格納できるので、バッファ要素の半分(\code{depth/2})しか必要ありません。
+各バッファ要素が2つのエントリを格納できるので、バッファ要素は半分(\code{depth/2})しか必要ありません。
 \code{DoubleBuffer}には\code{dataReg}と\code{shadowReg}の2つのレジスタがあります。
 コンシューマは常に\code{shadowReg}から供給されます。
 ダブルバッファには\code{empty}, \code{one},と\code{two}の3つの状態があり、バッファがどれくらい一杯かを示します。
@@ -12012,7 +12012,7 @@ Source code for both exercises is included in the
 \fi
 
 \ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
-この演習節には、2つの演習が含まれているので、少し長くなります : 
+この節の演習には、2つの演習が含まれているので、少し長くなります : 
 (1) バブルFIFOを探索し、異なるFIFO設計を実装する。
 そして (2) UARTを調べて拡張する問題です。
 両方の練習問題のソースコードは\myref{https://github.com/schoeberl/chisel-examples}{chisel-examples}リポジトリに含まれています。
@@ -12048,7 +12048,7 @@ VCDファイルには、\myref{http://gtkwave.sourceforge.net/}{GTKWave}とし�
 \fi
 
 \ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
-また、FIFOソースには、さまざまな読み書き動作を行って、\myref{https://en.wikipedia.org/wiki/Value_change_dump}{value change dump (VCD)}形式の波形を生成するテスタも含まれています。
+FIFOソースには、さまざまな読み書き動作を行って、\myref{https://en.wikipedia.org/wiki/Value_change_dump}{value change dump (VCD)}形式の波形を生成するテスタも含まれています。
 VCDファイルは、\myref{http://gtkwave.sourceforge.net/}{GTKWave}などの波形ビューアでみることができます。
 リポジトリ内の\myref{https://github.com/schoeberl/chisel-examples/blob/master/src/test/scala/simple/FifoTester.scala}{FifoTester}をみてください。
 リポジトリには、例を実行するための\code{Makefile}が含まれています。FIFOの例では、次のように入力します : 
@@ -12125,7 +12125,7 @@ and full for a single word transfer.
 \fi
 
 \ifshowtranssecond %(仮訳 12/27 校正1 01/03 aki)
-テストの最後には、最大速度で書き込みと読み込みを試みるループが含まれています。
+テストの最後には、最大速度で書き込みと読み出しを試みるループが含まれています。
 バブルFIFOが最大帯域幅、つまり1ワードあたり2クロックサイクルで動作しているのがわかります。
 バッファステージは、1ワードの転送のために常に空と満タンの間で行き来することになります。
 \fi
@@ -12429,7 +12429,7 @@ and \code{AR} an address register for memory access.
 \ifshowtranssecond %(仮訳 12/28 校正1 01/04 aki)
 Lerosはシンプルな設計ですが、Cコンパイラのターゲットとしては十分な性能を持っています。
 命令の記述は1ページに収まるようになっており、表~\ref{tab:leros:isa}に一覧があります。
-その中で\code{A}はアキュムレータ、\code{PC}はプログラムカウンタ、\code{i}は即時値(0〜255)、\code{Rn}はレジスタ\code{n}(0〜255)、\code{o}は\code{PC}との相対的な分岐オフセット、\code{AR}はメモリアクセス用のアドレスレジスタを表しています。
+その中で\code{A}はアキュムレータ、\code{PC}はプログラムカウンタ、\code{i}は即値(0〜255)、\code{Rn}はレジスタ\code{n}(0〜255)、\code{o}は\code{PC}との相対的な分岐オフセット、\code{AR}はメモリアクセス用のアドレスレジスタを表しています。
 \fi
 
 
@@ -12994,7 +12994,7 @@ In our example, we change \code{chisel3}, and the clone command for my local for
 具体的には、GitHubのWebインターフェイスで\code{Fork}ボタンを押すことで、リポジトリをフォークすることができます。
 そして、そのフォークしたリポジトリをクローンします。
 \footnote{Chiselとfirrtlに変更を加える場合は、firrtlについてもフォークとクローンが必要があることに注意してください}
-この例では、\code{chisel3}を変更し、私のローカルのフォークをクローンするコマンドは次のとおりです。
+\code{chisel3}を変更し、私のローカルのフォークをクローンするコマンドは次のとおりです。
 \fi
 
 \begin{verbatim}
@@ -13033,7 +13033,7 @@ repo as well and publish it locally.
 \fi
 
 \ifshowtranssecond %(校正 7/23 mune10)
-パブリッシュしたライブラリのバージョン文字列について、パブリッシュローカルコマンドの実行の際に気をつけてください。
+パブリッシュしたライブラリのバージョン文字列について、パブリッシュローカルコマンドを実行する際に気をつけてください。
 文字列\code{SNAPSHOT}が含まれてパブリッシュされます。
 もしあなたがテスターを用いる際に、パブリッシュしたバージョンが、Chisel の SNAPSHOTと互換性がない場合、
 \myref{https://github.com/freechipsproject/chisel-testers}{chisel-tester}についても同様にフォークとクローンして、ローカルでパブリッシュしてください。
@@ -13052,9 +13052,9 @@ Chiselで変更をテストするには、おそらくまた、電子を掘削�
 \fi
 
 \ifshowtranssecond %(校正 7/23 mune10)
-Chiselでの変更をテストするには、おそらく、Chiselプロジェクトを作成する必要がります。
+Chiselでの変更をテストするには、おそらく、Chiselプロジェクトを作成する必要があります。
 例えば、\myref{https://github.com/schoeberl/chisel-empty}{empty Chisel project}をクローニング/フォークして名前を変更します。
-そこから\code{.git}フォルダは削除しておきます。
+\code{.git}フォルダは削除しておきます。
 \fi
 
 \ifshoworiginal
@@ -13207,7 +13207,7 @@ Chiselグループは\myref{https://github.com/freechipsproject/chisel-lang-gove
 Chiselプロジェクトでは、開発者はメインリポジトリに直接コミットできません。
 貢献は、ライブラリのフォーク版の作業ブランチから\myref{https://help.github.com/articles/creating-a-pull-request-from-a-fork/}{pull request、プルリクエスト}で行います。
 詳細については、GitHub上のドキュメント\myref{https://help.github.com/categories/collaborating-with-issues-and-pull-requests/}{collaboration with pull requests、プルリクエストによるコラボレーション}を参照してください。
-Chiselのグループでも貢献方法について文書化 \myref{https://github.com/freechipsproject/chisel-lang-governance/blob/master/reviewer_guidelines.md}{contribution guidelines、貢献ガイドライン} を始めています。 
+Chiselのグループでも貢献方法について\myref{https://github.com/freechipsproject/chisel-lang-governance/blob/master/reviewer_guidelines.md}{contribution guidelines、貢献ガイドライン}で文書化を始めています。 
 \fi
 
 \ifshoworiginal
@@ -13243,7 +13243,7 @@ needs just two lines of Scala code.}
 Chiselライブラリに組み込み、オペレータの使用例として、いくつかの使用例とテストコードを作成します。
 とりあえず、便利なオペレータである必要はありませんので、何でもよいです。
 例えば ゼロでなければ左辺を、それ以外の場合は右辺を返す、マルチプレクサのような、「?」オペレータを考えます。
-そのためには、そのくらいのコード行数が必要でしょうか？
+そのためには、どれくらいのコード行数が必要でしょうか？
 \footnote{てっとりばやい実装では、2行ほどのScalaコードになります}
 \fi
 
@@ -13611,7 +13611,7 @@ so I can include it in a future edition of the book.
 
 \ifshowtranssecond %(校正 7/23 mune10)
 Chiselを使用するオープンソースプロジェクトに心当たりがありましたら、その情報を私までメールを送ってください。
-その情報を、この本の将来版に含めるたいと思います。
+その情報を、この本の将来版に含めたいと思います。
 \fi
 
 \ifshoworiginal
@@ -13722,7 +13722,7 @@ Chisel2構築物は、パッケージ\code{Chisel}代わりに\code{chisel3}と�
 したがって、我々はここでそれをカバーしていません。
 \fi
 \ifshowtranssecond %(校正 7/23 mune10)
-Chisel2の実装は、\code{chisel3}の代わりに、\code{Chisel} パッケージを使い、この互換性レイヤを介することで、Chisel3プロジェクトである程度利用することができます。
+Chisel2の実装は、\code{Chisel3}の代わりに、\code{Chisel} パッケージを使い、この互換性レイヤを介することで、Chisel3プロジェクトである程度利用することができます。
 しかし、この互換性レイヤの使用は、あくまで遷移期間に留めるべきであり、ここでは詳しくは述べません。
 \fi
 
@@ -13889,7 +13889,7 @@ related to digital design and computer architecture.
 \item [IO] input/output
 \item [ISA] instruction set architecture
 \item [JDK] Java development kit
-\item [JIT] just-Iin-time
+\item [JIT] just-in-time
 \item [JVM] Java virtual machine
 \item [LC] logic cell
 \item [LRU] least-recently used
