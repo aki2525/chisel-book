@@ -4583,12 +4583,12 @@ or \code{Output()}. The direction is from the view of the component itself.
 
 \ifshowtranssecond %(校正 9/6 mune10)
 ハードウェアコンポーネントは、Chiselで、モジュール(module)と呼ばれています。
-各モジュールは、\code{Module}クラスを継承(Extend)ドします。
+各モジュールは、\code{Module}クラスを継承(Extend)します。
 また、\code{io}フィールドがインタフェースのために含まれます。
 \code{IO()}への呼び出しをラップした\code{Bundle}によってインタフェースは定義されます。
 \code{Bundle}には、モジュールの入力および出力ポートを表すためのフィールドが含まれます。
 信号の方向はフィールドをラップする\code{Input()}又は\code{Output()}で設定します。
-信号も方向は、コンポーネントから見たものになります。
+信号の方向は、コンポーネントから見たものになります。
 \fi
 
 \ifshoworiginal
@@ -4633,10 +4633,10 @@ port names, such as \code{data}, \code{valid}, or \code{ready}.
 \ifshowtranssecond %(校正 10/10 mune10)
 \noindent コンポーネントAは、\code{a}と\code{b}という2つの入力と、\code{x}と\code{y}の2つの出力を持ちます。
 コンポーネントBのポートには、\code{in1} \code{in2}, と \code{out} という名前を用います。
-すべてのポートは、8のビット幅を持つ符号なし整数（\code{UInt}）を使用します。
+すべてのポートは、8ビット幅を持つ符号なし整数（\code{UInt}）を使用します。
 この例のコードはコンポーネントを接続して階層を構築するものなので、コンポーネント内での実装は示していません。
 コンポーネントの実装は、コメントに``function of X'' と書かれているところに書かれます。
-これらの例のコンポーネントには関連する関数がないため、一般的なポート名を使用していまが、
+これらの例のコンポーネントには関連する関数がないため、一般的なポート名を使用していますが、
 実際のデザインでは、\code{data} \code{valid}, や \code{ready} のような意味のあるポート名を使用します。
 \fi
 
@@ -4878,7 +4878,7 @@ operation, selected by a 2-bit \code{fn} signal.
 \fi
 
 \ifshowtranssecond %(校正 10/10 mune10)
-次のコードは、16 ビットの入出力を持つ ALU で、足し算、引き算、OR、AND、をサポートしています。
+次のコードは、16 ビットの入出力を持つ ALU で、足し算、引き算、OR、ANDをサポートしています。
 演算の種類は、2ビットの\code{fn}信号で選択します。
 \fi
 
@@ -5066,7 +5066,7 @@ Chiselは\code{+(that: UInt)}のように、すでに加算生成機能を持っ
 
 \ifshowtranssecond %(校正 10/10 mune10)
 \noindent これは、\emph{ハードウエア・ジェネレーター} であることに注意してください。
-エラボレーション過程ででは、加算演算を実行するかわりに、2つの加算器(ハードウェアインスタンス)を作成します。
+エラボレーション過程では、加算演算を実行するかわりに、2つの加算器(ハードウェアインスタンス)を作成します。
 この例ではわざと加算器を生成しましたが、
 Chiselには既に、\code{+(that: UInt)}のような加算器生成機能があります。
 \fi
@@ -5125,7 +5125,7 @@ functions.
 \fi
 
 \ifshowtranssecond %(校正 10/10 mune10)
-関数は、\code{Module} の一部として宣言することができます。
+関数は、\code{モジュール} の一部として宣言することができます。
 ただし、異なるモジュールで使用する関数は、ユーティリティ関数を集めたScalaオブジェクトの中に入れた方が良いでしょう。
 \fi
 
@@ -5379,7 +5379,7 @@ declaration with \code{WireDefault}.
 
 \ifshowtranssecond %(校正 9/30 diningyo)
 より複雑な組合せ回路の場合には、\code{Wire}にデフォルト値を割り当てることが実用的かもしれません。
-宣言時にデフォルト値を設定するため場合には、\code{WireDefault}を使うことができます。
+宣言時にデフォルト値を設定する場合には、\code{WireDefault}を使うことができます。
 \fi
 
 \shortlist{code/comb_wiredefault.txt}
@@ -5398,8 +5398,8 @@ Scalaは\code{if}、\code{else if}、および\code{else}を持っていると�
 \fi
 
 \ifshowtranssecond %(校正 9/30 diningyo) ( fix 10/09 for build error  mune10)
-質問として考えられそうな事の1つに「Scalaには\code{if}、\code{else if}、\code{else}という構文があるのに、
-なぜ\code{when}、\code{.elsewhen}、\code{.otherwise}を使うのか？」ということありそうです。
+質問として考えられそうな事の1つは「Scalaには\code{if}、\code{else if}、\code{else}という構文があるのに、
+なぜ\code{when}、\code{.elsewhen}、\code{.otherwise}を使うのか？」ということです。
 これらの構文はScalaの条件分岐処理であり、Chiselのハードウェア（マルチプレクサ）を生成するものではありません。
 これらのScalaの条件分岐は、パラメータを用いて条件によって異なるハードウェアを生成する回路ジェネレータを作成する際に使用されます。
 \fi
