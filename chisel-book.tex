@@ -1803,7 +1803,7 @@ Scalaの型推論からと多くの場所の型情報でChiselメリットが出
 \ifshowtranssecond %(校正 4/21 diningyo)
 Chisel ではScalaの型推論のおかげで、多くの場合において型情報を省略できます。
 これはビット幅の場合においても同様です。多くの場合、Chiselは自動的に正しいビット幅を推測します。
-それ故に、Chiselで記述されたハードウェアはVHDLやVerilogに比べて完結で読みやすいものになります。
+それ故に、Chiselで記述されたハードウェアはVHDLやVerilogに比べて簡潔で読みやすいものになります。
 \fi
 
 \ifshoworiginal
@@ -2392,7 +2392,7 @@ Chiselは\myref{https://en.wikipedia.org/wiki/Flip-flop\_(electronics)\#D\_flip-
 
 \ifshowtranssecond %(校正 7/5 diningyo)
 Chiselには\myref{https://en.wikipedia.org/wiki/Flip-flop\_(electronics)\#D\_flip-flop}{D flip-flops}を集めた要素であるレジスタが備わっています。
-レジスタには暗黙のうちに黒バーバルクロックが接続され、そのクロックの立ち上がりエッジで更新されます。初期値はレジスタの宣言時に指定することが可能で、その値はグローバルリセットに接続された同期リセットで使用されます。
+レジスタには暗黙のうちにグローバルクロックが接続され、そのクロックの立ち上がりエッジで更新されます。初期値はレジスタの宣言時に指定することが可能で、その値はグローバルリセットに接続された同期リセットで使用されます。
 レジスタはビットの集合体として表現できる、任意のChiselの型として扱うことができます。
 次のコードは、0で初期化された8ビットのレジスタを宣言するものです。
 \fi
@@ -2622,7 +2622,7 @@ The fields are accessed with the dot notation:
 \fi
 
 \ifshowtranssecond %(校正 7/6 diningyo)
-\noindent バンドルを使用する場合は、そのバンドルのクラスを\code{new}でインスタンスし、\code{Wire}でラップします。
+\noindent バンドルを使用する場合は、そのバンドルのクラスを\code{new}でインスタンス化し、\code{Wire}でラップします。
 フィールドへのアクセスは"."（ドット）を使って行います。
 \fi
 
@@ -2865,7 +2865,7 @@ The network of hardware nodes is what is executed in fully parallel.
 
 \ifshowtranssecond %(校正 7/30 diningyo)
 より技術的な面においては、ChiselのコードがScalaのプログラムとして処理されるとき、実行されたChiselのコードによって、ハードウェア・コンポーネントが\emph{集約}され、各々のノードに接続されます。このハードウェア・ノードのネットワークが、ASICやFPGAの合成用のVerilogコードやChiselのテスターによってテストされるハードウェアです。
-このハードウェア・ノートのネットワークは完全に並列に実行されます。
+このハードウェア・ノードのネットワークは完全に並列に実行されます。
 \fi
 
 \ifshoworiginal
@@ -2908,7 +2908,7 @@ with \code{val sw = Input(UInt(2.W))}.
 \fi
 
 \ifshowtranssecond %(校正 8/2 diningyo)
-導入の演習では、ハードウェア版\emph{Hello World}であるFPGAボードを使ったLチカを実装しました（(from \myref{https://github.com/schoeberl/chisel-examples}{chisel-examples})）。
+導入の演習では、ハードウェア版\emph{Hello World}であるFPGAボードを使ったLチカを実装しました(from \myref{https://github.com/schoeberl/chisel-examples}{chisel-examples})。
 この実装では、唯一の内部ステートと、1つのLED出力のみで、入力はありませんでした。
 このプロジェクトを別のフォルダーにコピーして、変数\code{io}の\code{Bundle}に\code{val sw = Input(UInt(2.W))}を追加してください。
 \fi
@@ -2952,7 +2952,7 @@ The pin assignment can also be done with the GUI version of the tool.
 
 \ifshowtranssecond %(校正 9/3 diningyo)
 これらの入力とピン・アサインを定義すれば、簡単なテストを始められます。
-そのテストとは、そのデザインから点滅する論理を削除し、１つのスイッチのをLEDの出力に接続し、コンパイルとFPGAへの設定を行うことです。
+そのテストとは、そのデザインから点滅する論理を削除し、１つのスイッチをLEDの出力に接続し、コンパイルとFPGAへの設定を行うことです。
 スイッチのON/OFFによってLEDを切り替えられましたか？答えが”はい”であれば、その入力は有効です。
 もし”いいえ”なら、FPGAの設定をデバッグする必要があります。ピンの割り振りはツールのGUI画面で行うことが可能です。
 \fi
