@@ -3017,7 +3017,7 @@ to write tests for debugging and to verify that our circuits are correct.
 \fi
 
 \ifshowtranssecond %(校正 5/4 mune10)
-もっと面白い Chisel コード記述を始める前に、
+もっと面白い Chisel コードの記述を始める前に、
 まずChiselプログラムのコンパイル方法、
 FPGAで実行するためのVerilogコードの生成方法、
 回路が正しいことを検証するためのデバッグやテストの書き方を学ぶ必要があります。
@@ -3085,7 +3085,7 @@ Chiselを表すScalaライブラリとChiselのテスターは、ビルド処理
 しかし、これは各ビルドで必要なバージョンがMavenリポジトリから検索されることを意味します。
 ビルドを成功させるためには、インターネット接続が検索のために必要になります。
 Chiselやその他のScalaライブラリは、専用のバージョンを \code{build.sbt} で指定した方が良いでしょう。
-であれば、インターネットに接続しなくてもハードウェアコードを書いてテストすることが出来ます。
+そうすれば、インターネットに接続しなくてもハードウェアコードを書いてテストすることが出来ます。
 例えば、飛行機の上でハードウェア設計をするのはクールですよね。
 \fi
 
@@ -3212,7 +3212,7 @@ Chiselで名前空間の機能を使用するには、\code{mypacket}で、こ�
 \fi
 
 \ifshowtranssecond %(校正 5/20 mune10)
-Chiselの名前空間機能を使用するには、クラス/モジュールがパッケージで定義されていることを宣言する必要があります。この例では\code{mypacket}
+Chiselの名前空間機能を使用するには、次の\code{mypacket}のように、クラス/モジュールがパッケージで定義されていることを宣言する必要があります。
 \fi
 
 \shortlist{code/packet.txt}
@@ -3440,8 +3440,8 @@ a waveform viewer (e.g., the free viewer GTKWave or Modelsim).
 FIRRTLインタプリタが回路をシミュレートするエンジンです。
 Chiselテスターと一緒にChiselの回路のデバッグとテストが出来ます。
 アサーションを用いることでテスト結果を確認できます。
-このエンジンは波形ファイル（\code{Hello.vcd}）を生成することができます。
-生成された波形は波形ビューアで表示かのうです（無料のビューアであるGTKWaveまたはModelSimなど）
+このエンジンは波形ファイル（\code{Hello.vcd}）を生成することができ、
+生成された波形は波形ビューア(無料のビューアであるGTKWaveまたはModelSimなど)で表示できます。
 \footnote{訳注：図~\ref{fig:flow} は若干不正確です。VCDの生成はこのFIRRTLのエンジンではなく、生成されたVerilogを元にVerilatorが行います。}
 \fi
 
@@ -3516,7 +3516,7 @@ Chiselの一つ強みは、これらのテストベンチを書くためのScala
 
 \ifshowtranssecond %(校正 8/10 mune10)
 Chiselでは\code{PeekPokeTester}の形でテストベンチを提供しています。
-Chiselの強みに一つは、Scala言語のパワーをフルに活用してテストベンチを記述できることです。
+Chiselの強みの一つは、Scala言語のパワーをフルに活用してテストベンチを記述できることです。
 例えば、ハードウェアの振る舞いをシュミレートするソフトウェアを用いて、ハードウェアのシュミレーション（訳注：テスト実行のこと）と動作を比較する事ができます。
 この方法で、プロセッサの実装のテストを効率的に実施できます~\cite{lipsi:arcs2018}。
 \fi
@@ -3652,7 +3652,7 @@ The following example shows testing with \code{expect()}:
 \fi
 
 \ifshowtranssecond %(校正 8/10 mune10)
-\noindent 0 AND 1の結果は 0、3　AND 2の結果は2 となります。
+\noindent 0 AND 1の結果は 0、3 AND 2の結果は2 となります。
 プリントアウトの目視確認は、最初としては良いのですが、出力ポートの値の期待値をパラメータとして与えることで、\code{expect()}を使い、テストベンチ自体で期待値をチェックさせることが出来ます。
 次の例で\code{expect()}を使ったテストを示します。
 \fi
@@ -3691,7 +3691,7 @@ DUTまたはテストベンチのいずれかがエラーを含む失敗した�
 \fi
 
 \ifshowtranssecond %(校正 5/20 mune10)
-\noindent DUT またはテストベンチのいずれかにエラーが含まれている場合、テストに失敗すると、期待値と実際の値の差を記述したエラーメッセージが表示されます。
+\noindent DUT またはテストベンチのいずれかにエラーが含まれていてテストに失敗すると、期待値と実際の値の違いを記述したエラーメッセージが表示されます。
 以下では、テストベンチでエラーとなるように、期待値の４を変更しました。
 \fi
 
@@ -3989,11 +3989,11 @@ the 2 2-bit input signals.
 とでそれを実行します
 \fi
 \ifshowtranssecond %(校正 5/20 mune10)
-\noindent 以下で実行します。
+\noindent 以下のように実行します。
 \fi
 
 \begin{verbatim}
-sbt "testOnly WaveformCounterSpec"
+$ sbt "testOnly WaveformCounterSpec"
 \end{verbatim}
 
 \ifshoworiginal
@@ -4143,7 +4143,7 @@ and an \code{App} that generates the Verilog code.
 まず、最小限のChiselプロジェクトについて見てみます。
 \myref{https://github.com/schoeberl/chisel-examples/tree/master/hello-world}{Hello World}のファイルを見てみましょう。
 \code{Hello.scala}は、唯一のハードウェアのソースファイルです。
-これには点滅LEDのハードウェア記述（\code{class Hello}）と、Verilogコードを生成の\code{App}が含まれます。
+これにはLED点滅のハードウェア記述(\code{class Hello})と、生成されたVerilogコード\code{App}が含まれます。
 \fi
 
 \ifshoworiginal
@@ -4184,7 +4184,7 @@ Verilogの記述を生成するために、我々はアプリケーションが�
 \ifshowtranssecond %(校正 8/10 mune10)
 \noindent リストの ~\ref{lst:chisel:hello}にあるハードウェア記述から始めます。
 Verilogコードを生成するためにはアプリケーションが必要です。
-\code{extends App} が アプリケーションが起動時に暗黙的に main 関数を生成する Scalaのオブジェクトです。
+\code{extends App}は、アプリケーション起動時、暗黙的にmain関数を生成するScalaのオブジェクトです。
 このアプリケーションの唯一のしごとは、新しい \code{HelloWorld} オブジェクトを作成して、Chiselドライバの\code{execute}関数に渡すことです。
 最初の引数は、文字列の配列でビルドオプションがセットされます（例、出力フォルダ）。
 以下のコードはVerilogファイル \code{Hello.v} を生成します。
@@ -4201,7 +4201,7 @@ Verilogコードを生成するためにはアプリケーションが必要で�
 \fi
 
 \ifshowtranssecond %(校正 5/20 mune10)
-\noindent 下記の実行で、手動でサンプル生成をします。
+\noindent 下記の実行を行って、手動でサンプルを生成します。
 \fi
 
 \begin{chisel}
@@ -4229,7 +4229,7 @@ Those two signals are added automatically by Chisel.
 
 \ifshowtranssecond %(校正 8/10 mune10)
 次に、生成された\code{Hello.v}ファイルをエディタで見てみましょう。
-生成されたVerilogコードはあまり読みやすいではありません。
+生成されたVerilogコードはあまり読みやすくはありません。
 ファイルはChiselモジュールと同じ名前の \code{Hello} モジュールで始まります。
 LEDポートは\code{output io\_led}として割り当てられています。
 ピンの名前はChiselでの名前にプレフィックスとして \code{io\_} が付きます。
@@ -4338,7 +4338,7 @@ can generate the Verilog code with:
 \fi
 
 \begin{chisel}
-make
+$ make
 \end{chisel}
 
 \ifshoworiginal
@@ -4373,9 +4373,9 @@ and then configure the FPGA.
 例えば、\myref{https://github.com/schoeberl/chisel-examples/tree/master/hello-world/quartus/altde2-115}{quartus/altde2-115} の中には、
 DE2-115ボード用のQuartusプロジェクトファイルが2つ含まれています。
 メインの設定は（ソースファイル、デバイス、ピンアサイン）はテキストファイル、\myref{https://github.com/schoeberl/chisel-examples/blob/master/hello-world/quartus/altde2-115/hello.qsf}{hello.qsf}で定義されています。
-ファイル見ると、どの信号がどのピンに割り当てられてるかがわかります。
+ファイルを見ると、どの信号がどのピンに割り当てられているかがわかります。
 もし、別のボードにプロジェクトを変更させる必要がある場合は、その部分を修正します。
-すでにQuartusがインストールされている場合は、そのプロジェクトファイルを開き、緑色の\emph{Play}ボタンでコンパイル、FPGAを構成します。
+すでにQuartusがインストールされている場合は、そのプロジェクトファイルを開き、緑色の\emph{Play}ボタンでコンパイル、FPGAをコンフィギュレーションします。
 \fi
 
 \ifshoworiginal
@@ -4423,9 +4423,9 @@ Try to enumerate all possible inputs and test the output with \code{except()}.
 \fi
 
 \ifshowtranssecond %(校正 7/24 mune10)
-最後の章の演習では、ANDゲートとマルチプレクサを構築し、FPGAでこのハードウェアを実行するために、いくつかの入力とLEDの点滅の例を高めています。
-私たちは今、FPGAに依存しないようにも、この例を使用してテストを自動化するためのChiselテスターで機能をテストしてます。
-前章からあなたのデザインを使用し、機能をテストするためにChiselテスターを追加します。
+最後の章の演習では、LED点滅の例をANDゲートやマルチプレクサの入力などを構成して拡張し、このハードウェアをFPGAで実行しました。
+私たちは、この例を使って、Chiselテスタで機能をテストし、テストを自動化するとともに、FPGAに依存しないようにしていきます。
+前章からあなたのデザインを使用し、機能をテストするためにChiselテスターを追加してみましょう。
 すべての可能な入力を列挙し、\code{except()}で出力をテストしてみてください。
 \fi
 
