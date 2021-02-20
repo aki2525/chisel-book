@@ -329,7 +329,7 @@ It is an exciting time to be in the world of digital design. With the end of Den
 
 \ifshowtrans %(校正 3/5 mune10)
 デジタルデザインの世界で作業することはとてもエキサイティングなことです。
-デナード・スケーリングの終わりとムーアの法則の減速で、この分野での技術革新が必要となっています。
+デナードスケーリングの終わりとムーアの法則の減速で、この分野での技術革新が必要となっています。
 半導体製造に関わる企業は、依然として性能向上に尽力していますが、性能改善のためのコストが大幅に上昇しています。
 Chiselは、デジタルデザインの生産性向上により、このコストを削減します。
 設計の再利用による検証コストの削減や、開発初期投資（Non-Recurring Engineering、NRE） の削減により、設計者はより少ない時間でより多くのデザインを開発することができます。
@@ -410,7 +410,7 @@ This book is an introduction to digital design with the focus on using the hardw
 
 \ifshowtrans %(校正 3/6 mune10, 1/23 2nd)
 この本は、ハードウェア構築言語であるChiselを使ったデジタル回路設計について解説します。
-Chiselは、オブジェクト指向言語や関数型言語など、先進のソフトウェア・エンジニアリング技術を、デジタル回路設計の世界にもたらします。
+Chiselは、オブジェクト指向言語や関数型言語など、先進のソフトウェアエンジニアリング技術を、デジタル回路設計の世界にもたらします。
 \fi
 
 \ifshoworiginal
@@ -418,9 +418,9 @@ This book addresses hardware designers and software engineers. Hardware designer
 \fi
 
 \ifshowtrans %(校正 3/6 mune10)
-この本は、ハードウェア設計者とソフトウェア・エンジニアの両方を対象としています。
+この本は、ハードウェア設計者とソフトウェアエンジニアの両方を対象としています。
 VerilogやVHDLの知識を持つハードウェア設計者は、現代的な言語をASICやFPGA設計に活用することで、その生産性を向上させることができます。
-オブジェクト指向と関数型プログラミングの知識を持つソフトウェア・エンジニアは、例えば、クラウドで稼働するFPGAアクセラレータのようなハードウェアのプログラミング（設計）にその知識を活用することができます。
+オブジェクト指向と関数型プログラミングの知識を持つソフトウェアエンジニアは、例えば、クラウドで稼働するFPGAアクセラレータのようなハードウェアのプログラミング（設計）にその知識を活用することができます。
 \fi
 
 \ifshoworiginal
@@ -573,7 +573,7 @@ It is perfectly fine to use Chisel as your first hardware description language.
 \fi
 
 \ifshowtrans %(校正 3/6 mune10)
-本書およびChiselは、（1）ハードウェア設計者と（2）ソフトウェア・プログラマの2つの開発者のグループを対象としています。
+本書およびChiselは、（1）ハードウェア設計者と（2）ソフトウェアプログラマの2つの開発者のグループを対象としています。
 VHDLやVerilogになれたハードウェア設計者は、Python、Java、またはTclのような言語も使いこなしながらハードウェアの開発を進めますが、今後はハードウェアの生成が言語の機能の一部となっている唯一のハードウェア構築言語を使って開発を進めることができます。
 ハードウェア設計にも興味（例えば、インテルが性能向上にFPGAをチップに取り込むなど）があるソフトウェアプログラマにとっては、
 最初に覚えるハードウェア記述言語としてChiselは最適です。
@@ -588,7 +588,7 @@ but allows you to write hardware generators.
 
 \ifshowtrans %(校正 3/9 mune10)
 Chiselは、オブジェクト指向や関数型言語といったソフトウェア工学の進歩をデジタル設計の世界にもちこみます。
-Chiselは、レジスタ転送レベル（RTL）でのハードウェア記述をサポートするだけではなく、ハードウェア・ジェネレータ(生成器)を記述できます。
+Chiselは、レジスタ転送レベル（RTL）でのハードウェア記述をサポートするだけではなく、ハードウェアジェネレータ(生成器)を記述できます。
 \fi
 
 \ifshoworiginal
@@ -1143,13 +1143,13 @@ Chiselの公式ドキュメントやその他の関連ドキュメントはオ�
 
 \item The \myref{https://github.com/freechipsproject/chisel-bootcamp}{Generator Bootcamp}
 %is a Chisel course focusing on hardware generators, as a \myref{https://jupyter.org/}{Jupyter} notebook
-は、\myref{https://jupyter.org/}{Jupyter} ノートブックとして、ハードウェア・ジェネレーターを中心としたChisel講座です。
+は、\myref{https://jupyter.org/}{Jupyter} ノートブックとして、ハードウェアジェネレーターを中心としたChisel講座です。
 
 \item A \myref{https://github.com/ccelio/chisel-style-guide}{Chisel Style Guide} by Christopher Celio.
 
 \item The \myref{https://github.com/schoeberl/chisel-lab}{chisel-lab}
 %contains Chisel exercises for the course ``Digital Electronics 2'' at the Technical University of Denmark.
-には、デンマーク工科大学の「デジタル・エレクトロニクス2」コースのChisel練習問題が収録されています。
+には、デンマーク工科大学の「デジタルエレクトロニクス2」コースのChisel練習問題が収録されています。
 
 \end{itemize}
 
@@ -1942,7 +1942,7 @@ the output of the register can be used just with the name in an expression:
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/register-reset-0}
-  \caption{同期リセットで0初期化されるDフリップ・フロップベースのレジスタ}
+  \caption{同期リセットで0初期化されるDフリップフロップベースのレジスタ}
   \label{fig:register-reset-0}
 \end{figure}
 \fi
@@ -2033,7 +2033,7 @@ till 9 and wraps around to 0 when reaching 9.
 
 \ifshowtrans %(校正 7/5 diningyo)
 シンプルなアプローチでは、値をカウントアップしていきます。
-しかし、コンピューター・サイエンスとデジタル設計では、カウントは0からスタートします。
+しかし、コンピューターサイエンスとデジタル設計では、カウントは0からスタートします。
 そのため、10をカウントする場合は、0から9までのカウントを行います。
 これを行ったのが次に示すコードで、9までカウントした後は０に戻ります。
 \fi
@@ -2276,8 +2276,8 @@ The network of hardware nodes is what is executed in fully parallel.
 \fi
 
 \ifshowtrans %(校正 7/30 diningyo)
-より技術的な面においては、ChiselのコードがScalaのプログラムとして処理されるとき、実行されたChiselのコードによって、ハードウェア・コンポーネントが\emph{集約}され、各々のノードに接続されます。このハードウェア・ノードのネットワークが、ASICやFPGAの合成用のVerilogコードやChiselのテスターによってテストされるハードウェアです。
-このハードウェア・ノードのネットワークは完全に並列に実行されます。
+より技術的な面においては、ChiselのコードがScalaのプログラムとして処理されるとき、実行されたChiselのコードによって、ハードウェアコンポーネントが\emph{集約}され、各々のノードに接続されます。このハードウェアノードのネットワークが、ASICやFPGAの合成用のVerilogコードやChiselのテスターによってテストされるハードウェアです。
+このハードウェアノードのネットワークは完全に並列に実行されます。
 \fi
 
 \ifshoworiginal
@@ -2334,7 +2334,7 @@ The pin assignment can also be done with the GUI version of the tool.
 \fi
 
 \ifshowtrans %(校正 9/3 diningyo)
-これらの入力とピン・アサインを定義すれば、簡単なテストを始められます。
+これらの入力とピンアサインを定義すれば、簡単なテストを始められます。
 そのテストとは、そのデザインから点滅する論理を削除し、１つのスイッチをLEDの出力に接続し、コンパイルとFPGAへの設定を行うことです。
 スイッチのON/OFFによってLEDを切り替えられましたか？答えが”はい”であれば、その入力は有効です。
 もし”いいえ”なら、FPGAの設定をデバッグする必要があります。ピンの割り振りはツールのGUI画面で行うことが可能です。
@@ -2686,7 +2686,7 @@ The FIRRTL compiler performs transformations on the circuit.
 \fi
 
 \ifshowtrans %(校正 7/24 mune10)
-図 ~\ref{fig:flow} は、Chiselのツール・フローを示しています。
+図 ~\ref{fig:flow} は、Chiselのツールフローを示しています。
 デジタル回路は\code{Hello.scala}として示されるChiselのクラスで記述されています。
 Scalaのコンパイラは、ChiselとScalaのライブラリと一緒にこのクラスをコンパイルし、
 標準の
@@ -3029,7 +3029,7 @@ the signals in a waveform. In a waveform the signals are displayed over time.
 
 \ifshowtrans %(校正 5/20 mune10)
 しかし、より複雑なデザインをデバッグする場合、複数の信号を一度に調査したい場合があります。
-デジタル・デザインをデバッグするための古典的なアプローチは、信号を波形で表示することです。波形では、信号は時間の経過とともに表示されます。
+デジタルデザインをデバッグするための古典的なアプローチは、信号を波形で表示することです。波形では、信号は時間の経過とともに表示されます。
 \fi
 
 \ifshoworiginal
@@ -3914,7 +3914,7 @@ to keep it simple. Chisel has already an adder generation function, like \code{+
 \fi
 
 \ifshowtrans %(校正 10/10 mune10)
-\noindent これは、\emph{ハードウエア・ジェネレーター} であることに注意してください。
+\noindent これは、\emph{ハードウエアジェネレーター} であることに注意してください。
 エラボレーション過程では、加算演算を実行するかわりに、2つの加算器(ハードウェアインスタンス)を作成します。
 この例ではわざと加算器を生成しましたが、
 Chiselには既に、\code{+(that: UInt)}のような加算器生成機能があります。
@@ -4070,7 +4070,7 @@ execution.
 
 \ifshowtrans %(校正 9/24 diningyo)
 \noindent この回路の論理は、2つの定数\code{0}と\code{3}を入力とし、\code{cond}を選択信号とするマルチプレクサです。
-私達は条件付き実行を行うソフトウェア・プログラムではなく、ハードウェア回路を記述していることを心に留めておいてください。
+私達は条件付き実行を行うソフトウェアプログラムではなく、ハードウェア回路を記述していることを心に留めておいてください。
 \fi
 
 \ifshoworiginal
@@ -4197,7 +4197,7 @@ The output is one-hot encoded (where exactly one bit is one).
 \href{https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89#%E3%83%87%E3%82%B3%E3%83%BC%E3%83%89}{デコーダー(日本語)}
 %%end novalidate
 は、nビットの2進数を$m \leq 2^n$であるようなmビットの信号に変換します。
-その出力はワン・ホットにエンコードされたもの（特定の1bitだけが1）になります。
+その出力はワンホットにエンコードされたもの（特定の1bitだけが1）になります。
 \fi
 
 \ifshoworiginal
@@ -4477,13 +4477,13 @@ buttons to the input of your circuit and the output to the 7-segment display.
 %%begin novalidate
 \href{https://ja.wikipedia.org/wiki/7%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4}{7セグメントディスプレイ(日本語)}
 %%end novalidate
-のエンコードに変換する組み合わせ回路を実装してください。7セグメント・ディスプレイの当初の使い方であった10進数の表示を行うためのコードか、それに加えて
+のエンコードに変換する組み合わせ回路を実装してください。7セグメントディスプレイの当初の使い方であった10進数の表示を行うためのコードか、それに加えて
 \myref{https://en.wikipedia.org/wiki/Hexadecimal}{hexadecimal(英語)}/
 %%begin novalidate
 \href{https://ja.wikipedia.org/wiki/%E5%8D%81%E5%85%AD%E9%80%B2%E6%B3%95}{十六進法(日本語)}
 %%end novalidate
 に記載されている残りのパターンを含んだ、16種類の値の表示を行うコードを実装しても構いません。
-もし7セグメント・ディスプレイが搭載されているFPGAを持っているなら、実装した回路の入力を4つのスイッチ、もしくはボタンに、出力を7セグメント・ディスプレイに接続しましょう。
+もし7セグメントディスプレイが搭載されているFPGAを持っているなら、実装した回路の入力を4つのスイッチ、もしくはボタンに、出力を7セグメントディスプレイに接続しましょう。
 \fi
 
 \ifshoworiginal
@@ -5314,7 +5314,7 @@ counting by selecting input of the multiplexer that provides \code{0}.
 \ifshowtrans %(仮訳 12/08 校正1 12/29 aki)
 図~\ref{fig:timer}に、タイマのブロック図を示します。
 \code{load}をアサートすることで、レジスタに\code{din}の値をロードすることができます。
-\code{load}信号がデ・アサートされると、カウントダウンが選択されます(レジスタの入力として\code{cntReg - 1}を選択)。
+\code{load}信号がデアサートされると、カウントダウンが選択されます(レジスタの入力として\code{cntReg - 1}を選択)。
 カウンタが\code{0}になると、\code{0}を供給するマルチプレクサの入力が選択されて、\code{done}信号がアサートされ、カウンタはカウントダウンを停止します。
 \fi
 
@@ -5424,8 +5424,8 @@ two cycles it is 75\,\%. The pulse width is modulated between 25\,\% and 75\,\%.
 
 \ifshowtrans %(仮訳 12/08 校正1 12/30 aki)
 図~\ref{fig:pwm}はPWM信号を示しています。矢印は信号の周期の始まりを示しています。
-信号が高い時間の割合は、デューティ・サイクルと呼ばれます。
-最初の2周期は、デューティ・サイクルは25\,\%, つぎの2周期は50\,\%,\, そして最後の2期間は、75\,\%です。
+信号が高い時間の割合は、デューティサイクルと呼ばれます。
+最初の2周期は、デューティサイクルは25\,\%, つぎの2周期は50\,\%,\, そして最後の2期間は、75\,\%です。
 パルス幅は、25\,\%と75\,\%の間で変調されています。
 \fi
 
@@ -5758,8 +5758,8 @@ Chiselの型\code{Vec}の\code{Reg}でメモリはレジスタの集まりとし
 %%end novalidate
 で構築します。
 ASICでは、メモリコンパイラがメモリを構築します。
-FPGAは、ブロックRAMとも呼ばれるオンチップ・メモリ・ブロックを内臓しています。
-これらのオンチップ・メモリ・ブロックを組み合わせて、大きなメモリにできます。
+FPGAは、ブロックRAMとも呼ばれるオンチップメモリブロックを内臓しています。
+これらのオンチップメモリブロックを組み合わせて、大きなメモリにできます。
 FPGAのメモリは通常、1つの読み取りと1つの書き込みポート、もしくは読み取りと書き込みを実行時に切り替えることができる2つのポートを持っています。
 \fi
 
@@ -6902,7 +6902,7 @@ the input of the FSM and the output, this is called a
 出力が入力にも依存している場合、すなわち、FSMの入力と出力の間に組合せ経路がある場合、これを
 \myref{https://en.wikipedia.org/wiki/Mealy_machine}{Mealy machine(英語)}/
 %%begin novalidate
-\href{https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%BC%E3%83%AA%E3%83%BB%E3%83%9E%E3%82%B7%E3%83%B3}{ミーリ・マシン(日本語)}
+\href{https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%BC%E3%83%AA%E3%83%BB%E3%83%9E%E3%82%B7%E3%83%B3}{ミーリマシン(日本語)}
 %%end novalidate
 と呼びます。
 \fi
@@ -7779,7 +7779,7 @@ using valid and ready signals.
 
 \ifshowtrans %(校正 6/20 mune10 校正1 01/01 aki)
 サブシステムの通信は、データの移動とフロー制御のためのハンドシェイクに一般化することができます。
-ポップカウントの例では、有効信号とレディ信号を使用した入力データと出力データのハンドシェイク・インターフェースを見てきました。
+ポップカウントの例では、有効信号とレディ信号を使用した入力データと出力データのハンドシェイクインターフェースを見てきました。
 \fi
 
 \ifshoworiginal
@@ -7923,7 +7923,7 @@ clock cycle) as shown in clock cycles 4 and 5 with the transfer of
 \ifshowtrans %(仮訳 12/21 校正1 01/01 aki)
 図~\ref{fig:ready_valid3}は、ready-validインタフェースの更なるバリエーションを示しています。
 クロックサイクル1では、両方の信号(\code{ready}および\code{valid})が1クロックサイクルの間だけアサートされ、\code{D1}のデータ転送が起こる。
-\code{D2}と\code{D3}の転送で、クロックサイクル4と5に示すように、データをバック・トゥ・バック(クロックサイクル毎)に転送することができます。
+\code{D2}と\code{D3}の転送で、クロックサイクル4と5に示すように、データをバックトゥバック(クロックサイクル毎)に転送することができます。
 \fi
 
 \ifshoworiginal
@@ -8317,7 +8317,7 @@ A solution (workaround) to this issue is to make the parameter field private:
 \code{Bundle}はChiselの\code{Data}型のサブタイプである\code{T}型のパラメータを持っています。
 バンドル内では、パラメータが持つ\code{cloneType}を呼び出すことで、フィールド\code{data}を定義します。
 しかしコンストラクタのパラメータを使用する場合、このパラメータはクラスのパブリックフィールドになります。
-Chiselが\code{Bundle}を複製する必要がある場合、例えば\code{Vec}に使用されるような場合には、パブリック・フィールドはデータパスになります。
+Chiselが\code{Bundle}を複製する必要がある場合、例えば\code{Vec}に使用されるような場合には、パブリックフィールドはデータパスになります。
 この問題の解決策は、パラメータフィールドをプライベートにすることです。
 \fi
 
@@ -10998,7 +10998,7 @@ At the time of this writing, Patmos is still described in Chisel 2.
 はリアルタイムシステム~\cite{patmos:rts2018}向けに最適化されたプロセッサです。
 Patmos のリポジトリにはいくつかのマルチコア通信アーキテクチャが含まれます。
 時間予測可能なメモリアービタ ~\cite{t-crest:memnoc}、
-ネットワーク・オン・チップ~\cite{s4nocni:arcs2019}、
+ネットワークオンチップ~\cite{s4nocni:arcs2019}、
 オーナーシップ対応の共有スクラッチパッドメモリ ~\cite{t-crest:ownspm}、などを含みます。
 この記事の執筆時点では、Patmos はまだChisel2 で記述されています
 \fi
@@ -11027,7 +11027,7 @@ in Lipsi assembler.
 
 \ifshowtrans %(校正 7/23 mune10)
 \item[\myref{https://github.com/schoeberl/lipsi}{Lipsi}]
-はシステム・オン・チップ でのユーティリティ機能向けの小型プロセッサです~\cite{lipsi:arcs2018} 。
+はシステムオンチップ でのユーティリティ機能向けの小型プロセッサです~\cite{lipsi:arcs2018} 。
 Lipsiののコードベースは非常に小さく、Chiselのプロセッサ設計の最初の出発点として利用することができます。
 また、LipsiはChisel/Scalaの生産性の高さの実例でもあります。
 私はChiselで、ハードウェアを記述し、FPGA上でそれを実行し、Scalaでアセンブラを書き、ScalaでLipsiの命令セットシミュレータを書き、いくつかのテストケースを書くのに14時間ほどかかりました。
@@ -11043,8 +11043,8 @@ OpenSoC Fabric is still using Chisel~2.
 \ifshowtrans %(校正 7/23 mune10)
 \item[\myref{http://www.opensocfabric.org/}{OpenSoC Fabric}]
 はChiselで記述された、オープンソースの NoC (Network on Chip) 生成器です ~\cite{OpenSoC:ispass2016}。
-大規模な設計探索のためのシステム・オン・チップを提供することを意図しています。
-NoC自体は、ワームホール・ルーティング、フロー制御のためのクレジット、及び仮想チャネルのための最先端の設計です。
+大規模な設計探索のためのシステムオンチップを提供することを意図しています。
+NoC自体は、ワームホールルーティング、フロー制御のためのクレジット、及び仮想チャネルのための最先端の設計です。
 OpenSoCファブリックはまだChisel 2を使用しています
 \fi
 
@@ -11198,7 +11198,7 @@ The 8-bit register example in Chisel 2:
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-Chisel2 での8ビット・レジスタの記述例：
+Chisel2 での8ビットレジスタの記述例：
 \fi
 
 \shortlist{chisel2/src/main/scala/Register.scala}
@@ -11263,7 +11263,7 @@ related to digital design and computer architecture.
 \ifshowtrans %(校正 3/9 mune10)
 ハードウェア設計者やコンピュータのエンジニアは略語を好みます。
 しかしながら、そうした略語になれるには時間がかかります。
-以下に、デジタル設計やコンピュータ・アーキテクチャで一般的に使われる略語を列挙します。
+以下に、デジタル設計やコンピュータアーキテクチャで一般的に使われる略語を列挙します。
 \fi
 
 \begin{description}
