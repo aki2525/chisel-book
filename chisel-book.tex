@@ -2542,7 +2542,7 @@ to use Chisel classes.
 \fi
 
 \ifshowtrans %(校正 5/20 mune10)
-\noindent この例では、Chisel クラスを使用するために \code{chisel3}パケットをインポートしていることに注意してください。
+\noindent この例では、Chisel クラスを使用するために \code{chisel3}パッケージをインポートしていることに注意してください。
 \fi
 
 \ifshoworiginal
@@ -2552,8 +2552,8 @@ the components of packet \code{mypacket} need to be imported. The underscore
 \fi
 
 \ifshowtrans %(校正 7/24 mune10)
-別のコンテキスト（パケット名前空間）で\code{Abc}モジュールを使用するには、
-パケット\code{mypacket}コンポーネントがインポートされる必要があります。
+別のコンテキスト（パッケージ名前空間）で\code{Abc}モジュールを使用するには、
+パッケージ\code{mypacket}コンポーネントがインポートされる必要があります。
 アンダースコア（\_）はワイルドカードとして機能します。
 つまり、\code{mypacket}のすべてのクラスがインポートされていることを意味します。
 \fi
@@ -2568,7 +2568,7 @@ but use the fully qualified name \code{mypack.Abc} to refer to the module
 
 \ifshowtrans %(校正 7/24 mune10)
 \noindent \code{mypacket}からすべてのタイプをインポートしないことも可能です。
-その場合は、完全修飾名\code{mypack.Abc}を使用して、パケット\code{mypack}内の\code{Abc}モジュールを参照します。
+その場合は、完全修飾名\code{mypack.Abc}を使用して、パッケージ\code{mypack}内の\code{Abc}モジュールを参照します。
 \fi
 
 \shortlist{code/usepacket2.txt}
@@ -2767,7 +2767,7 @@ of a processor~\cite{lipsi:arcs2018}.
 \ifshowtrans %(校正 8/10 mune10)
 Chiselでは\code{PeekPokeTester}の形でテストベンチを提供しています。
 Chiselの強みの一つは、Scala言語のパワーをフルに活用してテストベンチを記述できることです。
-例えば、ハードウェアの振る舞いをシュミレートするソフトウェアを用いて、ハードウェアのシュミレーション（訳注：テスト実行のこと）と動作を比較する事ができます。
+例えば、ハードウェアの振る舞いをシミュレートするソフトウェアを用いて、ハードウェアのシミュレーション（訳注：テスト実行のこと）と動作を比較する事ができます。
 この方法で、プロセッサの実装のテストを効率的に実施できます~\cite{lipsi:arcs2018}。
 \fi
 
@@ -2826,7 +2826,7 @@ We can print the values of the outputs with \code{println()}.
 
 \ifshowtrans %(校正 8/10 mune10)
 \noindent \code{PeekPokeTester}は\code{poke()}で入力値を設定し、\code{peek()}で出力値を読み出すことが出来ます。
-テスタは\code{step(1)}でシュミレーションを１ステップ（= 1クロックサイクル）進めます。
+テスタは\code{step(1)}でシミュレーションを１ステップ（= 1クロックサイクル）進めます。
 また、\code{println()}をつかって、出力の値を表示させることができます。
 \fi
 
@@ -3984,9 +3984,9 @@ Two basic circuits, best described in a table form, are a decoder and an encoder
 
 \ifshowtrans %(校正 6/20 mune10)
 この章では、より複雑なシステムを構築するための基本的な構成要素である様々な組合せ回路を探求します。
-原則として、すべての組合せ回路はブール方程式で記述することができます。
+原則として、すべての組合せ回路はブール式で記述することができます。
 しかし、多くの場合、表の形で記述する方が効率的です。
-我々は、合成ツールにブール方程式を抽出して最小化することを任せています。
+我々は、合成ツールにブール式を抽出して最小化することを任せています。
 表形式で記述するのに最適な基本回路は、デコーダとエンコーダの2つです。
 \fi
 
@@ -4679,7 +4679,7 @@ selects between the initialization value under reset and the data value.
 \fi
 
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
-Chiselでは既定のリセットは同期リセットです。\footnote{非同期リセットのサポートは現在開発中です}
+Chiselではデフォルトのリセットは同期リセットです。\footnote{非同期リセットのサポートは現在開発中です}
 同期リセットの場合は、Dフリップフロップの変更は必要なく、入力にマルチプレクサ\footnote{現在のFPGAフリップフロップには同期リセット入力がありますから、マルチプレクサに追加のリソースは必要ありません。}を追加してリセット時の初期化値とデータ値を選択するだけです。
 \fi
 
@@ -4721,7 +4721,7 @@ by a diagram showing the signals over time. Such a diagram is called a waveform 
 
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
 順序回路は、時間の経過とともにその値が変わります。
-そのふるまいは、時間の経過とともに変化する信号を示すダイアグラムによってみることができます。このようなダイアグラムは、波形または
+そのふるまいは、時間の経過とともに変化する信号を示す図によってみることができます。このような図は、波形または
 \myref{https://en.wikipedia.org/wiki/Digital_timing_diagram}{timing diagram(英語)}/
 %%begin novalidate
 \href{https://ja.wikipedia.org/wiki/%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0%E5%9B%B3}{タイミング図(日本語)}
@@ -4790,7 +4790,7 @@ with a waveform viewer and used for debugging.
 
 \ifshowtrans %(校正 6/20 mune10 校正1 12/29 aki)
 波形は、回路の動作をグラフィカルに指定するための優れたツールです。
-特に、多くの演算が並列に行われ、データが回路内をパイプラインで移動するような複雑な回路では、タイミングダイアグラムが便利です。
+特に、多くの演算が並列に行われ、データが回路内をパイプラインで移動するような複雑な回路では、タイミング図が便利です。
 また、Chiselテスタでは、テスト中に波形を作成し、波形ビューワで表示してデバッグに利用することもできます。
 \fi
 
@@ -4910,7 +4910,7 @@ good use and build more interesting sequential circuits.
 \fi
 
 \ifshowtrans %(校正 6/20 mune10 校正1 12/29 aki)
-レジスタの基本的な使用法をすべて説明したところで、これらのレジスタを活用して、より興味深いシーケンシャル回路を構築します。
+レジスタの基本的な使用法をすべて説明したところで、これらのレジスタを活用して、より興味深い順序回路を構築します。
 \fi
 
 \ifshoworiginal
@@ -5200,7 +5200,7 @@ slow counter that increments every tick ($n$ clock cycles).
 \fi
 
 \ifshowtrans %(仮訳 12/07 校正1 12/29 aki)
-\noindent 図~\ref{fig:tick-count-wave}は、ティックの波形とティック$n$(クロックサイクル)ごとにインクリメントするスローカウンタのウェーブフォームを示しています。
+\noindent 図~\ref{fig:tick-count-wave}は、ティックの波形とティック$n$(クロックサイクル)ごとにインクリメントするスローカウンタの波形を示しています。
 \fi
 
 \index{Logical clock}
@@ -6483,6 +6483,7 @@ longer than 1--2 seconds.
 \index{有限状態機械}
 \index{有限オートマトン}
 \index{同期シーケンシャル回路}
+\index{同期順序回路}
 \fi
 
 \ifshoworiginal
@@ -6496,7 +6497,7 @@ FSMs are also called synchronous sequential circuits.
 \ifshowtrans %(仮訳 12/12 校正1 01/01 aki)
 有限オートマトン(FSM)は、デジタル設計の基本的な構成要素です。
 FSMは、状態と状態の間の\emph{遷移}とその(ガードされた)条件を記述しています。
-FSMは同期シーケンシャル回路と呼ばれることもあります。
+FSMは同期順序回路と呼ばれることもあります。
 \fi
 
 \ifshoworiginal
@@ -6546,7 +6547,7 @@ out of smaller FSMs by combining them into communicating FSMs.
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/fsm}
-  \caption{有限オートマトン(ムーア形)}
+  \caption{有限オートマトン(ムーア型)}
   \label{fig:fsm}
 \end{figure}
 \fi
@@ -6870,7 +6871,7 @@ We have seen this Chisel one-liner before:
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/fsm-rising}
-  \caption{立ち上がりエッジ検出器 (ミーリ形FSM)}
+  \caption{立ち上がりエッジ検出器 (ミーリ型FSM)}
   \label{fig:fsm-rising}
 \end{figure}
 \fi
@@ -9598,7 +9599,7 @@ To distinguish between empty and full we need another flag.
 \fi
 
 \ifshowtrans %(仮訳 12/24 校正1 01/03 aki)
-ソフトウェアのキューは、通常、単一スレッド内のシーケンシャルなコードによって使用されます。
+ソフトウェアのキューは、通常、単一スレッド内のコードにより順に使用されます。
 または、プロデューサとコンシューマのスレッドを分離するために、キューを使います。
 固定サイズのFIFOキューは通常
 \myref{https://en.wikipedia.org/wiki/Circular_buffer}{circular buffer(英語)}/
