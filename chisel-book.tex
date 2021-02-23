@@ -1450,8 +1450,8 @@ in a single bit constant of 0. Probably not what the original intention of the p
 \ifshowtrans %(校正 4/21 diningyo), BF修正5/4 mune10
 {\bf ハマりやすい落とし穴：}
 定数の宣言時に起こりがちなエラーとして、ビット幅指定のための\code{.W}を忘れることがあげられます。
-例えば\code{1.U(32)}のような表現は32bitの１を表す定義では\emph{ありません}。
-その代わりに\code{(32)}は３２bit目のビットの指定として解釈されるため、結果的に1bitの0になります。
+例えば\code{1.U(32)}のような表現は32-bitの１を表す定義では\emph{ありません}。
+その代わりに\code{(32)}は32-bit目のビットの指定として解釈されるため、結果的に1-bitの0になります。
 これはおそらくプログラマが本来意図したものではないはずです。
 \fi
 
@@ -1848,7 +1848,7 @@ However, as multiplexing  is such a standard operation, Chisel provides a multip
 
 \ifshowtrans %(校正 5/1 diningyo)
 マルチプレクサはロジックから構築できます。
-しかし多重化は標準的な操作なので、Chiselではマルチプレクサを提供しています。
+しかしマルチプレクサは標準的な回路なので、Chiselではマルチプレクサを提供しています。
 \fi
 
 \shortlist{code/mux.txt}
@@ -2164,7 +2164,7 @@ processor, like the 32-bit version of \myref{https://en.wikipedia.org/wiki/RISC-
 
 \ifshowtrans %(校正 7/15 diningyo)
 \code{Wire}で包まれた\code{Vec}はマルチプレクサになります。
-またレジスタを\code{Vec}で包むと、レジスタの配列となります。次の例ではプロセッサのための32bit x 32のレジスタファイルを定義しています。
+またレジスタを\code{Vec}で包むと、レジスタの配列となります。次の例ではプロセッサのための32-bit x 32のレジスタファイルを定義しています。
 この例は32-bit版の
 \myref{https://en.wikipedia.org/wiki/RISC-V}{RISC-V(英語)}/
 %%begin novalidate
@@ -4213,7 +4213,7 @@ The output is one-hot encoded (where exactly one bit is one).
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/decoder}
-  \caption{2bitから4bitデコーダ}
+  \caption{2-bitから4-bitデコーダ}
   \label{fig:decoder}
 \end{figure}
 \fi
@@ -4259,7 +4259,7 @@ of the decoder with a truth table, such as Table~\ref{tab:decoder}.
     11 & 1000 \\
     \bottomrule
   \end{tabular}
-  \caption{2bitから4bitデコーダの真理値表}
+  \caption{2-bitから4-bitデコーダの真理値表}
 \end{table}
 \fi
 
@@ -4387,7 +4387,7 @@ The encoder does the inverse operation of a decoder.
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/encoder}
-  \caption{4bitから2bitエンコーダ}
+  \caption{4-bitから2-bitエンコーダ}
   \label{fig:encoder}
 \end{figure}
 \fi
@@ -4426,7 +4426,7 @@ The encoder does the inverse operation of a decoder.
     ???? & ?? \\
     \bottomrule
   \end{tabular}
-  \caption{4bitから2bitエンコーダの真理値表}
+  \caption{4-bitから2-bitエンコーダの真理値表}
 \end{table}
 \fi
 
@@ -4472,7 +4472,7 @@ buttons to the input of your circuit and the output to the 7-segment display.
 \fi
 
 \ifshowtrans %(校正 10/8 diningyo)
-4bitのバイナリ入力を
+4-bitのバイナリ入力を
 \myref{https://en.wikipedia.org/wiki/Seven-segment_display}{7-segment display(英語)}/
 %%begin novalidate
 \href{https://ja.wikipedia.org/wiki/7%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4}{7セグメントディスプレイ(日本語)}
@@ -5045,7 +5045,7 @@ define a function with a parameter to generate a counter for us.
 
 \ifshowtrans %(校正 6/20 mune10 校正1 12/29 aki)
 \noindent 私たちはこれまでのカウンタに対する経験を活かして、パラメータを持つカウンタ関数を定義し生成することができます。
-fi
+\fi
 
 \shortlist{code/function_counter.txt}
 
@@ -5216,7 +5216,7 @@ and switches.
 \fi
 
 \ifshowtrans %(仮訳 12/07 校正1 12/29 aki)
-この遅い\emph{論理}クロックの使用例としては、LEDの点滅、シリアルバスのボーレートの生成、7セグメント表示の多重化のための信号生成、ボタンやスイッチのデバウンスのための入力値のサブサンプリングなどがあります。
+この遅い\emph{論理}クロックの使用例としては、LEDの点滅、シリアルバスのボーレートの生成、7セグメント表示のためのマルチプレクサ信号生成、ボタンやスイッチのデバウンスのための入力値のサブサンプリングなどがあります。
 \fi
 
 \ifshoworiginal
@@ -5387,7 +5387,7 @@ within that period.
 \fi
 
 \ifshowtrans %(仮訳 12/-8 aki, 12/30 mune10 JA wikipedia)
-%\myref{https://en.wikipedia.org/wiki/Pulse-width_modulation}{Pulse-width modulation}（PWM）は、一定の周期を持つ信号で、その周期内で信号が\emph{high}な時間で変調されたものである。
+%\myref{https://en.wikipedia.org/wiki/Pulse-width_modulation}{Pulse-width modulation}（PWM）は、一定の周期を持つ信号で、その周期内で信号が高(\emph{high})な時間で変調されたものです。
 
 \myref{https://en.wikipedia.org/wiki/Pulse-width_modulation}{Pulse-width modulation(英語)}/
 %%begin novalidate
@@ -6887,7 +6887,7 @@ input with the current state.
 \fi
 
 \ifshowtrans %(仮訳 12/15 校正1 01/01 aki)
-図~\ref{fig:fsm-rising}に立ち上がりエッジ検出器の回路図を示します現在の入力が1で、最後のクロックサイクルの入力が0だった場合、出力は1クロックサイクルの間1になります。
+図~\ref{fig:fsm-rising}に立ち上がりエッジ検出器の回路図を示します。現在の入力が1で、最後のクロックサイクルの入力が0だった場合、出力は1クロックサイクルの間1になります。
 状態レジスタは、次の状態が入力されただけの単一のDフリップフロップです。
 これを1クロックサイクルの遅延素子と考えることもできます。
 出力ロジックは、現在の入力と現在の状態を\emph{比較}します。
@@ -7530,7 +7530,7 @@ of the combination of the FSM with the datapath.
 \fi
 
 \ifshowtrans %(仮訳 12/20 校正1 01/01 aki)
-通信するステートマシンの典型的な例として、データパスと組み合わせたステートマシンがあります。
+コミュニケートステートマシンの典型的な例として、データパスと組み合わせたステートマシンがあります。
 この組み合わせは、データパス付き有限ステートマシン(FSMD)とよく呼ばれます。
 ステートマシンはデータパスを制御し、データパスは計算を実行します。
 FSMの入力は、環境からの入力とデータパスからの入力です。
@@ -7577,7 +7577,7 @@ For a binary string, this is the number of `1's.
 \href{https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%9F%E3%83%B3%E3%82%B0%E9%87%8D%E3%81%BF}{ハミング重み(日本語)}
 %%end novalidate
 と呼ばれるポップカウントを計算する例です。
-ハミングウェイトは、0ではないシンボルの個数です。
+ハミング重みは、0ではないシンボルの個数です。
 バイナリ文字列の場合、これは`1'の数となります。
 \fi
 
@@ -7923,7 +7923,7 @@ clock cycle) as shown in clock cycles 4 and 5 with the transfer of
 % 1/1 mune10 ここは ready_valid3 の間違いですね
 \ifshowtrans %(仮訳 12/21 校正1 01/01 aki)
 図~\ref{fig:ready_valid3}は、ready-validインタフェースの更なるバリエーションを示しています。
-クロックサイクル1では、両方の信号(\code{ready}および\code{valid})が1クロックサイクルの間だけアサートされ、\code{D1}のデータ転送が起こる。
+クロックサイクル1では、両方の信号(\code{ready}および\code{valid})が1クロックサイクルの間だけアサートされ、\code{D1}のデータ転送が起こります。
 \code{D2}と\code{D3}の転送で、クロックサイクル4と5に示すように、データをバックトゥバック(クロックサイクル毎)に転送することができます。
 \fi
 
@@ -8959,7 +8959,7 @@ in the next section.
 \fi
 
 \ifshowtrans %(仮訳 12/22 校正1 01/02 aki)
-それぞれのバッファを接続してFIFOキューを実装するというアイデアは、データが泡のようにキューを通るので、バブルFIFOと呼ばれています。
+それぞれのバッファを接続してFIFOキューを実装するというアイデアは、データが泡(バブル)のようにキューを通るので、バブルFIFOと呼ばれています。
 これは単純であり、データレートがクロックレートよりもかなり遅い場合、例えば、次のセクションで提示されるシリアルポートのためのデカップリングバッファとして、良好な解決策です。
 \fi
 
@@ -8975,8 +8975,7 @@ I will present other possible implementations of FIFOs in Section~\ref{sec:more:
 \ifshowtrans %(仮訳 12/22 校正1 01/02 aki)
 しかし、データレートがクロック周波数に近づくと、バブルFIFOには2つの制限があります :
 (1) 各バッファの状態は\emph{空}と\emph{満杯}を切り替えなければならないため、FIFOの最大スループットは1ワードあたり2クロックサイクルです。
-(2) データの泡はすべてのFIFOを伝搬する必要があるため、入力から出力までのレイテンシは少なくともバッファの数になります。
-なくともバッファの数になります。
+(2) データの泡(バブル)はすべてのFIFOを伝搬する必要があるため、入力から出力までのレイテンシは少なくともバッファの数になります。
 節~\ref{sec:more:fifo}でFIFOの他の可能な実装をご紹介します。
 \fi
 
