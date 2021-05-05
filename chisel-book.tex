@@ -10939,7 +10939,7 @@ we are aware of that use Chisel and are in open source.
 
 \ifshowtrans %(校正 7/23 mune10)
 Chiselは（まだ）多くのプロジェクトで使用されているわけではありません。
-そのため、言語やコーディングスタイルを学ぶためのオープンソースのChiselの実装コードはそんなにありません。
+そのため、言語やコーディングスタイルを学ぶためのオープンソースのChiselの実装コードはそれほど多く存在しません。
 ここでは、私が把握している、オープンソースで公開されている Chiselを使ったプロジェクトを紹介します。
 \fi
 
@@ -11030,7 +11030,7 @@ in Lipsi assembler.
 はシステムオンチップ でのユーティリティ機能向けの小型プロセッサです~\cite{lipsi:arcs2018} 。
 Lipsiののコードベースは非常に小さく、Chiselのプロセッサ設計の最初の出発点として利用することができます。
 また、LipsiはChisel/Scalaの生産性の高さの実例でもあります。
-私はChiselで、ハードウェアを記述し、FPGA上でそれを実行し、Scalaでアセンブラを書き、ScalaでLipsiの命令セットシミュレータを書き、いくつかのテストケースを書くのに14時間ほどかかりました。
+私が、Chiselでハードウェアを記述し、FPGA上でそれを実行し、Scalaでアセンブラを書き、ScalaでLipsiの命令セットシミュレータを書き、いくつかのテストケースを書くのに14時間ほどかかりました。
 \fi
 
 \ifshoworiginal
@@ -11056,7 +11056,7 @@ DANA supports inference and learning.
 
 \ifshowtrans %(校正 7/23 mune10)
 \item[\myref{https://github.com/bu-icsg/xfiles-dana}{DANA}]
-はロケットカスタムコプロセッサインターフェース（ROCC）を使用したニューラルネットワークアクセラレータと統合されたRISC-Vロケットプロセッサです ~\cite{RoCC:2015}。
+はロケットカスタムコプロセッサインターフェース（ROCC）を使用して、RISC-Vロケットプロセッサとと統合したニューラルネットワークアクセラレータです ~\cite{RoCC:2015}。
 DANAは推論と学習をサポートしています。
 \fi
 
@@ -11079,8 +11079,7 @@ so I can include it in a future edition of the book.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-Chiselを使用するオープンソースプロジェクトに心当たりがありましたら、その情報を私までメールを送ってください。
-その情報を、この本の将来版に含めたいと思います。
+Chiselを使用するオープンソースプロジェクトに心当たりがありましたら、その情報を私に送っていただければ、この本の改訂版に含めたいと思います。
 \fi
 
 \ifshoworiginal
@@ -11119,7 +11118,7 @@ have started with Chisel 3.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-しかしながら、あなたがまだChisel2 を使用するプロジェクトに関わるかもしれません。
+しかし、あなたはまだChisel2を使用するプロジェクトに関わるかもしれません。
 例えば、\myref{https://github.com/t-crest/patmos}{Patmos}~\cite{patmos:rts2018} プロセッサはChisel2で設計されていいます。
 したがって、すでにChisel3で設計を始めている人向けに、Chisel2に関する情報を提供したいと思います。
 \fi
@@ -11150,7 +11149,7 @@ definitions.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-Chisel3と2の間の目に見える大きな違いは、定数の定義、IO、ワイヤ、メモリのバンドル、および古いレジスタ定義方法になります。
+Chisel3と2の目に見える大きな違いは、定数の定義、IO、ワイヤ、メモリのバンドル、および古いレジスタ定義方法になります。
 \fi
 
 \ifshoworiginal
@@ -11161,7 +11160,7 @@ Therefore, we do not cover it here.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-Chisel2の実装は、\code{Chisel3}の代わりに、\code{Chisel} パッケージを使い、この互換性レイヤを介することで、Chisel3プロジェクトである程度利用することができます。
+Chisel2の実装は、\code{Chisel3}の代わりに、\code{Chisel} パッケージを使うことで、この互換性レイヤを介して、Chisel3プロジェクトでもある程度利用することができます。
 しかし、この互換性レイヤの使用は、あくまで遷移期間に留めるべきであり、ここでは詳しくは述べません。
 \fi
 
