@@ -10586,7 +10586,7 @@ Lerosプロセッサと必要なツールを構築する方法のデモンスト
 \chapter{Contributing to Chisel}
 \fi
 \ifshowtrans %(校正)
-\chapter{Chisel への貢献 (L10543)} % (校正 7/24 mune10 13章初回終了 =======================================================)
+\chapter{Chiselへの貢献 (L10543)} % (校正 7/24 mune10 13章初回終了 =======================================================)
 \fi
 
 \index{Chisel!Contribution}
@@ -10599,7 +10599,7 @@ to Chisel.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-Chiselは、絶えまない開発と改良のもとにあるオープンソースプロジェクトです。
+Chiselは、絶え間ない開発と改良のもとにあるオープンソースプロジェクトです。
 そのため、あなたもプロジェクトに貢献することができます。
 ここでは、Chiselのライブラリの開発のための開発環境のセットアップと、Chiselへの貢献方法について説明します。
 \fi
@@ -10617,8 +10617,8 @@ the \myref{https://github.com/freechipsproject}{freechips organization at GitHub
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-Chiselは、いくつかの異なるリポジトリで構成されています。
-そのすべては \myref{https://github.com/freechipsproject}{GitHub上の freechips オーガナイゼーション } でホストされています。
+Chiselは、いくつかの異なるリポジトリから構成されています。
+そのすべては \myref{https://github.com/freechipsproject}{GitHub上の freechips オーガナイゼーション} でホストされています。
 \fi
 
 \ifshoworiginal
@@ -10630,11 +10630,11 @@ In our example, we change \code{chisel3}, and the clone command for my local for
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-あなたの個人GitHubのアカウントに、貢献したいリポジトリをフォークします。
+あなた個人のGitHubアカウントに、貢献したいリポジトリをフォークします。
 具体的には、GitHubのWebインターフェイスで\code{Fork}ボタンを押すことで、リポジトリをフォークすることができます。
-そして、そのフォークしたリポジトリをクローンします。
+そして、そのフォークから、そのフォークしたリポジトリをクローンします。
 \footnote{Chiselとfirrtlに変更を加える場合は、firrtlについてもフォークとクローンが必要があることに注意してください}
-\code{chisel3}を変更し、私のローカルのフォークをクローンするコマンドは次のとおりです。
+例えば、\code{chisel3}を変更するために、私のローカルフォークにクローンするコマンドは次のとおりです。
 \fi
 
 \begin{verbatim}
@@ -10664,10 +10664,10 @@ repo as well and publish it locally.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-パブリッシュしたライブラリのバージョン文字列について、パブリッシュローカルコマンドを実行する際に気をつけてください。
-文字列\code{SNAPSHOT}が含まれてパブリッシュされます。
-もしあなたがテスタを用いる際に、パブリッシュしたバージョンが、Chisel の SNAPSHOTと互換性がない場合、
-\myref{https://github.com/freechipsproject/chisel-testers}{chisel-tester}についても同様にフォークとクローンして、ローカルでパブリッシュしてください。
+ローカルコマンド(sbt publishlocal)を使って、ライブラリを公開したときには、公開されたライブラリに\code{SNAPSHOT}文字列が含まれていることに気をつけてください。
+
+もしあなたがテスタを用いる際に、公開したバージョンが、ChiselのSNAPSHOTと互換性がない場合、
+\myref{https://github.com/freechipsproject/chisel-testers}{chisel-tester}についても同様にフォークとクローンを行い、ローカルで公開してください。
 \fi
 
 \ifshoworiginal
@@ -10678,7 +10678,7 @@ renaming it, and removing the \code{.git} folder from it.
 
 \ifshowtrans %(校正 7/23 mune10)
 Chiselでの変更をテストするには、おそらく、Chiselプロジェクトを作成する必要があります。
-例えば、\myref{https://github.com/schoeberl/chisel-empty}{empty Chisel project}をクローニング/フォークして名前を変更します。
+例えば、\myref{https://github.com/schoeberl/chisel-empty}{empty Chisel project}をクローン/フォークして名前を変更します。
 \code{.git}フォルダは削除しておきます。
 \fi
 
@@ -10692,10 +10692,10 @@ The \code{build.sbt} should look similar to:
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-ローカルにパブリッシュされたバージョンの Chisel を参照するように\code{build.sbt}を変更します。
-さらに、この記事の執筆時点では、Chisel元のヘッドは、Scala の 2.12 を使用しています。
-しかし、Scala 2.12 は問題\myref{https://github.com/freechipsproject/chisel-template/issues/35}{anonymous bundles}があります。
-その回避のために、、次のScalaのオプション、\code{"-Xsource:2.11"} を追加する必要があります。
+ローカルに公開されたバージョンの Chisel を参照するように\code{build.sbt}を変更します。
+さらに、この本の執筆時点では、Chiselのソースコードのヘッドは、Scalaの2.12を使用しています。
+しかし、Scala 2.12 は\myref{https://github.com/freechipsproject/chisel-template/issues/35}{anonymous bundles}の問題を持っています。
+その回避のために、次のScalaのオプション、\code{"-Xsource:2.11"}を追加する必要があります。
 \code{build.sbt}は次のようになります。
 \fi
 
@@ -10725,9 +10725,8 @@ library.)
 
 \ifshowtrans %(校正 7/23 mune10)
 Chiselのテストアプリケーションをコンパイルして、
-それがChiselライブラリのローカルパブリッシュバージョンを使っているか注意する。
-（例えば、アプリケーションコードとChiselライブラリのScalaのバージョンが異なっている場合、
-ローカルパブリッシュバージョンではなく、サーバーからのSNAPSHOTバージョンを選択している。）
+それがChiselライブラリのローカル公開バージョンを使っているか、よく確認してください。
+（SNAPSHOTバージョンも公開されています。したがって、例えばChiselライブラリとアプリケーションコードのScalaのバージョンが異なっている場合、アプリケーションコードが、ローカルに公開されたライブラリではなく、サーバーからのSNAPSHOTバージョンを選択しているかもしれません。)
 \fi
 
 \ifshoworiginal
@@ -10765,7 +10764,7 @@ new features.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-また、あなたはChiselに機能を追加する場合は、その新機能のテストを提供する必要があります。
+Chiselに機能を追加する場合は、その新機能のテストを提供する必要があります。
 \fi
 
 \ifshoworiginal
@@ -10813,8 +10812,8 @@ needs just two lines of Scala code.}
 \code{UInt}タイプの新しいオペレータ（演算子）を追加します。
 Chiselライブラリに組み込み、オペレータの使用例として、いくつかの使用例とテストコードを作成します。
 とりあえず、便利なオペレータである必要はありませんので、何でもよいです。
-例えば ゼロでなければ左辺を、それ以外の場合は右辺を返す、マルチプレクサのような、「?」オペレータを考えます。
-そのためには、どれくらいのコード行数が必要でしょうか？
+例えば ゼロでなければ左の項を、それ以外の場合は右の項を返す、マルチプレクサのような、「?」オペレータを考えます。
+そのためには、どれくらいのコード行数が必要でしょうか?
 \footnote{てっとりばやい実装では、2行ほどのScalaコードになります}
 \fi
 
@@ -10826,8 +10825,8 @@ This exercise was just a simple exercise to get you started.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-ただし、このような感じで、些細なオペレータを追加するためにChiselプロジェクトをフォークしたりしないでください。
-Chiselの変更や拡張は、メインの開発者（達）と相談の上すすめなくてはなりません。
+ただし、このような些細なものでも、Chiselプロジェクトをフォークして、(ご自身のための)演習をChiselプロジェクトにプルリクエストはしないでください。
+Chiselの変更や拡張は、メインの開発者(達)と相談の上すすめなくてはなりません。
 この演習は、そうした活動を始めるにあたっての簡単な練習です。
 \fi
 
@@ -10843,7 +10842,7 @@ See how changes and pull requests are handled in the Chisel open-source project.
 \ifshowtrans %(校正 7/23 mune10)
 もしあなたが慣れてきたら、
 \myref{https://github.com/freechipsproject/chisel3/issues}{open issues、未解決の課題}
-のいずれかを選んで、その解決を試みるすることもできます。
+のいずれかを選んで、その解決を試みることもできます。
 そして、プルリクエストをChiselに送り、貢献します。
 まず最初は、GitHubリポジトリでの Chiselの開発スタイルを見て
 Chiselのオープンソースプロジェクト内で、その変更とプルリクエストがどのように扱われているかを見てみましょう。
@@ -10872,11 +10871,10 @@ to your Chisel project.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-この本は、ハードウェア構成の言語である Chisel を用いた デジタル回路設計の入門書です。
-シンプルなものから中規模の Chiselで記述されたデジタル回路設計を見てきました。
-ChiselはScalaベースのDSLですので、Scalaの強力な抽象化を継承しています。
-この本は入門書として意図されているため、本書での記述は Scalaの簡単な使い方にとどめています。
-次の論理的なステップは、Scalaの基本を学び、それをあなたのChiselのプロジェクトに適用してゆくことです。
+この本は、ハードウェア構成の言語であるChiselを用いたデジタル回路設計の入門書です。
+ここまで、Chiselを使ったシンプルなものから中規模なものまでのデジタル回路設計を見てきました。
+ChiselはScalaをベースとした言語で、Scalaの強力な抽象化を継承していますが、この本は入門書として意図されているため、それぞれの例はScalaの簡単な使い方の範囲にとどまるようにしました。
+次の論理的なステップは、Scalaの基本を学び、それをあなたのChiselプロジェクトで実践してゆくことです。
 \fi
 
 \ifshoworiginal
@@ -10888,10 +10886,10 @@ for the book repository for any fixes and improvements.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-本書のフィードバックをお寄せください、それは本書を改善し、次の版に反映されるでしょう。
+この本のフィードバックをお寄せいただければ、次の改訂版に反映します。
 私の連絡先は \url{mailto:masca@dtu.dk} です。
-GitHub 上で Issue リクエスト を出していただいても構いません。
-本書の修正や改善の関する Pull リクエストもお待ちしております。
+GitHub上でIssueリクエストを出していただいても構いません。
+この本の修正や改善に関するPullリクエストもお待ちしております。
 （日本語版につきましては、Chisel勉強会のSlackまで \url{https://chisel-jp-slackin.herokuapp.com/}）
 \fi
 
@@ -10904,8 +10902,8 @@ all Chisel examples: \url{https://github.com/schoeberl/chisel-book}
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-本書はオープンソースで提供されています。
-リポジトリには、ChiselコースとすべてのChiselのサンプルコードについてのスライドも含まれています：\url{https://github.com/schoeberl/chisel-book}
+この本はオープンソースで提供されています。
+リポジトリには、Chisel講座のスライドと、全てのサンプルコードも含まれています：\url{https://github.com/schoeberl/chisel-book}
 （日本語版は：\url{https://github.com/chisel-jp/chisel-book} の japanese ブランチを参照してください）
 \fi
 
@@ -10916,7 +10914,7 @@ also contains projects for various popular FPGA boards:
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-本書の中でも参照している、中規模の実装例はオープンソースとして提供されています。
+この本の中でも参照している、中規模の実装例もオープンソースとして提供されています。
 \url{https://github.com/schoeberl/chisel-examples} は、こうした様々なFPGAをターゲットとしたプロジェクトを含む実装例です。
 \fi
 
